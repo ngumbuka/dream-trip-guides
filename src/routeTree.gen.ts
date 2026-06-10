@@ -9,16 +9,14 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ServicesIndexRouteImport } from './routes/services.index'
+import { Route as ServicesVisiteCamerounRouteImport } from './routes/services.visite-cameroun'
+import { Route as ServicesLongSejoursRouteImport } from './routes/services.long-sejours'
+import { Route as ServicesCourtSejoursRouteImport } from './routes/services.court-sejours'
 
-const ServicesRoute = ServicesRouteImport.update({
-  id: '/services',
-  path: '/services',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -34,50 +32,97 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesIndexRoute = ServicesIndexRouteImport.update({
+  id: '/services/',
+  path: '/services/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesVisiteCamerounRoute = ServicesVisiteCamerounRouteImport.update({
+  id: '/services/visite-cameroun',
+  path: '/services/visite-cameroun',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesLongSejoursRoute = ServicesLongSejoursRouteImport.update({
+  id: '/services/long-sejours',
+  path: '/services/long-sejours',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesCourtSejoursRoute = ServicesCourtSejoursRouteImport.update({
+  id: '/services/court-sejours',
+  path: '/services/court-sejours',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/services': typeof ServicesRoute
+  '/services/court-sejours': typeof ServicesCourtSejoursRoute
+  '/services/long-sejours': typeof ServicesLongSejoursRoute
+  '/services/visite-cameroun': typeof ServicesVisiteCamerounRoute
+  '/services/': typeof ServicesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/services': typeof ServicesRoute
+  '/services/court-sejours': typeof ServicesCourtSejoursRoute
+  '/services/long-sejours': typeof ServicesLongSejoursRoute
+  '/services/visite-cameroun': typeof ServicesVisiteCamerounRoute
+  '/services': typeof ServicesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/services': typeof ServicesRoute
+  '/services/court-sejours': typeof ServicesCourtSejoursRoute
+  '/services/long-sejours': typeof ServicesLongSejoursRoute
+  '/services/visite-cameroun': typeof ServicesVisiteCamerounRoute
+  '/services/': typeof ServicesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/contact' | '/services'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/services/court-sejours'
+    | '/services/long-sejours'
+    | '/services/visite-cameroun'
+    | '/services/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/services'
-  id: '__root__' | '/' | '/about' | '/contact' | '/services'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/services/court-sejours'
+    | '/services/long-sejours'
+    | '/services/visite-cameroun'
+    | '/services'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/services/court-sejours'
+    | '/services/long-sejours'
+    | '/services/visite-cameroun'
+    | '/services/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
-  ServicesRoute: typeof ServicesRoute
+  ServicesCourtSejoursRoute: typeof ServicesCourtSejoursRoute
+  ServicesLongSejoursRoute: typeof ServicesLongSejoursRoute
+  ServicesVisiteCamerounRoute: typeof ServicesVisiteCamerounRoute
+  ServicesIndexRoute: typeof ServicesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/services': {
-      id: '/services'
-      path: '/services'
-      fullPath: '/services'
-      preLoaderRoute: typeof ServicesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -99,6 +144,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/': {
+      id: '/services/'
+      path: '/services'
+      fullPath: '/services/'
+      preLoaderRoute: typeof ServicesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/visite-cameroun': {
+      id: '/services/visite-cameroun'
+      path: '/services/visite-cameroun'
+      fullPath: '/services/visite-cameroun'
+      preLoaderRoute: typeof ServicesVisiteCamerounRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/long-sejours': {
+      id: '/services/long-sejours'
+      path: '/services/long-sejours'
+      fullPath: '/services/long-sejours'
+      preLoaderRoute: typeof ServicesLongSejoursRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/court-sejours': {
+      id: '/services/court-sejours'
+      path: '/services/court-sejours'
+      fullPath: '/services/court-sejours'
+      preLoaderRoute: typeof ServicesCourtSejoursRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -106,7 +179,10 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
-  ServicesRoute: ServicesRoute,
+  ServicesCourtSejoursRoute: ServicesCourtSejoursRoute,
+  ServicesLongSejoursRoute: ServicesLongSejoursRoute,
+  ServicesVisiteCamerounRoute: ServicesVisiteCamerounRoute,
+  ServicesIndexRoute: ServicesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
