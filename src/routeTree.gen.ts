@@ -13,6 +13,9 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
+import { Route as ServicesVisiteCamerounRouteImport } from './routes/services.visite-cameroun'
+import { Route as ServicesLongSejoursRouteImport } from './routes/services.long-sejours'
+import { Route as ServicesCourtSejoursRouteImport } from './routes/services.court-sejours'
 
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
@@ -34,17 +37,38 @@ const ServicesIndexRoute = ServicesIndexRouteImport.update({
   path: '/services/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesVisiteCamerounRoute = ServicesVisiteCamerounRouteImport.update({
+  id: '/services/visite-cameroun',
+  path: '/services/visite-cameroun',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesLongSejoursRoute = ServicesLongSejoursRouteImport.update({
+  id: '/services/long-sejours',
+  path: '/services/long-sejours',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesCourtSejoursRoute = ServicesCourtSejoursRouteImport.update({
+  id: '/services/court-sejours',
+  path: '/services/court-sejours',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/services/court-sejours': typeof ServicesCourtSejoursRoute
+  '/services/long-sejours': typeof ServicesLongSejoursRoute
+  '/services/visite-cameroun': typeof ServicesVisiteCamerounRoute
   '/services/': typeof ServicesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/services/court-sejours': typeof ServicesCourtSejoursRoute
+  '/services/long-sejours': typeof ServicesLongSejoursRoute
+  '/services/visite-cameroun': typeof ServicesVisiteCamerounRoute
   '/services': typeof ServicesIndexRoute
 }
 export interface FileRoutesById {
@@ -52,20 +76,48 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/services/court-sejours': typeof ServicesCourtSejoursRoute
+  '/services/long-sejours': typeof ServicesLongSejoursRoute
+  '/services/visite-cameroun': typeof ServicesVisiteCamerounRoute
   '/services/': typeof ServicesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/contact' | '/services/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/services/court-sejours'
+    | '/services/long-sejours'
+    | '/services/visite-cameroun'
+    | '/services/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/services'
-  id: '__root__' | '/' | '/about' | '/contact' | '/services/'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/services/court-sejours'
+    | '/services/long-sejours'
+    | '/services/visite-cameroun'
+    | '/services'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/services/court-sejours'
+    | '/services/long-sejours'
+    | '/services/visite-cameroun'
+    | '/services/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
+  ServicesCourtSejoursRoute: typeof ServicesCourtSejoursRoute
+  ServicesLongSejoursRoute: typeof ServicesLongSejoursRoute
+  ServicesVisiteCamerounRoute: typeof ServicesVisiteCamerounRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
 }
 
@@ -99,6 +151,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/visite-cameroun': {
+      id: '/services/visite-cameroun'
+      path: '/services/visite-cameroun'
+      fullPath: '/services/visite-cameroun'
+      preLoaderRoute: typeof ServicesVisiteCamerounRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/long-sejours': {
+      id: '/services/long-sejours'
+      path: '/services/long-sejours'
+      fullPath: '/services/long-sejours'
+      preLoaderRoute: typeof ServicesLongSejoursRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/court-sejours': {
+      id: '/services/court-sejours'
+      path: '/services/court-sejours'
+      fullPath: '/services/court-sejours'
+      preLoaderRoute: typeof ServicesCourtSejoursRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -106,6 +179,9 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
+  ServicesCourtSejoursRoute: ServicesCourtSejoursRoute,
+  ServicesLongSejoursRoute: ServicesLongSejoursRoute,
+  ServicesVisiteCamerounRoute: ServicesVisiteCamerounRoute,
   ServicesIndexRoute: ServicesIndexRoute,
 }
 export const routeTree = rootRouteImport
