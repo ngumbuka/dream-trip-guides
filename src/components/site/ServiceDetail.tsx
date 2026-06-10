@@ -20,7 +20,7 @@ export interface ServiceDetailProps {
   imageAlt: string;
   highlights: string[];
   steps: ServiceStep[];
-  included: { icon: LucideIcon; t: string }[];
+  included: { icon: LucideIcon; t: string; to?: string }[];
   faqs: ServiceFaq[];
   ctaLabel?: string;
 }
@@ -92,10 +92,24 @@ export function ServiceDetail(props: ServiceDetailProps) {
           <h2 className="text-3xl font-semibold md:text-4xl">Inclus dans cette offre</h2>
           <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5">
             {included.map((e) => (
-              <div key={e.t} className="rounded-2xl border border-white/10 bg-white/5 p-6 text-center">
-                <e.icon className="mx-auto h-7 w-7" style={{ color: "#ffb3bd" }} />
-                <p className="mt-3 text-sm">{e.t}</p>
-              </div>
+              e.to ? (
+                <Link
+                  key={e.t}
+                  to={e.to}
+                  className="group rounded-2xl border border-white/10 bg-white/5 p-6 text-center transition hover:-translate-y-0.5 hover:border-white/30 hover:bg-white/10"
+                >
+                  <e.icon className="mx-auto h-7 w-7" style={{ color: "#ffb3bd" }} />
+                  <p className="mt-3 text-sm">{e.t}</p>
+                  <p className="mt-2 inline-flex items-center justify-center gap-1 text-xs text-white/60 group-hover:text-white">
+                    Détails <ArrowRight className="h-3 w-3" />
+                  </p>
+                </Link>
+              ) : (
+                <div key={e.t} className="rounded-2xl border border-white/10 bg-white/5 p-6 text-center">
+                  <e.icon className="mx-auto h-7 w-7" style={{ color: "#ffb3bd" }} />
+                  <p className="mt-3 text-sm">{e.t}</p>
+                </div>
+              )
             ))}
           </div>
         </div>
