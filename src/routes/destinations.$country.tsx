@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowRight, Calendar, CheckCircle2, FileText, Globe2, MapPin, Sparkles } from "lucide-react";
-import { destinations } from "@/lib/destinations";
+import { destinations, type Destination } from "@/lib/destinations";
 
 export const Route = createFileRoute("/destinations/$country")({
   head: ({ params }) => {
@@ -41,7 +41,7 @@ export const Route = createFileRoute("/destinations/$country")({
 });
 
 function DestinationPage() {
-  const d = Route.useLoaderData();
+  const d = Route.useLoaderData() as Destination;
 
   return (
     <div>
