@@ -47,6 +47,7 @@ export const Route = createFileRoute("/services/billets-avion")({
         { q: "Prenez-vous en charge les escales ?", a: "Oui, nous optimisons les correspondances et vous indiquons les durées et terminaux d'escale." },
         { q: "Et pour les bagages étudiants longue durée ?", a: "Nous sélectionnons les compagnies offrant le meilleur quota et vous conseillons sur le fret accompagné si nécessaire." },
       ]}
+      serviceSlug="billets-avion"
     />
   ),
 });

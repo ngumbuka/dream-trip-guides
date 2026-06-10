@@ -47,6 +47,7 @@ export const Route = createFileRoute("/services/caution-avi")({
         { q: "L'AVI couvre-t-elle toute la durée du séjour ?", a: "Oui, nous proposons des formules de 3 à 12 mois renouvelables, adaptées à la durée de votre visa." },
         { q: "Et si mon visa est refusé ?", a: "La plupart de nos solutions prévoient un remboursement de la caution sur présentation du refus officiel." },
       ]}
+      serviceSlug="caution-avi"
     />
   ),
 });

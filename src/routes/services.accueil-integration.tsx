@@ -47,6 +47,7 @@ export const Route = createFileRoute("/services/accueil-integration")({
         { q: "Proposez-vous des activités pour rencontrer d'autres étudiants ?", a: "Oui — soirées d'accueil, visites de ville et rencontres thématiques organisées avec nos partenaires locaux." },
         { q: "Combien de temps dure l'accompagnement ?", a: "L'intégration est incluse pendant 4 à 6 semaines, prolongeable selon vos besoins." },
       ]}
+      serviceSlug="accueil-integration"
     />
   ),
 });
