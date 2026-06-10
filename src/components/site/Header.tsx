@@ -154,6 +154,10 @@ export function Header() {
       {open && (
         <div className="border-t border-border bg-background md:hidden">
           <div className="mx-auto flex max-w-7xl flex-col gap-1 px-6 py-4">
+            <Link to="/_authenticated/new-request" onClick={() => setOpen(false)} className="inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-center text-sm font-semibold text-white" style={{ backgroundColor: "var(--brand-red)" }}>
+              <Rocket className="h-4 w-4" /> Démarrer mon projet
+            </Link>
+            <div className="my-2 border-t border-border" />
             <Link to="/" onClick={() => setOpen(false)} className="rounded-md px-3 py-2 text-base font-medium text-foreground hover:bg-muted">Accueil</Link>
             <Link to="/services" onClick={() => setOpen(false)} className="rounded-md px-3 py-2 text-base font-medium text-foreground hover:bg-muted">Services</Link>
             <div className="ml-3 flex flex-col border-l border-border pl-3">
@@ -187,8 +191,7 @@ export function Header() {
               <Link
                 to="/auth"
                 onClick={() => setOpen(false)}
-                className="mt-2 inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-center text-sm font-semibold text-white"
-                style={{ backgroundColor: "var(--brand-red)" }}
+                className="mt-2 inline-flex items-center justify-center gap-2 rounded-full border border-border px-5 py-3 text-center text-sm font-semibold text-foreground"
               >
                 <LogIn className="h-4 w-4" /> Connexion
               </Link>
