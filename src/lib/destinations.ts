@@ -73,6 +73,9 @@ export const destinations: Record<string, Destination> = {
     serviceFocus: [
       { label: "Long séjour & études", to: "/services/long-sejours" },
       { label: "Court séjour & visa", to: "/services/court-sejours" },
+      { label: "Logement étudiant", to: "/services/logement" },
+      { label: "Caution & AVI", to: "/services/caution-avi" },
+      { label: "Accueil & intégration", to: "/services/accueil-integration" },
     ],
   },
   canada: {
@@ -123,7 +126,9 @@ export const destinations: Record<string, Destination> = {
     ],
     serviceFocus: [
       { label: "Long séjour & études", to: "/services/long-sejours" },
-      { label: "Visa & billets", to: "/services/court-sejours" },
+      { label: "Billets d'avion", to: "/services/billets-avion" },
+      { label: "Logement", to: "/services/logement" },
+      { label: "Accueil & intégration", to: "/services/accueil-integration" },
     ],
   },
   allemagne: {
@@ -174,7 +179,9 @@ export const destinations: Record<string, Destination> = {
     ],
     serviceFocus: [
       { label: "Long séjour & études", to: "/services/long-sejours" },
-      { label: "Caution & AVI", to: "/services/long-sejours" },
+      { label: "Caution & AVI (Sperrkonto)", to: "/services/caution-avi" },
+      { label: "Logement", to: "/services/logement" },
+      { label: "Accueil & intégration", to: "/services/accueil-integration" },
     ],
   },
   belgique: {
@@ -224,6 +231,8 @@ export const destinations: Record<string, Destination> = {
     serviceFocus: [
       { label: "Court séjour & visa", to: "/services/court-sejours" },
       { label: "Long séjour & études", to: "/services/long-sejours" },
+      { label: "Logement (kot)", to: "/services/logement" },
+      { label: "Accueil & intégration", to: "/services/accueil-integration" },
     ],
   },
   cameroun: {
@@ -272,6 +281,8 @@ export const destinations: Record<string, Destination> = {
     ],
     serviceFocus: [
       { label: "Visite du Cameroun", to: "/services/visite-cameroun" },
+      { label: "Billets d'avion", to: "/services/billets-avion" },
+      { label: "Accueil à l'arrivée", to: "/services/accueil-integration" },
     ],
   },
 };
