@@ -38,8 +38,8 @@ export const Route = createFileRoute("/services/caution-avi")({
         { icon: Banknote, t: "Compte bloqué" },
         { icon: CreditCard, t: "Caution bancaire" },
         { icon: ShieldCheck, t: "Assurance visa" },
-        { icon: FileText, t: "Attestations" },
-        { icon: Globe2, t: "Multi-pays" },
+        { icon: FileText, t: "Logement & bail", to: "/services/logement" },
+        { icon: Globe2, t: "Accueil arrivée", to: "/services/accueil-integration" },
       ]}
       faqs={[
         { q: "Quel montant prévoir pour la caution ?", a: "Cela dépend du pays : environ 11 900 € pour l'Allemagne (Sperrkonto), 7 000 $ CAD pour le Canada, et un budget équivalent à un an de besoins en France ou Belgique." },
