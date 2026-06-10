@@ -35,9 +35,9 @@ export const Route = createFileRoute("/services/accueil-integration")({
         { title: "Suivi", desc: "Programme d'intégration, événements et hotline pour toute question." },
       ]}
       included={[
-        { icon: Plane, t: "Accueil aéroport" },
-        { icon: Handshake, t: "Transfert logement" },
-        { icon: Building2, t: "Démarches admin" },
+        { icon: Plane, t: "Billets d'avion", to: "/services/billets-avion" },
+        { icon: Handshake, t: "Logement prêt", to: "/services/logement" },
+        { icon: Building2, t: "Caution & AVI", to: "/services/caution-avi" },
         { icon: Users, t: "Intégration" },
         { icon: Phone, t: "Hotline continue" },
       ]}
