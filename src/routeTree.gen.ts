@@ -9,22 +9,44 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as RequestRouteImport } from './routes/request'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as ServicesVisiteCamerounRouteImport } from './routes/services.visite-cameroun'
 import { Route as ServicesLongSejoursRouteImport } from './routes/services.long-sejours'
 import { Route as ServicesCourtSejoursRouteImport } from './routes/services.court-sejours'
+import { Route as AuthenticatedNewRequestRouteImport } from './routes/_authenticated/new-request'
+import { Route as AuthenticatedMyRequestsIndexRouteImport } from './routes/_authenticated/my-requests.index'
+import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
+import { Route as AuthenticatedMyRequestsIdRouteImport } from './routes/_authenticated/my-requests.$id'
+import { Route as AuthenticatedAdminIdRouteImport } from './routes/_authenticated/admin.$id'
 
+const RequestRoute = RequestRouteImport.update({
+  id: '/request',
+  path: '/request',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -52,69 +74,143 @@ const ServicesCourtSejoursRoute = ServicesCourtSejoursRouteImport.update({
   path: '/services/court-sejours',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedNewRequestRoute = AuthenticatedNewRequestRouteImport.update({
+  id: '/new-request',
+  path: '/new-request',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedMyRequestsIndexRoute =
+  AuthenticatedMyRequestsIndexRouteImport.update({
+    id: '/my-requests/',
+    path: '/my-requests/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
+  id: '/admin/',
+  path: '/admin/',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedMyRequestsIdRoute =
+  AuthenticatedMyRequestsIdRouteImport.update({
+    id: '/my-requests/$id',
+    path: '/my-requests/$id',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedAdminIdRoute = AuthenticatedAdminIdRouteImport.update({
+  id: '/admin/$id',
+  path: '/admin/$id',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
+  '/request': typeof RequestRoute
+  '/new-request': typeof AuthenticatedNewRequestRoute
   '/services/court-sejours': typeof ServicesCourtSejoursRoute
   '/services/long-sejours': typeof ServicesLongSejoursRoute
   '/services/visite-cameroun': typeof ServicesVisiteCamerounRoute
   '/services/': typeof ServicesIndexRoute
+  '/admin/$id': typeof AuthenticatedAdminIdRoute
+  '/my-requests/$id': typeof AuthenticatedMyRequestsIdRoute
+  '/admin/': typeof AuthenticatedAdminIndexRoute
+  '/my-requests/': typeof AuthenticatedMyRequestsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
+  '/request': typeof RequestRoute
+  '/new-request': typeof AuthenticatedNewRequestRoute
   '/services/court-sejours': typeof ServicesCourtSejoursRoute
   '/services/long-sejours': typeof ServicesLongSejoursRoute
   '/services/visite-cameroun': typeof ServicesVisiteCamerounRoute
   '/services': typeof ServicesIndexRoute
+  '/admin/$id': typeof AuthenticatedAdminIdRoute
+  '/my-requests/$id': typeof AuthenticatedMyRequestsIdRoute
+  '/admin': typeof AuthenticatedAdminIndexRoute
+  '/my-requests': typeof AuthenticatedMyRequestsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
+  '/request': typeof RequestRoute
+  '/_authenticated/new-request': typeof AuthenticatedNewRequestRoute
   '/services/court-sejours': typeof ServicesCourtSejoursRoute
   '/services/long-sejours': typeof ServicesLongSejoursRoute
   '/services/visite-cameroun': typeof ServicesVisiteCamerounRoute
   '/services/': typeof ServicesIndexRoute
+  '/_authenticated/admin/$id': typeof AuthenticatedAdminIdRoute
+  '/_authenticated/my-requests/$id': typeof AuthenticatedMyRequestsIdRoute
+  '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
+  '/_authenticated/my-requests/': typeof AuthenticatedMyRequestsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/about'
+    | '/auth'
     | '/contact'
+    | '/request'
+    | '/new-request'
     | '/services/court-sejours'
     | '/services/long-sejours'
     | '/services/visite-cameroun'
     | '/services/'
+    | '/admin/$id'
+    | '/my-requests/$id'
+    | '/admin/'
+    | '/my-requests/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/auth'
     | '/contact'
+    | '/request'
+    | '/new-request'
     | '/services/court-sejours'
     | '/services/long-sejours'
     | '/services/visite-cameroun'
     | '/services'
+    | '/admin/$id'
+    | '/my-requests/$id'
+    | '/admin'
+    | '/my-requests'
   id:
     | '__root__'
     | '/'
+    | '/_authenticated'
     | '/about'
+    | '/auth'
     | '/contact'
+    | '/request'
+    | '/_authenticated/new-request'
     | '/services/court-sejours'
     | '/services/long-sejours'
     | '/services/visite-cameroun'
     | '/services/'
+    | '/_authenticated/admin/$id'
+    | '/_authenticated/my-requests/$id'
+    | '/_authenticated/admin/'
+    | '/_authenticated/my-requests/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AboutRoute: typeof AboutRoute
+  AuthRoute: typeof AuthRoute
   ContactRoute: typeof ContactRoute
+  RequestRoute: typeof RequestRoute
   ServicesCourtSejoursRoute: typeof ServicesCourtSejoursRoute
   ServicesLongSejoursRoute: typeof ServicesLongSejoursRoute
   ServicesVisiteCamerounRoute: typeof ServicesVisiteCamerounRoute
@@ -123,6 +219,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/request': {
+      id: '/request'
+      path: '/request'
+      fullPath: '/request'
+      preLoaderRoute: typeof RequestRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -130,11 +233,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -172,13 +289,70 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesCourtSejoursRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/new-request': {
+      id: '/_authenticated/new-request'
+      path: '/new-request'
+      fullPath: '/new-request'
+      preLoaderRoute: typeof AuthenticatedNewRequestRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/my-requests/': {
+      id: '/_authenticated/my-requests/'
+      path: '/my-requests'
+      fullPath: '/my-requests/'
+      preLoaderRoute: typeof AuthenticatedMyRequestsIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/admin/': {
+      id: '/_authenticated/admin/'
+      path: '/admin'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AuthenticatedAdminIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/my-requests/$id': {
+      id: '/_authenticated/my-requests/$id'
+      path: '/my-requests/$id'
+      fullPath: '/my-requests/$id'
+      preLoaderRoute: typeof AuthenticatedMyRequestsIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/admin/$id': {
+      id: '/_authenticated/admin/$id'
+      path: '/admin/$id'
+      fullPath: '/admin/$id'
+      preLoaderRoute: typeof AuthenticatedAdminIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedNewRequestRoute: typeof AuthenticatedNewRequestRoute
+  AuthenticatedAdminIdRoute: typeof AuthenticatedAdminIdRoute
+  AuthenticatedMyRequestsIdRoute: typeof AuthenticatedMyRequestsIdRoute
+  AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
+  AuthenticatedMyRequestsIndexRoute: typeof AuthenticatedMyRequestsIndexRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedNewRequestRoute: AuthenticatedNewRequestRoute,
+  AuthenticatedAdminIdRoute: AuthenticatedAdminIdRoute,
+  AuthenticatedMyRequestsIdRoute: AuthenticatedMyRequestsIdRoute,
+  AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
+  AuthenticatedMyRequestsIndexRoute: AuthenticatedMyRequestsIndexRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AboutRoute: AboutRoute,
+  AuthRoute: AuthRoute,
   ContactRoute: ContactRoute,
+  RequestRoute: RequestRoute,
   ServicesCourtSejoursRoute: ServicesCourtSejoursRoute,
   ServicesLongSejoursRoute: ServicesLongSejoursRoute,
   ServicesVisiteCamerounRoute: ServicesVisiteCamerounRoute,
@@ -187,13 +361,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
