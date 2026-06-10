@@ -18,7 +18,12 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as ServicesVisiteCamerounRouteImport } from './routes/services.visite-cameroun'
 import { Route as ServicesLongSejoursRouteImport } from './routes/services.long-sejours'
+import { Route as ServicesLogementRouteImport } from './routes/services.logement'
 import { Route as ServicesCourtSejoursRouteImport } from './routes/services.court-sejours'
+import { Route as ServicesCommunityManagementRouteImport } from './routes/services.community-management'
+import { Route as ServicesCautionAviRouteImport } from './routes/services.caution-avi'
+import { Route as ServicesBilletsAvionRouteImport } from './routes/services.billets-avion'
+import { Route as ServicesAccueilIntegrationRouteImport } from './routes/services.accueil-integration'
 import { Route as DestinationsCountryRouteImport } from './routes/destinations.$country'
 import { Route as AuthenticatedNewRequestRouteImport } from './routes/_authenticated/new-request'
 import { Route as AuthenticatedMyRequestsIndexRouteImport } from './routes/_authenticated/my-requests.index'
@@ -70,11 +75,38 @@ const ServicesLongSejoursRoute = ServicesLongSejoursRouteImport.update({
   path: '/services/long-sejours',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesLogementRoute = ServicesLogementRouteImport.update({
+  id: '/services/logement',
+  path: '/services/logement',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesCourtSejoursRoute = ServicesCourtSejoursRouteImport.update({
   id: '/services/court-sejours',
   path: '/services/court-sejours',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesCommunityManagementRoute =
+  ServicesCommunityManagementRouteImport.update({
+    id: '/services/community-management',
+    path: '/services/community-management',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ServicesCautionAviRoute = ServicesCautionAviRouteImport.update({
+  id: '/services/caution-avi',
+  path: '/services/caution-avi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesBilletsAvionRoute = ServicesBilletsAvionRouteImport.update({
+  id: '/services/billets-avion',
+  path: '/services/billets-avion',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesAccueilIntegrationRoute =
+  ServicesAccueilIntegrationRouteImport.update({
+    id: '/services/accueil-integration',
+    path: '/services/accueil-integration',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const DestinationsCountryRoute = DestinationsCountryRouteImport.update({
   id: '/destinations/$country',
   path: '/destinations/$country',
@@ -116,7 +148,12 @@ export interface FileRoutesByFullPath {
   '/request': typeof RequestRoute
   '/new-request': typeof AuthenticatedNewRequestRoute
   '/destinations/$country': typeof DestinationsCountryRoute
+  '/services/accueil-integration': typeof ServicesAccueilIntegrationRoute
+  '/services/billets-avion': typeof ServicesBilletsAvionRoute
+  '/services/caution-avi': typeof ServicesCautionAviRoute
+  '/services/community-management': typeof ServicesCommunityManagementRoute
   '/services/court-sejours': typeof ServicesCourtSejoursRoute
+  '/services/logement': typeof ServicesLogementRoute
   '/services/long-sejours': typeof ServicesLongSejoursRoute
   '/services/visite-cameroun': typeof ServicesVisiteCamerounRoute
   '/services/': typeof ServicesIndexRoute
@@ -133,7 +170,12 @@ export interface FileRoutesByTo {
   '/request': typeof RequestRoute
   '/new-request': typeof AuthenticatedNewRequestRoute
   '/destinations/$country': typeof DestinationsCountryRoute
+  '/services/accueil-integration': typeof ServicesAccueilIntegrationRoute
+  '/services/billets-avion': typeof ServicesBilletsAvionRoute
+  '/services/caution-avi': typeof ServicesCautionAviRoute
+  '/services/community-management': typeof ServicesCommunityManagementRoute
   '/services/court-sejours': typeof ServicesCourtSejoursRoute
+  '/services/logement': typeof ServicesLogementRoute
   '/services/long-sejours': typeof ServicesLongSejoursRoute
   '/services/visite-cameroun': typeof ServicesVisiteCamerounRoute
   '/services': typeof ServicesIndexRoute
@@ -152,7 +194,12 @@ export interface FileRoutesById {
   '/request': typeof RequestRoute
   '/_authenticated/new-request': typeof AuthenticatedNewRequestRoute
   '/destinations/$country': typeof DestinationsCountryRoute
+  '/services/accueil-integration': typeof ServicesAccueilIntegrationRoute
+  '/services/billets-avion': typeof ServicesBilletsAvionRoute
+  '/services/caution-avi': typeof ServicesCautionAviRoute
+  '/services/community-management': typeof ServicesCommunityManagementRoute
   '/services/court-sejours': typeof ServicesCourtSejoursRoute
+  '/services/logement': typeof ServicesLogementRoute
   '/services/long-sejours': typeof ServicesLongSejoursRoute
   '/services/visite-cameroun': typeof ServicesVisiteCamerounRoute
   '/services/': typeof ServicesIndexRoute
@@ -171,7 +218,12 @@ export interface FileRouteTypes {
     | '/request'
     | '/new-request'
     | '/destinations/$country'
+    | '/services/accueil-integration'
+    | '/services/billets-avion'
+    | '/services/caution-avi'
+    | '/services/community-management'
     | '/services/court-sejours'
+    | '/services/logement'
     | '/services/long-sejours'
     | '/services/visite-cameroun'
     | '/services/'
@@ -188,7 +240,12 @@ export interface FileRouteTypes {
     | '/request'
     | '/new-request'
     | '/destinations/$country'
+    | '/services/accueil-integration'
+    | '/services/billets-avion'
+    | '/services/caution-avi'
+    | '/services/community-management'
     | '/services/court-sejours'
+    | '/services/logement'
     | '/services/long-sejours'
     | '/services/visite-cameroun'
     | '/services'
@@ -206,7 +263,12 @@ export interface FileRouteTypes {
     | '/request'
     | '/_authenticated/new-request'
     | '/destinations/$country'
+    | '/services/accueil-integration'
+    | '/services/billets-avion'
+    | '/services/caution-avi'
+    | '/services/community-management'
     | '/services/court-sejours'
+    | '/services/logement'
     | '/services/long-sejours'
     | '/services/visite-cameroun'
     | '/services/'
@@ -224,7 +286,12 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   RequestRoute: typeof RequestRoute
   DestinationsCountryRoute: typeof DestinationsCountryRoute
+  ServicesAccueilIntegrationRoute: typeof ServicesAccueilIntegrationRoute
+  ServicesBilletsAvionRoute: typeof ServicesBilletsAvionRoute
+  ServicesCautionAviRoute: typeof ServicesCautionAviRoute
+  ServicesCommunityManagementRoute: typeof ServicesCommunityManagementRoute
   ServicesCourtSejoursRoute: typeof ServicesCourtSejoursRoute
+  ServicesLogementRoute: typeof ServicesLogementRoute
   ServicesLongSejoursRoute: typeof ServicesLongSejoursRoute
   ServicesVisiteCamerounRoute: typeof ServicesVisiteCamerounRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
@@ -295,11 +362,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesLongSejoursRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/logement': {
+      id: '/services/logement'
+      path: '/services/logement'
+      fullPath: '/services/logement'
+      preLoaderRoute: typeof ServicesLogementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services/court-sejours': {
       id: '/services/court-sejours'
       path: '/services/court-sejours'
       fullPath: '/services/court-sejours'
       preLoaderRoute: typeof ServicesCourtSejoursRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/community-management': {
+      id: '/services/community-management'
+      path: '/services/community-management'
+      fullPath: '/services/community-management'
+      preLoaderRoute: typeof ServicesCommunityManagementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/caution-avi': {
+      id: '/services/caution-avi'
+      path: '/services/caution-avi'
+      fullPath: '/services/caution-avi'
+      preLoaderRoute: typeof ServicesCautionAviRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/billets-avion': {
+      id: '/services/billets-avion'
+      path: '/services/billets-avion'
+      fullPath: '/services/billets-avion'
+      preLoaderRoute: typeof ServicesBilletsAvionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/accueil-integration': {
+      id: '/services/accueil-integration'
+      path: '/services/accueil-integration'
+      fullPath: '/services/accueil-integration'
+      preLoaderRoute: typeof ServicesAccueilIntegrationRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/destinations/$country': {
@@ -374,7 +476,12 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   RequestRoute: RequestRoute,
   DestinationsCountryRoute: DestinationsCountryRoute,
+  ServicesAccueilIntegrationRoute: ServicesAccueilIntegrationRoute,
+  ServicesBilletsAvionRoute: ServicesBilletsAvionRoute,
+  ServicesCautionAviRoute: ServicesCautionAviRoute,
+  ServicesCommunityManagementRoute: ServicesCommunityManagementRoute,
   ServicesCourtSejoursRoute: ServicesCourtSejoursRoute,
+  ServicesLogementRoute: ServicesLogementRoute,
   ServicesLongSejoursRoute: ServicesLongSejoursRoute,
   ServicesVisiteCamerounRoute: ServicesVisiteCamerounRoute,
   ServicesIndexRoute: ServicesIndexRoute,
