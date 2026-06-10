@@ -14,16 +14,247 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      profiles: {
+        Row: {
+          created_at: string
+          email: string | null
+          full_name: string | null
+          id: string
+          phone: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id: string
+          phone?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          phone?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      request_documents: {
+        Row: {
+          created_at: string
+          file_name: string
+          id: string
+          mime_type: string | null
+          request_id: string
+          size_bytes: number | null
+          storage_path: string
+          uploaded_by: string
+        }
+        Insert: {
+          created_at?: string
+          file_name: string
+          id?: string
+          mime_type?: string | null
+          request_id: string
+          size_bytes?: number | null
+          storage_path: string
+          uploaded_by: string
+        }
+        Update: {
+          created_at?: string
+          file_name?: string
+          id?: string
+          mime_type?: string | null
+          request_id?: string
+          size_bytes?: number | null
+          storage_path?: string
+          uploaded_by?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "request_documents_request_id_fkey"
+            columns: ["request_id"]
+            isOneToOne: false
+            referencedRelation: "service_requests"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      request_messages: {
+        Row: {
+          author_id: string
+          author_role: Database["public"]["Enums"]["author_role"]
+          body: string
+          created_at: string
+          id: string
+          read_by_admin_at: string | null
+          read_by_user_at: string | null
+          request_id: string
+        }
+        Insert: {
+          author_id: string
+          author_role: Database["public"]["Enums"]["author_role"]
+          body: string
+          created_at?: string
+          id?: string
+          read_by_admin_at?: string | null
+          read_by_user_at?: string | null
+          request_id: string
+        }
+        Update: {
+          author_id?: string
+          author_role?: Database["public"]["Enums"]["author_role"]
+          body?: string
+          created_at?: string
+          id?: string
+          read_by_admin_at?: string | null
+          read_by_user_at?: string | null
+          request_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "request_messages_request_id_fkey"
+            columns: ["request_id"]
+            isOneToOne: false
+            referencedRelation: "service_requests"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      request_updates: {
+        Row: {
+          author_id: string
+          body: string | null
+          created_at: string
+          id: string
+          kind: Database["public"]["Enums"]["update_kind"]
+          new_status: Database["public"]["Enums"]["request_status"] | null
+          request_id: string
+          visible_to_user: boolean
+        }
+        Insert: {
+          author_id: string
+          body?: string | null
+          created_at?: string
+          id?: string
+          kind: Database["public"]["Enums"]["update_kind"]
+          new_status?: Database["public"]["Enums"]["request_status"] | null
+          request_id: string
+          visible_to_user?: boolean
+        }
+        Update: {
+          author_id?: string
+          body?: string | null
+          created_at?: string
+          id?: string
+          kind?: Database["public"]["Enums"]["update_kind"]
+          new_status?: Database["public"]["Enums"]["request_status"] | null
+          request_id?: string
+          visible_to_user?: boolean
+        }
+        Relationships: [
+          {
+            foreignKeyName: "request_updates_request_id_fkey"
+            columns: ["request_id"]
+            isOneToOne: false
+            referencedRelation: "service_requests"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      service_requests: {
+        Row: {
+          budget_range: string | null
+          created_at: string
+          destination_country: string | null
+          id: string
+          message: string | null
+          service_label: string
+          service_slug: string
+          status: Database["public"]["Enums"]["request_status"]
+          target_date: string | null
+          travelers_count: number | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          budget_range?: string | null
+          created_at?: string
+          destination_country?: string | null
+          id?: string
+          message?: string | null
+          service_label: string
+          service_slug: string
+          status?: Database["public"]["Enums"]["request_status"]
+          target_date?: string | null
+          travelers_count?: number | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          budget_range?: string | null
+          created_at?: string
+          destination_country?: string | null
+          id?: string
+          message?: string | null
+          service_label?: string
+          service_slug?: string
+          status?: Database["public"]["Enums"]["request_status"]
+          target_date?: string | null
+          travelers_count?: number | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "user"
+      author_role: "user" | "admin"
+      request_status:
+        | "nouveau"
+        | "en_revue"
+        | "en_cours"
+        | "en_attente_client"
+        | "accepte"
+        | "refuse"
+        | "termine"
+      update_kind: "status_change" | "note"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +381,19 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "user"],
+      author_role: ["user", "admin"],
+      request_status: [
+        "nouveau",
+        "en_revue",
+        "en_cours",
+        "en_attente_client",
+        "accepte",
+        "refuse",
+        "termine",
+      ],
+      update_kind: ["status_change", "note"],
+    },
   },
 } as const
