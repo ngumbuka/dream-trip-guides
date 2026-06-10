@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "@tanstack/react-router";
 import { useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
-import { Menu, X, ChevronDown, LogIn, LogOut, UserCircle2, LayoutDashboard, ShieldCheck } from "lucide-react";
+import { Menu, X, ChevronDown, LogIn, LogOut, UserCircle2, LayoutDashboard, ShieldCheck, Rocket } from "lucide-react";
 import logo from "@/assets/logo-mark.png";
 import { useAuthUser } from "@/hooks/use-auth-user";
 import { supabase } from "@/integrations/supabase/client";
