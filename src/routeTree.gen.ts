@@ -20,6 +20,7 @@ import { Route as ServicesVisiteCamerounRouteImport } from './routes/services.vi
 import { Route as ServicesLongSejoursRouteImport } from './routes/services.long-sejours'
 import { Route as ServicesLogementRouteImport } from './routes/services.logement'
 import { Route as ServicesCourtSejoursRouteImport } from './routes/services.court-sejours'
+import { Route as ServicesCommunityManagementRouteImport } from './routes/services.community-management'
 import { Route as ServicesCautionAviRouteImport } from './routes/services.caution-avi'
 import { Route as ServicesBilletsAvionRouteImport } from './routes/services.billets-avion'
 import { Route as ServicesAccueilIntegrationRouteImport } from './routes/services.accueil-integration'
@@ -84,6 +85,12 @@ const ServicesCourtSejoursRoute = ServicesCourtSejoursRouteImport.update({
   path: '/services/court-sejours',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesCommunityManagementRoute =
+  ServicesCommunityManagementRouteImport.update({
+    id: '/services/community-management',
+    path: '/services/community-management',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ServicesCautionAviRoute = ServicesCautionAviRouteImport.update({
   id: '/services/caution-avi',
   path: '/services/caution-avi',
@@ -144,6 +151,7 @@ export interface FileRoutesByFullPath {
   '/services/accueil-integration': typeof ServicesAccueilIntegrationRoute
   '/services/billets-avion': typeof ServicesBilletsAvionRoute
   '/services/caution-avi': typeof ServicesCautionAviRoute
+  '/services/community-management': typeof ServicesCommunityManagementRoute
   '/services/court-sejours': typeof ServicesCourtSejoursRoute
   '/services/logement': typeof ServicesLogementRoute
   '/services/long-sejours': typeof ServicesLongSejoursRoute
@@ -165,6 +173,7 @@ export interface FileRoutesByTo {
   '/services/accueil-integration': typeof ServicesAccueilIntegrationRoute
   '/services/billets-avion': typeof ServicesBilletsAvionRoute
   '/services/caution-avi': typeof ServicesCautionAviRoute
+  '/services/community-management': typeof ServicesCommunityManagementRoute
   '/services/court-sejours': typeof ServicesCourtSejoursRoute
   '/services/logement': typeof ServicesLogementRoute
   '/services/long-sejours': typeof ServicesLongSejoursRoute
@@ -188,6 +197,7 @@ export interface FileRoutesById {
   '/services/accueil-integration': typeof ServicesAccueilIntegrationRoute
   '/services/billets-avion': typeof ServicesBilletsAvionRoute
   '/services/caution-avi': typeof ServicesCautionAviRoute
+  '/services/community-management': typeof ServicesCommunityManagementRoute
   '/services/court-sejours': typeof ServicesCourtSejoursRoute
   '/services/logement': typeof ServicesLogementRoute
   '/services/long-sejours': typeof ServicesLongSejoursRoute
@@ -211,6 +221,7 @@ export interface FileRouteTypes {
     | '/services/accueil-integration'
     | '/services/billets-avion'
     | '/services/caution-avi'
+    | '/services/community-management'
     | '/services/court-sejours'
     | '/services/logement'
     | '/services/long-sejours'
@@ -232,6 +243,7 @@ export interface FileRouteTypes {
     | '/services/accueil-integration'
     | '/services/billets-avion'
     | '/services/caution-avi'
+    | '/services/community-management'
     | '/services/court-sejours'
     | '/services/logement'
     | '/services/long-sejours'
@@ -254,6 +266,7 @@ export interface FileRouteTypes {
     | '/services/accueil-integration'
     | '/services/billets-avion'
     | '/services/caution-avi'
+    | '/services/community-management'
     | '/services/court-sejours'
     | '/services/logement'
     | '/services/long-sejours'
@@ -276,6 +289,7 @@ export interface RootRouteChildren {
   ServicesAccueilIntegrationRoute: typeof ServicesAccueilIntegrationRoute
   ServicesBilletsAvionRoute: typeof ServicesBilletsAvionRoute
   ServicesCautionAviRoute: typeof ServicesCautionAviRoute
+  ServicesCommunityManagementRoute: typeof ServicesCommunityManagementRoute
   ServicesCourtSejoursRoute: typeof ServicesCourtSejoursRoute
   ServicesLogementRoute: typeof ServicesLogementRoute
   ServicesLongSejoursRoute: typeof ServicesLongSejoursRoute
@@ -360,6 +374,13 @@ declare module '@tanstack/react-router' {
       path: '/services/court-sejours'
       fullPath: '/services/court-sejours'
       preLoaderRoute: typeof ServicesCourtSejoursRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/community-management': {
+      id: '/services/community-management'
+      path: '/services/community-management'
+      fullPath: '/services/community-management'
+      preLoaderRoute: typeof ServicesCommunityManagementRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services/caution-avi': {
@@ -458,6 +479,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesAccueilIntegrationRoute: ServicesAccueilIntegrationRoute,
   ServicesBilletsAvionRoute: ServicesBilletsAvionRoute,
   ServicesCautionAviRoute: ServicesCautionAviRoute,
+  ServicesCommunityManagementRoute: ServicesCommunityManagementRoute,
   ServicesCourtSejoursRoute: ServicesCourtSejoursRoute,
   ServicesLogementRoute: ServicesLogementRoute,
   ServicesLongSejoursRoute: ServicesLongSejoursRoute,
