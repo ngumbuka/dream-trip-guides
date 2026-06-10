@@ -94,9 +94,22 @@ function Services() {
                   </li>
                 ))}
               </ul>
-              <Link to="/contact" className="mt-8 inline-flex items-center gap-2 text-sm font-semibold" style={{ color: "var(--brand-red)" }}>
-                Demander un devis <ArrowRight className="h-4 w-4" />
-              </Link>
+              <div className="mt-8 flex flex-wrap items-center gap-4">
+                <Link
+                  to={
+                    o.id === "long" ? "/services/long-sejours" :
+                    o.id === "court" ? "/services/court-sejours" :
+                    "/services/visite-cameroun"
+                  }
+                  className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-white"
+                  style={{ backgroundColor: "var(--brand-red)" }}
+                >
+                  En savoir plus <ArrowRight className="h-4 w-4" />
+                </Link>
+                <Link to="/contact" className="text-sm font-semibold text-foreground hover:underline">
+                  Demander un devis
+                </Link>
+              </div>
             </article>
           ))}
         </div>
