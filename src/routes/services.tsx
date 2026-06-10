@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { GraduationCap, Plane, MapPin, Check, ArrowRight, Home, CreditCard, Ticket, HandshakeIcon, Megaphone } from "lucide-react";
+import { GraduationCap, Plane, MapPin, Check, ArrowRight, Home, CreditCard, Ticket, Handshake, Megaphone } from "lucide-react";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
@@ -59,7 +59,7 @@ const extras = [
   { icon: Home, t: "Logement" },
   { icon: CreditCard, t: "Caution bancaire & AVI" },
   { icon: Ticket, t: "Billets d'avion" },
-  { icon: HandshakeIcon, t: "Accueil & intégration" },
+  { icon: Handshake, t: "Accueil & intégration" },
   { icon: Megaphone, t: "Community management" },
 ];
 
