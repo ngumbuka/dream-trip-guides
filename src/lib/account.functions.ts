@@ -35,3 +35,41 @@ export const updateMyProfile = createServerFn({ method: "POST" })
     if (error) throw new Error(error.message);
     return { ok: true };
   });
+
+export const requestEmailChange = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((input: unknown) =>
+    z.object({ new_email: z.string().trim().email().max(255) }).parse(input),
+  )
+  .handler(async ({ data, context }) => {
+    // Triggers Supabase to send confirmation links to both old & new addresses.
+    const { error } = await context.supabase.auth.updateUser({ email: data.new_email });
+    if (error) throw new Error(error.message);
+    return { ok: true, sent_to: data.new_email };
+  });
+
+export const resendEmailVerification = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .handler(async ({ context }) => {
+    const { data: u, error: uErr } = await context.supabase.auth.getUser();
+    if (uErr) throw new Error(uErr.message);
+    const email = u.user?.email;
+    if (!email) throw new Error("Aucune adresse e-mail trouvée.");
+    const { error } = await context.supabase.auth.resend({ type: "signup", email });
+    if (error) throw new Error(error.message);
+    return { ok: true, sent_to: email };
+  });
+
+export const getEmailVerificationStatus = createServerFn({ method: "GET" })
+  .middleware([requireSupabaseAuth])
+  .handler(async ({ context }) => {
+    const { data, error } = await context.supabase.auth.getUser();
+    if (error) throw new Error(error.message);
+    const u = data.user;
+    return {
+      email: u?.email ?? null,
+      new_email: (u as any)?.new_email ?? null,
+      email_confirmed_at: u?.email_confirmed_at ?? null,
+      verified: !!u?.email_confirmed_at,
+    };
+  });
