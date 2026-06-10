@@ -3,8 +3,8 @@ import { useServerFn } from "@tanstack/react-start";
 import { useQuery } from "@tanstack/react-query";
 import { listMyRequests, isCurrentUserAdmin } from "@/lib/requests.functions";
 import { StatusBadge } from "@/components/site/StatusBadge";
-import { Plus } from "lucide-react";
-import { useEffect } from "react";
+import { QueryError } from "@/components/site/QueryError";
+import { Plus, UserCog } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/my-requests/")({
   component: MyRequestsPage,
@@ -13,8 +13,8 @@ export const Route = createFileRoute("/_authenticated/my-requests/")({
 function MyRequestsPage() {
   const listFn = useServerFn(listMyRequests);
   const adminFn = useServerFn(isCurrentUserAdmin);
-  const { data, isLoading } = useQuery({ queryKey: ["my-requests"], queryFn: () => listFn({}) });
-  const { data: adm } = useQuery({ queryKey: ["is-admin"], queryFn: () => adminFn({}) });
+  const { data, isLoading, isError, error, refetch } = useQuery({ queryKey: ["my-requests"], queryFn: () => listFn({}), retry: 1 });
+  const { data: adm } = useQuery({ queryKey: ["is-admin"], queryFn: () => adminFn({}), retry: 1 });
 
   return (
     <div className="mx-auto max-w-5xl px-6 py-16">
@@ -23,18 +23,26 @@ function MyRequestsPage() {
           <h1 className="text-4xl font-semibold">Mon espace</h1>
           <p className="mt-2 text-muted-foreground">Suivez vos demandes et échangez avec notre équipe.</p>
         </div>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           {adm?.isAdmin && (
             <Link to="/admin" className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-semibold">
               Espace admin
             </Link>
           )}
+          <Link to="/account" className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-semibold">
+            <UserCog className="h-4 w-4" /> Mon compte
+          </Link>
           <Link to="/new-request" className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-white" style={{ backgroundColor: "var(--brand-red)" }}>
             <Plus className="h-4 w-4" /> Nouvelle demande
           </Link>
         </div>
       </div>
 
+      {isError ? (
+        <div className="mt-10">
+          <QueryError error={error} onRetry={() => refetch()} />
+        </div>
+      ) : (
       <div className="mt-10 overflow-hidden rounded-3xl border border-border bg-card">
         {isLoading ? (
           <p className="p-8 text-center text-muted-foreground">Chargement…</p>
@@ -63,9 +71,7 @@ function MyRequestsPage() {
           </ul>
         )}
       </div>
+      )}
     </div>
   );
 }
-
-// keep TS from complaining about unused
-void useEffect;
