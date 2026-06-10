@@ -1,6 +1,6 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { ArrowRight, GraduationCap, Plane, MapPin, Search, ShieldCheck, Sparkles, Users, Globe2 } from "lucide-react";
+import { ArrowRight, GraduationCap, Plane, MapPin, Search, ShieldCheck, Sparkles, Users, Globe2, Rocket } from "lucide-react";
 import { searchAll } from "@/lib/search-index";
 import hero from "@/assets/hero-traveler.jpg";
 import imgFrance from "@/assets/dest-france.jpg";
@@ -129,6 +129,14 @@ function Index() {
             <div className="flex items-center gap-2"><Globe2 className="h-4 w-4" /> 5 destinations</div>
             <div className="flex items-center gap-2"><ShieldCheck className="h-4 w-4" /> Démarches sécurisées</div>
           </div>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link to="/_authenticated/new-request" className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white" style={{ backgroundColor: "var(--brand-red)" }}>
+              <Rocket className="h-4 w-4" /> Démarrer mon projet
+            </Link>
+            <Link to="/contact" className="inline-flex items-center gap-2 rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10">
+              Nous contacter
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -165,6 +173,19 @@ function Index() {
             </Link>
           ))}
         </div>
+
+        {/* Services CTA */}
+        <div className="mt-12 overflow-hidden rounded-3xl p-8 md:p-12" style={{ backgroundColor: "var(--brand-cream)" }}>
+          <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
+            <div>
+              <h3 className="text-2xl font-semibold md:text-3xl">Un projet de voyage ou d'installation ?</h3>
+              <p className="mt-2 text-muted-foreground">Décrivez-nous votre situation — notre équipe vous répond sous 24h avec une proposition personnalisée.</p>
+            </div>
+            <Link to="/_authenticated/new-request" className="inline-flex shrink-0 items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white" style={{ backgroundColor: "var(--brand-red)" }}>
+              <Rocket className="h-4 w-4" /> Démarrer mon projet <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
       </section>
 
       {/* DESTINATIONS */}
@@ -189,6 +210,11 @@ function Index() {
                 </div>
               </Link>
             ))}
+          </div>
+          <div className="mt-10 text-center">
+            <Link to="/_authenticated/new-request" className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white" style={{ backgroundColor: "var(--brand-red)" }}>
+              <Rocket className="h-4 w-4" /> Choisir ma destination et démarrer <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>
@@ -218,6 +244,18 @@ function Index() {
             ))}
           </div>
         </div>
+        {/* Why Us CTA */}
+        <div className="mt-12 overflow-hidden rounded-3xl border border-border bg-card p-8 md:p-12">
+          <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
+            <div>
+              <h3 className="text-2xl font-semibold md:text-3xl">Nous avons déjà accompagné des centaines de voyageurs.</h3>
+              <p className="mt-2 text-muted-foreground">Rejoignez-les et bénéficiez d'un accompagnement clé en main, de la première idée à l'arrivée sur place.</p>
+            </div>
+            <Link to="/_authenticated/new-request" className="inline-flex shrink-0 items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white" style={{ backgroundColor: "var(--brand-red)" }}>
+              Rejoindre les voyageurs <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
       </section>
 
       {/* TESTIMONIALS */}
@@ -237,6 +275,24 @@ function Index() {
                 </figcaption>
               </figure>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FINAL CTA */}
+      <section className="mx-auto max-w-7xl px-6 pb-12">
+        <div className="overflow-hidden rounded-3xl p-10 text-center md:p-16" style={{ backgroundColor: "var(--brand-navy)", color: "white" }}>
+          <h2 className="text-4xl font-semibold md:text-5xl">Prêt·e à vivre votre prochaine aventure ?</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-white/80">
+            Que vous partiez étudier, travailler ou découvrir, nous transformons votre projet en réalité. Démarrez maintenant et recevez une proposition sous 24h.
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <Link to="/_authenticated/new-request" className="inline-flex items-center gap-2 rounded-full px-8 py-4 text-sm font-semibold text-white" style={{ backgroundColor: "var(--brand-red)" }}>
+              <Rocket className="h-4 w-4" /> Démarrer mon projet <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link to="/contact" className="inline-flex items-center gap-2 rounded-full border border-white/30 px-8 py-4 text-sm font-semibold text-white hover:bg-white/10">
+              Nous contacter
+            </Link>
           </div>
         </div>
       </section>
