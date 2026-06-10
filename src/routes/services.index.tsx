@@ -56,11 +56,11 @@ const offers = [
 ];
 
 const extras = [
-  { icon: Home, t: "Logement" },
-  { icon: CreditCard, t: "Caution bancaire & AVI" },
-  { icon: Ticket, t: "Billets d'avion" },
-  { icon: Handshake, t: "Accueil & intégration" },
-  { icon: Megaphone, t: "Community management" },
+  { icon: Home, t: "Logement", to: "/services/logement" as const },
+  { icon: CreditCard, t: "Caution bancaire & AVI", to: "/services/caution-avi" as const },
+  { icon: Ticket, t: "Billets d'avion", to: "/services/billets-avion" as const },
+  { icon: Handshake, t: "Accueil & intégration", to: "/services/accueil-integration" as const },
+  { icon: Megaphone, t: "Community management", to: "/services/community-management" as const },
 ];
 
 function Services() {
@@ -120,10 +120,17 @@ function Services() {
           <h2 className="text-3xl font-semibold md:text-4xl">Inclus dans nos accompagnements</h2>
           <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5">
             {extras.map((e) => (
-              <div key={e.t} className="rounded-2xl border border-white/10 bg-white/5 p-6 text-center">
+              <Link
+                key={e.t}
+                to={e.to}
+                className="group rounded-2xl border border-white/10 bg-white/5 p-6 text-center transition hover:-translate-y-0.5 hover:border-white/30 hover:bg-white/10"
+              >
                 <e.icon className="mx-auto h-7 w-7" style={{ color: "#ffb3bd" }} />
                 <p className="mt-3 text-sm">{e.t}</p>
-              </div>
+                <p className="mt-2 inline-flex items-center justify-center gap-1 text-xs text-white/60 group-hover:text-white">
+                  En savoir plus <ArrowRight className="h-3 w-3" />
+                </p>
+              </Link>
             ))}
           </div>
         </div>
