@@ -37,9 +37,9 @@ export const Route = createFileRoute("/services/logement")({
       included={[
         { icon: Home, t: "Sélection logements" },
         { icon: FileSignature, t: "Dossier locataire" },
-        { icon: ShieldCheck, t: "Quartiers sûrs" },
+        { icon: ShieldCheck, t: "Caution & AVI", to: "/services/caution-avi" },
         { icon: Key, t: "Signature du bail" },
-        { icon: MapPin, t: "Orientation locale" },
+        { icon: MapPin, t: "Accueil sur place", to: "/services/accueil-integration" },
       ]}
       faqs={[
         { q: "Peut-on signer un bail sans être encore sur place ?", a: "Oui. Nous traitons les démarches à distance grâce à la signature électronique et présentons votre dossier en votre nom." },

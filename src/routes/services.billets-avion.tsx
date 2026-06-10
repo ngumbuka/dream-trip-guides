@@ -38,8 +38,8 @@ export const Route = createFileRoute("/services/billets-avion")({
         { icon: Ticket, t: "Billet émis" },
         { icon: Plane, t: "Tarifs négociés" },
         { icon: Luggage, t: "Bagages adaptés" },
-        { icon: Calendar, t: "Dates flexibles" },
-        { icon: LifeBuoy, t: "Assistance" },
+        { icon: Calendar, t: "Accueil arrivée", to: "/services/accueil-integration" },
+        { icon: LifeBuoy, t: "Logement prêt", to: "/services/logement" },
       ]}
       faqs={[
         { q: "Quand réserver pour avoir les meilleurs prix ?", a: "Idéalement 6 à 10 semaines avant le départ pour un vol long-courrier, davantage en haute saison." },

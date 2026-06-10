@@ -37,9 +37,9 @@ export const Route = createFileRoute("/services/long-sejours")({
       included={[
         { icon: GraduationCap, t: "Admission études" },
         { icon: FileText, t: "Dossier visa" },
-        { icon: CreditCard, t: "AVI & caution" },
-        { icon: Home, t: "Logement" },
-        { icon: Plane, t: "Accueil arrivée" },
+        { icon: CreditCard, t: "AVI & caution", to: "/services/caution-avi" },
+        { icon: Home, t: "Logement", to: "/services/logement" },
+        { icon: Plane, t: "Accueil arrivée", to: "/services/accueil-integration" },
       ]}
       faqs={[
         { q: "Dans quels pays accompagnez-vous ?", a: "France, Belgique, Allemagne et Canada principalement, avec des partenaires en Italie, Espagne et au Royaume-Uni." },
