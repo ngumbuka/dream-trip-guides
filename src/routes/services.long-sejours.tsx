@@ -47,6 +47,7 @@ export const Route = createFileRoute("/services/long-sejours")({
         { q: "Quels sont les délais à prévoir ?", a: "Comptez 4 à 9 mois entre le démarrage du projet et le départ, selon la destination et la période." },
         { q: "Comment se passent les paiements ?", a: "Devis personnalisé après le bilan, paiement échelonné par étape clé." },
       ]}
+      serviceSlug="long-sejours"
     />
   ),
 });

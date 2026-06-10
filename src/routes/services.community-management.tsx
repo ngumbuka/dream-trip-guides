@@ -83,6 +83,7 @@ function CommunityManagementPage() {
           { q: "Pouvez-vous reprendre une stratégie existante ?", a: "Oui, nous démarrons par un audit et adaptons notre intervention à l'existant pour préserver vos acquis." },
           { q: "Travaillez-vous avec des marques hors mobilité ?", a: "Absolument — restaurants, e-commerce, services B2B, associations : notre équipe digitale est multi-secteurs." },
         ]}
+        serviceSlug="community-management"
       />
 
       {/* PACKS */}

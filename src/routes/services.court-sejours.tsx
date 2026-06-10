@@ -47,6 +47,7 @@ export const Route = createFileRoute("/services/court-sejours")({
         { q: "Puis-je personnaliser mon itinéraire ?", a: "Oui, chaque voyage est sur mesure : durée, villes, niveau de confort, activités." },
         { q: "Y a-t-il une assistance pendant le séjour ?", a: "Oui, notre équipe est joignable 7j/7 en cas de besoin (modification, urgence)." },
       ]}
+      serviceSlug="court-sejours"
     />
   ),
 });

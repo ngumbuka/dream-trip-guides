@@ -47,6 +47,7 @@ export const Route = createFileRoute("/services/visite-cameroun")({
         { q: "Quand partir ?", a: "La saison sèche (novembre à février) est idéale, mais nous organisons des voyages toute l'année." },
         { q: "Organisez-vous des voyages de groupe ?", a: "Oui, pour familles, amis, associations ou entreprises." },
       ]}
+      serviceSlug="visite-cameroun"
     />
   ),
 });

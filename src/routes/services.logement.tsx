@@ -47,6 +47,7 @@ export const Route = createFileRoute("/services/logement")({
         { q: "Pouvez-vous servir de garant ?", a: "Selon votre profil, nous proposons des solutions adaptées (Visale, garants privés, caution bancaire) conformes aux exigences du bailleur." },
         { q: "Quel budget logement prévoir ?", a: "Comptez 250 à 600 € en résidence ou colocation, et 600 à 1 200 € pour un studio individuel selon la ville." },
       ]}
+      serviceSlug="logement"
     />
   ),
 });
