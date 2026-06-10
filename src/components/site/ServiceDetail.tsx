@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Check, ArrowLeft } from "lucide-react";
+import { ArrowRight, Check, ArrowLeft, Rocket } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 export interface ServiceStep {
@@ -23,13 +23,15 @@ export interface ServiceDetailProps {
   included: { icon: LucideIcon; t: string; to?: string }[];
   faqs: ServiceFaq[];
   ctaLabel?: string;
+  serviceSlug: string;
 }
 
 export function ServiceDetail(props: ServiceDetailProps) {
   const {
     eyebrow, title, intro, image, imageAlt,
     highlights, steps, included, faqs,
-    ctaLabel = "Demander une proposition",
+    ctaLabel = "Démarrer mon projet",
+    serviceSlug,
   } = props;
 
   return (
@@ -46,11 +48,11 @@ export function ServiceDetail(props: ServiceDetailProps) {
           <h1 className="mt-3 max-w-3xl text-5xl font-semibold leading-[1.05] md:text-6xl">{title}</h1>
           <p className="mt-6 max-w-2xl text-lg text-white/85">{intro}</p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link to="/contact" className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white" style={{ backgroundColor: "var(--brand-red)" }}>
-              {ctaLabel} <ArrowRight className="h-4 w-4" />
+            <Link to="/request" search={{ service: serviceSlug }} className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white" style={{ backgroundColor: "var(--brand-red)" }}>
+              <Rocket className="h-4 w-4" /> {ctaLabel} <ArrowRight className="h-4 w-4" />
             </Link>
-            <Link to="/services" className="inline-flex items-center gap-2 rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10">
-              Voir les autres services
+            <Link to="/contact" className="inline-flex items-center gap-2 rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10">
+              Nous contacter
             </Link>
           </div>
         </div>
@@ -136,9 +138,14 @@ export function ServiceDetail(props: ServiceDetailProps) {
         <div className="overflow-hidden rounded-3xl p-10 text-center md:p-16" style={{ backgroundColor: "var(--brand-cream)" }}>
           <h2 className="text-3xl font-semibold md:text-4xl">Prêt·e à passer à l'action ?</h2>
           <p className="mx-auto mt-3 max-w-xl text-muted-foreground">Parlons de votre projet — notre équipe vous répond sous 24h.</p>
-          <Link to="/contact" className="mt-8 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white" style={{ backgroundColor: "var(--brand-red)" }}>
-            {ctaLabel} <ArrowRight className="h-4 w-4" />
-          </Link>
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <Link to="/request" search={{ service: serviceSlug }} className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white" style={{ backgroundColor: "var(--brand-red)" }}>
+              <Rocket className="h-4 w-4" /> {ctaLabel} <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link to="/services" className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-semibold text-foreground hover:bg-muted">
+              Voir les autres services
+            </Link>
+          </div>
         </div>
       </section>
     </div>

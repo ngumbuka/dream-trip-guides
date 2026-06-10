@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { GraduationCap, Plane, MapPin, Check, ArrowRight, Home, CreditCard, Ticket, Handshake, Megaphone } from "lucide-react";
+import { GraduationCap, Plane, MapPin, Check, ArrowRight, Home, CreditCard, Ticket, Handshake, Megaphone, Rocket } from "lucide-react";
 
 export const Route = createFileRoute("/services/")({
   head: () => ({
@@ -132,6 +132,22 @@ function Services() {
                 </p>
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="mx-auto max-w-7xl px-6 pb-24">
+        <div className="overflow-hidden rounded-3xl p-10 text-center md:p-16" style={{ backgroundColor: "var(--brand-cream)" }}>
+          <h2 className="text-3xl font-semibold md:text-4xl">Vous ne savez pas quel service choisir ?</h2>
+          <p className="mx-auto mt-3 max-w-xl text-muted-foreground">Décrivez-nous simplement votre projet. Nous vous orienterons vers le bon accompagnement et vous enverrons une proposition sous 24h.</p>
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <Link to="/_authenticated/new-request" className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white" style={{ backgroundColor: "var(--brand-red)" }}>
+              <Rocket className="h-4 w-4" /> Démarrer mon projet <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link to="/contact" className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-semibold text-foreground hover:bg-muted">
+              Nous contacter
+            </Link>
           </div>
         </div>
       </section>
