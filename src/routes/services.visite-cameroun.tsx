@@ -36,8 +36,8 @@ export const Route = createFileRoute("/services/visite-cameroun")({
       ]}
       included={[
         { icon: MapPin, t: "Circuits" },
-        { icon: Car, t: "Chauffeur" },
-        { icon: Home, t: "Hébergement" },
+        { icon: Car, t: "Chauffeur", to: "/services/accueil-integration" },
+        { icon: Home, t: "Hébergement", to: "/services/logement" },
         { icon: Utensils, t: "Gastronomie" },
         { icon: Camera, t: "Excursions" },
       ]}
