@@ -1,7 +1,13 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
+import { useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, LogIn, LogOut, UserCircle2, LayoutDashboard, ShieldCheck } from "lucide-react";
 import logo from "@/assets/logo-mark.png";
+import { useAuthUser } from "@/hooks/use-auth-user";
+import { supabase } from "@/integrations/supabase/client";
+import { useServerFn } from "@tanstack/react-start";
+import { useQuery } from "@tanstack/react-query";
+import { isCurrentUserAdmin } from "@/lib/requests.functions";
 
 const serviceItems = [
   { to: "/services/long-sejours", label: "Longs séjours" },
@@ -12,6 +18,27 @@ const serviceItems = [
 export function Header() {
   const [open, setOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [userOpen, setUserOpen] = useState(false);
+  const { user, loading } = useAuthUser();
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
+  const adminFn = useServerFn(isCurrentUserAdmin);
+  const { data: adm } = useQuery({
+    queryKey: ["is-admin"],
+    queryFn: () => adminFn({}),
+    enabled: !!user,
+    retry: 0,
+  });
+
+  async function handleSignOut() {
+    setUserOpen(false);
+    setOpen(false);
+    await queryClient.cancelQueries();
+    queryClient.clear();
+    await supabase.auth.signOut();
+    navigate({ to: "/auth", replace: true });
+  }
+
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/85 backdrop-blur-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4">
@@ -68,13 +95,47 @@ export function Header() {
           <Link to="/contact" activeProps={{ className: "text-foreground" }} inactiveProps={{ className: "text-muted-foreground" }} className="text-sm font-medium transition-colors hover:text-foreground">
             Contact
           </Link>
-          <Link
-            to="/contact"
-            className="rounded-full px-5 py-2 text-sm font-semibold text-white shadow-sm transition-transform hover:-translate-y-0.5"
-            style={{ backgroundColor: "var(--brand-red)" }}
-          >
-            Démarrer mon projet
-          </Link>
+          {loading ? null : user ? (
+            <div
+              className="relative"
+              onMouseEnter={() => setUserOpen(true)}
+              onMouseLeave={() => setUserOpen(false)}
+            >
+              <button className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-1.5 text-sm font-medium text-foreground hover:bg-muted">
+                <UserCircle2 className="h-5 w-5" />
+                <span className="max-w-[140px] truncate">{user.email}</span>
+                <ChevronDown className="h-3.5 w-3.5" />
+              </button>
+              {userOpen && (
+                <div className="absolute right-0 top-full z-50 w-60 pt-3">
+                  <div className="overflow-hidden rounded-2xl border border-border bg-background shadow-[var(--shadow-elegant)]">
+                    <Link to="/my-requests" onClick={() => setUserOpen(false)} className="flex items-center gap-2 px-5 py-3 text-sm font-medium text-foreground hover:bg-muted">
+                      <LayoutDashboard className="h-4 w-4" /> Mon espace
+                    </Link>
+                    <Link to="/account" onClick={() => setUserOpen(false)} className="flex items-center gap-2 px-5 py-3 text-sm font-medium text-foreground hover:bg-muted">
+                      <UserCircle2 className="h-4 w-4" /> Mon compte
+                    </Link>
+                    {adm?.isAdmin && (
+                      <Link to="/admin" onClick={() => setUserOpen(false)} className="flex items-center gap-2 px-5 py-3 text-sm font-medium text-foreground hover:bg-muted">
+                        <ShieldCheck className="h-4 w-4" /> Espace admin
+                      </Link>
+                    )}
+                    <button onClick={handleSignOut} className="flex w-full items-center gap-2 border-t border-border px-5 py-3 text-left text-sm font-medium text-foreground hover:bg-muted">
+                      <LogOut className="h-4 w-4" /> Se déconnecter
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+          ) : (
+            <Link
+              to="/auth"
+              className="inline-flex items-center gap-2 rounded-full px-5 py-2 text-sm font-semibold text-white shadow-sm transition-transform hover:-translate-y-0.5"
+              style={{ backgroundColor: "var(--brand-red)" }}
+            >
+              <LogIn className="h-4 w-4" /> Connexion
+            </Link>
+          )}
         </nav>
         <button
           className="md:hidden"
@@ -98,14 +159,34 @@ export function Header() {
             </div>
             <Link to="/about" onClick={() => setOpen(false)} className="rounded-md px-3 py-2 text-base font-medium text-foreground hover:bg-muted">À propos</Link>
             <Link to="/contact" onClick={() => setOpen(false)} className="rounded-md px-3 py-2 text-base font-medium text-foreground hover:bg-muted">Contact</Link>
-            <Link
-              to="/contact"
-              onClick={() => setOpen(false)}
-              className="mt-2 rounded-full px-5 py-3 text-center text-sm font-semibold text-white"
-              style={{ backgroundColor: "var(--brand-red)" }}
-            >
-              Démarrer mon projet
-            </Link>
+            {user ? (
+              <>
+                <div className="mt-2 border-t border-border pt-2" />
+                <Link to="/my-requests" onClick={() => setOpen(false)} className="flex items-center gap-2 rounded-md px-3 py-2 text-base font-medium text-foreground hover:bg-muted">
+                  <LayoutDashboard className="h-4 w-4" /> Mon espace
+                </Link>
+                <Link to="/account" onClick={() => setOpen(false)} className="flex items-center gap-2 rounded-md px-3 py-2 text-base font-medium text-foreground hover:bg-muted">
+                  <UserCircle2 className="h-4 w-4" /> Mon compte
+                </Link>
+                {adm?.isAdmin && (
+                  <Link to="/admin" onClick={() => setOpen(false)} className="flex items-center gap-2 rounded-md px-3 py-2 text-base font-medium text-foreground hover:bg-muted">
+                    <ShieldCheck className="h-4 w-4" /> Espace admin
+                  </Link>
+                )}
+                <button onClick={handleSignOut} className="flex items-center gap-2 rounded-md px-3 py-2 text-left text-base font-medium text-foreground hover:bg-muted">
+                  <LogOut className="h-4 w-4" /> Se déconnecter
+                </button>
+              </>
+            ) : (
+              <Link
+                to="/auth"
+                onClick={() => setOpen(false)}
+                className="mt-2 inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-center text-sm font-semibold text-white"
+                style={{ backgroundColor: "var(--brand-red)" }}
+              >
+                <LogIn className="h-4 w-4" /> Connexion
+              </Link>
+            )}
           </div>
         </div>
       )}
