@@ -82,10 +82,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "VoyageonsEnsemble — Votre partenaire de mobilité internationale" },
       { name: "description", content: "Accompagnement administratif et logistique pour vos études, courts séjours, longs séjours et voyages au Cameroun." },
       { name: "author", content: "VoyageonsEnsemble" },
-      { property: "og:title", content: "VoyageonsEnsemble" },
-      { property: "og:description", content: "Accompagnement mobilité internationale : études, visas, logement, intégration." },
+      { property: "og:title", content: "VoyageonsEnsemble — Votre partenaire de mobilité internationale" },
+      { property: "og:description", content: "Accompagnement administratif et logistique pour vos études, courts séjours, longs séjours et voyages au Cameroun." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
+      { name: "twitter:title", content: "VoyageonsEnsemble — Votre partenaire de mobilité internationale" },
+      { name: "twitter:description", content: "Accompagnement administratif et logistique pour vos études, courts séjours, longs séjours et voyages au Cameroun." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/OLnkiIGM9GgQA2kKLPBrIEXzR8D3/social-images/social-1781125176361-Voyageons_Ensemble-02.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/OLnkiIGM9GgQA2kKLPBrIEXzR8D3/social-images/social-1781125176361-Voyageons_Ensemble-02.webp" },
     ],
     links: [
       {
