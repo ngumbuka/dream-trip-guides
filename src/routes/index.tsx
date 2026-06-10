@@ -1,6 +1,7 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { useMemo, useState } from "react";
 import { ArrowRight, GraduationCap, Plane, MapPin, Search, ShieldCheck, Sparkles, Users, Globe2 } from "lucide-react";
+import { searchAll } from "@/lib/search-index";
 import hero from "@/assets/hero-traveler.jpg";
 import imgFrance from "@/assets/dest-france.jpg";
 import imgCanada from "@/assets/dest-canada.jpg";
@@ -43,6 +44,10 @@ const testimonials = [
 function Index() {
   const [dest, setDest] = useState("");
   const [type, setType] = useState("Long séjour");
+  const [focused, setFocused] = useState(false);
+  const navigate = useNavigate();
+  const suggestions = useMemo(() => searchAll(dest, 6), [dest]);
+  const submit = () => navigate({ to: "/search", search: { q: dest, type: type as any } });
 
   return (
     <div>
@@ -63,34 +68,60 @@ function Index() {
           </p>
 
           {/* Destination search */}
-          <div className="mt-10 rounded-2xl bg-white/95 p-3 shadow-2xl backdrop-blur md:max-w-2xl">
-            <div className="flex flex-col gap-2 md:flex-row md:items-center">
-              <div className="flex flex-1 items-center gap-2 px-3">
-                <Search className="h-5 w-5 text-muted-foreground" />
-                <input
-                  value={dest}
-                  onChange={(e) => setDest(e.target.value)}
-                  placeholder="Destination (France, Canada, Allemagne…)"
-                  className="w-full bg-transparent py-3 text-sm text-foreground outline-none placeholder:text-muted-foreground"
-                />
-              </div>
-              <select
-                value={type}
-                onChange={(e) => setType(e.target.value)}
-                className="rounded-lg border border-border bg-white px-3 py-3 text-sm text-foreground"
+          <div className="relative mt-10 md:max-w-2xl">
+            <div className="rounded-2xl bg-white/95 p-3 shadow-2xl backdrop-blur">
+              <form
+                onSubmit={(e) => { e.preventDefault(); submit(); }}
+                className="flex flex-col gap-2 md:flex-row md:items-center"
               >
-                <option>Long séjour</option>
-                <option>Court séjour</option>
-                <option>Visite Cameroun</option>
-              </select>
-              <Link
-                to="/contact"
-                className="inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold text-white"
-                style={{ backgroundColor: "var(--brand-red)" }}
-              >
-                Recevoir une proposition <ArrowRight className="h-4 w-4" />
-              </Link>
+                <div className="flex flex-1 items-center gap-2 px-3">
+                  <Search className="h-5 w-5 text-muted-foreground" />
+                  <input
+                    value={dest}
+                    onChange={(e) => setDest(e.target.value)}
+                    onFocus={() => setFocused(true)}
+                    onBlur={() => setTimeout(() => setFocused(false), 150)}
+                    placeholder="Destination (France, Canada, Allemagne…)"
+                    className="w-full bg-transparent py-3 text-sm text-foreground outline-none placeholder:text-muted-foreground"
+                  />
+                </div>
+                <select
+                  value={type}
+                  onChange={(e) => setType(e.target.value)}
+                  className="rounded-lg border border-border bg-white px-3 py-3 text-sm text-foreground"
+                >
+                  <option>Long séjour</option>
+                  <option>Court séjour</option>
+                  <option>Visite Cameroun</option>
+                </select>
+                <button
+                  type="submit"
+                  className="inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold text-white"
+                  style={{ backgroundColor: "var(--brand-red)" }}
+                >
+                  Recevoir une proposition <ArrowRight className="h-4 w-4" />
+                </button>
+              </form>
             </div>
+            {focused && suggestions.length > 0 && (
+              <div className="absolute left-0 right-0 top-full z-40 mt-2 overflow-hidden rounded-2xl border border-border bg-white shadow-2xl">
+                {suggestions.map((s) => (
+                  <Link
+                    key={s.to + (s.params?.country ?? "")}
+                    to={s.to as any}
+                    params={s.params as any}
+                    className="flex items-center justify-between gap-3 border-b border-border/60 px-4 py-3 text-left last:border-b-0 hover:bg-muted"
+                  >
+                    <div>
+                      <p className="text-xs uppercase tracking-wider text-muted-foreground">{s.kind === "destination" ? "Destination" : "Service"}</p>
+                      <p className="text-sm font-semibold text-foreground">{s.title}</p>
+                      <p className="text-xs text-muted-foreground">{s.subtitle}</p>
+                    </div>
+                    <ArrowRight className="h-4 w-4 text-muted-foreground" />
+                  </Link>
+                ))}
+              </div>
+            )}
           </div>
 
           <div className="mt-12 flex flex-wrap gap-x-10 gap-y-4 text-sm text-white/80">
