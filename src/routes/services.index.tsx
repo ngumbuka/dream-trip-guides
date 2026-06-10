@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { GraduationCap, Plane, MapPin, Check, ArrowRight, Home, CreditCard, Ticket, Handshake, Megaphone } from "lucide-react";
 
-export const Route = createFileRoute("/services")({
+export const Route = createFileRoute("/services/")({
   head: () => ({
     meta: [
       { title: "Services — VoyageonsEnsemble" },
