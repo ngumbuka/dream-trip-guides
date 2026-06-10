@@ -36,10 +36,10 @@ export const Route = createFileRoute("/services/court-sejours")({
       ]}
       included={[
         { icon: FileText, t: "Visa Schengen" },
-        { icon: Ticket, t: "Billets d'avion" },
-        { icon: Home, t: "Hébergement" },
-        { icon: ShieldCheck, t: "Assurance" },
-        { icon: Headphones, t: "Assistance 7j/7" },
+        { icon: Ticket, t: "Billets d'avion", to: "/services/billets-avion" },
+        { icon: Home, t: "Hébergement", to: "/services/logement" },
+        { icon: ShieldCheck, t: "Assurance", to: "/services/caution-avi" },
+        { icon: Headphones, t: "Assistance 7j/7", to: "/services/accueil-integration" },
       ]}
       faqs={[
         { q: "Quel délai pour un visa Schengen ?", a: "Entre 2 et 6 semaines selon le consulat et la période. Nous recommandons de démarrer 6 à 8 semaines avant le départ." },
