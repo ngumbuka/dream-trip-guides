@@ -95,6 +95,13 @@ export function Header() {
           <Link to="/contact" activeProps={{ className: "text-foreground" }} inactiveProps={{ className: "text-muted-foreground" }} className="text-sm font-medium transition-colors hover:text-foreground">
             Contact
           </Link>
+          <Link
+            to="/_authenticated/new-request"
+            className="inline-flex items-center gap-2 rounded-full px-5 py-2 text-sm font-semibold text-white shadow-sm transition-transform hover:-translate-y-0.5"
+            style={{ backgroundColor: "var(--brand-red)" }}
+          >
+            <Rocket className="h-4 w-4" /> Démarrer mon projet
+          </Link>
           {loading ? null : user ? (
             <div
               className="relative"
@@ -130,8 +137,7 @@ export function Header() {
           ) : (
             <Link
               to="/auth"
-              className="inline-flex items-center gap-2 rounded-full px-5 py-2 text-sm font-semibold text-white shadow-sm transition-transform hover:-translate-y-0.5"
-              style={{ backgroundColor: "var(--brand-red)" }}
+              className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
             >
               <LogIn className="h-4 w-4" /> Connexion
             </Link>
