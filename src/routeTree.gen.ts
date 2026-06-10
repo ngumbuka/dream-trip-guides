@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SearchRouteImport } from './routes/search'
 import { Route as RequestRouteImport } from './routes/request'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AuthRouteImport } from './routes/auth'
@@ -31,6 +32,11 @@ import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authentic
 import { Route as AuthenticatedMyRequestsIdRouteImport } from './routes/_authenticated/my-requests.$id'
 import { Route as AuthenticatedAdminIdRouteImport } from './routes/_authenticated/admin.$id'
 
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RequestRoute = RequestRouteImport.update({
   id: '/request',
   path: '/request',
@@ -146,6 +152,7 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/request': typeof RequestRoute
+  '/search': typeof SearchRoute
   '/new-request': typeof AuthenticatedNewRequestRoute
   '/destinations/$country': typeof DestinationsCountryRoute
   '/services/accueil-integration': typeof ServicesAccueilIntegrationRoute
@@ -168,6 +175,7 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/request': typeof RequestRoute
+  '/search': typeof SearchRoute
   '/new-request': typeof AuthenticatedNewRequestRoute
   '/destinations/$country': typeof DestinationsCountryRoute
   '/services/accueil-integration': typeof ServicesAccueilIntegrationRoute
@@ -192,6 +200,7 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/request': typeof RequestRoute
+  '/search': typeof SearchRoute
   '/_authenticated/new-request': typeof AuthenticatedNewRequestRoute
   '/destinations/$country': typeof DestinationsCountryRoute
   '/services/accueil-integration': typeof ServicesAccueilIntegrationRoute
@@ -216,6 +225,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/contact'
     | '/request'
+    | '/search'
     | '/new-request'
     | '/destinations/$country'
     | '/services/accueil-integration'
@@ -238,6 +248,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/contact'
     | '/request'
+    | '/search'
     | '/new-request'
     | '/destinations/$country'
     | '/services/accueil-integration'
@@ -261,6 +272,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/contact'
     | '/request'
+    | '/search'
     | '/_authenticated/new-request'
     | '/destinations/$country'
     | '/services/accueil-integration'
@@ -285,6 +297,7 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   ContactRoute: typeof ContactRoute
   RequestRoute: typeof RequestRoute
+  SearchRoute: typeof SearchRoute
   DestinationsCountryRoute: typeof DestinationsCountryRoute
   ServicesAccueilIntegrationRoute: typeof ServicesAccueilIntegrationRoute
   ServicesBilletsAvionRoute: typeof ServicesBilletsAvionRoute
@@ -299,6 +312,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/request': {
       id: '/request'
       path: '/request'
@@ -475,6 +495,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   ContactRoute: ContactRoute,
   RequestRoute: RequestRoute,
+  SearchRoute: SearchRoute,
   DestinationsCountryRoute: DestinationsCountryRoute,
   ServicesAccueilIntegrationRoute: ServicesAccueilIntegrationRoute,
   ServicesBilletsAvionRoute: ServicesBilletsAvionRoute,
@@ -489,3 +510,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
