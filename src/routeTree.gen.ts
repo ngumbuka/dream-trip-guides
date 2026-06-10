@@ -18,6 +18,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as ServicesVisiteCamerounRouteImport } from './routes/services.visite-cameroun'
 import { Route as ServicesLongSejoursRouteImport } from './routes/services.long-sejours'
+import { Route as ServicesLogementRouteImport } from './routes/services.logement'
 import { Route as ServicesCourtSejoursRouteImport } from './routes/services.court-sejours'
 import { Route as DestinationsCountryRouteImport } from './routes/destinations.$country'
 import { Route as AuthenticatedNewRequestRouteImport } from './routes/_authenticated/new-request'
@@ -70,6 +71,11 @@ const ServicesLongSejoursRoute = ServicesLongSejoursRouteImport.update({
   path: '/services/long-sejours',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesLogementRoute = ServicesLogementRouteImport.update({
+  id: '/services/logement',
+  path: '/services/logement',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesCourtSejoursRoute = ServicesCourtSejoursRouteImport.update({
   id: '/services/court-sejours',
   path: '/services/court-sejours',
@@ -117,6 +123,7 @@ export interface FileRoutesByFullPath {
   '/new-request': typeof AuthenticatedNewRequestRoute
   '/destinations/$country': typeof DestinationsCountryRoute
   '/services/court-sejours': typeof ServicesCourtSejoursRoute
+  '/services/logement': typeof ServicesLogementRoute
   '/services/long-sejours': typeof ServicesLongSejoursRoute
   '/services/visite-cameroun': typeof ServicesVisiteCamerounRoute
   '/services/': typeof ServicesIndexRoute
@@ -134,6 +141,7 @@ export interface FileRoutesByTo {
   '/new-request': typeof AuthenticatedNewRequestRoute
   '/destinations/$country': typeof DestinationsCountryRoute
   '/services/court-sejours': typeof ServicesCourtSejoursRoute
+  '/services/logement': typeof ServicesLogementRoute
   '/services/long-sejours': typeof ServicesLongSejoursRoute
   '/services/visite-cameroun': typeof ServicesVisiteCamerounRoute
   '/services': typeof ServicesIndexRoute
@@ -153,6 +161,7 @@ export interface FileRoutesById {
   '/_authenticated/new-request': typeof AuthenticatedNewRequestRoute
   '/destinations/$country': typeof DestinationsCountryRoute
   '/services/court-sejours': typeof ServicesCourtSejoursRoute
+  '/services/logement': typeof ServicesLogementRoute
   '/services/long-sejours': typeof ServicesLongSejoursRoute
   '/services/visite-cameroun': typeof ServicesVisiteCamerounRoute
   '/services/': typeof ServicesIndexRoute
@@ -172,6 +181,7 @@ export interface FileRouteTypes {
     | '/new-request'
     | '/destinations/$country'
     | '/services/court-sejours'
+    | '/services/logement'
     | '/services/long-sejours'
     | '/services/visite-cameroun'
     | '/services/'
@@ -189,6 +199,7 @@ export interface FileRouteTypes {
     | '/new-request'
     | '/destinations/$country'
     | '/services/court-sejours'
+    | '/services/logement'
     | '/services/long-sejours'
     | '/services/visite-cameroun'
     | '/services'
@@ -207,6 +218,7 @@ export interface FileRouteTypes {
     | '/_authenticated/new-request'
     | '/destinations/$country'
     | '/services/court-sejours'
+    | '/services/logement'
     | '/services/long-sejours'
     | '/services/visite-cameroun'
     | '/services/'
@@ -225,6 +237,7 @@ export interface RootRouteChildren {
   RequestRoute: typeof RequestRoute
   DestinationsCountryRoute: typeof DestinationsCountryRoute
   ServicesCourtSejoursRoute: typeof ServicesCourtSejoursRoute
+  ServicesLogementRoute: typeof ServicesLogementRoute
   ServicesLongSejoursRoute: typeof ServicesLongSejoursRoute
   ServicesVisiteCamerounRoute: typeof ServicesVisiteCamerounRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
@@ -293,6 +306,13 @@ declare module '@tanstack/react-router' {
       path: '/services/long-sejours'
       fullPath: '/services/long-sejours'
       preLoaderRoute: typeof ServicesLongSejoursRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/logement': {
+      id: '/services/logement'
+      path: '/services/logement'
+      fullPath: '/services/logement'
+      preLoaderRoute: typeof ServicesLogementRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services/court-sejours': {
@@ -375,6 +395,7 @@ const rootRouteChildren: RootRouteChildren = {
   RequestRoute: RequestRoute,
   DestinationsCountryRoute: DestinationsCountryRoute,
   ServicesCourtSejoursRoute: ServicesCourtSejoursRoute,
+  ServicesLogementRoute: ServicesLogementRoute,
   ServicesLongSejoursRoute: ServicesLongSejoursRoute,
   ServicesVisiteCamerounRoute: ServicesVisiteCamerounRoute,
   ServicesIndexRoute: ServicesIndexRoute,
@@ -382,3 +403,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

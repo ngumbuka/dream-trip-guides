@@ -1,82 +1,36 @@
-## Goals
+## What I'll build
 
-1. **Service detail pages** for sub-services + pre-filled CTA + SEO + sitemap.
-2. **Auth (Lovable Cloud)**: email/password + Google sign-in.
-3. **User request flow**: signed-in users submit a detailed request for any service/sub-service, with document uploads.
-4. **In-platform messaging** between user and admin per request.
-5. **Application tracking**: users see status, timeline, messages, and uploaded documents.
-6. **Admin follow-up**: admin dashboard to view, update status, reply, and post internal notes.
+Five new service detail pages, one for each card on `/services`, populated with the wording from the uploaded documents and wired through the shared `ServiceDetail` component.
 
-## Part 1 — Service pages (frontend)
+```text
+src/routes/services.logement.tsx              → /services/logement
+src/routes/services.caution-avi.tsx           → /services/caution-avi
+src/routes/services.billets-avion.tsx         → /services/billets-avion
+src/routes/services.accueil-integration.tsx   → /services/accueil-integration
+src/routes/services.community-management.tsx  → /services/community-management
+```
 
-### New sub-service detail routes
-Each uses shared `ServiceDetail` with tailored copy + FAQs (visa process, timelines, documents, next steps) + SEO `head()`:
-- `/services/logement`, `/services/caution-avi`, `/services/billets-avion`,
-  `/services/accueil-integration`, `/services/community-management`, `/services/visa`
+Each page reuses the existing `ServiceDetail` layout (hero, highlights, 4‑step method, "Inclus" tiles, FAQ, CTA) and per‑page `head()` metadata (title, description, og:title, og:description, og:image). Hero images already generated in `src/assets/service-*.jpg`.
 
-### Main service pages
-Prominent **"Démarrer ma demande"** CTA → `/request?service=<slug>`.
+## Content per page (from the docx)
 
-### Services index
-"Inclus" tiles become `<Link>`s to sub-service pages.
+- **Logement** — "Trouvez un logement confortable et sécurisé". Highlights: évaluation des préférences, logements sécurisés, gestion administrative du bail, service de relocalisation.
+- **Caution bancaire & AVI** — "Respectez les exigences financières". Highlights: compte de garantie via banques partenaires, assurance visa international, conformité Canada / France / Belgique / Allemagne.
+- **Billets d'avion** — "Bénéficiez de tarifs avantageux". Highlights: tarifs compétitifs, options flexibles, conseils sur bagages et formalités.
+- **Accueil & intégration** — "Une arrivée en douceur". Highlights: accueil aéroport, programme d'intégration, ouverture de compte / sécurité sociale / transport, soutien continu.
+- **Community management** — "Votre communauté, votre image, votre impact". Highlights: gestion réseaux sociaux, SEO + ads, création de sites, identité visuelle. Extra block under FAQs listing the three packs **Essentiel / Avancé / Premium** from the docx.
 
-### Sitemap
-`src/routes/sitemap[.]xml.ts` with all public routes (9 service pages + `/`, `/about`, `/services`, `/contact`, `/auth`).
+FAQ entries reuse the relevant items from the docx contact FAQ (délais admission, coût de la vie, documents visa, etc.) and add 1–2 page‑specific ones each.
 
-## Part 2 — Backend (Lovable Cloud)
+## Wiring
 
-Enable Lovable Cloud. Configure email/password + Google sign-in (via Lovable broker).
+Update `src/routes/services.index.tsx`:
+- Make the 5 "Inclus dans nos accompagnements" tiles clickable `<Link>`s to the new routes.
+- Add the corresponding `Link` imports.
 
-### Database (single migration, with explicit GRANTs)
+No other file changes. Routes auto‑register through TanStack's file‑based router.
 
-- `profiles` — id (= auth.users.id), full_name, phone, created_at; auto-created via trigger on signup. RLS: own row read/update; admins read all (via `has_role`).
-- `app_role` enum (`admin`, `user`) + `user_roles` table + SECURITY DEFINER `has_role(uuid, app_role)`.
-- `service_requests` — id, user_id, service_slug, service_label, destination_country, target_date, travelers_count, budget_range, message, status enum (`nouveau | en_revue | en_cours | en_attente_client | accepte | refuse | termine`), created_at, updated_at. RLS: user sees/inserts own; admin sees/updates all.
-- `request_messages` — id, request_id, author_id, author_role (`user|admin`), body (text), created_at, read_by_user_at, read_by_admin_at. RLS: user sees messages on own requests; admin sees all; both can insert on permitted requests.
-- `request_updates` — id, request_id, author_id, kind (`status_change|note`), body, new_status, visible_to_user bool, created_at. RLS: user sees `visible_to_user=true` on own requests; admin full access.
-- `request_documents` — id, request_id, uploaded_by, storage_path, file_name, mime_type, size_bytes, created_at. RLS: user sees/inserts own request docs; admin sees all.
+## Out of scope
 
-All tables get explicit `GRANT SELECT, INSERT, UPDATE ... TO authenticated` + `GRANT ALL ... TO service_role` per project rules.
-
-### Storage
-Private bucket `request-documents`. Object key pattern: `{user_id}/{request_id}/{uuid}-{filename}`. RLS on `storage.objects`:
-- user can `select/insert/delete` objects where the first path segment = `auth.uid()`
-- admin can `select` all objects in this bucket (via `has_role`)
-
-### Server functions (`src/lib/requests.functions.ts`, `requireSupabaseAuth`)
-- `createRequest(input)` — zod-validated, returns id
-- `listMyRequests()` / `getMyRequest(id)` — user-scoped
-- `listMyMessages(requestId)` / `sendMessage(requestId, body)` — user posts/reads
-- `signDocumentUploadUrl(requestId, fileName, mimeType, sizeBytes)` — returns Supabase signed upload URL; records pending row on success via follow-up `confirmDocument`
-- `listMyDocuments(requestId)` + `signDocumentDownloadUrl(docId)`
-- `adminListRequests(filters)` / `adminGetRequest(id)` — admin only, verified via `has_role` server-side
-- `adminSendMessage(requestId, body)` — admin reply
-- `adminUpdateStatus(id, status, note, visible_to_user)` — inserts a `status_change` update row
-- `adminPostNote(id, body, visible_to_user)`
-
-### Routes
-Under integration-managed `_authenticated/`:
-- `/_authenticated/request` — request form (service select prefilled from `?service=`, destination, date, travelers, budget, message, document upload)
-- `/_authenticated/my-requests` — list with status badges + unread message indicator
-- `/_authenticated/my-requests/$id` — detail: status timeline, message thread (send/receive), documents (upload/download)
-- `/_authenticated/admin` — admin dashboard (filters by status, search). Non-admins: "Accès refusé"
-- `/_authenticated/admin/$id` — admin detail: status dropdown, message thread, internal notes, documents
-
-Public `/request` redirects to `/_authenticated/request` preserving search params.
-Public `/auth` route with email/password tabs + Google button.
-Header: "Mon espace" / "Admin" when signed in, "Connexion" otherwise.
-
-### Messaging UX
-- Polling via TanStack Query `refetchInterval: 5s` on the open thread (no realtime to keep things simple; can upgrade later to Supabase Realtime).
-- `read_by_*_at` timestamps stamped when the thread is opened.
-
-## Out of scope (this iteration)
-- Email notifications (can add Resend later).
-- Realtime subscriptions (polling is enough; upgrade path is clear).
-- Multi-file batch upload progress UI beyond simple per-file feedback.
-
-## Technical notes
-- All admin server fns re-verify `has_role(context.userId, 'admin')`; never trust the client.
-- Public route loaders never call protected server fns (avoids SSR 401s).
-- Document uploads use Supabase signed URLs from the server; the client uploads directly to Storage.
-- First admin promoted via SQL after signup; instructions will be shown in chat after migration.
+- No new database tables, server functions, auth changes, or images beyond the 5 already generated.
+- No changes to the three main service pages (`long-sejours`, `court-sejours`, `visite-cameroun`).
