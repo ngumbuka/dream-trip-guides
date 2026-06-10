@@ -21,11 +21,11 @@ export const Route = createFileRoute("/")({
 });
 
 const destinations = [
-  { name: "France", img: imgFrance, type: "Études · Long séjour" },
-  { name: "Canada", img: imgCanada, type: "Études · Résidence" },
-  { name: "Allemagne", img: imgGermany, type: "Études · Travail" },
-  { name: "Belgique", img: imgBelgium, type: "Études · Court séjour" },
-  { name: "Cameroun", img: imgCameroun, type: "Visite · Tourisme" },
+  { name: "France", slug: "france", img: imgFrance, type: "Études · Long séjour" },
+  { name: "Canada", slug: "canada", img: imgCanada, type: "Études · Résidence" },
+  { name: "Allemagne", slug: "allemagne", img: imgGermany, type: "Études · Travail" },
+  { name: "Belgique", slug: "belgique", img: imgBelgium, type: "Études · Court séjour" },
+  { name: "Cameroun", slug: "cameroun", img: imgCameroun, type: "Visite · Tourisme" },
 ];
 
 const services = [
@@ -144,14 +144,19 @@ function Index() {
 
           <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
             {destinations.map((d) => (
-              <div key={d.name} className="group relative aspect-[3/4] overflow-hidden rounded-2xl">
+              <Link
+                key={d.name}
+                to="/destinations/$country"
+                params={{ country: d.slug }}
+                className="group relative block aspect-[3/4] overflow-hidden rounded-2xl"
+              >
                 <img src={d.img} alt={d.name} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" width={1024} height={1280} />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-4 text-white">
                   <h3 className="text-xl font-semibold" style={{ fontFamily: "var(--font-display)" }}>{d.name}</h3>
                   <p className="text-xs text-white/80">{d.type}</p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

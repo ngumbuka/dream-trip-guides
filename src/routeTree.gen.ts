@@ -19,6 +19,7 @@ import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as ServicesVisiteCamerounRouteImport } from './routes/services.visite-cameroun'
 import { Route as ServicesLongSejoursRouteImport } from './routes/services.long-sejours'
 import { Route as ServicesCourtSejoursRouteImport } from './routes/services.court-sejours'
+import { Route as DestinationsCountryRouteImport } from './routes/destinations.$country'
 import { Route as AuthenticatedNewRequestRouteImport } from './routes/_authenticated/new-request'
 import { Route as AuthenticatedMyRequestsIndexRouteImport } from './routes/_authenticated/my-requests.index'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
@@ -74,6 +75,11 @@ const ServicesCourtSejoursRoute = ServicesCourtSejoursRouteImport.update({
   path: '/services/court-sejours',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DestinationsCountryRoute = DestinationsCountryRouteImport.update({
+  id: '/destinations/$country',
+  path: '/destinations/$country',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthenticatedNewRequestRoute = AuthenticatedNewRequestRouteImport.update({
   id: '/new-request',
   path: '/new-request',
@@ -109,6 +115,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/request': typeof RequestRoute
   '/new-request': typeof AuthenticatedNewRequestRoute
+  '/destinations/$country': typeof DestinationsCountryRoute
   '/services/court-sejours': typeof ServicesCourtSejoursRoute
   '/services/long-sejours': typeof ServicesLongSejoursRoute
   '/services/visite-cameroun': typeof ServicesVisiteCamerounRoute
@@ -125,6 +132,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/request': typeof RequestRoute
   '/new-request': typeof AuthenticatedNewRequestRoute
+  '/destinations/$country': typeof DestinationsCountryRoute
   '/services/court-sejours': typeof ServicesCourtSejoursRoute
   '/services/long-sejours': typeof ServicesLongSejoursRoute
   '/services/visite-cameroun': typeof ServicesVisiteCamerounRoute
@@ -143,6 +151,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/request': typeof RequestRoute
   '/_authenticated/new-request': typeof AuthenticatedNewRequestRoute
+  '/destinations/$country': typeof DestinationsCountryRoute
   '/services/court-sejours': typeof ServicesCourtSejoursRoute
   '/services/long-sejours': typeof ServicesLongSejoursRoute
   '/services/visite-cameroun': typeof ServicesVisiteCamerounRoute
@@ -161,6 +170,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/request'
     | '/new-request'
+    | '/destinations/$country'
     | '/services/court-sejours'
     | '/services/long-sejours'
     | '/services/visite-cameroun'
@@ -177,6 +187,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/request'
     | '/new-request'
+    | '/destinations/$country'
     | '/services/court-sejours'
     | '/services/long-sejours'
     | '/services/visite-cameroun'
@@ -194,6 +205,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/request'
     | '/_authenticated/new-request'
+    | '/destinations/$country'
     | '/services/court-sejours'
     | '/services/long-sejours'
     | '/services/visite-cameroun'
@@ -211,6 +223,7 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   ContactRoute: typeof ContactRoute
   RequestRoute: typeof RequestRoute
+  DestinationsCountryRoute: typeof DestinationsCountryRoute
   ServicesCourtSejoursRoute: typeof ServicesCourtSejoursRoute
   ServicesLongSejoursRoute: typeof ServicesLongSejoursRoute
   ServicesVisiteCamerounRoute: typeof ServicesVisiteCamerounRoute
@@ -289,6 +302,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesCourtSejoursRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/destinations/$country': {
+      id: '/destinations/$country'
+      path: '/destinations/$country'
+      fullPath: '/destinations/$country'
+      preLoaderRoute: typeof DestinationsCountryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_authenticated/new-request': {
       id: '/_authenticated/new-request'
       path: '/new-request'
@@ -353,6 +373,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   ContactRoute: ContactRoute,
   RequestRoute: RequestRoute,
+  DestinationsCountryRoute: DestinationsCountryRoute,
   ServicesCourtSejoursRoute: ServicesCourtSejoursRoute,
   ServicesLongSejoursRoute: ServicesLongSejoursRoute,
   ServicesVisiteCamerounRoute: ServicesVisiteCamerounRoute,
