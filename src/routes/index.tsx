@@ -29,9 +29,9 @@ const destinations = [
 ];
 
 const services = [
-  { icon: GraduationCap, title: "Courts séjours", to: "/services", desc: "Visa touristique, billets, hébergement et itinéraire clé en main." },
-  { icon: Plane, title: "Longs séjours", to: "/services", desc: "Études, visa long séjour, logement, AVI, intégration." },
-  { icon: MapPin, title: "Visite Cameroun", to: "/services", desc: "Découvrez le Cameroun : circuits, hébergement, transferts." },
+  { icon: GraduationCap, title: "Courts séjours", to: "/services/court-sejours", desc: "Visa touristique, billets, hébergement et itinéraire clé en main." },
+  { icon: Plane, title: "Longs séjours", to: "/services/long-sejours", desc: "Études, visa long séjour, logement, AVI, intégration." },
+  { icon: MapPin, title: "Visite Cameroun", to: "/services/visite-cameroun", desc: "Découvrez le Cameroun : circuits, hébergement, transferts." },
 ];
 
 const testimonials = [
