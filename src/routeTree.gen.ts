@@ -22,6 +22,7 @@ import { Route as ServicesLogementRouteImport } from './routes/services.logement
 import { Route as ServicesCourtSejoursRouteImport } from './routes/services.court-sejours'
 import { Route as ServicesCautionAviRouteImport } from './routes/services.caution-avi'
 import { Route as ServicesBilletsAvionRouteImport } from './routes/services.billets-avion'
+import { Route as ServicesAccueilIntegrationRouteImport } from './routes/services.accueil-integration'
 import { Route as DestinationsCountryRouteImport } from './routes/destinations.$country'
 import { Route as AuthenticatedNewRequestRouteImport } from './routes/_authenticated/new-request'
 import { Route as AuthenticatedMyRequestsIndexRouteImport } from './routes/_authenticated/my-requests.index'
@@ -93,6 +94,12 @@ const ServicesBilletsAvionRoute = ServicesBilletsAvionRouteImport.update({
   path: '/services/billets-avion',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesAccueilIntegrationRoute =
+  ServicesAccueilIntegrationRouteImport.update({
+    id: '/services/accueil-integration',
+    path: '/services/accueil-integration',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const DestinationsCountryRoute = DestinationsCountryRouteImport.update({
   id: '/destinations/$country',
   path: '/destinations/$country',
@@ -134,6 +141,7 @@ export interface FileRoutesByFullPath {
   '/request': typeof RequestRoute
   '/new-request': typeof AuthenticatedNewRequestRoute
   '/destinations/$country': typeof DestinationsCountryRoute
+  '/services/accueil-integration': typeof ServicesAccueilIntegrationRoute
   '/services/billets-avion': typeof ServicesBilletsAvionRoute
   '/services/caution-avi': typeof ServicesCautionAviRoute
   '/services/court-sejours': typeof ServicesCourtSejoursRoute
@@ -154,6 +162,7 @@ export interface FileRoutesByTo {
   '/request': typeof RequestRoute
   '/new-request': typeof AuthenticatedNewRequestRoute
   '/destinations/$country': typeof DestinationsCountryRoute
+  '/services/accueil-integration': typeof ServicesAccueilIntegrationRoute
   '/services/billets-avion': typeof ServicesBilletsAvionRoute
   '/services/caution-avi': typeof ServicesCautionAviRoute
   '/services/court-sejours': typeof ServicesCourtSejoursRoute
@@ -176,6 +185,7 @@ export interface FileRoutesById {
   '/request': typeof RequestRoute
   '/_authenticated/new-request': typeof AuthenticatedNewRequestRoute
   '/destinations/$country': typeof DestinationsCountryRoute
+  '/services/accueil-integration': typeof ServicesAccueilIntegrationRoute
   '/services/billets-avion': typeof ServicesBilletsAvionRoute
   '/services/caution-avi': typeof ServicesCautionAviRoute
   '/services/court-sejours': typeof ServicesCourtSejoursRoute
@@ -198,6 +208,7 @@ export interface FileRouteTypes {
     | '/request'
     | '/new-request'
     | '/destinations/$country'
+    | '/services/accueil-integration'
     | '/services/billets-avion'
     | '/services/caution-avi'
     | '/services/court-sejours'
@@ -218,6 +229,7 @@ export interface FileRouteTypes {
     | '/request'
     | '/new-request'
     | '/destinations/$country'
+    | '/services/accueil-integration'
     | '/services/billets-avion'
     | '/services/caution-avi'
     | '/services/court-sejours'
@@ -239,6 +251,7 @@ export interface FileRouteTypes {
     | '/request'
     | '/_authenticated/new-request'
     | '/destinations/$country'
+    | '/services/accueil-integration'
     | '/services/billets-avion'
     | '/services/caution-avi'
     | '/services/court-sejours'
@@ -260,6 +273,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   RequestRoute: typeof RequestRoute
   DestinationsCountryRoute: typeof DestinationsCountryRoute
+  ServicesAccueilIntegrationRoute: typeof ServicesAccueilIntegrationRoute
   ServicesBilletsAvionRoute: typeof ServicesBilletsAvionRoute
   ServicesCautionAviRoute: typeof ServicesCautionAviRoute
   ServicesCourtSejoursRoute: typeof ServicesCourtSejoursRoute
@@ -362,6 +376,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesBilletsAvionRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/accueil-integration': {
+      id: '/services/accueil-integration'
+      path: '/services/accueil-integration'
+      fullPath: '/services/accueil-integration'
+      preLoaderRoute: typeof ServicesAccueilIntegrationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/destinations/$country': {
       id: '/destinations/$country'
       path: '/destinations/$country'
@@ -434,6 +455,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   RequestRoute: RequestRoute,
   DestinationsCountryRoute: DestinationsCountryRoute,
+  ServicesAccueilIntegrationRoute: ServicesAccueilIntegrationRoute,
   ServicesBilletsAvionRoute: ServicesBilletsAvionRoute,
   ServicesCautionAviRoute: ServicesCautionAviRoute,
   ServicesCourtSejoursRoute: ServicesCourtSejoursRoute,
