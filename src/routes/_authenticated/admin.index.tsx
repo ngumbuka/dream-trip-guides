@@ -46,9 +46,20 @@ function AdminPage() {
           <h1 className="text-4xl font-semibold">Espace admin</h1>
           <p className="mt-2 text-muted-foreground">Toutes les demandes clients en un coup d'œil.</p>
         </div>
-        <Link to="/account" className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-semibold">
-          Mon compte
-        </Link>
+        <div className="flex flex-wrap gap-2">
+          <Link
+            to="/admin/users"
+            className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-semibold hover:bg-muted/40"
+          >
+            Gestion des comptes
+          </Link>
+          <Link
+            to="/account"
+            className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-semibold hover:bg-muted/40"
+          >
+            Mon compte
+          </Link>
+        </div>
       </div>
 
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
