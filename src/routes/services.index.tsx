@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { GraduationCap, Plane, MapPin, Check, ArrowRight, Home, CreditCard, Ticket, Handshake, Megaphone, Rocket } from "lucide-react";
+import { GraduationCap, Plane, MapPin, Check, ArrowRight, Home, CreditCard, Ticket, Handshake, Megaphone, Rocket, Languages } from "lucide-react";
 
 export const Route = createFileRoute("/services/")({
   head: () => ({
@@ -53,6 +53,19 @@ const offers = [
       "Conseils pratiques & accompagnement local",
     ],
   },
+  {
+    id: "formations",
+    icon: Languages,
+    title: "Formations linguistiques",
+    tagline: "TOEIC, TCF, Allemand : la certification qui débloque votre projet.",
+    bullets: [
+      "Allemand / Goethe-Zertifikat & TestDaF (A1 → B2)",
+      "TOEIC : score professionnel 750+",
+      "TCF Tout Public & TCF DAP (France, Canada)",
+      "Petits groupes, examens blancs réguliers",
+      "Bilan gratuit de 30 min pour démarrer",
+    ],
+  },
 ];
 
 const extras = [
@@ -78,7 +91,7 @@ function Services() {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-24">
-        <div className="grid gap-8 md:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {offers.map((o) => (
             <article id={o.id} key={o.id} className="flex flex-col rounded-3xl border border-border bg-card p-8">
               <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl" style={{ backgroundColor: "var(--brand-navy)", color: "white" }}>
@@ -99,6 +112,7 @@ function Services() {
                   to={
                     o.id === "long" ? "/services/long-sejours" :
                     o.id === "court" ? "/services/court-sejours" :
+                    o.id === "formations" ? "/services/formations" :
                     "/services/visite-cameroun"
                   }
                   className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-white"
