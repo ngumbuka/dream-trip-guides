@@ -32,6 +32,7 @@ import { Route as AuthenticatedAccountRouteImport } from './routes/_authenticate
 import { Route as AuthenticatedMyRequestsIndexRouteImport } from './routes/_authenticated/my-requests.index'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
 import { Route as ServicesFormationsToeicRouteImport } from './routes/services.formations.toeic'
+import { Route as ServicesFormationsTcfRouteImport } from './routes/services.formations.tcf'
 import { Route as ServicesFormationsAllemandRouteImport } from './routes/services.formations.allemand'
 import { Route as AuthenticatedMyRequestsIdRouteImport } from './routes/_authenticated/my-requests.$id'
 import { Route as AuthenticatedAdminUsersRouteImport } from './routes/_authenticated/admin.users'
@@ -154,6 +155,11 @@ const ServicesFormationsToeicRoute = ServicesFormationsToeicRouteImport.update({
   path: '/toeic',
   getParentRoute: () => ServicesFormationsRoute,
 } as any)
+const ServicesFormationsTcfRoute = ServicesFormationsTcfRouteImport.update({
+  id: '/tcf',
+  path: '/tcf',
+  getParentRoute: () => ServicesFormationsRoute,
+} as any)
 const ServicesFormationsAllemandRoute =
   ServicesFormationsAllemandRouteImport.update({
     id: '/allemand',
@@ -201,6 +207,7 @@ export interface FileRoutesByFullPath {
   '/admin/users': typeof AuthenticatedAdminUsersRoute
   '/my-requests/$id': typeof AuthenticatedMyRequestsIdRoute
   '/services/formations/allemand': typeof ServicesFormationsAllemandRoute
+  '/services/formations/tcf': typeof ServicesFormationsTcfRoute
   '/services/formations/toeic': typeof ServicesFormationsToeicRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
   '/my-requests/': typeof AuthenticatedMyRequestsIndexRoute
@@ -229,6 +236,7 @@ export interface FileRoutesByTo {
   '/admin/users': typeof AuthenticatedAdminUsersRoute
   '/my-requests/$id': typeof AuthenticatedMyRequestsIdRoute
   '/services/formations/allemand': typeof ServicesFormationsAllemandRoute
+  '/services/formations/tcf': typeof ServicesFormationsTcfRoute
   '/services/formations/toeic': typeof ServicesFormationsToeicRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
   '/my-requests': typeof AuthenticatedMyRequestsIndexRoute
@@ -259,6 +267,7 @@ export interface FileRoutesById {
   '/_authenticated/admin/users': typeof AuthenticatedAdminUsersRoute
   '/_authenticated/my-requests/$id': typeof AuthenticatedMyRequestsIdRoute
   '/services/formations/allemand': typeof ServicesFormationsAllemandRoute
+  '/services/formations/tcf': typeof ServicesFormationsTcfRoute
   '/services/formations/toeic': typeof ServicesFormationsToeicRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
   '/_authenticated/my-requests/': typeof AuthenticatedMyRequestsIndexRoute
@@ -289,6 +298,7 @@ export interface FileRouteTypes {
     | '/admin/users'
     | '/my-requests/$id'
     | '/services/formations/allemand'
+    | '/services/formations/tcf'
     | '/services/formations/toeic'
     | '/admin/'
     | '/my-requests/'
@@ -317,6 +327,7 @@ export interface FileRouteTypes {
     | '/admin/users'
     | '/my-requests/$id'
     | '/services/formations/allemand'
+    | '/services/formations/tcf'
     | '/services/formations/toeic'
     | '/admin'
     | '/my-requests'
@@ -346,6 +357,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin/users'
     | '/_authenticated/my-requests/$id'
     | '/services/formations/allemand'
+    | '/services/formations/tcf'
     | '/services/formations/toeic'
     | '/_authenticated/admin/'
     | '/_authenticated/my-requests/'
@@ -535,6 +547,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesFormationsToeicRouteImport
       parentRoute: typeof ServicesFormationsRoute
     }
+    '/services/formations/tcf': {
+      id: '/services/formations/tcf'
+      path: '/tcf'
+      fullPath: '/services/formations/tcf'
+      preLoaderRoute: typeof ServicesFormationsTcfRouteImport
+      parentRoute: typeof ServicesFormationsRoute
+    }
     '/services/formations/allemand': {
       id: '/services/formations/allemand'
       path: '/allemand'
@@ -591,11 +610,13 @@ const AuthenticatedRouteRouteWithChildren =
 
 interface ServicesFormationsRouteChildren {
   ServicesFormationsAllemandRoute: typeof ServicesFormationsAllemandRoute
+  ServicesFormationsTcfRoute: typeof ServicesFormationsTcfRoute
   ServicesFormationsToeicRoute: typeof ServicesFormationsToeicRoute
 }
 
 const ServicesFormationsRouteChildren: ServicesFormationsRouteChildren = {
   ServicesFormationsAllemandRoute: ServicesFormationsAllemandRoute,
+  ServicesFormationsTcfRoute: ServicesFormationsTcfRoute,
   ServicesFormationsToeicRoute: ServicesFormationsToeicRoute,
 }
 
