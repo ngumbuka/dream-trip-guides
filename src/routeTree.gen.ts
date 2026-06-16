@@ -20,6 +20,7 @@ import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as ServicesVisiteCamerounRouteImport } from './routes/services.visite-cameroun'
 import { Route as ServicesLongSejoursRouteImport } from './routes/services.long-sejours'
 import { Route as ServicesLogementRouteImport } from './routes/services.logement'
+import { Route as ServicesFormationsRouteImport } from './routes/services.formations'
 import { Route as ServicesCourtSejoursRouteImport } from './routes/services.court-sejours'
 import { Route as ServicesCommunityManagementRouteImport } from './routes/services.community-management'
 import { Route as ServicesCautionAviRouteImport } from './routes/services.caution-avi'
@@ -86,6 +87,11 @@ const ServicesLongSejoursRoute = ServicesLongSejoursRouteImport.update({
 const ServicesLogementRoute = ServicesLogementRouteImport.update({
   id: '/services/logement',
   path: '/services/logement',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesFormationsRoute = ServicesFormationsRouteImport.update({
+  id: '/services/formations',
+  path: '/services/formations',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesCourtSejoursRoute = ServicesCourtSejoursRouteImport.update({
@@ -173,6 +179,7 @@ export interface FileRoutesByFullPath {
   '/services/caution-avi': typeof ServicesCautionAviRoute
   '/services/community-management': typeof ServicesCommunityManagementRoute
   '/services/court-sejours': typeof ServicesCourtSejoursRoute
+  '/services/formations': typeof ServicesFormationsRoute
   '/services/logement': typeof ServicesLogementRoute
   '/services/long-sejours': typeof ServicesLongSejoursRoute
   '/services/visite-cameroun': typeof ServicesVisiteCamerounRoute
@@ -198,6 +205,7 @@ export interface FileRoutesByTo {
   '/services/caution-avi': typeof ServicesCautionAviRoute
   '/services/community-management': typeof ServicesCommunityManagementRoute
   '/services/court-sejours': typeof ServicesCourtSejoursRoute
+  '/services/formations': typeof ServicesFormationsRoute
   '/services/logement': typeof ServicesLogementRoute
   '/services/long-sejours': typeof ServicesLongSejoursRoute
   '/services/visite-cameroun': typeof ServicesVisiteCamerounRoute
@@ -225,6 +233,7 @@ export interface FileRoutesById {
   '/services/caution-avi': typeof ServicesCautionAviRoute
   '/services/community-management': typeof ServicesCommunityManagementRoute
   '/services/court-sejours': typeof ServicesCourtSejoursRoute
+  '/services/formations': typeof ServicesFormationsRoute
   '/services/logement': typeof ServicesLogementRoute
   '/services/long-sejours': typeof ServicesLongSejoursRoute
   '/services/visite-cameroun': typeof ServicesVisiteCamerounRoute
@@ -252,6 +261,7 @@ export interface FileRouteTypes {
     | '/services/caution-avi'
     | '/services/community-management'
     | '/services/court-sejours'
+    | '/services/formations'
     | '/services/logement'
     | '/services/long-sejours'
     | '/services/visite-cameroun'
@@ -277,6 +287,7 @@ export interface FileRouteTypes {
     | '/services/caution-avi'
     | '/services/community-management'
     | '/services/court-sejours'
+    | '/services/formations'
     | '/services/logement'
     | '/services/long-sejours'
     | '/services/visite-cameroun'
@@ -303,6 +314,7 @@ export interface FileRouteTypes {
     | '/services/caution-avi'
     | '/services/community-management'
     | '/services/court-sejours'
+    | '/services/formations'
     | '/services/logement'
     | '/services/long-sejours'
     | '/services/visite-cameroun'
@@ -328,6 +340,7 @@ export interface RootRouteChildren {
   ServicesCautionAviRoute: typeof ServicesCautionAviRoute
   ServicesCommunityManagementRoute: typeof ServicesCommunityManagementRoute
   ServicesCourtSejoursRoute: typeof ServicesCourtSejoursRoute
+  ServicesFormationsRoute: typeof ServicesFormationsRoute
   ServicesLogementRoute: typeof ServicesLogementRoute
   ServicesLongSejoursRoute: typeof ServicesLongSejoursRoute
   ServicesVisiteCamerounRoute: typeof ServicesVisiteCamerounRoute
@@ -411,6 +424,13 @@ declare module '@tanstack/react-router' {
       path: '/services/logement'
       fullPath: '/services/logement'
       preLoaderRoute: typeof ServicesLogementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/formations': {
+      id: '/services/formations'
+      path: '/services/formations'
+      fullPath: '/services/formations'
+      preLoaderRoute: typeof ServicesFormationsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services/court-sejours': {
@@ -544,6 +564,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesCautionAviRoute: ServicesCautionAviRoute,
   ServicesCommunityManagementRoute: ServicesCommunityManagementRoute,
   ServicesCourtSejoursRoute: ServicesCourtSejoursRoute,
+  ServicesFormationsRoute: ServicesFormationsRoute,
   ServicesLogementRoute: ServicesLogementRoute,
   ServicesLongSejoursRoute: ServicesLongSejoursRoute,
   ServicesVisiteCamerounRoute: ServicesVisiteCamerounRoute,
@@ -552,13 +573,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
