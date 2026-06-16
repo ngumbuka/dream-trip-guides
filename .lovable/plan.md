@@ -1,36 +1,58 @@
-## What I'll build
+## Goal
+Introduce language training (TOEIC, TCF, Allemand/Goethe) as a new service line of VoyageonsEnsemble — presented as a dedicated training program/center, complementing the travel & immigration offering.
 
-Five new service detail pages, one for each card on `/services`, populated with the wording from the uploaded documents and wired through the shared `ServiceDetail` component.
+## New routes
 
-```text
-src/routes/services.logement.tsx              → /services/logement
-src/routes/services.caution-avi.tsx           → /services/caution-avi
-src/routes/services.billets-avion.tsx         → /services/billets-avion
-src/routes/services.accueil-integration.tsx   → /services/accueil-integration
-src/routes/services.community-management.tsx  → /services/community-management
-```
+1. `src/routes/services.formations.tsx` — Hub page "Formations linguistiques"
+   - Intro from the doc (constat: la langue, premier obstacle…)
+   - "Pourquoi nos apprenants nous choisissent" (6 bullets)
+   - 3 program cards (Allemand/Goethe, TOEIC, TCF) → link to sub-pages
+   - CTAs: "Choisir ma formation" → `/contact`, "Réserver un bilan gratuit" → `/contact`
 
-Each page reuses the existing `ServiceDetail` layout (hero, highlights, 4‑step method, "Inclus" tiles, FAQ, CTA) and per‑page `head()` metadata (title, description, og:title, og:description, og:image). Hero images already generated in `src/assets/service-*.jpg`.
+2. `src/routes/services.formations.allemand.tsx` — Cours d'Allemand (Goethe / TestDaF)
+   - Tagline, intro Allemagne/DAAD/B2 requirement
+   - CECRL progression table (A1 → B2)
+   - 4 compétences travaillées
+   - Format & organisation (groupes 8–12, présentiel/en ligne…)
+   - Préparation Goethe-Zertifikat / TestDaF
+   - CTA: "M'inscrire" + "Bilan gratuit 30 min"
 
-## Content per page (from the docx)
+3. `src/routes/services.formations.toeic.tsx` — Préparation TOEIC
+   - Tagline, value prop (CV, recrutement intl.)
+   - Tableau structure de l'examen (Listening / Reading)
+   - Méthode en 4 piliers + axes de travail
+   - Public cible, score visé 750+
+   - CTA: inscription + bilan
 
-- **Logement** — "Trouvez un logement confortable et sécurisé". Highlights: évaluation des préférences, logements sécurisés, gestion administrative du bail, service de relocalisation.
-- **Caution bancaire & AVI** — "Respectez les exigences financières". Highlights: compte de garantie via banques partenaires, assurance visa international, conformité Canada / France / Belgique / Allemagne.
-- **Billets d'avion** — "Bénéficiez de tarifs avantageux". Highlights: tarifs compétitifs, options flexibles, conseils sur bagages et formalités.
-- **Accueil & intégration** — "Une arrivée en douceur". Highlights: accueil aéroport, programme d'intégration, ouverture de compte / sécurité sociale / transport, soutien continu.
-- **Community management** — "Votre communauté, votre image, votre impact". Highlights: gestion réseaux sociaux, SEO + ads, création de sites, identité visuelle. Extra block under FAQs listing the three packs **Essentiel / Avancé / Premium** from the docx.
+4. `src/routes/services.formations.tcf.tsx` — Préparation TCF
+   - Tagline France/Canada/Belgique
+   - Tableau TCF Tout Public vs TCF DAP
+   - 5 compétences évaluées (CO, structures, CE, EE, EO)
+   - Méthode (bilan, plan perso, examens blancs, suivi)
+   - Niveaux visés B2/C1
+   - CTA: bilan gratuit + inscription
 
-FAQ entries reuse the relevant items from the docx contact FAQ (délais admission, coût de la vie, documents visa, etc.) and add 1–2 page‑specific ones each.
+These reuse the visual language of existing service detail pages (eyebrow, hero, structured sections, bullet check-lists, CTA band) but use a lightweight inline layout rather than the `ServiceDetail` component, because the language pages have tables and content sections that don't fit that component's shape.
 
-## Wiring
+## Updates to existing files
 
-Update `src/routes/services.index.tsx`:
-- Make the 5 "Inclus dans nos accompagnements" tiles clickable `<Link>`s to the new routes.
-- Add the corresponding `Link` imports.
+- **`src/components/site/Header.tsx`**: add "Formations" to `serviceItems` (between Longs séjours and Courts séjours, or after) and as its own top-level submenu entry. Mobile menu list updated identically. Optional: small sub-dropdown for the 3 formations — to keep nav simple, link the parent to `/services/formations` and let users branch from there.
 
-No other file changes. Routes auto‑register through TanStack's file‑based router.
+- **`src/routes/services.index.tsx`**:
+  - Add a 4th offer card "Formations linguistiques" (icon: `Languages` from lucide) with bullets: Allemand (Goethe), TOEIC, TCF, bilan gratuit, groupes réduits. Switch grid from `md:grid-cols-3` → `md:grid-cols-2 lg:grid-cols-4` so it scales.
+  - Add a corresponding entry in the dark "Inclus dans nos accompagnements" extras grid (or leave as offer-only since it's a major line, not an add-on).
+
+- **`src/routes/index.tsx`** (homepage): in the existing services preview block, add the Formations card alongside the 3 séjour types, with a short copy ("TOEIC, TCF, Allemand — préparez la certification qui débloque votre projet").
+
+## Technical notes
+
+- All new routes follow `createFileRoute("/services/formations[...]")` with `head()` setting unique title/description/og:title/og:description (no `og:image` until we generate one).
+- Use design tokens (`var(--brand-red)`, `var(--brand-navy)`, `var(--brand-cream)`) — no hardcoded colors.
+- Tables rendered with Tailwind (`table-auto`, `border-border`, alternating rows).
+- All CTAs route to `/contact` (existing contact form) — no new backend, no new DB tables. The doc's "Réserver un bilan gratuit" and "M'inscrire" both funnel to the contact page with the relevant service preselected via a query param if the contact page supports it (otherwise just a plain link).
+- No images requested in this round; can be added later.
 
 ## Out of scope
-
-- No new database tables, server functions, auth changes, or images beyond the 5 already generated.
-- No changes to the three main service pages (`long-sejours`, `court-sejours`, `visite-cameroun`).
+- Online booking / payment for courses
+- Student dashboard for enrolled learners
+- CMS/admin for course schedules
