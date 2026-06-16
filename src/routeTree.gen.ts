@@ -31,6 +31,7 @@ import { Route as AuthenticatedNewRequestRouteImport } from './routes/_authentic
 import { Route as AuthenticatedAccountRouteImport } from './routes/_authenticated/account'
 import { Route as AuthenticatedMyRequestsIndexRouteImport } from './routes/_authenticated/my-requests.index'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
+import { Route as ServicesFormationsAllemandRouteImport } from './routes/services.formations.allemand'
 import { Route as AuthenticatedMyRequestsIdRouteImport } from './routes/_authenticated/my-requests.$id'
 import { Route as AuthenticatedAdminUsersRouteImport } from './routes/_authenticated/admin.users'
 import { Route as AuthenticatedAdminIdRouteImport } from './routes/_authenticated/admin.$id'
@@ -147,6 +148,12 @@ const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
   path: '/admin/',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const ServicesFormationsAllemandRoute =
+  ServicesFormationsAllemandRouteImport.update({
+    id: '/allemand',
+    path: '/allemand',
+    getParentRoute: () => ServicesFormationsRoute,
+  } as any)
 const AuthenticatedMyRequestsIdRoute =
   AuthenticatedMyRequestsIdRouteImport.update({
     id: '/my-requests/$id',
@@ -179,7 +186,7 @@ export interface FileRoutesByFullPath {
   '/services/caution-avi': typeof ServicesCautionAviRoute
   '/services/community-management': typeof ServicesCommunityManagementRoute
   '/services/court-sejours': typeof ServicesCourtSejoursRoute
-  '/services/formations': typeof ServicesFormationsRoute
+  '/services/formations': typeof ServicesFormationsRouteWithChildren
   '/services/logement': typeof ServicesLogementRoute
   '/services/long-sejours': typeof ServicesLongSejoursRoute
   '/services/visite-cameroun': typeof ServicesVisiteCamerounRoute
@@ -187,6 +194,7 @@ export interface FileRoutesByFullPath {
   '/admin/$id': typeof AuthenticatedAdminIdRoute
   '/admin/users': typeof AuthenticatedAdminUsersRoute
   '/my-requests/$id': typeof AuthenticatedMyRequestsIdRoute
+  '/services/formations/allemand': typeof ServicesFormationsAllemandRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
   '/my-requests/': typeof AuthenticatedMyRequestsIndexRoute
 }
@@ -205,7 +213,7 @@ export interface FileRoutesByTo {
   '/services/caution-avi': typeof ServicesCautionAviRoute
   '/services/community-management': typeof ServicesCommunityManagementRoute
   '/services/court-sejours': typeof ServicesCourtSejoursRoute
-  '/services/formations': typeof ServicesFormationsRoute
+  '/services/formations': typeof ServicesFormationsRouteWithChildren
   '/services/logement': typeof ServicesLogementRoute
   '/services/long-sejours': typeof ServicesLongSejoursRoute
   '/services/visite-cameroun': typeof ServicesVisiteCamerounRoute
@@ -213,6 +221,7 @@ export interface FileRoutesByTo {
   '/admin/$id': typeof AuthenticatedAdminIdRoute
   '/admin/users': typeof AuthenticatedAdminUsersRoute
   '/my-requests/$id': typeof AuthenticatedMyRequestsIdRoute
+  '/services/formations/allemand': typeof ServicesFormationsAllemandRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
   '/my-requests': typeof AuthenticatedMyRequestsIndexRoute
 }
@@ -233,7 +242,7 @@ export interface FileRoutesById {
   '/services/caution-avi': typeof ServicesCautionAviRoute
   '/services/community-management': typeof ServicesCommunityManagementRoute
   '/services/court-sejours': typeof ServicesCourtSejoursRoute
-  '/services/formations': typeof ServicesFormationsRoute
+  '/services/formations': typeof ServicesFormationsRouteWithChildren
   '/services/logement': typeof ServicesLogementRoute
   '/services/long-sejours': typeof ServicesLongSejoursRoute
   '/services/visite-cameroun': typeof ServicesVisiteCamerounRoute
@@ -241,6 +250,7 @@ export interface FileRoutesById {
   '/_authenticated/admin/$id': typeof AuthenticatedAdminIdRoute
   '/_authenticated/admin/users': typeof AuthenticatedAdminUsersRoute
   '/_authenticated/my-requests/$id': typeof AuthenticatedMyRequestsIdRoute
+  '/services/formations/allemand': typeof ServicesFormationsAllemandRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
   '/_authenticated/my-requests/': typeof AuthenticatedMyRequestsIndexRoute
 }
@@ -269,6 +279,7 @@ export interface FileRouteTypes {
     | '/admin/$id'
     | '/admin/users'
     | '/my-requests/$id'
+    | '/services/formations/allemand'
     | '/admin/'
     | '/my-requests/'
   fileRoutesByTo: FileRoutesByTo
@@ -295,6 +306,7 @@ export interface FileRouteTypes {
     | '/admin/$id'
     | '/admin/users'
     | '/my-requests/$id'
+    | '/services/formations/allemand'
     | '/admin'
     | '/my-requests'
   id:
@@ -322,6 +334,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin/$id'
     | '/_authenticated/admin/users'
     | '/_authenticated/my-requests/$id'
+    | '/services/formations/allemand'
     | '/_authenticated/admin/'
     | '/_authenticated/my-requests/'
   fileRoutesById: FileRoutesById
@@ -340,7 +353,7 @@ export interface RootRouteChildren {
   ServicesCautionAviRoute: typeof ServicesCautionAviRoute
   ServicesCommunityManagementRoute: typeof ServicesCommunityManagementRoute
   ServicesCourtSejoursRoute: typeof ServicesCourtSejoursRoute
-  ServicesFormationsRoute: typeof ServicesFormationsRoute
+  ServicesFormationsRoute: typeof ServicesFormationsRouteWithChildren
   ServicesLogementRoute: typeof ServicesLogementRoute
   ServicesLongSejoursRoute: typeof ServicesLongSejoursRoute
   ServicesVisiteCamerounRoute: typeof ServicesVisiteCamerounRoute
@@ -503,6 +516,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminIndexRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/services/formations/allemand': {
+      id: '/services/formations/allemand'
+      path: '/allemand'
+      fullPath: '/services/formations/allemand'
+      preLoaderRoute: typeof ServicesFormationsAllemandRouteImport
+      parentRoute: typeof ServicesFormationsRoute
+    }
     '/_authenticated/my-requests/$id': {
       id: '/_authenticated/my-requests/$id'
       path: '/my-requests/$id'
@@ -550,6 +570,17 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
 const AuthenticatedRouteRouteWithChildren =
   AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
 
+interface ServicesFormationsRouteChildren {
+  ServicesFormationsAllemandRoute: typeof ServicesFormationsAllemandRoute
+}
+
+const ServicesFormationsRouteChildren: ServicesFormationsRouteChildren = {
+  ServicesFormationsAllemandRoute: ServicesFormationsAllemandRoute,
+}
+
+const ServicesFormationsRouteWithChildren =
+  ServicesFormationsRoute._addFileChildren(ServicesFormationsRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
@@ -564,7 +595,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesCautionAviRoute: ServicesCautionAviRoute,
   ServicesCommunityManagementRoute: ServicesCommunityManagementRoute,
   ServicesCourtSejoursRoute: ServicesCourtSejoursRoute,
-  ServicesFormationsRoute: ServicesFormationsRoute,
+  ServicesFormationsRoute: ServicesFormationsRouteWithChildren,
   ServicesLogementRoute: ServicesLogementRoute,
   ServicesLongSejoursRoute: ServicesLongSejoursRoute,
   ServicesVisiteCamerounRoute: ServicesVisiteCamerounRoute,
