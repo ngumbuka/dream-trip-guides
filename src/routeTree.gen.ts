@@ -20,7 +20,6 @@ import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as ServicesVisiteCamerounRouteImport } from './routes/services.visite-cameroun'
 import { Route as ServicesLongSejoursRouteImport } from './routes/services.long-sejours'
 import { Route as ServicesLogementRouteImport } from './routes/services.logement'
-import { Route as ServicesFormationsRouteImport } from './routes/services.formations'
 import { Route as ServicesCourtSejoursRouteImport } from './routes/services.court-sejours'
 import { Route as ServicesCommunityManagementRouteImport } from './routes/services.community-management'
 import { Route as ServicesCautionAviRouteImport } from './routes/services.caution-avi'
@@ -29,6 +28,7 @@ import { Route as ServicesAccueilIntegrationRouteImport } from './routes/service
 import { Route as DestinationsCountryRouteImport } from './routes/destinations.$country'
 import { Route as AuthenticatedNewRequestRouteImport } from './routes/_authenticated/new-request'
 import { Route as AuthenticatedAccountRouteImport } from './routes/_authenticated/account'
+import { Route as ServicesFormationsIndexRouteImport } from './routes/services.formations.index'
 import { Route as AuthenticatedMyRequestsIndexRouteImport } from './routes/_authenticated/my-requests.index'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
 import { Route as ServicesFormationsToeicRouteImport } from './routes/services.formations.toeic'
@@ -92,11 +92,6 @@ const ServicesLogementRoute = ServicesLogementRouteImport.update({
   path: '/services/logement',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ServicesFormationsRoute = ServicesFormationsRouteImport.update({
-  id: '/services/formations',
-  path: '/services/formations',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ServicesCourtSejoursRoute = ServicesCourtSejoursRouteImport.update({
   id: '/services/court-sejours',
   path: '/services/court-sejours',
@@ -139,6 +134,11 @@ const AuthenticatedAccountRoute = AuthenticatedAccountRouteImport.update({
   path: '/account',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const ServicesFormationsIndexRoute = ServicesFormationsIndexRouteImport.update({
+  id: '/services/formations/',
+  path: '/services/formations/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthenticatedMyRequestsIndexRoute =
   AuthenticatedMyRequestsIndexRouteImport.update({
     id: '/my-requests/',
@@ -151,20 +151,20 @@ const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const ServicesFormationsToeicRoute = ServicesFormationsToeicRouteImport.update({
-  id: '/toeic',
-  path: '/toeic',
-  getParentRoute: () => ServicesFormationsRoute,
+  id: '/services/formations/toeic',
+  path: '/services/formations/toeic',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesFormationsTcfRoute = ServicesFormationsTcfRouteImport.update({
-  id: '/tcf',
-  path: '/tcf',
-  getParentRoute: () => ServicesFormationsRoute,
+  id: '/services/formations/tcf',
+  path: '/services/formations/tcf',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesFormationsAllemandRoute =
   ServicesFormationsAllemandRouteImport.update({
-    id: '/allemand',
-    path: '/allemand',
-    getParentRoute: () => ServicesFormationsRoute,
+    id: '/services/formations/allemand',
+    path: '/services/formations/allemand',
+    getParentRoute: () => rootRouteImport,
   } as any)
 const AuthenticatedMyRequestsIdRoute =
   AuthenticatedMyRequestsIdRouteImport.update({
@@ -198,7 +198,6 @@ export interface FileRoutesByFullPath {
   '/services/caution-avi': typeof ServicesCautionAviRoute
   '/services/community-management': typeof ServicesCommunityManagementRoute
   '/services/court-sejours': typeof ServicesCourtSejoursRoute
-  '/services/formations': typeof ServicesFormationsRouteWithChildren
   '/services/logement': typeof ServicesLogementRoute
   '/services/long-sejours': typeof ServicesLongSejoursRoute
   '/services/visite-cameroun': typeof ServicesVisiteCamerounRoute
@@ -211,6 +210,7 @@ export interface FileRoutesByFullPath {
   '/services/formations/toeic': typeof ServicesFormationsToeicRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
   '/my-requests/': typeof AuthenticatedMyRequestsIndexRoute
+  '/services/formations/': typeof ServicesFormationsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -227,7 +227,6 @@ export interface FileRoutesByTo {
   '/services/caution-avi': typeof ServicesCautionAviRoute
   '/services/community-management': typeof ServicesCommunityManagementRoute
   '/services/court-sejours': typeof ServicesCourtSejoursRoute
-  '/services/formations': typeof ServicesFormationsRouteWithChildren
   '/services/logement': typeof ServicesLogementRoute
   '/services/long-sejours': typeof ServicesLongSejoursRoute
   '/services/visite-cameroun': typeof ServicesVisiteCamerounRoute
@@ -240,6 +239,7 @@ export interface FileRoutesByTo {
   '/services/formations/toeic': typeof ServicesFormationsToeicRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
   '/my-requests': typeof AuthenticatedMyRequestsIndexRoute
+  '/services/formations': typeof ServicesFormationsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -258,7 +258,6 @@ export interface FileRoutesById {
   '/services/caution-avi': typeof ServicesCautionAviRoute
   '/services/community-management': typeof ServicesCommunityManagementRoute
   '/services/court-sejours': typeof ServicesCourtSejoursRoute
-  '/services/formations': typeof ServicesFormationsRouteWithChildren
   '/services/logement': typeof ServicesLogementRoute
   '/services/long-sejours': typeof ServicesLongSejoursRoute
   '/services/visite-cameroun': typeof ServicesVisiteCamerounRoute
@@ -271,6 +270,7 @@ export interface FileRoutesById {
   '/services/formations/toeic': typeof ServicesFormationsToeicRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
   '/_authenticated/my-requests/': typeof AuthenticatedMyRequestsIndexRoute
+  '/services/formations/': typeof ServicesFormationsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -289,7 +289,6 @@ export interface FileRouteTypes {
     | '/services/caution-avi'
     | '/services/community-management'
     | '/services/court-sejours'
-    | '/services/formations'
     | '/services/logement'
     | '/services/long-sejours'
     | '/services/visite-cameroun'
@@ -302,6 +301,7 @@ export interface FileRouteTypes {
     | '/services/formations/toeic'
     | '/admin/'
     | '/my-requests/'
+    | '/services/formations/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -318,7 +318,6 @@ export interface FileRouteTypes {
     | '/services/caution-avi'
     | '/services/community-management'
     | '/services/court-sejours'
-    | '/services/formations'
     | '/services/logement'
     | '/services/long-sejours'
     | '/services/visite-cameroun'
@@ -331,6 +330,7 @@ export interface FileRouteTypes {
     | '/services/formations/toeic'
     | '/admin'
     | '/my-requests'
+    | '/services/formations'
   id:
     | '__root__'
     | '/'
@@ -348,7 +348,6 @@ export interface FileRouteTypes {
     | '/services/caution-avi'
     | '/services/community-management'
     | '/services/court-sejours'
-    | '/services/formations'
     | '/services/logement'
     | '/services/long-sejours'
     | '/services/visite-cameroun'
@@ -361,6 +360,7 @@ export interface FileRouteTypes {
     | '/services/formations/toeic'
     | '/_authenticated/admin/'
     | '/_authenticated/my-requests/'
+    | '/services/formations/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -377,11 +377,14 @@ export interface RootRouteChildren {
   ServicesCautionAviRoute: typeof ServicesCautionAviRoute
   ServicesCommunityManagementRoute: typeof ServicesCommunityManagementRoute
   ServicesCourtSejoursRoute: typeof ServicesCourtSejoursRoute
-  ServicesFormationsRoute: typeof ServicesFormationsRouteWithChildren
   ServicesLogementRoute: typeof ServicesLogementRoute
   ServicesLongSejoursRoute: typeof ServicesLongSejoursRoute
   ServicesVisiteCamerounRoute: typeof ServicesVisiteCamerounRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
+  ServicesFormationsAllemandRoute: typeof ServicesFormationsAllemandRoute
+  ServicesFormationsTcfRoute: typeof ServicesFormationsTcfRoute
+  ServicesFormationsToeicRoute: typeof ServicesFormationsToeicRoute
+  ServicesFormationsIndexRoute: typeof ServicesFormationsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -463,13 +466,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesLogementRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/services/formations': {
-      id: '/services/formations'
-      path: '/services/formations'
-      fullPath: '/services/formations'
-      preLoaderRoute: typeof ServicesFormationsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/services/court-sejours': {
       id: '/services/court-sejours'
       path: '/services/court-sejours'
@@ -526,6 +522,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAccountRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/services/formations/': {
+      id: '/services/formations/'
+      path: '/services/formations'
+      fullPath: '/services/formations/'
+      preLoaderRoute: typeof ServicesFormationsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_authenticated/my-requests/': {
       id: '/_authenticated/my-requests/'
       path: '/my-requests'
@@ -542,24 +545,24 @@ declare module '@tanstack/react-router' {
     }
     '/services/formations/toeic': {
       id: '/services/formations/toeic'
-      path: '/toeic'
+      path: '/services/formations/toeic'
       fullPath: '/services/formations/toeic'
       preLoaderRoute: typeof ServicesFormationsToeicRouteImport
-      parentRoute: typeof ServicesFormationsRoute
+      parentRoute: typeof rootRouteImport
     }
     '/services/formations/tcf': {
       id: '/services/formations/tcf'
-      path: '/tcf'
+      path: '/services/formations/tcf'
       fullPath: '/services/formations/tcf'
       preLoaderRoute: typeof ServicesFormationsTcfRouteImport
-      parentRoute: typeof ServicesFormationsRoute
+      parentRoute: typeof rootRouteImport
     }
     '/services/formations/allemand': {
       id: '/services/formations/allemand'
-      path: '/allemand'
+      path: '/services/formations/allemand'
       fullPath: '/services/formations/allemand'
       preLoaderRoute: typeof ServicesFormationsAllemandRouteImport
-      parentRoute: typeof ServicesFormationsRoute
+      parentRoute: typeof rootRouteImport
     }
     '/_authenticated/my-requests/$id': {
       id: '/_authenticated/my-requests/$id'
@@ -608,21 +611,6 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
 const AuthenticatedRouteRouteWithChildren =
   AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
 
-interface ServicesFormationsRouteChildren {
-  ServicesFormationsAllemandRoute: typeof ServicesFormationsAllemandRoute
-  ServicesFormationsTcfRoute: typeof ServicesFormationsTcfRoute
-  ServicesFormationsToeicRoute: typeof ServicesFormationsToeicRoute
-}
-
-const ServicesFormationsRouteChildren: ServicesFormationsRouteChildren = {
-  ServicesFormationsAllemandRoute: ServicesFormationsAllemandRoute,
-  ServicesFormationsTcfRoute: ServicesFormationsTcfRoute,
-  ServicesFormationsToeicRoute: ServicesFormationsToeicRoute,
-}
-
-const ServicesFormationsRouteWithChildren =
-  ServicesFormationsRoute._addFileChildren(ServicesFormationsRouteChildren)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
@@ -637,11 +625,14 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesCautionAviRoute: ServicesCautionAviRoute,
   ServicesCommunityManagementRoute: ServicesCommunityManagementRoute,
   ServicesCourtSejoursRoute: ServicesCourtSejoursRoute,
-  ServicesFormationsRoute: ServicesFormationsRouteWithChildren,
   ServicesLogementRoute: ServicesLogementRoute,
   ServicesLongSejoursRoute: ServicesLongSejoursRoute,
   ServicesVisiteCamerounRoute: ServicesVisiteCamerounRoute,
   ServicesIndexRoute: ServicesIndexRoute,
+  ServicesFormationsAllemandRoute: ServicesFormationsAllemandRoute,
+  ServicesFormationsTcfRoute: ServicesFormationsTcfRoute,
+  ServicesFormationsToeicRoute: ServicesFormationsToeicRoute,
+  ServicesFormationsIndexRoute: ServicesFormationsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

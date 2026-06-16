@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Languages, Briefcase, GlobeLock, Check, ArrowRight, Rocket, Sparkles } from "lucide-react";
 
-export const Route = createFileRoute("/services/formations")({
+export const Route = createFileRoute("/services/formations/")({
   head: () => ({
     meta: [
       { title: "Formations linguistiques — TOEIC, TCF, Allemand | VoyageonsEnsemble" },
