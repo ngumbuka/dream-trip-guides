@@ -62,15 +62,6 @@ export function Header() {
           >
             Accueil
           </Link>
-          <Link
-            to="/"
-            activeOptions={{ exact: true }}
-            activeProps={{ className: "text-foreground" }}
-            inactiveProps={{ className: "text-muted-foreground" }}
-            className="text-sm font-medium transition-colors hover:text-foreground"
-          >
-            Accueil
-          </Link>
           {serviceItems.map((s) => (
             <Link
               key={s.to}
