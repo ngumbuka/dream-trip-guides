@@ -45,12 +45,30 @@ export function Header() {
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4">
         <Link to="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
           <img src={logo} alt="VoyageonsEnsemble" className="h-10 w-auto" width={120} height={40} />
-          <span className="hidden text-lg font-semibold tracking-tight text-foreground sm:inline" style={{ fontFamily: "var(--font-display)" }}>
+          <span
+            className="hidden text-lg font-semibold tracking-tight text-foreground sm:inline"
+            style={{ fontFamily: "var(--font-display)" }}
+          >
             Voyageons<span style={{ color: "var(--brand-red)" }}>Ensemble</span>
           </span>
         </Link>
         <nav className="hidden items-center gap-8 md:flex">
-          <Link to="/" activeOptions={{ exact: true }} activeProps={{ className: "text-foreground" }} inactiveProps={{ className: "text-muted-foreground" }} className="text-sm font-medium transition-colors hover:text-foreground">
+          <Link
+            to="/"
+            activeOptions={{ exact: true }}
+            activeProps={{ className: "text-foreground" }}
+            inactiveProps={{ className: "text-muted-foreground" }}
+            className="text-sm font-medium transition-colors hover:text-foreground"
+          >
+            Accueil
+          </Link>
+          <Link
+            to="/"
+            activeOptions={{ exact: true }}
+            activeProps={{ className: "text-foreground" }}
+            inactiveProps={{ className: "text-muted-foreground" }}
+            className="text-sm font-medium transition-colors hover:text-foreground"
+          >
             Accueil
           </Link>
           <div
@@ -90,10 +108,20 @@ export function Header() {
               </div>
             )}
           </div>
-          <Link to="/about" activeProps={{ className: "text-foreground" }} inactiveProps={{ className: "text-muted-foreground" }} className="text-sm font-medium transition-colors hover:text-foreground">
+          <Link
+            to="/about"
+            activeProps={{ className: "text-foreground" }}
+            inactiveProps={{ className: "text-muted-foreground" }}
+            className="text-sm font-medium transition-colors hover:text-foreground"
+          >
             À propos
           </Link>
-          <Link to="/contact" activeProps={{ className: "text-foreground" }} inactiveProps={{ className: "text-muted-foreground" }} className="text-sm font-medium transition-colors hover:text-foreground">
+          <Link
+            to="/contact"
+            activeProps={{ className: "text-foreground" }}
+            inactiveProps={{ className: "text-muted-foreground" }}
+            className="text-sm font-medium transition-colors hover:text-foreground"
+          >
             Contact
           </Link>
           <Link
@@ -104,11 +132,7 @@ export function Header() {
             <Rocket className="h-4 w-4" /> Démarrer mon projet
           </Link>
           {loading ? null : user ? (
-            <div
-              className="relative"
-              onMouseEnter={() => setUserOpen(true)}
-              onMouseLeave={() => setUserOpen(false)}
-            >
+            <div className="relative" onMouseEnter={() => setUserOpen(true)} onMouseLeave={() => setUserOpen(false)}>
               <button className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-1.5 text-sm font-medium text-foreground hover:bg-muted">
                 <UserCircle2 className="h-5 w-5" />
                 <span className="max-w-[140px] truncate">{user.email}</span>
@@ -117,18 +141,33 @@ export function Header() {
               {userOpen && (
                 <div className="absolute right-0 top-full z-50 w-60 pt-3">
                   <div className="overflow-hidden rounded-2xl border border-border bg-background shadow-[var(--shadow-elegant)]">
-                    <Link to="/my-requests" onClick={() => setUserOpen(false)} className="flex items-center gap-2 px-5 py-3 text-sm font-medium text-foreground hover:bg-muted">
+                    <Link
+                      to="/my-requests"
+                      onClick={() => setUserOpen(false)}
+                      className="flex items-center gap-2 px-5 py-3 text-sm font-medium text-foreground hover:bg-muted"
+                    >
                       <LayoutDashboard className="h-4 w-4" /> Mon espace
                     </Link>
-                    <Link to="/account" onClick={() => setUserOpen(false)} className="flex items-center gap-2 px-5 py-3 text-sm font-medium text-foreground hover:bg-muted">
+                    <Link
+                      to="/account"
+                      onClick={() => setUserOpen(false)}
+                      className="flex items-center gap-2 px-5 py-3 text-sm font-medium text-foreground hover:bg-muted"
+                    >
                       <UserCircle2 className="h-4 w-4" /> Mon compte
                     </Link>
                     {adm?.isAdmin && (
-                      <Link to="/admin" onClick={() => setUserOpen(false)} className="flex items-center gap-2 px-5 py-3 text-sm font-medium text-foreground hover:bg-muted">
+                      <Link
+                        to="/admin"
+                        onClick={() => setUserOpen(false)}
+                        className="flex items-center gap-2 px-5 py-3 text-sm font-medium text-foreground hover:bg-muted"
+                      >
                         <ShieldCheck className="h-4 w-4" /> Espace admin
                       </Link>
                     )}
-                    <button onClick={handleSignOut} className="flex w-full items-center gap-2 border-t border-border px-5 py-3 text-left text-sm font-medium text-foreground hover:bg-muted">
+                    <button
+                      onClick={handleSignOut}
+                      className="flex w-full items-center gap-2 border-t border-border px-5 py-3 text-left text-sm font-medium text-foreground hover:bg-muted"
+                    >
                       <LogOut className="h-4 w-4" /> Se déconnecter
                     </button>
                   </div>
@@ -144,47 +183,92 @@ export function Header() {
             </Link>
           )}
         </nav>
-        <button
-          className="md:hidden"
-          onClick={() => setOpen((v) => !v)}
-          aria-label="Menu"
-        >
+        <button className="md:hidden" onClick={() => setOpen((v) => !v)} aria-label="Menu">
           {open ? <X /> : <Menu />}
         </button>
       </div>
       {open && (
         <div className="border-t border-border bg-background md:hidden">
           <div className="mx-auto flex max-w-7xl flex-col gap-1 px-6 py-4">
-            <Link to="/_authenticated/new-request" onClick={() => setOpen(false)} className="inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-center text-sm font-semibold text-white" style={{ backgroundColor: "var(--brand-red)" }}>
+            <Link
+              to="/_authenticated/new-request"
+              onClick={() => setOpen(false)}
+              className="inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-center text-sm font-semibold text-white"
+              style={{ backgroundColor: "var(--brand-red)" }}
+            >
               <Rocket className="h-4 w-4" /> Démarrer mon projet
             </Link>
             <div className="my-2 border-t border-border" />
-            <Link to="/" onClick={() => setOpen(false)} className="rounded-md px-3 py-2 text-base font-medium text-foreground hover:bg-muted">Accueil</Link>
-            <Link to="/services" onClick={() => setOpen(false)} className="rounded-md px-3 py-2 text-base font-medium text-foreground hover:bg-muted">Services</Link>
+            <Link
+              to="/"
+              onClick={() => setOpen(false)}
+              className="rounded-md px-3 py-2 text-base font-medium text-foreground hover:bg-muted"
+            >
+              Accueil
+            </Link>
+            <Link
+              to="/services"
+              onClick={() => setOpen(false)}
+              className="rounded-md px-3 py-2 text-base font-medium text-foreground hover:bg-muted"
+            >
+              Services
+            </Link>
             <div className="ml-3 flex flex-col border-l border-border pl-3">
               {serviceItems.map((s) => (
-                <Link key={s.to} to={s.to} onClick={() => setOpen(false)} className="rounded-md px-3 py-1.5 text-sm text-muted-foreground hover:bg-muted hover:text-foreground">
+                <Link
+                  key={s.to}
+                  to={s.to}
+                  onClick={() => setOpen(false)}
+                  className="rounded-md px-3 py-1.5 text-sm text-muted-foreground hover:bg-muted hover:text-foreground"
+                >
                   {s.label}
                 </Link>
               ))}
             </div>
-            <Link to="/about" onClick={() => setOpen(false)} className="rounded-md px-3 py-2 text-base font-medium text-foreground hover:bg-muted">À propos</Link>
-            <Link to="/contact" onClick={() => setOpen(false)} className="rounded-md px-3 py-2 text-base font-medium text-foreground hover:bg-muted">Contact</Link>
+            <Link
+              to="/about"
+              onClick={() => setOpen(false)}
+              className="rounded-md px-3 py-2 text-base font-medium text-foreground hover:bg-muted"
+            >
+              À propos
+            </Link>
+            <Link
+              to="/contact"
+              onClick={() => setOpen(false)}
+              className="rounded-md px-3 py-2 text-base font-medium text-foreground hover:bg-muted"
+            >
+              Contact
+            </Link>
             {user ? (
               <>
                 <div className="mt-2 border-t border-border pt-2" />
-                <Link to="/my-requests" onClick={() => setOpen(false)} className="flex items-center gap-2 rounded-md px-3 py-2 text-base font-medium text-foreground hover:bg-muted">
+                <Link
+                  to="/my-requests"
+                  onClick={() => setOpen(false)}
+                  className="flex items-center gap-2 rounded-md px-3 py-2 text-base font-medium text-foreground hover:bg-muted"
+                >
                   <LayoutDashboard className="h-4 w-4" /> Mon espace
                 </Link>
-                <Link to="/account" onClick={() => setOpen(false)} className="flex items-center gap-2 rounded-md px-3 py-2 text-base font-medium text-foreground hover:bg-muted">
+                <Link
+                  to="/account"
+                  onClick={() => setOpen(false)}
+                  className="flex items-center gap-2 rounded-md px-3 py-2 text-base font-medium text-foreground hover:bg-muted"
+                >
                   <UserCircle2 className="h-4 w-4" /> Mon compte
                 </Link>
                 {adm?.isAdmin && (
-                  <Link to="/admin" onClick={() => setOpen(false)} className="flex items-center gap-2 rounded-md px-3 py-2 text-base font-medium text-foreground hover:bg-muted">
+                  <Link
+                    to="/admin"
+                    onClick={() => setOpen(false)}
+                    className="flex items-center gap-2 rounded-md px-3 py-2 text-base font-medium text-foreground hover:bg-muted"
+                  >
                     <ShieldCheck className="h-4 w-4" /> Espace admin
                   </Link>
                 )}
-                <button onClick={handleSignOut} className="flex items-center gap-2 rounded-md px-3 py-2 text-left text-base font-medium text-foreground hover:bg-muted">
+                <button
+                  onClick={handleSignOut}
+                  className="flex items-center gap-2 rounded-md px-3 py-2 text-left text-base font-medium text-foreground hover:bg-muted"
+                >
                   <LogOut className="h-4 w-4" /> Se déconnecter
                 </button>
               </>
