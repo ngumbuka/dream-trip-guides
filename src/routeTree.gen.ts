@@ -25,6 +25,7 @@ import { Route as ServicesCourtSejoursRouteImport } from './routes/services.cour
 import { Route as ServicesCommunityManagementRouteImport } from './routes/services.community-management'
 import { Route as ServicesCautionAviRouteImport } from './routes/services.caution-avi'
 import { Route as ServicesBilletsAvionRouteImport } from './routes/services.billets-avion'
+import { Route as ServicesAdmissionEtudesRouteImport } from './routes/services.admission-etudes'
 import { Route as ServicesAccueilIntegrationRouteImport } from './routes/services.accueil-integration'
 import { Route as DestinationsCountryRouteImport } from './routes/destinations.$country'
 import { Route as AuthenticatedNewRequestRouteImport } from './routes/_authenticated/new-request'
@@ -119,6 +120,11 @@ const ServicesBilletsAvionRoute = ServicesBilletsAvionRouteImport.update({
   path: '/services/billets-avion',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesAdmissionEtudesRoute = ServicesAdmissionEtudesRouteImport.update({
+  id: '/services/admission-etudes',
+  path: '/services/admission-etudes',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesAccueilIntegrationRoute =
   ServicesAccueilIntegrationRouteImport.update({
     id: '/services/accueil-integration',
@@ -200,6 +206,7 @@ export interface FileRoutesByFullPath {
   '/new-request': typeof AuthenticatedNewRequestRoute
   '/destinations/$country': typeof DestinationsCountryRoute
   '/services/accueil-integration': typeof ServicesAccueilIntegrationRoute
+  '/services/admission-etudes': typeof ServicesAdmissionEtudesRoute
   '/services/billets-avion': typeof ServicesBilletsAvionRoute
   '/services/caution-avi': typeof ServicesCautionAviRoute
   '/services/community-management': typeof ServicesCommunityManagementRoute
@@ -230,6 +237,7 @@ export interface FileRoutesByTo {
   '/new-request': typeof AuthenticatedNewRequestRoute
   '/destinations/$country': typeof DestinationsCountryRoute
   '/services/accueil-integration': typeof ServicesAccueilIntegrationRoute
+  '/services/admission-etudes': typeof ServicesAdmissionEtudesRoute
   '/services/billets-avion': typeof ServicesBilletsAvionRoute
   '/services/caution-avi': typeof ServicesCautionAviRoute
   '/services/community-management': typeof ServicesCommunityManagementRoute
@@ -262,6 +270,7 @@ export interface FileRoutesById {
   '/_authenticated/new-request': typeof AuthenticatedNewRequestRoute
   '/destinations/$country': typeof DestinationsCountryRoute
   '/services/accueil-integration': typeof ServicesAccueilIntegrationRoute
+  '/services/admission-etudes': typeof ServicesAdmissionEtudesRoute
   '/services/billets-avion': typeof ServicesBilletsAvionRoute
   '/services/caution-avi': typeof ServicesCautionAviRoute
   '/services/community-management': typeof ServicesCommunityManagementRoute
@@ -294,6 +303,7 @@ export interface FileRouteTypes {
     | '/new-request'
     | '/destinations/$country'
     | '/services/accueil-integration'
+    | '/services/admission-etudes'
     | '/services/billets-avion'
     | '/services/caution-avi'
     | '/services/community-management'
@@ -324,6 +334,7 @@ export interface FileRouteTypes {
     | '/new-request'
     | '/destinations/$country'
     | '/services/accueil-integration'
+    | '/services/admission-etudes'
     | '/services/billets-avion'
     | '/services/caution-avi'
     | '/services/community-management'
@@ -355,6 +366,7 @@ export interface FileRouteTypes {
     | '/_authenticated/new-request'
     | '/destinations/$country'
     | '/services/accueil-integration'
+    | '/services/admission-etudes'
     | '/services/billets-avion'
     | '/services/caution-avi'
     | '/services/community-management'
@@ -385,6 +397,7 @@ export interface RootRouteChildren {
   SearchRoute: typeof SearchRoute
   DestinationsCountryRoute: typeof DestinationsCountryRoute
   ServicesAccueilIntegrationRoute: typeof ServicesAccueilIntegrationRoute
+  ServicesAdmissionEtudesRoute: typeof ServicesAdmissionEtudesRoute
   ServicesBilletsAvionRoute: typeof ServicesBilletsAvionRoute
   ServicesCautionAviRoute: typeof ServicesCautionAviRoute
   ServicesCommunityManagementRoute: typeof ServicesCommunityManagementRoute
@@ -514,6 +527,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesBilletsAvionRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/admission-etudes': {
+      id: '/services/admission-etudes'
+      path: '/services/admission-etudes'
+      fullPath: '/services/admission-etudes'
+      preLoaderRoute: typeof ServicesAdmissionEtudesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services/accueil-integration': {
       id: '/services/accueil-integration'
       path: '/services/accueil-integration'
@@ -641,6 +661,7 @@ const rootRouteChildren: RootRouteChildren = {
   SearchRoute: SearchRoute,
   DestinationsCountryRoute: DestinationsCountryRoute,
   ServicesAccueilIntegrationRoute: ServicesAccueilIntegrationRoute,
+  ServicesAdmissionEtudesRoute: ServicesAdmissionEtudesRoute,
   ServicesBilletsAvionRoute: ServicesBilletsAvionRoute,
   ServicesCautionAviRoute: ServicesCautionAviRoute,
   ServicesCommunityManagementRoute: ServicesCommunityManagementRoute,
