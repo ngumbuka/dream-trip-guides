@@ -18,7 +18,7 @@ export interface ServiceDetailProps {
   intro: string;
   image: string;
   imageAlt: string;
-  highlights: string[];
+  highlights: (string | { text: string; featured?: boolean })[];
   steps: ServiceStep[];
   included: { icon: LucideIcon; t: string; to?: string }[];
   faqs: ServiceFaq[];
@@ -69,12 +69,20 @@ export function ServiceDetail(props: ServiceDetailProps) {
       <section className="mx-auto max-w-6xl px-6 py-20">
         <h2 className="text-3xl font-semibold md:text-4xl">Ce que comprend cet accompagnement</h2>
         <ul className="mt-10 grid gap-4 sm:grid-cols-2">
-          {highlights.map((h) => (
-            <li key={h} className="flex items-start gap-3 rounded-2xl border border-border bg-card p-5">
-              <Check className="mt-0.5 h-5 w-5 shrink-0" style={{ color: "var(--brand-red)" }} />
-              <span className="text-foreground/85">{h}</span>
-            </li>
-          ))}
+          {highlights.map((h) => {
+            const text = typeof h === "string" ? h : h.text;
+            const featured = typeof h === "object" && h.featured;
+            return (
+              <li
+                key={text}
+                className={`flex items-start gap-3 rounded-2xl border p-5 ${featured ? "border-transparent text-white shadow-lg" : "border-border bg-card"}`}
+                style={featured ? { backgroundColor: "var(--brand-navy)" } : undefined}
+              >
+                <Check className="mt-0.5 h-5 w-5 shrink-0" style={{ color: featured ? "#ffb3bd" : "var(--brand-red)" }} />
+                <span className={featured ? "font-semibold" : "text-foreground/85"}>{text}</span>
+              </li>
+            );
+          })}
         </ul>
       </section>
 
