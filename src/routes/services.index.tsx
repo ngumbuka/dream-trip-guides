@@ -43,14 +43,14 @@ const offers = [
   {
     id: "cameroun",
     icon: MapPin,
-    title: "Visite Cameroun",
-    tagline: "Une expérience authentique de la diaspora au pays.",
+    title: "Visit Africa",
+    tagline: "Découvrez l'Afrique : Sénégal, Côte d'Ivoire, Kenya, Maroc, Rwanda, Cameroun…",
     bullets: [
-      "Circuits découverte (Yaoundé, Douala, Kribi…)",
+      "Circuits multi-pays (Afrique de l'Ouest, de l'Est, Maghreb)",
       "Transferts aéroport & véhicule avec chauffeur",
-      "Hébergement sélectionné",
-      "Excursions culturelles & gastronomiques",
-      "Conseils pratiques & accompagnement local",
+      "Hébergement sélectionné (hôtels, lodges, villas)",
+      "Safaris, excursions culturelles & gastronomiques",
+      "Accompagnement local francophone et anglophone",
     ],
   },
   {
