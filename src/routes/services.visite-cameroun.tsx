@@ -6,46 +6,48 @@ import image from "@/assets/service-cameroun.jpg";
 export const Route = createFileRoute("/services/visite-cameroun")({
   head: () => ({
     meta: [
-      { title: "Visite Cameroun — Circuits & séjours | VoyageonsEnsemble" },
-      { name: "description", content: "Découvrez le Cameroun en toute sérénité : circuits, hébergement, transferts et excursions culturelles." },
-      { property: "og:title", content: "Visite Cameroun — VoyageonsEnsemble" },
-      { property: "og:description", content: "Une expérience authentique, pensée pour la diaspora et les voyageurs." },
+      { title: "Visit Africa — Circuits & séjours | VoyageonsEnsemble" },
+      { name: "description", content: "Découvrez l'Afrique : Sénégal, Côte d'Ivoire, Cap-Vert, Kenya, Rwanda, Tanzanie, Égypte, Maroc, Ouganda, Afrique du Sud, Ghana, Cameroun…" },
+      { property: "og:title", content: "Visit Africa — VoyageonsEnsemble" },
+      { property: "og:description", content: "Safaris, plages, déserts, métropoles : l'Afrique sur mesure." },
       { property: "og:image", content: image },
     ],
   }),
   component: () => (
     <ServiceDetail
-      eyebrow="Visite Cameroun"
-      title="Le Cameroun, à votre rythme."
-      intro="Plages de Kribi, métropoles dynamiques, paysages du Grand Nord : nous organisons votre séjour de A à Z, avec le confort d'un voyage premium et l'âme d'un retour aux sources."
+      eyebrow="Visit Africa"
+      title="L'Afrique, à votre rythme."
+      intro="Safari au Kenya, plages du Cap-Vert, médinas du Maroc, gorilles du Rwanda, pyramides d'Égypte, savanes de Tanzanie, retour aux sources au Cameroun : nous organisons votre séjour de A à Z, avec le confort d'un voyage premium et l'âme d'une expérience authentique."
       image={image}
-      imageAlt="Plage de Kribi au Cameroun, palmiers et eau turquoise"
+      imageAlt="Paysage africain — plage, savane et métropoles"
       highlights={[
-        "Circuits sur mesure : Yaoundé, Douala, Kribi, Limbé, Bafoussam…",
-        "Transferts aéroport et véhicule avec chauffeur",
-        "Hébergement sélectionné (hôtels, lodges, villas)",
-        "Excursions culturelles, nature et gastronomiques",
-        "Conseils pratiques et accompagnement local",
-        "Organisation d'événements (anniversaires, mariages, retours au pays)",
+        "Circuits multi-pays : Sénégal, Côte d'Ivoire, Cap-Vert, Kenya, Rwanda, Tanzanie, Égypte, Maroc, Ouganda, Afrique du Sud, Ghana, Cameroun…",
+        "Safaris (Kenya, Tanzanie, Ouganda, Afrique du Sud)",
+        "Plages & farniente (Cap-Vert, Zanzibar, Kribi, Diani)",
+        "Découvertes culturelles (médinas du Maroc, pyramides d'Égypte, Gorée au Sénégal)",
+        "Transferts aéroport, véhicule avec chauffeur, guides francophones et anglophones",
+        "Hébergement sélectionné : hôtels, lodges, villas, riads",
+        "Organisation d'événements (anniversaires, mariages, retours au pays, séminaires)",
       ]}
       steps={[
         { title: "Votre envie", desc: "On échange sur vos dates, vos envies et le rythme souhaité." },
         { title: "Itinéraire", desc: "Nous concevons un programme personnalisé, validé avec vous." },
-        { title: "Logistique", desc: "Vols internes, hôtels, chauffeurs et activités réservés." },
+        { title: "Logistique", desc: "Vols internes, visas pays, hôtels, chauffeurs et activités réservés." },
         { title: "Sur place", desc: "Un référent local disponible tout au long de votre séjour." },
       ]}
       included={[
-        { icon: MapPin, t: "Circuits" },
-        { icon: Car, t: "Chauffeur", to: "/services/accueil-integration" },
-        { icon: Home, t: "Hébergement", to: "/services/logement" },
-        { icon: Utensils, t: "Gastronomie" },
-        { icon: Camera, t: "Excursions" },
+        { icon: MapPin, t: "Circuits multi-pays" },
+        { icon: Car, t: "Chauffeur & transferts" },
+        { icon: Home, t: "Hébergement" },
+        { icon: Utensils, t: "Gastronomie locale" },
+        { icon: Camera, t: "Safaris & excursions" },
       ]}
       faqs={[
-        { q: "Faut-il un visa pour entrer au Cameroun ?", a: "Oui, pour la majorité des nationalités. Nous pouvons vous accompagner dans la demande d'e-visa." },
-        { q: "Quelles régions recommandez-vous ?", a: "Tout dépend de vos envies : balnéaire à Kribi, culturel à Foumban, nature au Mont Cameroun, urbain à Douala et Yaoundé." },
-        { q: "Quand partir ?", a: "La saison sèche (novembre à février) est idéale, mais nous organisons des voyages toute l'année." },
-        { q: "Organisez-vous des voyages de groupe ?", a: "Oui, pour familles, amis, associations ou entreprises." },
+        { q: "Quels pays africains couvrez-vous ?", a: "Sénégal, Côte d'Ivoire, Cap-Vert, Kenya, Rwanda, Tanzanie, Égypte, Maroc, Ouganda, Afrique du Sud, Ghana, Cameroun et plus encore. Multi-pays possible sur un même séjour." },
+        { q: "Faut-il un visa pour chaque pays ?", a: "Cela dépend de votre nationalité. Beaucoup de pays proposent des e-visas ou un visa à l'arrivée. Nous gérons toutes les démarches pour vous." },
+        { q: "Quand partir ?", a: "Toute l'année selon la région : saison sèche pour les safaris (juin-octobre en Afrique de l'Est), hiver pour le Maroc et l'Égypte, novembre-février pour l'Afrique de l'Ouest." },
+        { q: "Organisez-vous des voyages de groupe ?", a: "Oui — familles, amis, associations, entreprises, retours au pays en groupe diaspora." },
+        { q: "Quelles vaccinations sont nécessaires ?", a: "Fièvre jaune obligatoire pour la plupart des pays subsahariens. Antipaludéen recommandé selon la zone. Nous vous remettons un guide santé par destination." },
       ]}
       serviceSlug="visite-cameroun"
     />
