@@ -18,6 +18,7 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as ServicesVisiteCamerounRouteImport } from './routes/services.visite-cameroun'
+import { Route as ServicesVisaSchengenRouteImport } from './routes/services.visa-schengen'
 import { Route as ServicesLongSejoursRouteImport } from './routes/services.long-sejours'
 import { Route as ServicesLogementRouteImport } from './routes/services.logement'
 import { Route as ServicesCourtSejoursRouteImport } from './routes/services.court-sejours'
@@ -80,6 +81,11 @@ const ServicesIndexRoute = ServicesIndexRouteImport.update({
 const ServicesVisiteCamerounRoute = ServicesVisiteCamerounRouteImport.update({
   id: '/services/visite-cameroun',
   path: '/services/visite-cameroun',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesVisaSchengenRoute = ServicesVisaSchengenRouteImport.update({
+  id: '/services/visa-schengen',
+  path: '/services/visa-schengen',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesLongSejoursRoute = ServicesLongSejoursRouteImport.update({
@@ -200,6 +206,7 @@ export interface FileRoutesByFullPath {
   '/services/court-sejours': typeof ServicesCourtSejoursRoute
   '/services/logement': typeof ServicesLogementRoute
   '/services/long-sejours': typeof ServicesLongSejoursRoute
+  '/services/visa-schengen': typeof ServicesVisaSchengenRoute
   '/services/visite-cameroun': typeof ServicesVisiteCamerounRoute
   '/services/': typeof ServicesIndexRoute
   '/admin/$id': typeof AuthenticatedAdminIdRoute
@@ -229,6 +236,7 @@ export interface FileRoutesByTo {
   '/services/court-sejours': typeof ServicesCourtSejoursRoute
   '/services/logement': typeof ServicesLogementRoute
   '/services/long-sejours': typeof ServicesLongSejoursRoute
+  '/services/visa-schengen': typeof ServicesVisaSchengenRoute
   '/services/visite-cameroun': typeof ServicesVisiteCamerounRoute
   '/services': typeof ServicesIndexRoute
   '/admin/$id': typeof AuthenticatedAdminIdRoute
@@ -260,6 +268,7 @@ export interface FileRoutesById {
   '/services/court-sejours': typeof ServicesCourtSejoursRoute
   '/services/logement': typeof ServicesLogementRoute
   '/services/long-sejours': typeof ServicesLongSejoursRoute
+  '/services/visa-schengen': typeof ServicesVisaSchengenRoute
   '/services/visite-cameroun': typeof ServicesVisiteCamerounRoute
   '/services/': typeof ServicesIndexRoute
   '/_authenticated/admin/$id': typeof AuthenticatedAdminIdRoute
@@ -291,6 +300,7 @@ export interface FileRouteTypes {
     | '/services/court-sejours'
     | '/services/logement'
     | '/services/long-sejours'
+    | '/services/visa-schengen'
     | '/services/visite-cameroun'
     | '/services/'
     | '/admin/$id'
@@ -320,6 +330,7 @@ export interface FileRouteTypes {
     | '/services/court-sejours'
     | '/services/logement'
     | '/services/long-sejours'
+    | '/services/visa-schengen'
     | '/services/visite-cameroun'
     | '/services'
     | '/admin/$id'
@@ -350,6 +361,7 @@ export interface FileRouteTypes {
     | '/services/court-sejours'
     | '/services/logement'
     | '/services/long-sejours'
+    | '/services/visa-schengen'
     | '/services/visite-cameroun'
     | '/services/'
     | '/_authenticated/admin/$id'
@@ -379,6 +391,7 @@ export interface RootRouteChildren {
   ServicesCourtSejoursRoute: typeof ServicesCourtSejoursRoute
   ServicesLogementRoute: typeof ServicesLogementRoute
   ServicesLongSejoursRoute: typeof ServicesLongSejoursRoute
+  ServicesVisaSchengenRoute: typeof ServicesVisaSchengenRoute
   ServicesVisiteCamerounRoute: typeof ServicesVisiteCamerounRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
   ServicesFormationsAllemandRoute: typeof ServicesFormationsAllemandRoute
@@ -450,6 +463,13 @@ declare module '@tanstack/react-router' {
       path: '/services/visite-cameroun'
       fullPath: '/services/visite-cameroun'
       preLoaderRoute: typeof ServicesVisiteCamerounRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/visa-schengen': {
+      id: '/services/visa-schengen'
+      path: '/services/visa-schengen'
+      fullPath: '/services/visa-schengen'
+      preLoaderRoute: typeof ServicesVisaSchengenRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services/long-sejours': {
@@ -627,6 +647,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesCourtSejoursRoute: ServicesCourtSejoursRoute,
   ServicesLogementRoute: ServicesLogementRoute,
   ServicesLongSejoursRoute: ServicesLongSejoursRoute,
+  ServicesVisaSchengenRoute: ServicesVisaSchengenRoute,
   ServicesVisiteCamerounRoute: ServicesVisiteCamerounRoute,
   ServicesIndexRoute: ServicesIndexRoute,
   ServicesFormationsAllemandRoute: ServicesFormationsAllemandRoute,
