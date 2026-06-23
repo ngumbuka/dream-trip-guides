@@ -21,10 +21,10 @@ export const Route = createFileRoute("/services/court-sejours")({
       image={image}
       imageAlt="Voyageuse avec passeport et carte d'embarquement"
       highlights={[
-        "Visa court séjour Schengen (tourisme, affaires, famille)",
+        "Visa court séjour Schengen et autres (tourisme, vacances, affaires, famille…)",
         "Réservation de billets d'avion au meilleur tarif",
         "Hébergement (hôtels, appart-hôtels, locations)",
-        "Itinéraires sur mesure & activités",
+        { text: "Itinéraires sur mesure & activités personnalisées (city tours, excursions, expériences locales)", featured: true },
         "Assurance voyage et assistance rapatriement",
         "Assistance 7j/7 pendant tout votre séjour",
       ]}
@@ -35,7 +35,7 @@ export const Route = createFileRoute("/services/court-sejours")({
         { title: "Voyage serein", desc: "Documents prêts, assistance à toute heure, et vous partez tranquille." },
       ]}
       included={[
-        { icon: FileText, t: "Visa Schengen" },
+        { icon: FileText, t: "Visa Schengen", to: "/services/visa-schengen" },
         { icon: Ticket, t: "Billets d'avion", to: "/services/billets-avion" },
         { icon: Home, t: "Hébergement", to: "/services/logement" },
         { icon: ShieldCheck, t: "Assurance", to: "/services/caution-avi" },

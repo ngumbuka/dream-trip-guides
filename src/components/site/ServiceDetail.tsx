@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useRouter } from "@tanstack/react-router";
 import { ArrowRight, Check, ArrowLeft, Rocket } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -18,7 +18,7 @@ export interface ServiceDetailProps {
   intro: string;
   image: string;
   imageAlt: string;
-  highlights: string[];
+  highlights: (string | { text: string; featured?: boolean })[];
   steps: ServiceStep[];
   included: { icon: LucideIcon; t: string; to?: string }[];
   faqs: ServiceFaq[];
@@ -33,7 +33,14 @@ export function ServiceDetail(props: ServiceDetailProps) {
     ctaLabel = "Démarrer mon projet",
     serviceSlug,
   } = props;
-
+  const router = useRouter();
+  const goBack = () => {
+    if (typeof window !== "undefined" && window.history.length > 1) {
+      router.history.back();
+    } else {
+      router.navigate({ to: "/services" });
+    }
+  };
   return (
     <div>
       {/* HERO */}
@@ -41,9 +48,9 @@ export function ServiceDetail(props: ServiceDetailProps) {
         <img src={image} alt={imageAlt} className="absolute inset-0 h-full w-full object-cover" width={1600} height={900} />
         <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
         <div className="relative mx-auto max-w-6xl px-6 py-24 md:py-32 text-white">
-          <Link to="/services" className="mb-6 inline-flex items-center gap-2 text-sm text-white/80 hover:text-white">
-            <ArrowLeft className="h-4 w-4" /> Tous les services
-          </Link>
+          <button onClick={goBack} className="mb-6 inline-flex items-center gap-2 text-sm text-white/80 hover:text-white">
+            <ArrowLeft className="h-4 w-4" /> Retour
+          </button>
           <p className="text-sm font-medium uppercase tracking-[0.2em]" style={{ color: "#ffb3bd" }}>{eyebrow}</p>
           <h1 className="mt-3 max-w-3xl text-5xl font-semibold leading-[1.05] md:text-6xl">{title}</h1>
           <p className="mt-6 max-w-2xl text-lg text-white/85">{intro}</p>
@@ -62,12 +69,20 @@ export function ServiceDetail(props: ServiceDetailProps) {
       <section className="mx-auto max-w-6xl px-6 py-20">
         <h2 className="text-3xl font-semibold md:text-4xl">Ce que comprend cet accompagnement</h2>
         <ul className="mt-10 grid gap-4 sm:grid-cols-2">
-          {highlights.map((h) => (
-            <li key={h} className="flex items-start gap-3 rounded-2xl border border-border bg-card p-5">
-              <Check className="mt-0.5 h-5 w-5 shrink-0" style={{ color: "var(--brand-red)" }} />
-              <span className="text-foreground/85">{h}</span>
-            </li>
-          ))}
+          {highlights.map((h) => {
+            const text = typeof h === "string" ? h : h.text;
+            const featured = typeof h === "object" && h.featured;
+            return (
+              <li
+                key={text}
+                className={`flex items-start gap-3 rounded-2xl border p-5 ${featured ? "border-transparent text-white shadow-lg" : "border-border bg-card"}`}
+                style={featured ? { backgroundColor: "var(--brand-navy)" } : undefined}
+              >
+                <Check className="mt-0.5 h-5 w-5 shrink-0" style={{ color: featured ? "#ffb3bd" : "var(--brand-red)" }} />
+                <span className={featured ? "font-semibold" : "text-foreground/85"}>{text}</span>
+              </li>
+            );
+          })}
         </ul>
       </section>
 

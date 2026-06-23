@@ -1,6 +1,6 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { ArrowRight, GraduationCap, Plane, MapPin, Search, ShieldCheck, Sparkles, Users, Globe2, Rocket } from "lucide-react";
+import { ArrowRight, GraduationCap, Plane, MapPin, Search, ShieldCheck, Sparkles, Users, Globe2, Rocket, Languages } from "lucide-react";
 import { searchAll } from "@/lib/search-index";
 import hero from "@/assets/hero-traveler.jpg";
 import imgFrance from "@/assets/dest-france.jpg";
@@ -26,13 +26,14 @@ const destinations = [
   { name: "Canada", slug: "canada", img: imgCanada, type: "Études · Résidence" },
   { name: "Allemagne", slug: "allemagne", img: imgGermany, type: "Études · Travail" },
   { name: "Belgique", slug: "belgique", img: imgBelgium, type: "Études · Court séjour" },
-  { name: "Cameroun", slug: "cameroun", img: imgCameroun, type: "Visite · Tourisme" },
+  { name: "Africa", slug: "cameroun", img: imgCameroun, type: "Visite · Tourisme" },
 ];
 
 const services = [
   { icon: GraduationCap, title: "Courts séjours", to: "/services/court-sejours", desc: "Visa touristique, billets, hébergement et itinéraire clé en main." },
   { icon: Plane, title: "Longs séjours", to: "/services/long-sejours", desc: "Études, visa long séjour, logement, AVI, intégration." },
-  { icon: MapPin, title: "Visite Cameroun", to: "/services/visite-cameroun", desc: "Découvrez le Cameroun : circuits, hébergement, transferts." },
+  { icon: MapPin, title: "Visit Africa", to: "/services/visite-cameroun", desc: "Découvrez l'Afrique : Sénégal, Côte d'Ivoire, Maroc, Kenya, Rwanda, Cameroun…" },
+  { icon: Languages, title: "Formations linguistiques", to: "/services/formations", desc: "TOEIC, TCF, Allemand — la certification qui débloque votre projet." },
 ];
 
 const testimonials = [
@@ -63,7 +64,7 @@ function Index() {
             Voyageons <span style={{ color: "#ffb3bd" }}>ensemble</span>, plus loin.
           </h1>
           <p className="mt-6 max-w-xl text-lg text-white/85">
-            Études supérieures, visas, longs et courts séjours, visite du Cameroun — nous prenons en
+            Études supérieures, visas, longs et courts séjours, visit Africa — nous prenons en
             charge l'admin et la logistique de A à Z.
           </p>
 
@@ -92,7 +93,7 @@ function Index() {
                 >
                   <option>Long séjour</option>
                   <option>Court séjour</option>
-                  <option>Visite Cameroun</option>
+                  <option>Visit Africa</option>
                 </select>
                 <button
                   type="submit"
@@ -134,7 +135,7 @@ function Index() {
           </div>
           <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3 text-sm text-white/80">
             <div className="flex items-center gap-2"><Users className="h-4 w-4" /> 30+ experts dédiés</div>
-            <div className="flex items-center gap-2"><Globe2 className="h-4 w-4" /> 5 destinations</div>
+            <div className="flex items-center gap-2"><Globe2 className="h-4 w-4" /> Plusieurs destinations</div>
             <div className="flex items-center gap-2"><ShieldCheck className="h-4 w-4" /> Démarches sécurisées</div>
           </div>
         </div>
@@ -152,7 +153,7 @@ function Index() {
           </Link>
         </div>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
+        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {services.map((s) => (
             <Link
               key={s.title}
@@ -194,7 +195,7 @@ function Index() {
           <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
             <div>
               <p className="text-sm font-medium uppercase tracking-[0.2em]" style={{ color: "var(--brand-red)" }}>Destinations</p>
-              <h2 className="mt-3 max-w-2xl text-4xl font-semibold md:text-5xl">Cinq destinations, mille opportunités.</h2>
+              <h2 className="mt-3 max-w-2xl text-4xl font-semibold md:text-5xl">Plusieurs destinations, mille opportunités.</h2>
             </div>
             <Link to="/_authenticated/new-request" className="hidden md:inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-white" style={{ backgroundColor: "var(--brand-red)" }}>
               <Rocket className="h-4 w-4" /> Choisir ma destination
@@ -311,7 +312,7 @@ function Index() {
             <div>
               <h2 className="text-3xl font-semibold md:text-4xl">Restez inspiré·e.</h2>
               <p className="mt-3 text-base text-muted-foreground">
-                Nos meilleures opportunités d'études, bons plans visas et destinations — directement dans votre boîte.
+                Études, tourisme, découvertes, vacances — directement dans votre boîte.
               </p>
             </div>
             <form
