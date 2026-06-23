@@ -71,43 +71,18 @@ export function Header() {
           >
             Accueil
           </Link>
-          <div
-            className="relative"
-            onMouseEnter={() => setServicesOpen(true)}
-            onMouseLeave={() => setServicesOpen(false)}
-          >
+          {serviceItems.map((s) => (
             <Link
-              to="/services"
+              key={s.to}
+              to={s.to}
               activeProps={{ className: "text-foreground" }}
               inactiveProps={{ className: "text-muted-foreground" }}
-              className="inline-flex items-center gap-1 text-sm font-medium transition-colors hover:text-foreground"
+              className="text-sm font-medium transition-colors hover:text-foreground"
             >
-              Services <ChevronDown className="h-3.5 w-3.5" />
+              {s.label}
             </Link>
-            {servicesOpen && (
-              <div className="absolute left-1/2 top-full z-50 w-60 -translate-x-1/2 pt-3">
-                <div className="overflow-hidden rounded-2xl border border-border bg-background shadow-[var(--shadow-elegant)]">
-                  {serviceItems.map((s) => (
-                    <Link
-                      key={s.to}
-                      to={s.to}
-                      onClick={() => setServicesOpen(false)}
-                      className="block px-5 py-3 text-sm font-medium text-foreground hover:bg-muted"
-                    >
-                      {s.label}
-                    </Link>
-                  ))}
-                  <Link
-                    to="/services"
-                    onClick={() => setServicesOpen(false)}
-                    className="block border-t border-border px-5 py-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground hover:bg-muted hover:text-foreground"
-                  >
-                    Tous les services →
-                  </Link>
-                </div>
-              </div>
-            )}
-          </div>
+          ))}
+
           <Link
             to="/about"
             activeProps={{ className: "text-foreground" }}
