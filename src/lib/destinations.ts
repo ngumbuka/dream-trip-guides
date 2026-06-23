@@ -62,8 +62,8 @@ export const destinations: Record<string, Destination> = {
     practical: [
       { label: "Monnaie", value: "Euro (€)" },
       { label: "Langue", value: "Français" },
-      { label: "Coût de vie étudiant", value: "800 – 1 200 €/mois" },
-      { label: "Logement (CROUS)", value: "200 – 450 €/mois" },
+      { label: "Coût de vie étudiant", value: "> 615 €/mois" },
+      { label: "Logement (CROUS)", value: "> 200 €/mois" },
     ],
     tips: [
       "Ouvrez votre dossier Campus France dès octobre pour la rentrée suivante.",
