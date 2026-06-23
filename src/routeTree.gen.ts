@@ -21,6 +21,7 @@ import { Route as ServicesVisiteCamerounRouteImport } from './routes/services.vi
 import { Route as ServicesVisaSchengenRouteImport } from './routes/services.visa-schengen'
 import { Route as ServicesLongSejoursRouteImport } from './routes/services.long-sejours'
 import { Route as ServicesLogementRouteImport } from './routes/services.logement'
+import { Route as ServicesDossierVisaRouteImport } from './routes/services.dossier-visa'
 import { Route as ServicesCourtSejoursRouteImport } from './routes/services.court-sejours'
 import { Route as ServicesCommunityManagementRouteImport } from './routes/services.community-management'
 import { Route as ServicesCautionAviRouteImport } from './routes/services.caution-avi'
@@ -97,6 +98,11 @@ const ServicesLongSejoursRoute = ServicesLongSejoursRouteImport.update({
 const ServicesLogementRoute = ServicesLogementRouteImport.update({
   id: '/services/logement',
   path: '/services/logement',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesDossierVisaRoute = ServicesDossierVisaRouteImport.update({
+  id: '/services/dossier-visa',
+  path: '/services/dossier-visa',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesCourtSejoursRoute = ServicesCourtSejoursRouteImport.update({
@@ -211,6 +217,7 @@ export interface FileRoutesByFullPath {
   '/services/caution-avi': typeof ServicesCautionAviRoute
   '/services/community-management': typeof ServicesCommunityManagementRoute
   '/services/court-sejours': typeof ServicesCourtSejoursRoute
+  '/services/dossier-visa': typeof ServicesDossierVisaRoute
   '/services/logement': typeof ServicesLogementRoute
   '/services/long-sejours': typeof ServicesLongSejoursRoute
   '/services/visa-schengen': typeof ServicesVisaSchengenRoute
@@ -242,6 +249,7 @@ export interface FileRoutesByTo {
   '/services/caution-avi': typeof ServicesCautionAviRoute
   '/services/community-management': typeof ServicesCommunityManagementRoute
   '/services/court-sejours': typeof ServicesCourtSejoursRoute
+  '/services/dossier-visa': typeof ServicesDossierVisaRoute
   '/services/logement': typeof ServicesLogementRoute
   '/services/long-sejours': typeof ServicesLongSejoursRoute
   '/services/visa-schengen': typeof ServicesVisaSchengenRoute
@@ -275,6 +283,7 @@ export interface FileRoutesById {
   '/services/caution-avi': typeof ServicesCautionAviRoute
   '/services/community-management': typeof ServicesCommunityManagementRoute
   '/services/court-sejours': typeof ServicesCourtSejoursRoute
+  '/services/dossier-visa': typeof ServicesDossierVisaRoute
   '/services/logement': typeof ServicesLogementRoute
   '/services/long-sejours': typeof ServicesLongSejoursRoute
   '/services/visa-schengen': typeof ServicesVisaSchengenRoute
@@ -308,6 +317,7 @@ export interface FileRouteTypes {
     | '/services/caution-avi'
     | '/services/community-management'
     | '/services/court-sejours'
+    | '/services/dossier-visa'
     | '/services/logement'
     | '/services/long-sejours'
     | '/services/visa-schengen'
@@ -339,6 +349,7 @@ export interface FileRouteTypes {
     | '/services/caution-avi'
     | '/services/community-management'
     | '/services/court-sejours'
+    | '/services/dossier-visa'
     | '/services/logement'
     | '/services/long-sejours'
     | '/services/visa-schengen'
@@ -371,6 +382,7 @@ export interface FileRouteTypes {
     | '/services/caution-avi'
     | '/services/community-management'
     | '/services/court-sejours'
+    | '/services/dossier-visa'
     | '/services/logement'
     | '/services/long-sejours'
     | '/services/visa-schengen'
@@ -402,6 +414,7 @@ export interface RootRouteChildren {
   ServicesCautionAviRoute: typeof ServicesCautionAviRoute
   ServicesCommunityManagementRoute: typeof ServicesCommunityManagementRoute
   ServicesCourtSejoursRoute: typeof ServicesCourtSejoursRoute
+  ServicesDossierVisaRoute: typeof ServicesDossierVisaRoute
   ServicesLogementRoute: typeof ServicesLogementRoute
   ServicesLongSejoursRoute: typeof ServicesLongSejoursRoute
   ServicesVisaSchengenRoute: typeof ServicesVisaSchengenRoute
@@ -497,6 +510,13 @@ declare module '@tanstack/react-router' {
       path: '/services/logement'
       fullPath: '/services/logement'
       preLoaderRoute: typeof ServicesLogementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/dossier-visa': {
+      id: '/services/dossier-visa'
+      path: '/services/dossier-visa'
+      fullPath: '/services/dossier-visa'
+      preLoaderRoute: typeof ServicesDossierVisaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services/court-sejours': {
@@ -666,6 +686,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesCautionAviRoute: ServicesCautionAviRoute,
   ServicesCommunityManagementRoute: ServicesCommunityManagementRoute,
   ServicesCourtSejoursRoute: ServicesCourtSejoursRoute,
+  ServicesDossierVisaRoute: ServicesDossierVisaRoute,
   ServicesLogementRoute: ServicesLogementRoute,
   ServicesLongSejoursRoute: ServicesLongSejoursRoute,
   ServicesVisaSchengenRoute: ServicesVisaSchengenRoute,
