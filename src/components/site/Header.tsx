@@ -57,7 +57,7 @@ export function Header() {
             activeOptions={{ exact: true }}
             activeProps={{ className: "text-foreground" }}
             inactiveProps={{ className: "text-muted-foreground" }}
-            className="whitespace-nowrap text-sm font-medium transition-colors hover:text-foreground"
+            className="whitespace-nowrap text-xs font-medium transition-colors hover:text-foreground xl:text-sm"
           >
             Accueil
           </Link>
@@ -67,7 +67,7 @@ export function Header() {
               to={s.to}
               activeProps={{ className: "text-foreground" }}
               inactiveProps={{ className: "text-muted-foreground" }}
-              className="whitespace-nowrap text-sm font-medium transition-colors hover:text-foreground"
+              className="whitespace-nowrap text-xs font-medium transition-colors hover:text-foreground xl:text-sm"
             >
               {s.label}
             </Link>
@@ -77,7 +77,7 @@ export function Header() {
             to="/about"
             activeProps={{ className: "text-foreground" }}
             inactiveProps={{ className: "text-muted-foreground" }}
-            className="whitespace-nowrap text-sm font-medium transition-colors hover:text-foreground"
+            className="whitespace-nowrap text-xs font-medium transition-colors hover:text-foreground xl:text-sm"
           >
             À propos
           </Link>
@@ -85,13 +85,13 @@ export function Header() {
             to="/contact"
             activeProps={{ className: "text-foreground" }}
             inactiveProps={{ className: "text-muted-foreground" }}
-            className="whitespace-nowrap text-sm font-medium transition-colors hover:text-foreground"
+            className="whitespace-nowrap text-xs font-medium transition-colors hover:text-foreground xl:text-sm"
           >
             Contact
           </Link>
           <Link
             to="/_authenticated/new-request"
-            className="inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold text-white shadow-sm transition-transform hover:-translate-y-0.5"
+            className="inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full px-3 py-2 text-xs font-semibold text-white shadow-sm transition-transform hover:-translate-y-0.5 xl:px-4 xl:text-sm"
             style={{ backgroundColor: "var(--brand-red)" }}
           >
             <Rocket className="h-4 w-4" /> Démarrer
