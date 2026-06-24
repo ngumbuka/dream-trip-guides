@@ -148,12 +148,12 @@ export function Header() {
             </Link>
           )}
         </nav>
-        <button className="md:hidden" onClick={() => setOpen((v) => !v)} aria-label="Menu">
+        <button className="lg:hidden" onClick={() => setOpen((v) => !v)} aria-label="Menu">
           {open ? <X /> : <Menu />}
         </button>
       </div>
       {open && (
-        <div className="border-t border-border bg-background md:hidden">
+        <div className="border-t border-border bg-background lg:hidden">
           <div className="mx-auto flex max-w-7xl flex-col gap-1 px-6 py-4">
             <Link
               to="/_authenticated/new-request"
