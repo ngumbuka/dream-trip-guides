@@ -18,7 +18,6 @@ const serviceItems = [
 
 export function Header() {
   const [open, setOpen] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
   const [userOpen, setUserOpen] = useState(false);
   const { user, loading } = useAuthUser();
   const navigate = useNavigate();
@@ -42,65 +41,43 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/85 backdrop-blur-md">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4">
-        <Link to="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-4">
+        <Link to="/" className="flex shrink-0 items-center gap-3" onClick={() => setOpen(false)}>
           <img src={logo} alt="VoyageonsEnsemble" className="h-10 w-auto" width={120} height={40} />
           <span
-            className="hidden text-lg font-semibold tracking-tight text-foreground sm:inline"
+            className="hidden text-lg font-semibold tracking-tight text-foreground 2xl:inline"
             style={{ fontFamily: "var(--font-display)" }}
           >
             Voyageons<span style={{ color: "var(--brand-red)" }}>Ensemble</span>
           </span>
         </Link>
-        <nav className="hidden items-center gap-5 lg:gap-6 md:flex">
+        <nav className="hidden items-center gap-2 lg:gap-3 xl:gap-4 lg:flex">
           <Link
             to="/"
             activeOptions={{ exact: true }}
             activeProps={{ className: "text-foreground" }}
             inactiveProps={{ className: "text-muted-foreground" }}
-            className="whitespace-nowrap text-sm font-medium transition-colors hover:text-foreground"
+            className="whitespace-nowrap text-xs font-medium transition-colors hover:text-foreground xl:text-sm"
           >
             Accueil
           </Link>
-          <div
-            className="group relative"
-            onMouseEnter={() => setServicesOpen(true)}
-            onMouseLeave={() => setServicesOpen(false)}
-          >
-            <button className="inline-flex items-center gap-1 whitespace-nowrap text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
-              Services
-              <ChevronDown className="h-3.5 w-3.5 transition-transform group-hover:rotate-180" />
-            </button>
-            {servicesOpen && (
-              <div className="absolute left-0 top-full z-50 w-56 pt-2">
-                <div className="overflow-hidden rounded-2xl border border-border bg-background shadow-[var(--shadow-elegant)]">
-                  <Link
-                    to="/services"
-                    onClick={() => setServicesOpen(false)}
-                    className="block whitespace-nowrap border-b border-border px-5 py-3 text-sm font-medium text-foreground hover:bg-muted"
-                  >
-                    Tous nos services
-                  </Link>
-                  {serviceItems.map((s) => (
-                    <Link
-                      key={s.to}
-                      to={s.to}
-                      onClick={() => setServicesOpen(false)}
-                      className="block whitespace-nowrap px-5 py-3 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
-                    >
-                      {s.label}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
+          {serviceItems.map((s) => (
+            <Link
+              key={s.to}
+              to={s.to}
+              activeProps={{ className: "text-foreground" }}
+              inactiveProps={{ className: "text-muted-foreground" }}
+              className="whitespace-nowrap text-xs font-medium transition-colors hover:text-foreground xl:text-sm"
+            >
+              {s.label}
+            </Link>
+          ))}
 
           <Link
             to="/about"
             activeProps={{ className: "text-foreground" }}
             inactiveProps={{ className: "text-muted-foreground" }}
-            className="whitespace-nowrap text-sm font-medium transition-colors hover:text-foreground"
+            className="whitespace-nowrap text-xs font-medium transition-colors hover:text-foreground xl:text-sm"
           >
             À propos
           </Link>
@@ -108,22 +85,22 @@ export function Header() {
             to="/contact"
             activeProps={{ className: "text-foreground" }}
             inactiveProps={{ className: "text-muted-foreground" }}
-            className="whitespace-nowrap text-sm font-medium transition-colors hover:text-foreground"
+            className="whitespace-nowrap text-xs font-medium transition-colors hover:text-foreground xl:text-sm"
           >
             Contact
           </Link>
           <Link
             to="/_authenticated/new-request"
-            className="inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold text-white shadow-sm transition-transform hover:-translate-y-0.5 lg:px-5"
+            className="inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full px-3 py-2 text-xs font-semibold text-white shadow-sm transition-transform hover:-translate-y-0.5 xl:px-4 xl:text-sm"
             style={{ backgroundColor: "var(--brand-red)" }}
           >
             <Rocket className="h-4 w-4" /> Démarrer
           </Link>
           {loading ? null : user ? (
             <div className="relative" onMouseEnter={() => setUserOpen(true)} onMouseLeave={() => setUserOpen(false)}>
-              <button className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-1.5 text-sm font-medium text-foreground hover:bg-muted">
+              <button className="inline-flex items-center gap-2 rounded-full border border-border px-2 py-1.5 text-xs font-medium text-foreground hover:bg-muted xl:px-3 xl:text-sm">
                 <UserCircle2 className="h-5 w-5" />
-                <span className="max-w-[140px] truncate">{user.email}</span>
+                <span className="max-w-[100px] truncate xl:max-w-[140px]">{user.email}</span>
                 <ChevronDown className="h-3.5 w-3.5" />
               </button>
               {userOpen && (
@@ -165,18 +142,18 @@ export function Header() {
           ) : (
             <Link
               to="/auth"
-              className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
+              className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-2 text-xs font-semibold text-foreground transition-colors hover:bg-muted xl:px-5 xl:text-sm"
             >
               <LogIn className="h-4 w-4" /> Connexion
             </Link>
           )}
         </nav>
-        <button className="md:hidden" onClick={() => setOpen((v) => !v)} aria-label="Menu">
+        <button className="lg:hidden" onClick={() => setOpen((v) => !v)} aria-label="Menu">
           {open ? <X /> : <Menu />}
         </button>
       </div>
       {open && (
-        <div className="border-t border-border bg-background md:hidden">
+        <div className="border-t border-border bg-background lg:hidden">
           <div className="mx-auto flex max-w-7xl flex-col gap-1 px-6 py-4">
             <Link
               to="/_authenticated/new-request"
