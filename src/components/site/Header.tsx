@@ -98,9 +98,9 @@ export function Header() {
           </Link>
           {loading ? null : user ? (
             <div className="relative" onMouseEnter={() => setUserOpen(true)} onMouseLeave={() => setUserOpen(false)}>
-              <button className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-1.5 text-sm font-medium text-foreground hover:bg-muted">
+              <button className="inline-flex items-center gap-2 rounded-full border border-border px-2 py-1.5 text-xs font-medium text-foreground hover:bg-muted xl:px-3 xl:text-sm">
                 <UserCircle2 className="h-5 w-5" />
-                <span className="max-w-[140px] truncate">{user.email}</span>
+                <span className="max-w-[100px] truncate xl:max-w-[140px]">{user.email}</span>
                 <ChevronDown className="h-3.5 w-3.5" />
               </button>
               {userOpen && (
@@ -142,7 +142,7 @@ export function Header() {
           ) : (
             <Link
               to="/auth"
-              className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
+              className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-2 text-xs font-semibold text-foreground transition-colors hover:bg-muted xl:px-5 xl:text-sm"
             >
               <LogIn className="h-4 w-4" /> Connexion
             </Link>
