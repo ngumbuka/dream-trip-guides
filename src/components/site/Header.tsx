@@ -45,7 +45,7 @@ export function Header() {
         <Link to="/" className="flex shrink-0 items-center gap-3" onClick={() => setOpen(false)}>
           <img src={logo} alt="VoyageonsEnsemble" className="h-10 w-auto" width={120} height={40} />
           <span
-            className="hidden text-lg font-semibold tracking-tight text-foreground xl:inline"
+            className="hidden text-lg font-semibold tracking-tight text-foreground 2xl:inline"
             style={{ fontFamily: "var(--font-display)" }}
           >
             Voyageons<span style={{ color: "var(--brand-red)" }}>Ensemble</span>
