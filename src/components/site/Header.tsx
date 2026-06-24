@@ -41,17 +41,17 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/85 backdrop-blur-md">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4">
-        <Link to="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-4">
+        <Link to="/" className="flex shrink-0 items-center gap-3" onClick={() => setOpen(false)}>
           <img src={logo} alt="VoyageonsEnsemble" className="h-10 w-auto" width={120} height={40} />
           <span
-            className="hidden text-lg font-semibold tracking-tight text-foreground sm:inline"
+            className="hidden text-lg font-semibold tracking-tight text-foreground xl:inline"
             style={{ fontFamily: "var(--font-display)" }}
           >
             Voyageons<span style={{ color: "var(--brand-red)" }}>Ensemble</span>
           </span>
         </Link>
-        <nav className="hidden items-center gap-3 lg:gap-4 xl:gap-5 lg:flex">
+        <nav className="hidden items-center gap-2 lg:gap-3 xl:gap-4 lg:flex">
           <Link
             to="/"
             activeOptions={{ exact: true }}
