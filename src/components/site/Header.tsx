@@ -18,7 +18,6 @@ const serviceItems = [
 
 export function Header() {
   const [open, setOpen] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
   const [userOpen, setUserOpen] = useState(false);
   const { user, loading } = useAuthUser();
   const navigate = useNavigate();
