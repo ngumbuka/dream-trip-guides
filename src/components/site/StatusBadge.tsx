@@ -11,7 +11,10 @@ const MAP: Record<string, { label: string; bg: string; fg: string }> = {
 export function StatusBadge({ status }: { status: string }) {
   const m = MAP[status] ?? { label: status, bg: "#e5e7eb", fg: "#111827" };
   return (
-    <span className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold" style={{ backgroundColor: m.bg, color: m.fg }}>
+    <span
+      className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
+      style={{ backgroundColor: m.bg, color: m.fg }}
+    >
       {m.label}
     </span>
   );

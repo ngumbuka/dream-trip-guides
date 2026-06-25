@@ -19,13 +19,41 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as ServicesVisiteCamerounRouteImport } from './routes/services.visite-cameroun'
 import { Route as ServicesVisaSchengenRouteImport } from './routes/services.visa-schengen'
+import { Route as ServicesTarifsNegociesRouteImport } from './routes/services.tarifs-negocies'
+import { Route as ServicesSuiviRecoursRouteImport } from './routes/services.suivi-recours'
+import { Route as ServicesSignatureBailRouteImport } from './routes/services.signature-bail'
+import { Route as ServicesSeoAdsRouteImport } from './routes/services.seo-ads'
+import { Route as ServicesSelectionLogementsRouteImport } from './routes/services.selection-logements'
+import { Route as ServicesSafarisExcursionsRouteImport } from './routes/services.safaris-excursions'
+import { Route as ServicesReservationsVfsRouteImport } from './routes/services.reservations-vfs'
+import { Route as ServicesReseauxSociauxRouteImport } from './routes/services.reseaux-sociaux'
+import { Route as ServicesReportingPerformanceRouteImport } from './routes/services.reporting-performance'
+import { Route as ServicesRendezVousConsulatRouteImport } from './routes/services.rendez-vous-consulat'
+import { Route as ServicesProjetEtudesRouteImport } from './routes/services.projet-etudes'
+import { Route as ServicesProgrammeIntegrationRouteImport } from './routes/services.programme-integration'
+import { Route as ServicesPlateformesAdmissionRouteImport } from './routes/services.plateformes-admission'
 import { Route as ServicesLongSejoursRouteImport } from './routes/services.long-sejours'
 import { Route as ServicesLogementRouteImport } from './routes/services.logement'
+import { Route as ServicesLettreAcceptationRouteImport } from './routes/services.lettre-acceptation'
+import { Route as ServicesIdentiteVisuelleRouteImport } from './routes/services.identite-visuelle'
+import { Route as ServicesHotlineContinueRouteImport } from './routes/services.hotline-continue'
+import { Route as ServicesGestionBagagesRouteImport } from './routes/services.gestion-bagages'
+import { Route as ServicesGastronomieLocaleRouteImport } from './routes/services.gastronomie-locale'
+import { Route as ServicesFormulairesPiecesRouteImport } from './routes/services.formulaires-pieces'
+import { Route as ServicesEmissionBilletsRouteImport } from './routes/services.emission-billets'
 import { Route as ServicesDossierVisaRouteImport } from './routes/services.dossier-visa'
+import { Route as ServicesDossierLocataireRouteImport } from './routes/services.dossier-locataire'
+import { Route as ServicesCreationSitesWebRouteImport } from './routes/services.creation-sites-web'
 import { Route as ServicesCourtSejoursRouteImport } from './routes/services.court-sejours'
+import { Route as ServicesCompteBloqueRouteImport } from './routes/services.compte-bloque'
 import { Route as ServicesCommunityManagementRouteImport } from './routes/services.community-management'
+import { Route as ServicesCircuitsMultiPaysRouteImport } from './routes/services.circuits-multi-pays'
+import { Route as ServicesChoixEtablissementsRouteImport } from './routes/services.choix-etablissements'
+import { Route as ServicesChauffeurTransfertsRouteImport } from './routes/services.chauffeur-transferts'
 import { Route as ServicesCautionAviRouteImport } from './routes/services.caution-avi'
 import { Route as ServicesBilletsAvionRouteImport } from './routes/services.billets-avion'
+import { Route as ServicesAuditDossierVisaRouteImport } from './routes/services.audit-dossier-visa'
+import { Route as ServicesAssuranceVisaRouteImport } from './routes/services.assurance-visa'
 import { Route as ServicesAdmissionEtudesRouteImport } from './routes/services.admission-etudes'
 import { Route as ServicesAccueilIntegrationRouteImport } from './routes/services.accueil-integration'
 import { Route as DestinationsCountryRouteImport } from './routes/destinations.$country'
@@ -90,6 +118,77 @@ const ServicesVisaSchengenRoute = ServicesVisaSchengenRouteImport.update({
   path: '/services/visa-schengen',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesTarifsNegociesRoute = ServicesTarifsNegociesRouteImport.update({
+  id: '/services/tarifs-negocies',
+  path: '/services/tarifs-negocies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesSuiviRecoursRoute = ServicesSuiviRecoursRouteImport.update({
+  id: '/services/suivi-recours',
+  path: '/services/suivi-recours',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesSignatureBailRoute = ServicesSignatureBailRouteImport.update({
+  id: '/services/signature-bail',
+  path: '/services/signature-bail',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesSeoAdsRoute = ServicesSeoAdsRouteImport.update({
+  id: '/services/seo-ads',
+  path: '/services/seo-ads',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesSelectionLogementsRoute =
+  ServicesSelectionLogementsRouteImport.update({
+    id: '/services/selection-logements',
+    path: '/services/selection-logements',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ServicesSafarisExcursionsRoute =
+  ServicesSafarisExcursionsRouteImport.update({
+    id: '/services/safaris-excursions',
+    path: '/services/safaris-excursions',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ServicesReservationsVfsRoute = ServicesReservationsVfsRouteImport.update({
+  id: '/services/reservations-vfs',
+  path: '/services/reservations-vfs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesReseauxSociauxRoute = ServicesReseauxSociauxRouteImport.update({
+  id: '/services/reseaux-sociaux',
+  path: '/services/reseaux-sociaux',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesReportingPerformanceRoute =
+  ServicesReportingPerformanceRouteImport.update({
+    id: '/services/reporting-performance',
+    path: '/services/reporting-performance',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ServicesRendezVousConsulatRoute =
+  ServicesRendezVousConsulatRouteImport.update({
+    id: '/services/rendez-vous-consulat',
+    path: '/services/rendez-vous-consulat',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ServicesProjetEtudesRoute = ServicesProjetEtudesRouteImport.update({
+  id: '/services/projet-etudes',
+  path: '/services/projet-etudes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesProgrammeIntegrationRoute =
+  ServicesProgrammeIntegrationRouteImport.update({
+    id: '/services/programme-integration',
+    path: '/services/programme-integration',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ServicesPlateformesAdmissionRoute =
+  ServicesPlateformesAdmissionRouteImport.update({
+    id: '/services/plateformes-admission',
+    path: '/services/plateformes-admission',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ServicesLongSejoursRoute = ServicesLongSejoursRouteImport.update({
   id: '/services/long-sejours',
   path: '/services/long-sejours',
@@ -100,20 +199,94 @@ const ServicesLogementRoute = ServicesLogementRouteImport.update({
   path: '/services/logement',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesLettreAcceptationRoute =
+  ServicesLettreAcceptationRouteImport.update({
+    id: '/services/lettre-acceptation',
+    path: '/services/lettre-acceptation',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ServicesIdentiteVisuelleRoute =
+  ServicesIdentiteVisuelleRouteImport.update({
+    id: '/services/identite-visuelle',
+    path: '/services/identite-visuelle',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ServicesHotlineContinueRoute = ServicesHotlineContinueRouteImport.update({
+  id: '/services/hotline-continue',
+  path: '/services/hotline-continue',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesGestionBagagesRoute = ServicesGestionBagagesRouteImport.update({
+  id: '/services/gestion-bagages',
+  path: '/services/gestion-bagages',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesGastronomieLocaleRoute =
+  ServicesGastronomieLocaleRouteImport.update({
+    id: '/services/gastronomie-locale',
+    path: '/services/gastronomie-locale',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ServicesFormulairesPiecesRoute =
+  ServicesFormulairesPiecesRouteImport.update({
+    id: '/services/formulaires-pieces',
+    path: '/services/formulaires-pieces',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ServicesEmissionBilletsRoute = ServicesEmissionBilletsRouteImport.update({
+  id: '/services/emission-billets',
+  path: '/services/emission-billets',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesDossierVisaRoute = ServicesDossierVisaRouteImport.update({
   id: '/services/dossier-visa',
   path: '/services/dossier-visa',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesDossierLocataireRoute =
+  ServicesDossierLocataireRouteImport.update({
+    id: '/services/dossier-locataire',
+    path: '/services/dossier-locataire',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ServicesCreationSitesWebRoute =
+  ServicesCreationSitesWebRouteImport.update({
+    id: '/services/creation-sites-web',
+    path: '/services/creation-sites-web',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ServicesCourtSejoursRoute = ServicesCourtSejoursRouteImport.update({
   id: '/services/court-sejours',
   path: '/services/court-sejours',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesCompteBloqueRoute = ServicesCompteBloqueRouteImport.update({
+  id: '/services/compte-bloque',
+  path: '/services/compte-bloque',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesCommunityManagementRoute =
   ServicesCommunityManagementRouteImport.update({
     id: '/services/community-management',
     path: '/services/community-management',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ServicesCircuitsMultiPaysRoute =
+  ServicesCircuitsMultiPaysRouteImport.update({
+    id: '/services/circuits-multi-pays',
+    path: '/services/circuits-multi-pays',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ServicesChoixEtablissementsRoute =
+  ServicesChoixEtablissementsRouteImport.update({
+    id: '/services/choix-etablissements',
+    path: '/services/choix-etablissements',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ServicesChauffeurTransfertsRoute =
+  ServicesChauffeurTransfertsRouteImport.update({
+    id: '/services/chauffeur-transferts',
+    path: '/services/chauffeur-transferts',
     getParentRoute: () => rootRouteImport,
   } as any)
 const ServicesCautionAviRoute = ServicesCautionAviRouteImport.update({
@@ -124,6 +297,17 @@ const ServicesCautionAviRoute = ServicesCautionAviRouteImport.update({
 const ServicesBilletsAvionRoute = ServicesBilletsAvionRouteImport.update({
   id: '/services/billets-avion',
   path: '/services/billets-avion',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesAuditDossierVisaRoute =
+  ServicesAuditDossierVisaRouteImport.update({
+    id: '/services/audit-dossier-visa',
+    path: '/services/audit-dossier-visa',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ServicesAssuranceVisaRoute = ServicesAssuranceVisaRouteImport.update({
+  id: '/services/assurance-visa',
+  path: '/services/assurance-visa',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesAdmissionEtudesRoute = ServicesAdmissionEtudesRouteImport.update({
@@ -213,13 +397,41 @@ export interface FileRoutesByFullPath {
   '/destinations/$country': typeof DestinationsCountryRoute
   '/services/accueil-integration': typeof ServicesAccueilIntegrationRoute
   '/services/admission-etudes': typeof ServicesAdmissionEtudesRoute
+  '/services/assurance-visa': typeof ServicesAssuranceVisaRoute
+  '/services/audit-dossier-visa': typeof ServicesAuditDossierVisaRoute
   '/services/billets-avion': typeof ServicesBilletsAvionRoute
   '/services/caution-avi': typeof ServicesCautionAviRoute
+  '/services/chauffeur-transferts': typeof ServicesChauffeurTransfertsRoute
+  '/services/choix-etablissements': typeof ServicesChoixEtablissementsRoute
+  '/services/circuits-multi-pays': typeof ServicesCircuitsMultiPaysRoute
   '/services/community-management': typeof ServicesCommunityManagementRoute
+  '/services/compte-bloque': typeof ServicesCompteBloqueRoute
   '/services/court-sejours': typeof ServicesCourtSejoursRoute
+  '/services/creation-sites-web': typeof ServicesCreationSitesWebRoute
+  '/services/dossier-locataire': typeof ServicesDossierLocataireRoute
   '/services/dossier-visa': typeof ServicesDossierVisaRoute
+  '/services/emission-billets': typeof ServicesEmissionBilletsRoute
+  '/services/formulaires-pieces': typeof ServicesFormulairesPiecesRoute
+  '/services/gastronomie-locale': typeof ServicesGastronomieLocaleRoute
+  '/services/gestion-bagages': typeof ServicesGestionBagagesRoute
+  '/services/hotline-continue': typeof ServicesHotlineContinueRoute
+  '/services/identite-visuelle': typeof ServicesIdentiteVisuelleRoute
+  '/services/lettre-acceptation': typeof ServicesLettreAcceptationRoute
   '/services/logement': typeof ServicesLogementRoute
   '/services/long-sejours': typeof ServicesLongSejoursRoute
+  '/services/plateformes-admission': typeof ServicesPlateformesAdmissionRoute
+  '/services/programme-integration': typeof ServicesProgrammeIntegrationRoute
+  '/services/projet-etudes': typeof ServicesProjetEtudesRoute
+  '/services/rendez-vous-consulat': typeof ServicesRendezVousConsulatRoute
+  '/services/reporting-performance': typeof ServicesReportingPerformanceRoute
+  '/services/reseaux-sociaux': typeof ServicesReseauxSociauxRoute
+  '/services/reservations-vfs': typeof ServicesReservationsVfsRoute
+  '/services/safaris-excursions': typeof ServicesSafarisExcursionsRoute
+  '/services/selection-logements': typeof ServicesSelectionLogementsRoute
+  '/services/seo-ads': typeof ServicesSeoAdsRoute
+  '/services/signature-bail': typeof ServicesSignatureBailRoute
+  '/services/suivi-recours': typeof ServicesSuiviRecoursRoute
+  '/services/tarifs-negocies': typeof ServicesTarifsNegociesRoute
   '/services/visa-schengen': typeof ServicesVisaSchengenRoute
   '/services/visite-cameroun': typeof ServicesVisiteCamerounRoute
   '/services/': typeof ServicesIndexRoute
@@ -245,13 +457,41 @@ export interface FileRoutesByTo {
   '/destinations/$country': typeof DestinationsCountryRoute
   '/services/accueil-integration': typeof ServicesAccueilIntegrationRoute
   '/services/admission-etudes': typeof ServicesAdmissionEtudesRoute
+  '/services/assurance-visa': typeof ServicesAssuranceVisaRoute
+  '/services/audit-dossier-visa': typeof ServicesAuditDossierVisaRoute
   '/services/billets-avion': typeof ServicesBilletsAvionRoute
   '/services/caution-avi': typeof ServicesCautionAviRoute
+  '/services/chauffeur-transferts': typeof ServicesChauffeurTransfertsRoute
+  '/services/choix-etablissements': typeof ServicesChoixEtablissementsRoute
+  '/services/circuits-multi-pays': typeof ServicesCircuitsMultiPaysRoute
   '/services/community-management': typeof ServicesCommunityManagementRoute
+  '/services/compte-bloque': typeof ServicesCompteBloqueRoute
   '/services/court-sejours': typeof ServicesCourtSejoursRoute
+  '/services/creation-sites-web': typeof ServicesCreationSitesWebRoute
+  '/services/dossier-locataire': typeof ServicesDossierLocataireRoute
   '/services/dossier-visa': typeof ServicesDossierVisaRoute
+  '/services/emission-billets': typeof ServicesEmissionBilletsRoute
+  '/services/formulaires-pieces': typeof ServicesFormulairesPiecesRoute
+  '/services/gastronomie-locale': typeof ServicesGastronomieLocaleRoute
+  '/services/gestion-bagages': typeof ServicesGestionBagagesRoute
+  '/services/hotline-continue': typeof ServicesHotlineContinueRoute
+  '/services/identite-visuelle': typeof ServicesIdentiteVisuelleRoute
+  '/services/lettre-acceptation': typeof ServicesLettreAcceptationRoute
   '/services/logement': typeof ServicesLogementRoute
   '/services/long-sejours': typeof ServicesLongSejoursRoute
+  '/services/plateformes-admission': typeof ServicesPlateformesAdmissionRoute
+  '/services/programme-integration': typeof ServicesProgrammeIntegrationRoute
+  '/services/projet-etudes': typeof ServicesProjetEtudesRoute
+  '/services/rendez-vous-consulat': typeof ServicesRendezVousConsulatRoute
+  '/services/reporting-performance': typeof ServicesReportingPerformanceRoute
+  '/services/reseaux-sociaux': typeof ServicesReseauxSociauxRoute
+  '/services/reservations-vfs': typeof ServicesReservationsVfsRoute
+  '/services/safaris-excursions': typeof ServicesSafarisExcursionsRoute
+  '/services/selection-logements': typeof ServicesSelectionLogementsRoute
+  '/services/seo-ads': typeof ServicesSeoAdsRoute
+  '/services/signature-bail': typeof ServicesSignatureBailRoute
+  '/services/suivi-recours': typeof ServicesSuiviRecoursRoute
+  '/services/tarifs-negocies': typeof ServicesTarifsNegociesRoute
   '/services/visa-schengen': typeof ServicesVisaSchengenRoute
   '/services/visite-cameroun': typeof ServicesVisiteCamerounRoute
   '/services': typeof ServicesIndexRoute
@@ -279,13 +519,41 @@ export interface FileRoutesById {
   '/destinations/$country': typeof DestinationsCountryRoute
   '/services/accueil-integration': typeof ServicesAccueilIntegrationRoute
   '/services/admission-etudes': typeof ServicesAdmissionEtudesRoute
+  '/services/assurance-visa': typeof ServicesAssuranceVisaRoute
+  '/services/audit-dossier-visa': typeof ServicesAuditDossierVisaRoute
   '/services/billets-avion': typeof ServicesBilletsAvionRoute
   '/services/caution-avi': typeof ServicesCautionAviRoute
+  '/services/chauffeur-transferts': typeof ServicesChauffeurTransfertsRoute
+  '/services/choix-etablissements': typeof ServicesChoixEtablissementsRoute
+  '/services/circuits-multi-pays': typeof ServicesCircuitsMultiPaysRoute
   '/services/community-management': typeof ServicesCommunityManagementRoute
+  '/services/compte-bloque': typeof ServicesCompteBloqueRoute
   '/services/court-sejours': typeof ServicesCourtSejoursRoute
+  '/services/creation-sites-web': typeof ServicesCreationSitesWebRoute
+  '/services/dossier-locataire': typeof ServicesDossierLocataireRoute
   '/services/dossier-visa': typeof ServicesDossierVisaRoute
+  '/services/emission-billets': typeof ServicesEmissionBilletsRoute
+  '/services/formulaires-pieces': typeof ServicesFormulairesPiecesRoute
+  '/services/gastronomie-locale': typeof ServicesGastronomieLocaleRoute
+  '/services/gestion-bagages': typeof ServicesGestionBagagesRoute
+  '/services/hotline-continue': typeof ServicesHotlineContinueRoute
+  '/services/identite-visuelle': typeof ServicesIdentiteVisuelleRoute
+  '/services/lettre-acceptation': typeof ServicesLettreAcceptationRoute
   '/services/logement': typeof ServicesLogementRoute
   '/services/long-sejours': typeof ServicesLongSejoursRoute
+  '/services/plateformes-admission': typeof ServicesPlateformesAdmissionRoute
+  '/services/programme-integration': typeof ServicesProgrammeIntegrationRoute
+  '/services/projet-etudes': typeof ServicesProjetEtudesRoute
+  '/services/rendez-vous-consulat': typeof ServicesRendezVousConsulatRoute
+  '/services/reporting-performance': typeof ServicesReportingPerformanceRoute
+  '/services/reseaux-sociaux': typeof ServicesReseauxSociauxRoute
+  '/services/reservations-vfs': typeof ServicesReservationsVfsRoute
+  '/services/safaris-excursions': typeof ServicesSafarisExcursionsRoute
+  '/services/selection-logements': typeof ServicesSelectionLogementsRoute
+  '/services/seo-ads': typeof ServicesSeoAdsRoute
+  '/services/signature-bail': typeof ServicesSignatureBailRoute
+  '/services/suivi-recours': typeof ServicesSuiviRecoursRoute
+  '/services/tarifs-negocies': typeof ServicesTarifsNegociesRoute
   '/services/visa-schengen': typeof ServicesVisaSchengenRoute
   '/services/visite-cameroun': typeof ServicesVisiteCamerounRoute
   '/services/': typeof ServicesIndexRoute
@@ -313,13 +581,41 @@ export interface FileRouteTypes {
     | '/destinations/$country'
     | '/services/accueil-integration'
     | '/services/admission-etudes'
+    | '/services/assurance-visa'
+    | '/services/audit-dossier-visa'
     | '/services/billets-avion'
     | '/services/caution-avi'
+    | '/services/chauffeur-transferts'
+    | '/services/choix-etablissements'
+    | '/services/circuits-multi-pays'
     | '/services/community-management'
+    | '/services/compte-bloque'
     | '/services/court-sejours'
+    | '/services/creation-sites-web'
+    | '/services/dossier-locataire'
     | '/services/dossier-visa'
+    | '/services/emission-billets'
+    | '/services/formulaires-pieces'
+    | '/services/gastronomie-locale'
+    | '/services/gestion-bagages'
+    | '/services/hotline-continue'
+    | '/services/identite-visuelle'
+    | '/services/lettre-acceptation'
     | '/services/logement'
     | '/services/long-sejours'
+    | '/services/plateformes-admission'
+    | '/services/programme-integration'
+    | '/services/projet-etudes'
+    | '/services/rendez-vous-consulat'
+    | '/services/reporting-performance'
+    | '/services/reseaux-sociaux'
+    | '/services/reservations-vfs'
+    | '/services/safaris-excursions'
+    | '/services/selection-logements'
+    | '/services/seo-ads'
+    | '/services/signature-bail'
+    | '/services/suivi-recours'
+    | '/services/tarifs-negocies'
     | '/services/visa-schengen'
     | '/services/visite-cameroun'
     | '/services/'
@@ -345,13 +641,41 @@ export interface FileRouteTypes {
     | '/destinations/$country'
     | '/services/accueil-integration'
     | '/services/admission-etudes'
+    | '/services/assurance-visa'
+    | '/services/audit-dossier-visa'
     | '/services/billets-avion'
     | '/services/caution-avi'
+    | '/services/chauffeur-transferts'
+    | '/services/choix-etablissements'
+    | '/services/circuits-multi-pays'
     | '/services/community-management'
+    | '/services/compte-bloque'
     | '/services/court-sejours'
+    | '/services/creation-sites-web'
+    | '/services/dossier-locataire'
     | '/services/dossier-visa'
+    | '/services/emission-billets'
+    | '/services/formulaires-pieces'
+    | '/services/gastronomie-locale'
+    | '/services/gestion-bagages'
+    | '/services/hotline-continue'
+    | '/services/identite-visuelle'
+    | '/services/lettre-acceptation'
     | '/services/logement'
     | '/services/long-sejours'
+    | '/services/plateformes-admission'
+    | '/services/programme-integration'
+    | '/services/projet-etudes'
+    | '/services/rendez-vous-consulat'
+    | '/services/reporting-performance'
+    | '/services/reseaux-sociaux'
+    | '/services/reservations-vfs'
+    | '/services/safaris-excursions'
+    | '/services/selection-logements'
+    | '/services/seo-ads'
+    | '/services/signature-bail'
+    | '/services/suivi-recours'
+    | '/services/tarifs-negocies'
     | '/services/visa-schengen'
     | '/services/visite-cameroun'
     | '/services'
@@ -378,13 +702,41 @@ export interface FileRouteTypes {
     | '/destinations/$country'
     | '/services/accueil-integration'
     | '/services/admission-etudes'
+    | '/services/assurance-visa'
+    | '/services/audit-dossier-visa'
     | '/services/billets-avion'
     | '/services/caution-avi'
+    | '/services/chauffeur-transferts'
+    | '/services/choix-etablissements'
+    | '/services/circuits-multi-pays'
     | '/services/community-management'
+    | '/services/compte-bloque'
     | '/services/court-sejours'
+    | '/services/creation-sites-web'
+    | '/services/dossier-locataire'
     | '/services/dossier-visa'
+    | '/services/emission-billets'
+    | '/services/formulaires-pieces'
+    | '/services/gastronomie-locale'
+    | '/services/gestion-bagages'
+    | '/services/hotline-continue'
+    | '/services/identite-visuelle'
+    | '/services/lettre-acceptation'
     | '/services/logement'
     | '/services/long-sejours'
+    | '/services/plateformes-admission'
+    | '/services/programme-integration'
+    | '/services/projet-etudes'
+    | '/services/rendez-vous-consulat'
+    | '/services/reporting-performance'
+    | '/services/reseaux-sociaux'
+    | '/services/reservations-vfs'
+    | '/services/safaris-excursions'
+    | '/services/selection-logements'
+    | '/services/seo-ads'
+    | '/services/signature-bail'
+    | '/services/suivi-recours'
+    | '/services/tarifs-negocies'
     | '/services/visa-schengen'
     | '/services/visite-cameroun'
     | '/services/'
@@ -410,13 +762,41 @@ export interface RootRouteChildren {
   DestinationsCountryRoute: typeof DestinationsCountryRoute
   ServicesAccueilIntegrationRoute: typeof ServicesAccueilIntegrationRoute
   ServicesAdmissionEtudesRoute: typeof ServicesAdmissionEtudesRoute
+  ServicesAssuranceVisaRoute: typeof ServicesAssuranceVisaRoute
+  ServicesAuditDossierVisaRoute: typeof ServicesAuditDossierVisaRoute
   ServicesBilletsAvionRoute: typeof ServicesBilletsAvionRoute
   ServicesCautionAviRoute: typeof ServicesCautionAviRoute
+  ServicesChauffeurTransfertsRoute: typeof ServicesChauffeurTransfertsRoute
+  ServicesChoixEtablissementsRoute: typeof ServicesChoixEtablissementsRoute
+  ServicesCircuitsMultiPaysRoute: typeof ServicesCircuitsMultiPaysRoute
   ServicesCommunityManagementRoute: typeof ServicesCommunityManagementRoute
+  ServicesCompteBloqueRoute: typeof ServicesCompteBloqueRoute
   ServicesCourtSejoursRoute: typeof ServicesCourtSejoursRoute
+  ServicesCreationSitesWebRoute: typeof ServicesCreationSitesWebRoute
+  ServicesDossierLocataireRoute: typeof ServicesDossierLocataireRoute
   ServicesDossierVisaRoute: typeof ServicesDossierVisaRoute
+  ServicesEmissionBilletsRoute: typeof ServicesEmissionBilletsRoute
+  ServicesFormulairesPiecesRoute: typeof ServicesFormulairesPiecesRoute
+  ServicesGastronomieLocaleRoute: typeof ServicesGastronomieLocaleRoute
+  ServicesGestionBagagesRoute: typeof ServicesGestionBagagesRoute
+  ServicesHotlineContinueRoute: typeof ServicesHotlineContinueRoute
+  ServicesIdentiteVisuelleRoute: typeof ServicesIdentiteVisuelleRoute
+  ServicesLettreAcceptationRoute: typeof ServicesLettreAcceptationRoute
   ServicesLogementRoute: typeof ServicesLogementRoute
   ServicesLongSejoursRoute: typeof ServicesLongSejoursRoute
+  ServicesPlateformesAdmissionRoute: typeof ServicesPlateformesAdmissionRoute
+  ServicesProgrammeIntegrationRoute: typeof ServicesProgrammeIntegrationRoute
+  ServicesProjetEtudesRoute: typeof ServicesProjetEtudesRoute
+  ServicesRendezVousConsulatRoute: typeof ServicesRendezVousConsulatRoute
+  ServicesReportingPerformanceRoute: typeof ServicesReportingPerformanceRoute
+  ServicesReseauxSociauxRoute: typeof ServicesReseauxSociauxRoute
+  ServicesReservationsVfsRoute: typeof ServicesReservationsVfsRoute
+  ServicesSafarisExcursionsRoute: typeof ServicesSafarisExcursionsRoute
+  ServicesSelectionLogementsRoute: typeof ServicesSelectionLogementsRoute
+  ServicesSeoAdsRoute: typeof ServicesSeoAdsRoute
+  ServicesSignatureBailRoute: typeof ServicesSignatureBailRoute
+  ServicesSuiviRecoursRoute: typeof ServicesSuiviRecoursRoute
+  ServicesTarifsNegociesRoute: typeof ServicesTarifsNegociesRoute
   ServicesVisaSchengenRoute: typeof ServicesVisaSchengenRoute
   ServicesVisiteCamerounRoute: typeof ServicesVisiteCamerounRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
@@ -498,6 +878,97 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesVisaSchengenRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/tarifs-negocies': {
+      id: '/services/tarifs-negocies'
+      path: '/services/tarifs-negocies'
+      fullPath: '/services/tarifs-negocies'
+      preLoaderRoute: typeof ServicesTarifsNegociesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/suivi-recours': {
+      id: '/services/suivi-recours'
+      path: '/services/suivi-recours'
+      fullPath: '/services/suivi-recours'
+      preLoaderRoute: typeof ServicesSuiviRecoursRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/signature-bail': {
+      id: '/services/signature-bail'
+      path: '/services/signature-bail'
+      fullPath: '/services/signature-bail'
+      preLoaderRoute: typeof ServicesSignatureBailRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/seo-ads': {
+      id: '/services/seo-ads'
+      path: '/services/seo-ads'
+      fullPath: '/services/seo-ads'
+      preLoaderRoute: typeof ServicesSeoAdsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/selection-logements': {
+      id: '/services/selection-logements'
+      path: '/services/selection-logements'
+      fullPath: '/services/selection-logements'
+      preLoaderRoute: typeof ServicesSelectionLogementsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/safaris-excursions': {
+      id: '/services/safaris-excursions'
+      path: '/services/safaris-excursions'
+      fullPath: '/services/safaris-excursions'
+      preLoaderRoute: typeof ServicesSafarisExcursionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/reservations-vfs': {
+      id: '/services/reservations-vfs'
+      path: '/services/reservations-vfs'
+      fullPath: '/services/reservations-vfs'
+      preLoaderRoute: typeof ServicesReservationsVfsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/reseaux-sociaux': {
+      id: '/services/reseaux-sociaux'
+      path: '/services/reseaux-sociaux'
+      fullPath: '/services/reseaux-sociaux'
+      preLoaderRoute: typeof ServicesReseauxSociauxRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/reporting-performance': {
+      id: '/services/reporting-performance'
+      path: '/services/reporting-performance'
+      fullPath: '/services/reporting-performance'
+      preLoaderRoute: typeof ServicesReportingPerformanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/rendez-vous-consulat': {
+      id: '/services/rendez-vous-consulat'
+      path: '/services/rendez-vous-consulat'
+      fullPath: '/services/rendez-vous-consulat'
+      preLoaderRoute: typeof ServicesRendezVousConsulatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/projet-etudes': {
+      id: '/services/projet-etudes'
+      path: '/services/projet-etudes'
+      fullPath: '/services/projet-etudes'
+      preLoaderRoute: typeof ServicesProjetEtudesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/programme-integration': {
+      id: '/services/programme-integration'
+      path: '/services/programme-integration'
+      fullPath: '/services/programme-integration'
+      preLoaderRoute: typeof ServicesProgrammeIntegrationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/plateformes-admission': {
+      id: '/services/plateformes-admission'
+      path: '/services/plateformes-admission'
+      fullPath: '/services/plateformes-admission'
+      preLoaderRoute: typeof ServicesPlateformesAdmissionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services/long-sejours': {
       id: '/services/long-sejours'
       path: '/services/long-sejours'
@@ -512,11 +983,74 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesLogementRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/lettre-acceptation': {
+      id: '/services/lettre-acceptation'
+      path: '/services/lettre-acceptation'
+      fullPath: '/services/lettre-acceptation'
+      preLoaderRoute: typeof ServicesLettreAcceptationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/identite-visuelle': {
+      id: '/services/identite-visuelle'
+      path: '/services/identite-visuelle'
+      fullPath: '/services/identite-visuelle'
+      preLoaderRoute: typeof ServicesIdentiteVisuelleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/hotline-continue': {
+      id: '/services/hotline-continue'
+      path: '/services/hotline-continue'
+      fullPath: '/services/hotline-continue'
+      preLoaderRoute: typeof ServicesHotlineContinueRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/gestion-bagages': {
+      id: '/services/gestion-bagages'
+      path: '/services/gestion-bagages'
+      fullPath: '/services/gestion-bagages'
+      preLoaderRoute: typeof ServicesGestionBagagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/gastronomie-locale': {
+      id: '/services/gastronomie-locale'
+      path: '/services/gastronomie-locale'
+      fullPath: '/services/gastronomie-locale'
+      preLoaderRoute: typeof ServicesGastronomieLocaleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/formulaires-pieces': {
+      id: '/services/formulaires-pieces'
+      path: '/services/formulaires-pieces'
+      fullPath: '/services/formulaires-pieces'
+      preLoaderRoute: typeof ServicesFormulairesPiecesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/emission-billets': {
+      id: '/services/emission-billets'
+      path: '/services/emission-billets'
+      fullPath: '/services/emission-billets'
+      preLoaderRoute: typeof ServicesEmissionBilletsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services/dossier-visa': {
       id: '/services/dossier-visa'
       path: '/services/dossier-visa'
       fullPath: '/services/dossier-visa'
       preLoaderRoute: typeof ServicesDossierVisaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/dossier-locataire': {
+      id: '/services/dossier-locataire'
+      path: '/services/dossier-locataire'
+      fullPath: '/services/dossier-locataire'
+      preLoaderRoute: typeof ServicesDossierLocataireRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/creation-sites-web': {
+      id: '/services/creation-sites-web'
+      path: '/services/creation-sites-web'
+      fullPath: '/services/creation-sites-web'
+      preLoaderRoute: typeof ServicesCreationSitesWebRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services/court-sejours': {
@@ -526,11 +1060,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesCourtSejoursRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/compte-bloque': {
+      id: '/services/compte-bloque'
+      path: '/services/compte-bloque'
+      fullPath: '/services/compte-bloque'
+      preLoaderRoute: typeof ServicesCompteBloqueRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services/community-management': {
       id: '/services/community-management'
       path: '/services/community-management'
       fullPath: '/services/community-management'
       preLoaderRoute: typeof ServicesCommunityManagementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/circuits-multi-pays': {
+      id: '/services/circuits-multi-pays'
+      path: '/services/circuits-multi-pays'
+      fullPath: '/services/circuits-multi-pays'
+      preLoaderRoute: typeof ServicesCircuitsMultiPaysRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/choix-etablissements': {
+      id: '/services/choix-etablissements'
+      path: '/services/choix-etablissements'
+      fullPath: '/services/choix-etablissements'
+      preLoaderRoute: typeof ServicesChoixEtablissementsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/chauffeur-transferts': {
+      id: '/services/chauffeur-transferts'
+      path: '/services/chauffeur-transferts'
+      fullPath: '/services/chauffeur-transferts'
+      preLoaderRoute: typeof ServicesChauffeurTransfertsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services/caution-avi': {
@@ -545,6 +1107,20 @@ declare module '@tanstack/react-router' {
       path: '/services/billets-avion'
       fullPath: '/services/billets-avion'
       preLoaderRoute: typeof ServicesBilletsAvionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/audit-dossier-visa': {
+      id: '/services/audit-dossier-visa'
+      path: '/services/audit-dossier-visa'
+      fullPath: '/services/audit-dossier-visa'
+      preLoaderRoute: typeof ServicesAuditDossierVisaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/assurance-visa': {
+      id: '/services/assurance-visa'
+      path: '/services/assurance-visa'
+      fullPath: '/services/assurance-visa'
+      preLoaderRoute: typeof ServicesAssuranceVisaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services/admission-etudes': {
@@ -682,13 +1258,41 @@ const rootRouteChildren: RootRouteChildren = {
   DestinationsCountryRoute: DestinationsCountryRoute,
   ServicesAccueilIntegrationRoute: ServicesAccueilIntegrationRoute,
   ServicesAdmissionEtudesRoute: ServicesAdmissionEtudesRoute,
+  ServicesAssuranceVisaRoute: ServicesAssuranceVisaRoute,
+  ServicesAuditDossierVisaRoute: ServicesAuditDossierVisaRoute,
   ServicesBilletsAvionRoute: ServicesBilletsAvionRoute,
   ServicesCautionAviRoute: ServicesCautionAviRoute,
+  ServicesChauffeurTransfertsRoute: ServicesChauffeurTransfertsRoute,
+  ServicesChoixEtablissementsRoute: ServicesChoixEtablissementsRoute,
+  ServicesCircuitsMultiPaysRoute: ServicesCircuitsMultiPaysRoute,
   ServicesCommunityManagementRoute: ServicesCommunityManagementRoute,
+  ServicesCompteBloqueRoute: ServicesCompteBloqueRoute,
   ServicesCourtSejoursRoute: ServicesCourtSejoursRoute,
+  ServicesCreationSitesWebRoute: ServicesCreationSitesWebRoute,
+  ServicesDossierLocataireRoute: ServicesDossierLocataireRoute,
   ServicesDossierVisaRoute: ServicesDossierVisaRoute,
+  ServicesEmissionBilletsRoute: ServicesEmissionBilletsRoute,
+  ServicesFormulairesPiecesRoute: ServicesFormulairesPiecesRoute,
+  ServicesGastronomieLocaleRoute: ServicesGastronomieLocaleRoute,
+  ServicesGestionBagagesRoute: ServicesGestionBagagesRoute,
+  ServicesHotlineContinueRoute: ServicesHotlineContinueRoute,
+  ServicesIdentiteVisuelleRoute: ServicesIdentiteVisuelleRoute,
+  ServicesLettreAcceptationRoute: ServicesLettreAcceptationRoute,
   ServicesLogementRoute: ServicesLogementRoute,
   ServicesLongSejoursRoute: ServicesLongSejoursRoute,
+  ServicesPlateformesAdmissionRoute: ServicesPlateformesAdmissionRoute,
+  ServicesProgrammeIntegrationRoute: ServicesProgrammeIntegrationRoute,
+  ServicesProjetEtudesRoute: ServicesProjetEtudesRoute,
+  ServicesRendezVousConsulatRoute: ServicesRendezVousConsulatRoute,
+  ServicesReportingPerformanceRoute: ServicesReportingPerformanceRoute,
+  ServicesReseauxSociauxRoute: ServicesReseauxSociauxRoute,
+  ServicesReservationsVfsRoute: ServicesReservationsVfsRoute,
+  ServicesSafarisExcursionsRoute: ServicesSafarisExcursionsRoute,
+  ServicesSelectionLogementsRoute: ServicesSelectionLogementsRoute,
+  ServicesSeoAdsRoute: ServicesSeoAdsRoute,
+  ServicesSignatureBailRoute: ServicesSignatureBailRoute,
+  ServicesSuiviRecoursRoute: ServicesSuiviRecoursRoute,
+  ServicesTarifsNegociesRoute: ServicesTarifsNegociesRoute,
   ServicesVisaSchengenRoute: ServicesVisaSchengenRoute,
   ServicesVisiteCamerounRoute: ServicesVisiteCamerounRoute,
   ServicesIndexRoute: ServicesIndexRoute,
@@ -700,3 +1304,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

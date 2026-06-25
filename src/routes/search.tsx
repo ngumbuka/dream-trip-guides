@@ -7,7 +7,9 @@ import { searchAll, suggestionsForType, searchIndex } from "@/lib/search-index";
 
 const schema = z.object({
   q: fallback(z.string(), "").default(""),
-  type: fallback(z.enum(["Long séjour", "Court séjour", "Visite Cameroun"]), "Long séjour").default("Long séjour"),
+  type: fallback(z.enum(["Long séjour", "Court séjour", "Visite Cameroun"]), "Long séjour").default(
+    "Long séjour",
+  ),
 });
 
 export const Route = createFileRoute("/search")({
@@ -25,26 +27,42 @@ function SearchPage() {
   const { q, type } = Route.useSearch();
   const results = q ? searchAll(q, 12) : [];
   const typeSuggestions = suggestionsForType(type);
-  const matchedDestination = destinationList.find((d) =>
-    q && (d.name.toLowerCase().includes(q.toLowerCase()) || d.slug.includes(q.toLowerCase()))
+  const matchedDestination = destinationList.find(
+    (d) =>
+      q && (d.name.toLowerCase().includes(q.toLowerCase()) || d.slug.includes(q.toLowerCase())),
   );
   const fallbackResults = !q ? searchIndex : [];
 
   return (
     <div className="mx-auto max-w-6xl px-6 py-16">
-      <p className="text-sm font-medium uppercase tracking-[0.2em]" style={{ color: "var(--brand-red)" }}>Résultats</p>
+      <p
+        className="text-sm font-medium uppercase tracking-[0.2em]"
+        style={{ color: "var(--brand-red)" }}
+      >
+        Résultats
+      </p>
       <h1 className="mt-3 text-4xl font-semibold md:text-5xl">
         {q ? <>Pour « {q} »</> : "Explorez nos destinations & services"}
       </h1>
-      <p className="mt-3 text-muted-foreground">Type de séjour : <span className="font-semibold text-foreground">{type}</span></p>
+      <p className="mt-3 text-muted-foreground">
+        Type de séjour : <span className="font-semibold text-foreground">{type}</span>
+      </p>
 
       {matchedDestination && (
         <section className="mt-10 overflow-hidden rounded-3xl border border-border">
           <div className="grid md:grid-cols-2">
-            <img src={matchedDestination.image} alt={matchedDestination.name} className="h-64 w-full object-cover md:h-full" />
+            <img
+              src={matchedDestination.image}
+              alt={matchedDestination.name}
+              className="h-64 w-full object-cover md:h-full"
+            />
             <div className="p-8">
-              <p className="text-sm font-semibold" style={{ color: "var(--brand-red)" }}>Destination</p>
-              <h2 className="mt-2 text-3xl font-semibold">{matchedDestination.flag} {matchedDestination.name}</h2>
+              <p className="text-sm font-semibold" style={{ color: "var(--brand-red)" }}>
+                Destination
+              </p>
+              <h2 className="mt-2 text-3xl font-semibold">
+                {matchedDestination.flag} {matchedDestination.name}
+              </h2>
               <p className="mt-3 text-muted-foreground">{matchedDestination.tagline}</p>
               <Link
                 to="/destinations/$country"
@@ -70,11 +88,20 @@ function SearchPage() {
                 params={r.params as any}
                 className="group flex items-start gap-4 rounded-2xl border border-border bg-card p-5 transition hover:-translate-y-0.5 hover:shadow-[var(--shadow-elegant)]"
               >
-                <div className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl" style={{ backgroundColor: "var(--brand-navy)", color: "white" }}>
-                  {r.kind === "destination" ? <MapPin className="h-5 w-5" /> : <Sparkles className="h-5 w-5" />}
+                <div
+                  className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl"
+                  style={{ backgroundColor: "var(--brand-navy)", color: "white" }}
+                >
+                  {r.kind === "destination" ? (
+                    <MapPin className="h-5 w-5" />
+                  ) : (
+                    <Sparkles className="h-5 w-5" />
+                  )}
                 </div>
                 <div className="flex-1">
-                  <p className="text-xs uppercase tracking-wider text-muted-foreground">{r.kind === "destination" ? "Destination" : "Service"}</p>
+                  <p className="text-xs uppercase tracking-wider text-muted-foreground">
+                    {r.kind === "destination" ? "Destination" : "Service"}
+                  </p>
                   <h4 className="text-lg font-semibold">{r.title}</h4>
                   <p className="text-sm text-muted-foreground">{r.subtitle}</p>
                 </div>
@@ -102,17 +129,28 @@ function SearchPage() {
             >
               <h4 className="text-lg font-semibold">{s.title}</h4>
               <p className="mt-2 text-sm text-muted-foreground">{s.subtitle}</p>
-              <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold" style={{ color: "var(--brand-red)" }}>
-                Découvrir <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              <span
+                className="mt-4 inline-flex items-center gap-2 text-sm font-semibold"
+                style={{ color: "var(--brand-red)" }}
+              >
+                Découvrir{" "}
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </span>
             </Link>
           ))}
         </div>
       </section>
 
-      <div className="mt-16 rounded-3xl p-8 md:p-12" style={{ backgroundColor: "var(--brand-cream)" }}>
-        <h3 className="text-2xl font-semibold md:text-3xl">Besoin d'une proposition personnalisée ?</h3>
-        <p className="mt-3 text-muted-foreground">Notre équipe revient vers vous sous 24h avec un plan sur-mesure.</p>
+      <div
+        className="mt-16 rounded-3xl p-8 md:p-12"
+        style={{ backgroundColor: "var(--brand-cream)" }}
+      >
+        <h3 className="text-2xl font-semibold md:text-3xl">
+          Besoin d'une proposition personnalisée ?
+        </h3>
+        <p className="mt-3 text-muted-foreground">
+          Notre équipe revient vers vous sous 24h avec un plan sur-mesure.
+        </p>
         <Link
           to="/contact"
           className="mt-6 inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold text-white"

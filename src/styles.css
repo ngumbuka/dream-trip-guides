@@ -86,8 +86,13 @@
   --brand-navy: #101c39;
   --brand-red: #cc4258;
   --brand-cream: #f7f3ec;
-  --gradient-hero: linear-gradient(135deg, rgba(16,28,57,0.85) 0%, rgba(16,28,57,0.4) 60%, rgba(204,66,88,0.35) 100%);
-  --shadow-elegant: 0 20px 50px -20px rgba(16,28,57,0.35);
+  --gradient-hero: linear-gradient(
+    135deg,
+    rgba(16, 28, 57, 0.85) 0%,
+    rgba(16, 28, 57, 0.4) 60%,
+    rgba(204, 66, 88, 0.35) 100%
+  );
+  --shadow-elegant: 0 20px 50px -20px rgba(16, 28, 57, 0.35);
   --font-display: "Fraunces", Georgia, serif;
   --font-body: "Inter", system-ui, sans-serif;
   --chart-1: oklch(0.646 0.222 41.116);
@@ -152,7 +157,10 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     font-family: var(--font-display);
     letter-spacing: -0.02em;
   }

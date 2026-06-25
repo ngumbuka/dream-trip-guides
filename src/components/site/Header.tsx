@@ -1,7 +1,17 @@
 import { Link, useNavigate } from "@tanstack/react-router";
 import { useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
-import { Menu, X, ChevronDown, LogIn, LogOut, UserCircle2, LayoutDashboard, ShieldCheck, Rocket } from "lucide-react";
+import {
+  Menu,
+  X,
+  ChevronDown,
+  LogIn,
+  LogOut,
+  UserCircle2,
+  LayoutDashboard,
+  ShieldCheck,
+  Rocket,
+} from "lucide-react";
 import logo from "@/assets/logo-mark.png";
 import { useAuthUser } from "@/hooks/use-auth-user";
 import { supabase } from "@/integrations/supabase/client";
@@ -51,13 +61,13 @@ export function Header() {
             Voyageons<span style={{ color: "var(--brand-red)" }}>Ensemble</span>
           </span>
         </Link>
-        <nav className="hidden items-center gap-2 lg:gap-3 xl:gap-4 lg:flex">
+        <nav className="hidden items-center gap-5 xl:gap-6 2xl:gap-8 xl:flex">
           <Link
             to="/"
             activeOptions={{ exact: true }}
             activeProps={{ className: "text-foreground" }}
             inactiveProps={{ className: "text-muted-foreground" }}
-            className="whitespace-nowrap text-xs font-medium transition-colors hover:text-foreground xl:text-sm"
+            className="whitespace-nowrap text-sm font-medium transition-colors hover:text-foreground"
           >
             Accueil
           </Link>
@@ -67,7 +77,7 @@ export function Header() {
               to={s.to}
               activeProps={{ className: "text-foreground" }}
               inactiveProps={{ className: "text-muted-foreground" }}
-              className="whitespace-nowrap text-xs font-medium transition-colors hover:text-foreground xl:text-sm"
+              className="whitespace-nowrap text-sm font-medium transition-colors hover:text-foreground"
             >
               {s.label}
             </Link>
@@ -77,7 +87,7 @@ export function Header() {
             to="/about"
             activeProps={{ className: "text-foreground" }}
             inactiveProps={{ className: "text-muted-foreground" }}
-            className="whitespace-nowrap text-xs font-medium transition-colors hover:text-foreground xl:text-sm"
+            className="whitespace-nowrap text-sm font-medium transition-colors hover:text-foreground"
           >
             À propos
           </Link>
@@ -85,20 +95,25 @@ export function Header() {
             to="/contact"
             activeProps={{ className: "text-foreground" }}
             inactiveProps={{ className: "text-muted-foreground" }}
-            className="whitespace-nowrap text-xs font-medium transition-colors hover:text-foreground xl:text-sm"
+            className="whitespace-nowrap text-sm font-medium transition-colors hover:text-foreground"
           >
             Contact
           </Link>
           <Link
-            to="/_authenticated/new-request"
-            className="inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full px-3 py-2 text-xs font-semibold text-white shadow-sm transition-transform hover:-translate-y-0.5 xl:px-4 xl:text-sm"
+            to="/new-request"
+            search={{ service: undefined }}
+            className="inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold text-white shadow-sm transition-transform hover:-translate-y-0.5"
             style={{ backgroundColor: "var(--brand-red)" }}
           >
             <Rocket className="h-4 w-4" /> Démarrer
           </Link>
           {loading ? null : user ? (
-            <div className="relative" onMouseEnter={() => setUserOpen(true)} onMouseLeave={() => setUserOpen(false)}>
-              <button className="inline-flex items-center gap-2 rounded-full border border-border px-2 py-1.5 text-xs font-medium text-foreground hover:bg-muted xl:px-3 xl:text-sm">
+            <div
+              className="relative"
+              onMouseEnter={() => setUserOpen(true)}
+              onMouseLeave={() => setUserOpen(false)}
+            >
+              <button className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-1.5 text-sm font-medium text-foreground hover:bg-muted">
                 <UserCircle2 className="h-5 w-5" />
                 <span className="max-w-[100px] truncate xl:max-w-[140px]">{user.email}</span>
                 <ChevronDown className="h-3.5 w-3.5" />
@@ -142,21 +157,22 @@ export function Header() {
           ) : (
             <Link
               to="/auth"
-              className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-2 text-xs font-semibold text-foreground transition-colors hover:bg-muted xl:px-5 xl:text-sm"
+              className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
             >
               <LogIn className="h-4 w-4" /> Connexion
             </Link>
           )}
         </nav>
-        <button className="lg:hidden" onClick={() => setOpen((v) => !v)} aria-label="Menu">
+        <button className="xl:hidden" onClick={() => setOpen((v) => !v)} aria-label="Menu">
           {open ? <X /> : <Menu />}
         </button>
       </div>
       {open && (
-        <div className="border-t border-border bg-background lg:hidden">
+        <div className="border-t border-border bg-background xl:hidden">
           <div className="mx-auto flex max-w-7xl flex-col gap-1 px-6 py-4">
             <Link
-              to="/_authenticated/new-request"
+              to="/new-request"
+              search={{ service: undefined }}
               onClick={() => setOpen(false)}
               className="inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-center text-sm font-semibold text-white"
               style={{ backgroundColor: "var(--brand-red)" }}

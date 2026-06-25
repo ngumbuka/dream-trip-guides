@@ -1,13 +1,33 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { GraduationCap, Plane, MapPin, Check, ArrowRight, Home, CreditCard, Ticket, Handshake, Megaphone, Rocket, Languages } from "lucide-react";
+import {
+  GraduationCap,
+  Plane,
+  MapPin,
+  Check,
+  ArrowRight,
+  Home,
+  CreditCard,
+  Ticket,
+  Handshake,
+  Megaphone,
+  Rocket,
+  Languages,
+  FileText,
+} from "lucide-react";
 
 export const Route = createFileRoute("/services/")({
   head: () => ({
     meta: [
       { title: "Services — VoyageonsEnsemble" },
-      { name: "description", content: "Longs séjours, courts séjours, visite du Cameroun : un accompagnement complet." },
+      {
+        name: "description",
+        content: "Longs séjours, courts séjours, visite du Cameroun : un accompagnement complet.",
+      },
       { property: "og:title", content: "Nos services — VoyageonsEnsemble" },
-      { property: "og:description", content: "Un soutien complet à chaque étape de votre mobilité." },
+      {
+        property: "og:description",
+        content: "Un soutien complet à chaque étape de votre mobilité.",
+      },
     ],
   }),
   component: Services,
@@ -69,11 +89,13 @@ const offers = [
 ];
 
 const extras = [
+  { icon: GraduationCap, t: "Admission études", to: "/services/admission-etudes" as const },
+  { icon: FileText, t: "Dossier visa", to: "/services/dossier-visa" as const },
+  { icon: FileText, t: "Visa Schengen", to: "/services/visa-schengen" as const },
   { icon: Home, t: "Logement", to: "/services/logement" as const },
   { icon: CreditCard, t: "Caution bancaire & AVI", to: "/services/caution-avi" as const },
   { icon: Ticket, t: "Billets d'avion", to: "/services/billets-avion" as const },
   { icon: Handshake, t: "Accueil & intégration", to: "/services/accueil-integration" as const },
-  { icon: Megaphone, t: "Community management", to: "/services/community-management" as const },
 ];
 
 function Services() {
@@ -81,11 +103,18 @@ function Services() {
     <div>
       <section className="border-b border-border" style={{ backgroundColor: "var(--brand-cream)" }}>
         <div className="mx-auto max-w-5xl px-6 py-24 text-center">
-          <p className="text-sm font-medium uppercase tracking-[0.2em]" style={{ color: "var(--brand-red)" }}>Services</p>
-          <h1 className="mt-4 text-5xl font-semibold leading-tight md:text-6xl">Tout ce qu'il faut, en un seul endroit.</h1>
+          <p
+            className="text-sm font-medium uppercase tracking-[0.2em]"
+            style={{ color: "var(--brand-red)" }}
+          >
+            Services
+          </p>
+          <h1 className="mt-4 text-5xl font-semibold leading-tight md:text-6xl">
+            Tout ce qu'il faut, en un seul endroit.
+          </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-            De l'admission universitaire au visa, du logement à l'accueil — nous orchestrons chaque détail
-            pour que vous n'ayez qu'à voyager.
+            De l'admission universitaire au visa, du logement à l'accueil — nous orchestrons chaque
+            détail pour que vous n'ayez qu'à voyager.
           </p>
         </div>
       </section>
@@ -93,16 +122,28 @@ function Services() {
       <section className="mx-auto max-w-7xl px-6 py-24">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {offers.map((o) => (
-            <article id={o.id} key={o.id} className="flex flex-col rounded-3xl border border-border bg-card p-8">
-              <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl" style={{ backgroundColor: "var(--brand-navy)", color: "white" }}>
+            <article
+              id={o.id}
+              key={o.id}
+              className="flex flex-col rounded-3xl border border-border bg-card p-8"
+            >
+              <div
+                className="inline-flex h-12 w-12 items-center justify-center rounded-2xl"
+                style={{ backgroundColor: "var(--brand-navy)", color: "white" }}
+              >
                 <o.icon className="h-6 w-6" />
               </div>
               <h2 className="mt-6 text-3xl font-semibold">{o.title}</h2>
-              <p className="mt-2 text-sm font-medium" style={{ color: "var(--brand-red)" }}>{o.tagline}</p>
+              <p className="mt-2 text-sm font-medium" style={{ color: "var(--brand-red)" }}>
+                {o.tagline}
+              </p>
               <ul className="mt-6 space-y-3 text-sm">
                 {o.bullets.map((b) => (
                   <li key={b} className="flex items-start gap-2 text-foreground/80">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0" style={{ color: "var(--brand-red)" }} />
+                    <Check
+                      className="mt-0.5 h-4 w-4 shrink-0"
+                      style={{ color: "var(--brand-red)" }}
+                    />
                     <span>{b}</span>
                   </li>
                 ))}
@@ -110,17 +151,23 @@ function Services() {
               <div className="mt-8 flex flex-wrap items-center gap-4">
                 <Link
                   to={
-                    o.id === "long" ? "/services/long-sejours" :
-                    o.id === "court" ? "/services/court-sejours" :
-                    o.id === "formations" ? "/services/formations" :
-                    "/services/visite-cameroun"
+                    o.id === "long"
+                      ? "/services/long-sejours"
+                      : o.id === "court"
+                        ? "/services/court-sejours"
+                        : o.id === "formations"
+                          ? "/services/formations"
+                          : "/services/visite-cameroun"
                   }
                   className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-white"
                   style={{ backgroundColor: "var(--brand-red)" }}
                 >
                   En savoir plus <ArrowRight className="h-4 w-4" />
                 </Link>
-                <Link to="/contact" className="text-sm font-semibold text-foreground hover:underline">
+                <Link
+                  to="/contact"
+                  className="text-sm font-semibold text-foreground hover:underline"
+                >
                   Demander un devis
                 </Link>
               </div>
@@ -152,14 +199,30 @@ function Services() {
 
       {/* CTA */}
       <section className="mx-auto max-w-7xl px-6 pb-24">
-        <div className="overflow-hidden rounded-3xl p-10 text-center md:p-16" style={{ backgroundColor: "var(--brand-cream)" }}>
-          <h2 className="text-3xl font-semibold md:text-4xl">Vous ne savez pas quel service choisir ?</h2>
-          <p className="mx-auto mt-3 max-w-xl text-muted-foreground">Décrivez-nous simplement votre projet. Nous vous orienterons vers le bon accompagnement et vous enverrons une proposition sous 24h.</p>
+        <div
+          className="overflow-hidden rounded-3xl p-10 text-center md:p-16"
+          style={{ backgroundColor: "var(--brand-cream)" }}
+        >
+          <h2 className="text-3xl font-semibold md:text-4xl">
+            Vous ne savez pas quel service choisir ?
+          </h2>
+          <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
+            Décrivez-nous simplement votre projet. Nous vous orienterons vers le bon accompagnement
+            et vous enverrons une proposition sous 24h.
+          </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Link to="/_authenticated/new-request" className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white" style={{ backgroundColor: "var(--brand-red)" }}>
+            <Link
+              to="/new-request"
+              search={{ service: undefined }}
+              className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white"
+              style={{ backgroundColor: "var(--brand-red)" }}
+            >
               <Rocket className="h-4 w-4" /> Démarrer mon projet <ArrowRight className="h-4 w-4" />
             </Link>
-            <Link to="/contact" className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-semibold text-foreground hover:bg-muted">
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-semibold text-foreground hover:bg-muted"
+            >
               Nous contacter
             </Link>
           </div>

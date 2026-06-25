@@ -80,16 +80,42 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "VoyageonsEnsemble — Votre partenaire de mobilité internationale" },
-      { name: "description", content: "Accompagnement administratif et logistique pour vos études, courts séjours, longs séjours et voyages au Cameroun." },
+      {
+        name: "description",
+        content:
+          "Accompagnement administratif et logistique pour vos études, courts séjours, longs séjours et voyages au Cameroun.",
+      },
       { name: "author", content: "VoyageonsEnsemble" },
-      { property: "og:title", content: "VoyageonsEnsemble — Votre partenaire de mobilité internationale" },
-      { property: "og:description", content: "Accompagnement administratif et logistique pour vos études, courts séjours, longs séjours et voyages au Cameroun." },
+      {
+        property: "og:title",
+        content: "VoyageonsEnsemble — Votre partenaire de mobilité internationale",
+      },
+      {
+        property: "og:description",
+        content:
+          "Accompagnement administratif et logistique pour vos études, courts séjours, longs séjours et voyages au Cameroun.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:title", content: "VoyageonsEnsemble — Votre partenaire de mobilité internationale" },
-      { name: "twitter:description", content: "Accompagnement administratif et logistique pour vos études, courts séjours, longs séjours et voyages au Cameroun." },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/OLnkiIGM9GgQA2kKLPBrIEXzR8D3/social-images/social-1781125176361-Voyageons_Ensemble-02.webp" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/OLnkiIGM9GgQA2kKLPBrIEXzR8D3/social-images/social-1781125176361-Voyageons_Ensemble-02.webp" },
+      {
+        name: "twitter:title",
+        content: "VoyageonsEnsemble — Votre partenaire de mobilité internationale",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "Accompagnement administratif et logistique pour vos études, courts séjours, longs séjours et voyages au Cameroun.",
+      },
+      {
+        property: "og:image",
+        content:
+          "https://storage.googleapis.com/gpt-engineer-file-uploads/OLnkiIGM9GgQA2kKLPBrIEXzR8D3/social-images/social-1781125176361-Voyageons_Ensemble-02.webp",
+      },
+      {
+        name: "twitter:image",
+        content:
+          "https://storage.googleapis.com/gpt-engineer-file-uploads/OLnkiIGM9GgQA2kKLPBrIEXzR8D3/social-images/social-1781125176361-Voyageons_Ensemble-02.webp",
+      },
     ],
     links: [
       {
@@ -98,7 +124,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap",
+      },
     ],
   }),
   shellComponent: RootShell,

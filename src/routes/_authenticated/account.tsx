@@ -3,7 +3,16 @@ import { useServerFn } from "@tanstack/react-start";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
-import { LogOut, Mail, User as UserIcon, Phone, ShieldCheck, BadgeCheck, AlertTriangle, Send } from "lucide-react";
+import {
+  LogOut,
+  Mail,
+  User as UserIcon,
+  Phone,
+  ShieldCheck,
+  BadgeCheck,
+  AlertTriangle,
+  Send,
+} from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import {
   getMyProfile,
@@ -31,7 +40,11 @@ function AccountPage() {
 
   const profileQ = useQuery({ queryKey: ["my-profile"], queryFn: () => getProfile({}), retry: 1 });
   const adminQ = useQuery({ queryKey: ["is-admin"], queryFn: () => adminFn({}), retry: 1 });
-  const emailQ = useQuery({ queryKey: ["email-status"], queryFn: () => getEmailStatus({}), retry: 1 });
+  const emailQ = useQuery({
+    queryKey: ["email-status"],
+    queryFn: () => getEmailStatus({}),
+    retry: 1,
+  });
 
   const [fullName, setFullName] = useState("");
   const [phone, setPhone] = useState("");
@@ -119,7 +132,9 @@ function AccountPage() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-16">
       <h1 className="text-4xl font-semibold">Mon compte</h1>
-      <p className="mt-2 text-muted-foreground">Gérez vos informations personnelles et votre accès.</p>
+      <p className="mt-2 text-muted-foreground">
+        Gérez vos informations personnelles et votre accès.
+      </p>
 
       {!emailQ.isLoading && (
         <div
@@ -132,15 +147,16 @@ function AccountPage() {
           <div className="flex items-center gap-2">
             {verified ? <BadgeCheck className="h-5 w-5" /> : <AlertTriangle className="h-5 w-5" />}
             <div>
-              <p className="font-semibold">
-                {verified ? "E-mail vérifié" : "E-mail non vérifié"}
-              </p>
+              <p className="font-semibold">{verified ? "E-mail vérifié" : "E-mail non vérifié"}</p>
               <p className="text-xs opacity-80">
                 {verified
                   ? `Adresse confirmée : ${emailQ.data?.email}`
                   : "Confirmez votre adresse pour sécuriser votre compte."}
                 {pendingEmail && pendingEmail !== emailQ.data?.email && (
-                  <> · Changement en attente vers <strong>{pendingEmail}</strong></>
+                  <>
+                    {" "}
+                    · Changement en attente vers <strong>{pendingEmail}</strong>
+                  </>
                 )}
               </p>
             </div>
@@ -163,7 +179,10 @@ function AccountPage() {
           <QueryError error={profileQ.error} onRetry={() => profileQ.refetch()} />
         </div>
       ) : (
-        <form onSubmit={handleSave} className="mt-8 space-y-5 rounded-3xl border border-border bg-card p-6">
+        <form
+          onSubmit={handleSave}
+          className="mt-8 space-y-5 rounded-3xl border border-border bg-card p-6"
+        >
           <Field
             icon={<UserIcon className="h-4 w-4" />}
             label="Nom complet"
@@ -214,8 +233,8 @@ function AccountPage() {
           <Mail className="h-4 w-4" /> Modifier l'adresse e-mail
         </div>
         <p className="mt-1 text-xs text-muted-foreground">
-          Un lien de confirmation sera envoyé à la nouvelle adresse. Le changement
-          ne devient effectif qu'après validation.
+          Un lien de confirmation sera envoyé à la nouvelle adresse. Le changement ne devient
+          effectif qu'après validation.
         </p>
         <div className="mt-4 flex flex-wrap items-end gap-3">
           <input
@@ -251,7 +270,9 @@ function AccountPage() {
         >
           <div>
             <p className="text-sm font-semibold text-foreground">Se déconnecter</p>
-            <p className="mt-1 text-xs text-muted-foreground">Fin de votre session sur cet appareil.</p>
+            <p className="mt-1 text-xs text-muted-foreground">
+              Fin de votre session sur cet appareil.
+            </p>
           </div>
           <LogOut className="h-5 w-5 text-muted-foreground" />
         </button>

@@ -7,9 +7,16 @@ export const Route = createFileRoute("/services/billets-avion")({
   head: () => ({
     meta: [
       { title: "Réservation de billets d'avion — VoyageonsEnsemble" },
-      { name: "description", content: "Tarifs négociés, billets flexibles et conseils voyage : nous organisons votre départ dans les meilleures conditions." },
+      {
+        name: "description",
+        content:
+          "Tarifs négociés, billets flexibles et conseils voyage : nous organisons votre départ dans les meilleures conditions.",
+      },
       { property: "og:title", content: "Billets d'avion — VoyageonsEnsemble" },
-      { property: "og:description", content: "Tarifs avantageux et accompagnement pour vos vols internationaux." },
+      {
+        property: "og:description",
+        content: "Tarifs avantageux et accompagnement pour vos vols internationaux.",
+      },
       { property: "og:image", content: image },
     ],
   }),
@@ -29,23 +36,47 @@ export const Route = createFileRoute("/services/billets-avion")({
         "Assistance en cas d'imprévu ou de modification de dernière minute",
       ]}
       steps={[
-        { title: "Brief voyage", desc: "Dates souhaitées, ville de départ/arrivée, préférences compagnie et bagages." },
-        { title: "Comparatif", desc: "Nous vous présentons 2 à 3 options optimales en tarif et flexibilité." },
-        { title: "Réservation", desc: "Émission du billet et envoi des e-tickets et confirmations." },
-        { title: "Avant le vol", desc: "Check-list bagages, formalités d'enregistrement et conseils pratiques." },
+        {
+          title: "Brief voyage",
+          desc: "Dates souhaitées, ville de départ/arrivée, préférences compagnie et bagages.",
+        },
+        {
+          title: "Comparatif",
+          desc: "Nous vous présentons 2 à 3 options optimales en tarif et flexibilité.",
+        },
+        {
+          title: "Réservation",
+          desc: "Émission du billet et envoi des e-tickets et confirmations.",
+        },
+        {
+          title: "Avant le vol",
+          desc: "Check-list bagages, formalités d'enregistrement et conseils pratiques.",
+        },
       ]}
       included={[
-        { icon: Ticket, t: "Billet émis" },
-        { icon: Plane, t: "Tarifs négociés" },
-        { icon: Luggage, t: "Bagages adaptés" },
+        { icon: Ticket, t: "Billet émis", to: "/services/emission-billets" },
+        { icon: Plane, t: "Tarifs négociés", to: "/services/tarifs-negocies" },
+        { icon: Luggage, t: "Bagages adaptés", to: "/services/gestion-bagages" },
         { icon: Calendar, t: "Accueil arrivée", to: "/services/accueil-integration" },
         { icon: LifeBuoy, t: "Logement prêt", to: "/services/logement" },
       ]}
       faqs={[
-        { q: "Quand réserver pour avoir les meilleurs prix ?", a: "Idéalement 6 à 10 semaines avant le départ pour un vol long-courrier, davantage en haute saison." },
-        { q: "Puis-je modifier mon vol après réservation ?", a: "Oui, sur les tarifs flexibles que nous privilégions ; les frais éventuels sont communiqués avant émission." },
-        { q: "Prenez-vous en charge les escales ?", a: "Oui, nous optimisons les correspondances et vous indiquons les durées et terminaux d'escale." },
-        { q: "Et pour les bagages étudiants longue durée ?", a: "Nous sélectionnons les compagnies offrant le meilleur quota et vous conseillons sur le fret accompagné si nécessaire." },
+        {
+          q: "Quand réserver pour avoir les meilleurs prix ?",
+          a: "Idéalement 6 à 10 semaines avant le départ pour un vol long-courrier, davantage en haute saison.",
+        },
+        {
+          q: "Puis-je modifier mon vol après réservation ?",
+          a: "Oui, sur les tarifs flexibles que nous privilégions ; les frais éventuels sont communiqués avant émission.",
+        },
+        {
+          q: "Prenez-vous en charge les escales ?",
+          a: "Oui, nous optimisons les correspondances et vous indiquons les durées et terminaux d'escale.",
+        },
+        {
+          q: "Et pour les bagages étudiants longue durée ?",
+          a: "Nous sélectionnons les compagnies offrant le meilleur quota et vous conseillons sur le fret accompagné si nécessaire.",
+        },
       ]}
       serviceSlug="billets-avion"
     />

@@ -3,7 +3,13 @@ import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import { z } from "zod";
 
 const StatusEnum = z.enum([
-  "nouveau", "en_revue", "en_cours", "en_attente_client", "accepte", "refuse", "termine",
+  "nouveau",
+  "en_revue",
+  "en_cours",
+  "en_attente_client",
+  "accepte",
+  "refuse",
+  "termine",
 ]);
 
 const CreateRequestSchema = z.object({
@@ -55,7 +61,9 @@ export const listMyRequests = createServerFn({ method: "GET" })
   .handler(async ({ context }) => {
     const { data, error } = await context.supabase
       .from("service_requests")
-      .select("id, service_slug, service_label, destination_country, status, created_at, updated_at")
+      .select(
+        "id, service_slug, service_label, destination_country, status, created_at, updated_at",
+      )
       .order("created_at", { ascending: false });
     if (error) throw new Error(error.message);
     return data ?? [];
@@ -66,7 +74,12 @@ export const getMyRequest = createServerFn({ method: "POST" })
   .inputValidator((input: unknown) => z.object({ id: z.string().uuid() }).parse(input))
   .handler(async ({ data, context }) => {
     const { supabase } = context;
-    const [{ data: req, error: e1 }, { data: msgs, error: e2 }, { data: updates, error: e3 }, { data: docs, error: e4 }] = await Promise.all([
+    const [
+      { data: req, error: e1 },
+      { data: msgs, error: e2 },
+      { data: updates, error: e3 },
+      { data: docs, error: e4 },
+    ] = await Promise.all([
       supabase.from("service_requests").select("*").eq("id", data.id).maybeSingle(),
       supabase.from("request_messages").select("*").eq("request_id", data.id).order("created_at"),
       supabase.from("request_updates").select("*").eq("request_id", data.id).order("created_at"),
@@ -106,12 +119,18 @@ export const sendMessage = createServerFn({ method: "POST" })
 export const signDocumentUpload = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((input: unknown) =>
-    z.object({
-      request_id: z.string().uuid(),
-      file_name: z.string().min(1).max(255),
-      mime_type: z.string().max(120).optional(),
-      size_bytes: z.number().int().min(0).max(20 * 1024 * 1024),
-    }).parse(input),
+    z
+      .object({
+        request_id: z.string().uuid(),
+        file_name: z.string().min(1).max(255),
+        mime_type: z.string().max(120).optional(),
+        size_bytes: z
+          .number()
+          .int()
+          .min(0)
+          .max(20 * 1024 * 1024),
+      })
+      .parse(input),
   )
   .handler(async ({ data, context }) => {
     const { supabase, userId } = context;
@@ -135,13 +154,15 @@ export const signDocumentUpload = createServerFn({ method: "POST" })
 export const confirmDocument = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((input: unknown) =>
-    z.object({
-      request_id: z.string().uuid(),
-      storage_path: z.string().min(1),
-      file_name: z.string().min(1).max(255),
-      mime_type: z.string().max(120).optional(),
-      size_bytes: z.number().int().min(0),
-    }).parse(input),
+    z
+      .object({
+        request_id: z.string().uuid(),
+        storage_path: z.string().min(1),
+        file_name: z.string().min(1).max(255),
+        mime_type: z.string().max(120).optional(),
+        size_bytes: z.number().int().min(0),
+      })
+      .parse(input),
   )
   .handler(async ({ data, context }) => {
     const { supabase, userId } = context;
@@ -241,7 +262,13 @@ export const adminGetRequest = createServerFn({ method: "POST" })
       .eq("request_id", data.id)
       .eq("author_role", "user")
       .is("read_by_admin_at", null);
-    return { request: req, client: profile, messages: msgs ?? [], updates: updates ?? [], documents: docs ?? [] };
+    return {
+      request: req,
+      client: profile,
+      messages: msgs ?? [],
+      updates: updates ?? [],
+      documents: docs ?? [],
+    };
   });
 
 export const adminSendMessage = createServerFn({ method: "POST" })
@@ -264,12 +291,14 @@ export const adminSendMessage = createServerFn({ method: "POST" })
 export const adminUpdateStatus = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((input: unknown) =>
-    z.object({
-      request_id: z.string().uuid(),
-      status: StatusEnum,
-      note: z.string().max(2000).optional(),
-      visible_to_user: z.boolean().default(true),
-    }).parse(input),
+    z
+      .object({
+        request_id: z.string().uuid(),
+        status: StatusEnum,
+        note: z.string().max(2000).optional(),
+        visible_to_user: z.boolean().default(true),
+      })
+      .parse(input),
   )
   .handler(async ({ data, context }) => {
     await assertAdmin(context.supabase, context.userId);
@@ -293,11 +322,13 @@ export const adminUpdateStatus = createServerFn({ method: "POST" })
 export const adminPostNote = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((input: unknown) =>
-    z.object({
-      request_id: z.string().uuid(),
-      body: z.string().min(1).max(2000),
-      visible_to_user: z.boolean().default(false),
-    }).parse(input),
+    z
+      .object({
+        request_id: z.string().uuid(),
+        body: z.string().min(1).max(2000),
+        visible_to_user: z.boolean().default(false),
+      })
+      .parse(input),
   )
   .handler(async ({ data, context }) => {
     await assertAdmin(context.supabase, context.userId);

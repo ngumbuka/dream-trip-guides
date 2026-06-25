@@ -1,4 +1,5 @@
 ## Goal
+
 Introduce language training (TOEIC, TCF, Allemand/Goethe) as a new service line of VoyageonsEnsemble — presented as a dedicated training program/center, complementing the travel & immigration offering.
 
 ## New routes
@@ -53,6 +54,7 @@ These reuse the visual language of existing service detail pages (eyebrow, hero,
 - No images requested in this round; can be added later.
 
 ## Out of scope
+
 - Online booking / payment for courses
 - Student dashboard for enrolled learners
 - CMS/admin for course schedules

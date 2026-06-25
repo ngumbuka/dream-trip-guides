@@ -15,9 +15,16 @@ function AdminPage() {
   const adminFn = useServerFn(isCurrentUserAdmin);
   const listFn = useServerFn(adminListRequests);
   const [filter, setFilter] = useState<"all" | "open" | "done">("all");
-  const { data: adm, isLoading: l1, isError: admErr, error: admErrObj, refetch: refetchAdm } = useQuery({ queryKey: ["is-admin"], queryFn: () => adminFn({}), retry: 1 });
+  const {
+    data: adm,
+    isLoading: l1,
+    isError: admErr,
+    error: admErrObj,
+    refetch: refetchAdm,
+  } = useQuery({ queryKey: ["is-admin"], queryFn: () => adminFn({}), retry: 1 });
   const { data, isLoading, isError, error, refetch } = useQuery({
-    queryKey: ["admin-list"], queryFn: () => listFn({ data: {} }),
+    queryKey: ["admin-list"],
+    queryFn: () => listFn({ data: {} }),
     enabled: !!adm?.isAdmin,
     retry: 1,
   });
@@ -32,19 +39,31 @@ function AdminPage() {
   }, [rows]);
 
   const visible = rows.filter((r) =>
-    filter === "all" ? true : filter === "open" ? !["termine", "refuse"].includes(r.status) : r.status === "termine",
+    filter === "all"
+      ? true
+      : filter === "open"
+        ? !["termine", "refuse"].includes(r.status)
+        : r.status === "termine",
   );
 
   if (l1) return <p className="mx-auto max-w-5xl px-6 py-16">Chargement…</p>;
-  if (admErr) return <div className="mx-auto max-w-5xl px-6 py-16"><QueryError error={admErrObj} onRetry={() => refetchAdm()} /></div>;
-  if (!adm?.isAdmin) return <p className="mx-auto max-w-5xl px-6 py-16 text-center">Accès refusé.</p>;
+  if (admErr)
+    return (
+      <div className="mx-auto max-w-5xl px-6 py-16">
+        <QueryError error={admErrObj} onRetry={() => refetchAdm()} />
+      </div>
+    );
+  if (!adm?.isAdmin)
+    return <p className="mx-auto max-w-5xl px-6 py-16 text-center">Accès refusé.</p>;
 
   return (
     <div className="mx-auto max-w-6xl px-6 py-12">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
           <h1 className="text-4xl font-semibold">Espace admin</h1>
-          <p className="mt-2 text-muted-foreground">Toutes les demandes clients en un coup d'œil.</p>
+          <p className="mt-2 text-muted-foreground">
+            Toutes les demandes clients en un coup d'œil.
+          </p>
         </div>
         <div className="flex flex-wrap gap-2">
           <Link
@@ -82,24 +101,36 @@ function AdminPage() {
       </div>
 
       <div className="mt-6 overflow-hidden rounded-3xl border border-border bg-card">
-        {isError ? <div className="p-4"><QueryError error={error} onRetry={() => refetch()} /></div> :
-          isLoading ? <p className="p-8 text-center text-muted-foreground">Chargement…</p> :
-          visible.length === 0 ? <p className="p-8 text-center text-muted-foreground">Aucune demande.</p> :
+        {isError ? (
+          <div className="p-4">
+            <QueryError error={error} onRetry={() => refetch()} />
+          </div>
+        ) : isLoading ? (
+          <p className="p-8 text-center text-muted-foreground">Chargement…</p>
+        ) : visible.length === 0 ? (
+          <p className="p-8 text-center text-muted-foreground">Aucune demande.</p>
+        ) : (
           <ul className="divide-y divide-border">
             {visible.map((r: any) => (
               <li key={r.id}>
-                <Link to="/admin/$id" params={{ id: r.id }} className="flex items-center justify-between gap-4 p-5 hover:bg-muted/40">
+                <Link
+                  to="/admin/$id"
+                  params={{ id: r.id }}
+                  className="flex items-center justify-between gap-4 p-5 hover:bg-muted/40"
+                >
                   <div>
                     <p className="font-semibold">{r.service_label}</p>
                     <p className="text-sm text-muted-foreground">
-                      {r.client?.full_name ?? r.client?.email ?? "Client"} · {r.destination_country ?? "—"} · {new Date(r.created_at).toLocaleDateString()}
+                      {r.client?.full_name ?? r.client?.email ?? "Client"} ·{" "}
+                      {r.destination_country ?? "—"} · {new Date(r.created_at).toLocaleDateString()}
                     </p>
                   </div>
                   <StatusBadge status={r.status} />
                 </Link>
               </li>
             ))}
-          </ul>}
+          </ul>
+        )}
       </div>
     </div>
   );

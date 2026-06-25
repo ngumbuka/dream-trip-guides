@@ -3,11 +3,18 @@ import { AlertTriangle, RefreshCw } from "lucide-react";
 function friendlyMessage(error: unknown): string {
   const raw = error instanceof Error ? error.message : String(error ?? "");
   const m = raw.toLowerCase();
-  if (m.includes("unauthorized") || m.includes("no authorization")) return "Votre session a expiré. Reconnectez-vous pour continuer.";
-  if (m.includes("permission denied") || m.includes("forbidden") || m.includes("not allowed") || m.includes("rls"))
+  if (m.includes("unauthorized") || m.includes("no authorization"))
+    return "Votre session a expiré. Reconnectez-vous pour continuer.";
+  if (
+    m.includes("permission denied") ||
+    m.includes("forbidden") ||
+    m.includes("not allowed") ||
+    m.includes("rls")
+  )
     return "Vous n'avez pas les droits d'accès à ces données.";
   if (m.includes("not found")) return "Cet élément est introuvable ou a été supprimé.";
-  if (m.includes("network") || m.includes("failed to fetch")) return "Connexion impossible. Vérifiez votre réseau.";
+  if (m.includes("network") || m.includes("failed to fetch"))
+    return "Connexion impossible. Vérifiez votre réseau.";
   return "Une erreur est survenue lors du chargement. Réessayez dans un instant.";
 }
 

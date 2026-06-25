@@ -7,9 +7,16 @@ export const Route = createFileRoute("/services/logement")({
   head: () => ({
     meta: [
       { title: "Recherche de logement — VoyageonsEnsemble" },
-      { name: "description", content: "Résidences étudiantes, colocations ou studios : nous trouvons un logement sécurisé, adapté à votre budget et géré de A à Z." },
+      {
+        name: "description",
+        content:
+          "Résidences étudiantes, colocations ou studios : nous trouvons un logement sécurisé, adapté à votre budget et géré de A à Z.",
+      },
       { property: "og:title", content: "Recherche de logement — VoyageonsEnsemble" },
-      { property: "og:description", content: "Un logement confortable et sécurisé dans votre nouvelle destination." },
+      {
+        property: "og:description",
+        content: "Un logement confortable et sécurisé dans votre nouvelle destination.",
+      },
       { property: "og:image", content: image },
     ],
   }),
@@ -29,23 +36,47 @@ export const Route = createFileRoute("/services/logement")({
         "Service de relocalisation et orientation dans votre nouveau quartier",
       ]}
       steps={[
-        { title: "Cahier des charges", desc: "Nous cernons vos préférences : ville, quartier, surface, budget, durée." },
-        { title: "Sélection", desc: "Nous présélectionnons les meilleures options de notre réseau partenaire." },
-        { title: "Dossier & bail", desc: "Constitution du dossier, négociation et signature du contrat de location." },
-        { title: "Installation", desc: "Accompagnement à l'état des lieux et orientation dans votre quartier." },
+        {
+          title: "Cahier des charges",
+          desc: "Nous cernons vos préférences : ville, quartier, surface, budget, durée.",
+        },
+        {
+          title: "Sélection",
+          desc: "Nous présélectionnons les meilleures options de notre réseau partenaire.",
+        },
+        {
+          title: "Dossier & bail",
+          desc: "Constitution du dossier, négociation et signature du contrat de location.",
+        },
+        {
+          title: "Installation",
+          desc: "Accompagnement à l'état des lieux et orientation dans votre quartier.",
+        },
       ]}
       included={[
-        { icon: Home, t: "Sélection logements" },
-        { icon: FileSignature, t: "Dossier locataire" },
+        { icon: Home, t: "Sélection logements", to: "/services/selection-logements" },
+        { icon: FileSignature, t: "Dossier locataire", to: "/services/dossier-locataire" },
         { icon: ShieldCheck, t: "Caution & AVI", to: "/services/caution-avi" },
-        { icon: Key, t: "Signature du bail" },
+        { icon: Key, t: "Signature du bail", to: "/services/signature-bail" },
         { icon: MapPin, t: "Accueil sur place", to: "/services/accueil-integration" },
       ]}
       faqs={[
-        { q: "Peut-on signer un bail sans être encore sur place ?", a: "Oui. Nous traitons les démarches à distance grâce à la signature électronique et présentons votre dossier en votre nom." },
-        { q: "Travaillez-vous avec les résidences universitaires ?", a: "Oui, ainsi qu'avec des résidences étudiantes privées, des agences immobilières et des particuliers de confiance." },
-        { q: "Pouvez-vous servir de garant ?", a: "Selon votre profil, nous proposons des solutions adaptées (Visale, garants privés, caution bancaire) conformes aux exigences du bailleur." },
-        { q: "Quel budget logement prévoir ?", a: "Comptez 250 à 600 € en résidence ou colocation, et 600 à 1 200 € pour un studio individuel selon la ville." },
+        {
+          q: "Peut-on signer un bail sans être encore sur place ?",
+          a: "Oui. Nous traitons les démarches à distance grâce à la signature électronique et présentons votre dossier en votre nom.",
+        },
+        {
+          q: "Travaillez-vous avec les résidences universitaires ?",
+          a: "Oui, ainsi qu'avec des résidences étudiantes privées, des agences immobilières et des particuliers de confiance.",
+        },
+        {
+          q: "Pouvez-vous servir de garant ?",
+          a: "Selon votre profil, nous proposons des solutions adaptées (Visale, garants privés, caution bancaire) conformes aux exigences du bailleur.",
+        },
+        {
+          q: "Quel budget logement prévoir ?",
+          a: "Comptez 250 à 600 € en résidence ou colocation, et 600 à 1 200 € pour un studio individuel selon la ville.",
+        },
       ]}
       serviceSlug="logement"
     />

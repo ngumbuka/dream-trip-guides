@@ -35,20 +35,38 @@ export const destinations: Record<string, Destination> = {
     intro:
       "Première destination des étudiants camerounais, la France offre un système universitaire reconnu, une vie culturelle riche et un statut étudiant protégé (CAF, sécurité sociale, transport).",
     highlights: [
-      { title: "Campus France obligatoire", desc: "Procédure « Études en France » pour tous les dossiers d'admission depuis le Cameroun." },
-      { title: "Frais réduits", desc: "Universités publiques accessibles, bourses (Eiffel, Erasmus+) disponibles." },
-      { title: "Travail étudiant", desc: "Jusqu'à 964 h/an autorisées avec le titre de séjour étudiant." },
+      {
+        title: "Campus France obligatoire",
+        desc: "Procédure « Études en France » pour tous les dossiers d'admission depuis le Cameroun.",
+      },
+      {
+        title: "Frais réduits",
+        desc: "Universités publiques accessibles, bourses (Eiffel, Erasmus+) disponibles.",
+      },
+      {
+        title: "Travail étudiant",
+        desc: "Jusqu'à 964 h/an autorisées avec le titre de séjour étudiant.",
+      },
     ],
     cities: [
-      { name: "Paris", desc: "Sorbonne, Sciences Po, Dauphine — capitale académique et culturelle." },
+      {
+        name: "Paris",
+        desc: "Sorbonne, Sciences Po, Dauphine — capitale académique et culturelle.",
+      },
       { name: "Lyon", desc: "Pôle business, ingénierie et santé, qualité de vie reconnue." },
       { name: "Toulouse", desc: "Aéronautique, ingénierie, recherche spatiale." },
       { name: "Montpellier", desc: "Ville étudiante du Sud, médecine et droit." },
     ],
     visa: {
       types: [
-        { name: "VLS-TS Étudiant", desc: "Visa long séjour valant titre de séjour, dès 6 mois d'études." },
-        { name: "Visa court séjour Schengen", desc: "Tourisme, visite famille, séjour < 90 jours." },
+        {
+          name: "VLS-TS Étudiant",
+          desc: "Visa long séjour valant titre de séjour, dès 6 mois d'études.",
+        },
+        {
+          name: "Visa court séjour Schengen",
+          desc: "Tourisme, visite famille, séjour < 90 jours.",
+        },
       ],
       timeline: "Campus France : 2-3 mois. Visa : 2-4 semaines après acceptation.",
       documents: [
@@ -90,7 +108,10 @@ export const destinations: Record<string, Destination> = {
     highlights: [
       { title: "Permis post-diplôme (PGWP)", desc: "Jusqu'à 3 ans de travail après vos études." },
       { title: "Bilingue", desc: "Étudiez en français au Québec ou en anglais ailleurs." },
-      { title: "Voie vers la PR", desc: "Programmes provinciaux et fédéraux facilitant la résidence." },
+      {
+        title: "Voie vers la PR",
+        desc: "Programmes provinciaux et fédéraux facilitant la résidence.",
+      },
     ],
     cities: [
       { name: "Montréal", desc: "McGill, UdeM, Concordia — francophone et abordable." },
@@ -100,9 +121,15 @@ export const destinations: Record<string, Destination> = {
     ],
     visa: {
       types: [
-        { name: "Permis d'études", desc: "Pour tout programme > 6 mois, exige une lettre d'acceptation." },
+        {
+          name: "Permis d'études",
+          desc: "Pour tout programme > 6 mois, exige une lettre d'acceptation.",
+        },
         { name: "AVE / visa visiteur", desc: "Court séjour pour tourisme ou visite familiale." },
-        { name: "CAQ (Québec)", desc: "Certificat d'acceptation obligatoire avant le permis fédéral." },
+        {
+          name: "CAQ (Québec)",
+          desc: "Certificat d'acceptation obligatoire avant le permis fédéral.",
+        },
       ],
       timeline: "CAQ : 4-6 semaines. Permis d'études : 6-12 semaines (volet direct possible).",
       documents: [
@@ -141,7 +168,10 @@ export const destinations: Record<string, Destination> = {
     intro:
       "L'Allemagne est la première économie d'Europe : universités publiques quasi gratuites, formations duales prisées et marché de l'emploi favorable aux ingénieurs et techniciens.",
     highlights: [
-      { title: "Études gratuites", desc: "Universités publiques sans frais (sauf Bade-Wurtemberg)." },
+      {
+        title: "Études gratuites",
+        desc: "Universités publiques sans frais (sauf Bade-Wurtemberg).",
+      },
       { title: "Compte bloqué", desc: "Sperrkonto de 11 904 € (2025) requis pour le visa." },
       { title: "Emploi facilité", desc: "18 mois pour chercher un emploi après le diplôme." },
     ],
@@ -153,7 +183,10 @@ export const destinations: Record<string, Destination> = {
     ],
     visa: {
       types: [
-        { name: "Visa national D — études", desc: "Long séjour pour études universitaires ou cours de langue." },
+        {
+          name: "Visa national D — études",
+          desc: "Long séjour pour études universitaires ou cours de langue.",
+        },
         { name: "Visa de candidat aux études", desc: "Pour finaliser votre admission sur place." },
         { name: "Visa Schengen", desc: "Court séjour, tourisme, visite." },
       ],
@@ -194,9 +227,15 @@ export const destinations: Record<string, Destination> = {
     intro:
       "Aux portes des institutions européennes, la Belgique propose des universités francophones de qualité (ULB, UCLouvain, ULiège), à des coûts contenus et avec une vie étudiante dynamique.",
     highlights: [
-      { title: "Frais accessibles", desc: "Environ 4 175 €/an pour les non-européens en universités publiques." },
+      {
+        title: "Frais accessibles",
+        desc: "Environ 4 175 €/an pour les non-européens en universités publiques.",
+      },
       { title: "Francophone", desc: "Pas de barrière linguistique en Wallonie-Bruxelles." },
-      { title: "Court séjour facile", desc: "Idéal pour stages, conférences, visites familiales en Europe." },
+      {
+        title: "Court séjour facile",
+        desc: "Idéal pour stages, conférences, visites familiales en Europe.",
+      },
     ],
     cities: [
       { name: "Bruxelles", desc: "ULB, VUB — capitale européenne, multiculturelle." },
@@ -206,7 +245,10 @@ export const destinations: Record<string, Destination> = {
     ],
     visa: {
       types: [
-        { name: "Visa D long séjour", desc: "Études supérieures, requiert inscription définitive." },
+        {
+          name: "Visa D long séjour",
+          desc: "Études supérieures, requiert inscription définitive.",
+        },
         { name: "Visa C court séjour", desc: "Tourisme, visite famille, jusqu'à 90 jours." },
       ],
       timeline: "Visa long séjour : 30 à 60 jours après dépôt VFS.",
@@ -245,9 +287,18 @@ export const destinations: Record<string, Destination> = {
     intro:
       "De la plage de Kribi aux montagnes du Nord, du Mont Cameroun aux forêts de l'Est : nous organisons des circuits authentiques, sécurisés et clés en main pour la diaspora et les touristes.",
     highlights: [
-      { title: "Circuits sur mesure", desc: "Nord safari, Sud balnéaire, Ouest culturel — à votre rythme." },
-      { title: "Logistique complète", desc: "Transferts, hébergement, guides francophones, sécurité." },
-      { title: "Pour la diaspora", desc: "Retours au pays, événements familiaux, démarches administratives." },
+      {
+        title: "Circuits sur mesure",
+        desc: "Nord safari, Sud balnéaire, Ouest culturel — à votre rythme.",
+      },
+      {
+        title: "Logistique complète",
+        desc: "Transferts, hébergement, guides francophones, sécurité.",
+      },
+      {
+        title: "Pour la diaspora",
+        desc: "Retours au pays, événements familiaux, démarches administratives.",
+      },
     ],
     cities: [
       { name: "Douala", desc: "Capitale économique, point d'arrivée international." },
