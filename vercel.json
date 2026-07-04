@@ -1,0 +1,7 @@
+{
+  "framework": "nitro",
+  "buildCommand": "NITRO_PRESET=vercel vite build",
+  "outputDirectory": ".vercel/output",
+  "installCommand": "pnpm install",
+  "devCommand": "vite dev"
+}

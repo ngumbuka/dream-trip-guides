@@ -72,12 +72,9 @@ const audience = [
 function ToeicPage() {
   return (
     <div>
-      <section className="border-b border-border" style={{ backgroundColor: "var(--brand-cream)" }}>
+      <section className="border-b border-border bg-brand-cream">
         <div className="mx-auto max-w-5xl px-6 py-24">
-          <p
-            className="text-sm font-medium uppercase tracking-[0.2em]"
-            style={{ color: "var(--brand-red)" }}
-          >
+          <p className="text-sm font-medium uppercase tracking-[0.2em] text-brand-red">
             Formations · TOEIC
           </p>
           <h1 className="mt-4 text-5xl font-semibold leading-tight md:text-6xl">
@@ -91,8 +88,7 @@ function ToeicPage() {
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white"
-              style={{ backgroundColor: "var(--brand-red)" }}
+              className="inline-flex items-center gap-2 rounded-full bg-brand-red px-6 py-3 text-sm font-semibold text-white"
             >
               <Rocket className="h-4 w-4" /> S'inscrire à la préparation TOEIC
             </Link>
@@ -116,7 +112,7 @@ function ToeicPage() {
         </p>
         <div className="mt-8 overflow-hidden rounded-3xl border border-border">
           <table className="w-full text-left text-sm">
-            <thead style={{ backgroundColor: "var(--brand-navy)", color: "white" }}>
+            <thead className="bg-brand-navy text-white">
               <tr>
                 <th className="px-5 py-4 font-semibold">Section</th>
                 <th className="px-5 py-4 font-semibold">Format</th>
@@ -138,16 +134,13 @@ function ToeicPage() {
         </div>
       </section>
 
-      <section className="py-20" style={{ backgroundColor: "var(--brand-cream)" }}>
+      <section className="bg-brand-cream py-20">
         <div className="mx-auto max-w-6xl px-6">
           <h2 className="text-3xl font-semibold md:text-4xl">Notre méthode en 4 piliers</h2>
           <div className="mt-10 grid gap-5 md:grid-cols-2">
             {pillars.map((p, i) => (
               <div key={p.t} className="rounded-2xl border border-border bg-card p-6">
-                <div
-                  className="text-xs font-semibold uppercase tracking-wider"
-                  style={{ color: "var(--brand-red)" }}
-                >
+                <div className="text-xs font-semibold uppercase tracking-wider text-brand-red">
                   Pilier {i + 1}
                 </div>
                 <h3 className="mt-2 text-lg font-semibold">{p.t}</h3>
@@ -165,19 +158,13 @@ function ToeicPage() {
             <ul className="mt-6 space-y-3 text-sm">
               {workAreas.map((w) => (
                 <li key={w} className="flex items-start gap-3">
-                  <Check
-                    className="mt-0.5 h-4 w-4 shrink-0"
-                    style={{ color: "var(--brand-red)" }}
-                  />
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-red" />
                   <span className="text-foreground/80">{w}</span>
                 </li>
               ))}
             </ul>
           </div>
-          <div
-            className="rounded-3xl p-8"
-            style={{ backgroundColor: "var(--brand-navy)", color: "white" }}
-          >
+          <div className="rounded-3xl bg-brand-navy p-8 text-white">
             <h2 className="text-2xl font-semibold">À qui s'adresse cette formation ?</h2>
             <ul className="mt-6 space-y-3 text-sm">
               {audience.map((a) => (
@@ -201,10 +188,7 @@ function ToeicPage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 pb-24">
-        <div
-          className="overflow-hidden rounded-3xl p-10 text-center md:p-14"
-          style={{ backgroundColor: "var(--brand-cream)" }}
-        >
+        <div className="overflow-hidden rounded-3xl bg-brand-cream p-10 text-center md:p-14">
           <h2 className="text-3xl font-semibold md:text-4xl">
             Prêt à faire certifier votre anglais ?
           </h2>
@@ -214,8 +198,7 @@ function ToeicPage() {
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white"
-              style={{ backgroundColor: "var(--brand-red)" }}
+              className="inline-flex items-center gap-2 rounded-full bg-brand-red px-6 py-3 text-sm font-semibold text-white"
             >
               <Rocket className="h-4 w-4" /> S'inscrire <ArrowRight className="h-4 w-4" />
             </Link>

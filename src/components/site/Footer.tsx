@@ -1,19 +1,15 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, Phone, MapPin } from "lucide-react";
-import logo from "@/assets/logo-mark.png";
+import logo from "@/assets/logo-full.png";
+import isotopeLogo from "@/assets/isotope-logo.svg";
 
 export function Footer() {
   return (
-    <footer className="mt-24" style={{ backgroundColor: "var(--brand-navy)", color: "#e8ecf3" }}>
+    <footer className="mt-24 bg-brand-navy text-[#e8ecf3]">
       <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 md:grid-cols-4">
         <div className="md:col-span-2">
-          <div className="flex items-center gap-3">
-            <img src={logo} alt="" className="h-12 w-auto" />
-            <span className="text-xl font-semibold" style={{ fontFamily: "var(--font-display)" }}>
-              Voyageons<span style={{ color: "var(--brand-red)" }}>Ensemble</span>
-            </span>
-          </div>
-          <p className="mt-4 max-w-md text-sm leading-relaxed text-white/70">
+          <img src={logo} alt="Voyageons Ensemble" className="h-36 w-auto" />
+          <p className="mt-4 max-w-md text-base leading-relaxed text-white/80">
             Votre partenaire de mobilité internationale. Ensemble, nous rendons votre mobilité plus
             facile, plus sûre et plus enrichissante.
           </p>
@@ -60,8 +56,10 @@ export function Footer() {
       </div>
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-6 py-6 text-xs text-white/50 sm:flex-row">
-          <p>© {new Date().getFullYear()} VoyageonsEnsemble. Tous droits réservés.</p>
-          <p>Ensemble, plus loin.</p>
+          <p>© {new Date().getFullYear()} VoyageonsEnsemble. Tous droits réservés. — Ensemble, plus loin.</p>
+          <div className="flex items-center gap-1">
+            <img src={isotopeLogo} alt="Powervy" className="inline-block h-5 w-auto" />
+          </div>
         </div>
       </div>
     </footer>

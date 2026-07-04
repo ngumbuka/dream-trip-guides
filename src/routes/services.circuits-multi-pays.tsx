@@ -7,7 +7,10 @@ export const Route = createFileRoute("/services/circuits-multi-pays")({
   head: () => ({
     meta: [
       { title: "Circuits multi-pays en Afrique — VoyageonsEnsemble" },
-      { name: "description", content: "Découvrez plusieurs pays africains lors d'un seul voyage sur mesure." },
+      {
+        name: "description",
+        content: "Découvrez plusieurs pays africains lors d'un seul voyage sur mesure.",
+      },
     ],
   }),
   component: () => (
@@ -24,7 +27,10 @@ export const Route = createFileRoute("/services/circuits-multi-pays")({
         "Coordination avec nos équipes locales dans chaque pays visité",
       ]}
       steps={[
-        { title: "Inspiration", desc: "Choisissez les pays et les ambiances que vous souhaitez combiner." },
+        {
+          title: "Inspiration",
+          desc: "Choisissez les pays et les ambiances que vous souhaitez combiner.",
+        },
         { title: "Logistique", desc: "Nous gérons les vols, visas et connexions." },
         { title: "Exploration", desc: "Profitez d'un voyage sans couture d'un pays à l'autre." },
         { title: "Assistance", desc: "Un suivi continu à chaque passage de frontière." },
@@ -34,11 +40,17 @@ export const Route = createFileRoute("/services/circuits-multi-pays")({
         { icon: Plane, t: "Vols internes gérés" },
         { icon: Globe2, t: "Visas coordonnés" },
         { icon: Compass, t: "Guides locaux" },
-        { icon: CheckCircle2, t: "Visit Africa", to: "/services/visite-cameroun" },
+        { icon: CheckCircle2, t: "Visit Africa", to: "/services/visite-afrique" },
       ]}
       faqs={[
-        { q: "Quelles sont les combinaisons populaires ?", a: "Kenya/Tanzanie, Sénégal/Cap-Vert, ou Afrique du Sud/Botswana/Victoria Falls sont très demandés." },
-        { q: "Est-ce plus cher de faire plusieurs pays ?", a: "Les vols internes ajoutent un coût, mais nos tarifs négociés et l'optimisation de l'itinéraire permettent de maîtriser le budget global." },
+        {
+          q: "Quelles sont les combinaisons populaires ?",
+          a: "Kenya/Tanzanie, Sénégal/Cap-Vert, ou Afrique du Sud/Botswana/Victoria Falls sont très demandés.",
+        },
+        {
+          q: "Est-ce plus cher de faire plusieurs pays ?",
+          a: "Les vols internes ajoutent un coût, mais nos tarifs négociés et l'optimisation de l'itinéraire permettent de maîtriser le budget global.",
+        },
       ]}
       serviceSlug="circuits-multi-pays"
     />

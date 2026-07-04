@@ -7,7 +7,11 @@ export const Route = createFileRoute("/services/formulaires-pieces")({
   head: () => ({
     meta: [
       { title: "Formulaires & Pièces justificatives — VoyageonsEnsemble" },
-      { name: "description", content: "Assistance complète pour le remplissage des formulaires et la compilation de vos pièces justificatives." },
+      {
+        name: "description",
+        content:
+          "Assistance complète pour le remplissage des formulaires et la compilation de vos pièces justificatives.",
+      },
     ],
   }),
   component: () => (
@@ -37,8 +41,14 @@ export const Route = createFileRoute("/services/formulaires-pieces")({
         { icon: FileText, t: "Dossier Visa", to: "/services/dossier-visa" },
       ]}
       faqs={[
-        { q: "Travaillez-vous avec des traducteurs assermentés ?", a: "Oui, nous avons un réseau de traducteurs agréés pour garantir l'acceptation de vos documents par les autorités." },
-        { q: "Si je n'ai pas tous les documents, m'aidez-vous à les obtenir ?", a: "Nous vous orientons vers les bonnes administrations pour obtenir les pièces manquantes (casiers judiciaires, actes de naissance...)." },
+        {
+          q: "Travaillez-vous avec des traducteurs assermentés ?",
+          a: "Oui, nous avons un réseau de traducteurs agréés pour garantir l'acceptation de vos documents par les autorités.",
+        },
+        {
+          q: "Si je n'ai pas tous les documents, m'aidez-vous à les obtenir ?",
+          a: "Nous vous orientons vers les bonnes administrations pour obtenir les pièces manquantes (casiers judiciaires, actes de naissance...).",
+        },
       ]}
       serviceSlug="formulaires-pieces"
     />

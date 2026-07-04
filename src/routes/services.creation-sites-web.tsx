@@ -7,7 +7,11 @@ export const Route = createFileRoute("/services/creation-sites-web")({
   head: () => ({
     meta: [
       { title: "Création de sites web — VoyageonsEnsemble" },
-      { name: "description", content: "Conception de sites vitrines et e-commerce modernes, performants et orientés conversion." },
+      {
+        name: "description",
+        content:
+          "Conception de sites vitrines et e-commerce modernes, performants et orientés conversion.",
+      },
     ],
   }),
   component: () => (
@@ -37,8 +41,14 @@ export const Route = createFileRoute("/services/creation-sites-web")({
         { icon: Megaphone, t: "CM & Digital", to: "/services/community-management" },
       ]}
       faqs={[
-        { q: "Serai-je propriétaire de mon site ?", a: "Oui, vous êtes l'unique propriétaire du code, du nom de domaine et de l'hébergement." },
-        { q: "Pourrai-je modifier le contenu moi-même ?", a: "Oui, nous utilisons des systèmes de gestion de contenu (CMS) intuitifs et nous vous formons à leur utilisation." },
+        {
+          q: "Serai-je propriétaire de mon site ?",
+          a: "Oui, vous êtes l'unique propriétaire du code, du nom de domaine et de l'hébergement.",
+        },
+        {
+          q: "Pourrai-je modifier le contenu moi-même ?",
+          a: "Oui, nous utilisons des systèmes de gestion de contenu (CMS) intuitifs et nous vous formons à leur utilisation.",
+        },
       ]}
       serviceSlug="creation-sites-web"
     />

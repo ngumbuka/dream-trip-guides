@@ -72,7 +72,7 @@ export const destinations: Record<string, Destination> = {
       documents: [
         "Passeport valide 3 mois après retour",
         "Acceptation Campus France / établissement",
-        "Justificatif de ressources (615 €/mois minimum)",
+        "Justificatif de ressources (877,80 €/mois minimum, au 01/08/2026)",
         "Attestation de logement",
         "Assurance voyage / OFII",
       ],
@@ -80,7 +80,7 @@ export const destinations: Record<string, Destination> = {
     practical: [
       { label: "Monnaie", value: "Euro (€)" },
       { label: "Langue", value: "Français" },
-      { label: "Coût de vie étudiant", value: "> 615 €/mois" },
+      { label: "Coût de vie étudiant", value: "877,80 €/mois (au 01/08/2026)" },
       { label: "Logement (CROUS)", value: "> 200 €/mois" },
     ],
     tips: [
@@ -331,7 +331,7 @@ export const destinations: Record<string, Destination> = {
       "Nos guides locaux parlent français, anglais et langues nationales.",
     ],
     serviceFocus: [
-      { label: "Visite du Cameroun", to: "/services/visite-cameroun" },
+      { label: "Visit Africa", to: "/services/visite-afrique" },
       { label: "Billets d'avion", to: "/services/billets-avion" },
       { label: "Accueil à l'arrivée", to: "/services/accueil-integration" },
     ],

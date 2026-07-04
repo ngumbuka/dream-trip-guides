@@ -7,7 +7,10 @@ export const Route = createFileRoute("/services/choix-etablissements")({
   head: () => ({
     meta: [
       { title: "Choix des Établissements & Orientation — VoyageonsEnsemble" },
-      { name: "description", content: "Trouvez l'université ou l'école idéale pour vos études supérieures à l'étranger." },
+      {
+        name: "description",
+        content: "Trouvez l'université ou l'école idéale pour vos études supérieures à l'étranger.",
+      },
     ],
   }),
   component: () => (
@@ -25,8 +28,14 @@ export const Route = createFileRoute("/services/choix-etablissements")({
       ]}
       steps={[
         { title: "Bilan", desc: "Entretien pour comprendre vos envies, notes et budget." },
-        { title: "Sélection", desc: "Nous vous proposons une liste de 5 à 10 établissements pertinents." },
-        { title: "Affinement", desc: "Vous choisissez les 3 à 5 écoles pour lesquelles nous allons postuler." },
+        {
+          title: "Sélection",
+          desc: "Nous vous proposons une liste de 5 à 10 établissements pertinents.",
+        },
+        {
+          title: "Affinement",
+          desc: "Vous choisissez les 3 à 5 écoles pour lesquelles nous allons postuler.",
+        },
         { title: "Lancement", desc: "Nous préparons les dossiers de candidature." },
       ]}
       included={[
@@ -37,8 +46,14 @@ export const Route = createFileRoute("/services/choix-etablissements")({
         { icon: GraduationCap, t: "Admission", to: "/services/admission-etudes" },
       ]}
       faqs={[
-        { q: "Accompagnez-vous pour les universités publiques françaises ?", a: "Oui, nous vous aidons à sélectionner vos vœux sur Campus France ou Parcoursup pour les universités publiques." },
-        { q: "Quels sont les frais de scolarité à prévoir ?", a: "En France (public) : de 170€ à 3770€ selon le niveau et le statut. Au Canada : de 10 000 à 30 000 CAD selon le programme. Les écoles privées varient entre 5 000€ et 15 000€." },
+        {
+          q: "Accompagnez-vous pour les universités publiques françaises ?",
+          a: "Oui, nous vous aidons à sélectionner vos vœux sur Campus France ou Parcoursup pour les universités publiques.",
+        },
+        {
+          q: "Quels sont les frais de scolarité à prévoir ?",
+          a: "En France (public) : de 170€ à 3770€ selon le niveau et le statut. Au Canada : de 10 000 à 30 000 CAD selon le programme. Les écoles privées varient entre 5 000€ et 15 000€.",
+        },
       ]}
       serviceSlug="choix-etablissements"
     />

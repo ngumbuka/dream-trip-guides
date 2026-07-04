@@ -7,7 +7,11 @@ export const Route = createFileRoute("/services/projet-etudes")({
   head: () => ({
     meta: [
       { title: "Projet d'études & Motivation — VoyageonsEnsemble" },
-      { name: "description", content: "Rédaction de votre projet d'études, CV et lettre de motivation pour vos candidatures." },
+      {
+        name: "description",
+        content:
+          "Rédaction de votre projet d'études, CV et lettre de motivation pour vos candidatures.",
+      },
     ],
   }),
   component: () => (
@@ -24,10 +28,22 @@ export const Route = createFileRoute("/services/projet-etudes")({
         "Correction orthographique et stylistique professionnelle",
       ]}
       steps={[
-        { title: "Brouillon", desc: "Vous rédigez les grandes lignes de votre parcours et de vos motivations." },
-        { title: "Structuration", desc: "Nous vous aidons à trouver le fil conducteur logique de votre projet." },
-        { title: "Rédaction", desc: "Mise en forme, enrichissement du vocabulaire et adaptation aux attentes du jury." },
-        { title: "Validation", desc: "Relecture finale et validation de vos documents de candidature." },
+        {
+          title: "Brouillon",
+          desc: "Vous rédigez les grandes lignes de votre parcours et de vos motivations.",
+        },
+        {
+          title: "Structuration",
+          desc: "Nous vous aidons à trouver le fil conducteur logique de votre projet.",
+        },
+        {
+          title: "Rédaction",
+          desc: "Mise en forme, enrichissement du vocabulaire et adaptation aux attentes du jury.",
+        },
+        {
+          title: "Validation",
+          desc: "Relecture finale et validation de vos documents de candidature.",
+        },
       ]}
       included={[
         { icon: PenTool, t: "Lettres de motivation" },
@@ -37,8 +53,14 @@ export const Route = createFileRoute("/services/projet-etudes")({
         { icon: BookOpenCheck, t: "Admission", to: "/services/admission-etudes" },
       ]}
       faqs={[
-        { q: "Rédigez-vous la lettre à ma place ?", a: "Non, nous ne faisons pas de 'copier-coller'. Nous partons de vos idées et de votre histoire, puis nous vous aidons à structurer et reformuler pour produire un document authentique et impactant." },
-        { q: "Les CV canadiens sont-ils différents des CV européens ?", a: "Oui, complètement ! Le CV canadien ne doit pas comporter de photo, d'âge ou de statut marital, et insiste sur les compétences. Nous l'adaptons selon la destination." },
+        {
+          q: "Rédigez-vous la lettre à ma place ?",
+          a: "Non, nous ne faisons pas de 'copier-coller'. Nous partons de vos idées et de votre histoire, puis nous vous aidons à structurer et reformuler pour produire un document authentique et impactant.",
+        },
+        {
+          q: "Les CV canadiens sont-ils différents des CV européens ?",
+          a: "Oui, complètement ! Le CV canadien ne doit pas comporter de photo, d'âge ou de statut marital, et insiste sur les compétences. Nous l'adaptons selon la destination.",
+        },
       ]}
       serviceSlug="projet-etudes"
     />

@@ -7,7 +7,11 @@ export const Route = createFileRoute("/services/assurance-visa")({
   head: () => ({
     meta: [
       { title: "Assurance voyage & Visa — VoyageonsEnsemble" },
-      { name: "description", content: "Assurance médicale et rapatriement conforme aux exigences Schengen et internationales." },
+      {
+        name: "description",
+        content:
+          "Assurance médicale et rapatriement conforme aux exigences Schengen et internationales.",
+      },
     ],
   }),
   component: () => (
@@ -25,8 +29,14 @@ export const Route = createFileRoute("/services/assurance-visa")({
       ]}
       steps={[
         { title: "Analyse", desc: "Nous vérifions les exigences exactes du pays de destination." },
-        { title: "Sélection", desc: "Choix de la formule d'assurance adaptée (durée, âge, motif)." },
-        { title: "Souscription", desc: "Émission instantanée du contrat avec nos assureurs partenaires." },
+        {
+          title: "Sélection",
+          desc: "Choix de la formule d'assurance adaptée (durée, âge, motif).",
+        },
+        {
+          title: "Souscription",
+          desc: "Émission instantanée du contrat avec nos assureurs partenaires.",
+        },
         { title: "Dossier", desc: "Intégration de l'attestation à votre demande de visa." },
       ]}
       included={[
@@ -37,8 +47,14 @@ export const Route = createFileRoute("/services/assurance-visa")({
         { icon: ShieldCheck, t: "Caution & AVI", to: "/services/caution-avi" },
       ]}
       faqs={[
-        { q: "Dois-je prendre l'assurance pour toute la durée des études ?", a: "Pour un visa long séjour, vous pouvez généralement souscrire pour les 3 à 6 premiers mois, le temps de vous affilier à la sécurité sociale locale du pays d'accueil." },
-        { q: "L'assurance rembourse-t-elle si le visa est refusé ?", a: "Oui, la plupart de nos partenaires remboursent intégralement la prime d'assurance (hors frais de dossier minimes) sur présentation de la lettre de refus." },
+        {
+          q: "Dois-je prendre l'assurance pour toute la durée des études ?",
+          a: "Pour un visa long séjour, vous pouvez généralement souscrire pour les 3 à 6 premiers mois, le temps de vous affilier à la sécurité sociale locale du pays d'accueil.",
+        },
+        {
+          q: "L'assurance rembourse-t-elle si le visa est refusé ?",
+          a: "Oui, la plupart de nos partenaires remboursent intégralement la prime d'assurance (hors frais de dossier minimes) sur présentation de la lettre de refus.",
+        },
       ]}
       serviceSlug="assurance-visa"
     />

@@ -119,10 +119,7 @@ function CommunityManagementPage() {
 
       {/* PACKS */}
       <section className="mx-auto max-w-6xl px-6 pb-24">
-        <p
-          className="text-sm font-medium uppercase tracking-[0.2em]"
-          style={{ color: "var(--brand-red)" }}
-        >
+        <p className="text-sm font-medium uppercase tracking-[0.2em] text-brand-red">
           Packs & tarifs
         </p>
         <h2 className="mt-3 text-3xl font-semibold md:text-4xl">
@@ -146,10 +143,7 @@ function CommunityManagementPage() {
               }
             >
               {p.featured && (
-                <p
-                  className="mb-3 text-xs font-semibold uppercase tracking-widest"
-                  style={{ color: "var(--brand-red)" }}
-                >
+                <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-brand-red">
                   Le plus choisi
                 </p>
               )}
@@ -157,18 +151,14 @@ function CommunityManagementPage() {
               <ul className="mt-6 space-y-3 text-sm">
                 {p.items.map((item) => (
                   <li key={item} className="flex items-start gap-2 text-foreground/85">
-                    <Check
-                      className="mt-0.5 h-4 w-4 shrink-0"
-                      style={{ color: "var(--brand-red)" }}
-                    />
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-red" />
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
               <Link
                 to="/contact"
-                className="mt-8 inline-flex items-center gap-2 self-start rounded-full px-5 py-2.5 text-sm font-semibold text-white"
-                style={{ backgroundColor: p.featured ? "var(--brand-red)" : "var(--brand-navy)" }}
+                className={`mt-8 inline-flex items-center gap-2 self-start rounded-full px-5 py-2.5 text-sm font-semibold text-white ${p.featured ? "bg-brand-red" : "bg-brand-navy"}`}
               >
                 Choisir ce pack <ArrowRight className="h-4 w-4" />
               </Link>

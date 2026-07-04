@@ -34,11 +34,7 @@ export const Route = createFileRoute("/destinations/$country")({
     <div className="mx-auto max-w-3xl px-6 py-32 text-center">
       <h1 className="text-3xl font-semibold">Destination introuvable</h1>
       <p className="mt-4 text-muted-foreground">Cette destination n'est pas encore disponible.</p>
-      <Link
-        to="/"
-        className="mt-8 inline-block text-sm font-semibold"
-        style={{ color: "var(--brand-red)" }}
-      >
+      <Link to="/" className="mt-8 inline-block text-sm font-semibold text-brand-red">
         ← Retour à l'accueil
       </Link>
     </div>
@@ -48,8 +44,7 @@ export const Route = createFileRoute("/destinations/$country")({
       <h1 className="text-3xl font-semibold">Une erreur est survenue</h1>
       <button
         onClick={reset}
-        className="mt-6 rounded-full px-5 py-3 text-sm font-semibold text-white"
-        style={{ backgroundColor: "var(--brand-red)" }}
+        className="mt-6 rounded-full bg-brand-red px-5 py-3 text-sm font-semibold text-white"
       >
         Réessayer
       </button>
@@ -86,8 +81,7 @@ function DestinationPage() {
             <Link
               to="/request"
               search={{ service: d.slug }}
-              className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white"
-              style={{ backgroundColor: "var(--brand-red)" }}
+              className="inline-flex items-center gap-2 rounded-full bg-brand-red px-6 py-3 text-sm font-semibold text-white"
             >
               Démarrer ma demande <ArrowRight className="h-4 w-4" />
             </Link>
@@ -124,7 +118,7 @@ function DestinationPage() {
       </section>
 
       {/* CITIES */}
-      <section className="py-20" style={{ backgroundColor: "var(--brand-cream)" }}>
+      <section className="bg-brand-cream py-20">
         <div className="mx-auto max-w-7xl px-6">
           <p className="text-sm font-medium uppercase tracking-[0.2em]" style={{ color: d.accent }}>
             Villes phares
@@ -197,7 +191,7 @@ function DestinationPage() {
       </section>
 
       {/* PRACTICAL + TIPS */}
-      <section className="py-20" style={{ backgroundColor: "var(--brand-navy)", color: "white" }}>
+      <section className="bg-brand-navy py-20 text-white">
         <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-2">
           <div>
             <p
@@ -246,10 +240,7 @@ function DestinationPage() {
 
       {/* CTA */}
       <section className="mx-auto max-w-7xl px-6 py-20">
-        <div
-          className="overflow-hidden rounded-3xl p-10 md:p-16"
-          style={{ backgroundColor: "var(--brand-cream)" }}
-        >
+        <div className="overflow-hidden rounded-3xl bg-brand-cream p-10 md:p-16">
           <div className="grid gap-8 md:grid-cols-2 md:items-center">
             <div>
               <h2 className="text-4xl font-semibold md:text-5xl">Prêt·e pour {d.name} ?</h2>
@@ -271,8 +262,7 @@ function DestinationPage() {
               <Link
                 to="/request"
                 search={{ service: d.slug }}
-                className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-4 text-sm font-semibold text-white"
-                style={{ backgroundColor: "var(--brand-red)" }}
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-red px-6 py-4 text-sm font-semibold text-white"
               >
                 Démarrer ma demande <ArrowRight className="h-4 w-4" />
               </Link>

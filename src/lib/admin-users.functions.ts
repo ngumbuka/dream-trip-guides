@@ -1,8 +1,13 @@
 import { createServerFn } from "@tanstack/react-start";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import { z } from "zod";
+import type { SupabaseClient, User } from "@supabase/supabase-js";
+import type { Database } from "@/integrations/supabase/types";
 
-async function assertAdmin(ctx: { supabase: any; userId: string }) {
+type DBClient = SupabaseClient<Database>;
+type AdminCtx = { supabase: DBClient; userId: string };
+
+async function assertAdmin(ctx: AdminCtx) {
   const { data, error } = await ctx.supabase.rpc("has_role", {
     _user_id: ctx.userId,
     _role: "admin",
@@ -29,17 +34,17 @@ export const adminListUsers = createServerFn({ method: "GET" })
       supabaseAdmin.from("user_roles").select("user_id, role").in("user_id", ids),
     ]);
 
-    const pMap = new Map((profiles ?? []).map((p: any) => [p.id, p]));
+    const pMap = new Map((profiles ?? []).map((p) => [p.id, p]));
     const rMap = new Map<string, string[]>();
-    (roles ?? []).forEach((r: any) => {
+    (roles ?? []).forEach((r) => {
       const arr = rMap.get(r.user_id) ?? [];
       arr.push(r.role);
       rMap.set(r.user_id, arr);
     });
 
     return list.users.map((u) => {
-      const p = pMap.get(u.id) as any;
-      const bannedUntil = (u as any).banned_until as string | null | undefined;
+      const p = pMap.get(u.id);
+      const bannedUntil = (u as User & { banned_until?: string | null }).banned_until;
       const banned = !!bannedUntil && new Date(bannedUntil).getTime() > Date.now();
       return {
         id: u.id,
@@ -67,7 +72,7 @@ export const adminSetUserBanned = createServerFn({ method: "POST" })
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     const { error } = await supabaseAdmin.auth.admin.updateUserById(data.user_id, {
       ban_duration: data.banned ? "876000h" : "none",
-    } as any);
+    } as Parameters<typeof supabaseAdmin.auth.admin.updateUserById>[1]);
     if (error) throw new Error(error.message);
     return { ok: true };
   });

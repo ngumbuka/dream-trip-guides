@@ -7,7 +7,11 @@ export const Route = createFileRoute("/services/selection-logements")({
   head: () => ({
     meta: [
       { title: "Sélection de logements — VoyageonsEnsemble" },
-      { name: "description", content: "Trouvez le logement idéal : résidences étudiantes, colocations, studios ou appartements privés." },
+      {
+        name: "description",
+        content:
+          "Trouvez le logement idéal : résidences étudiantes, colocations, studios ou appartements privés.",
+      },
     ],
   }),
   component: () => (
@@ -24,9 +28,15 @@ export const Route = createFileRoute("/services/selection-logements")({
         "Visites virtuelles ou reportages photo/vidéo dédiés",
       ]}
       steps={[
-        { title: "Cahier des charges", desc: "Définition de vos besoins (budget, surface, localisation)." },
+        {
+          title: "Cahier des charges",
+          desc: "Définition de vos besoins (budget, surface, localisation).",
+        },
         { title: "Chasse immobilière", desc: "Nous sélectionnons 3 à 5 biens correspondants." },
-        { title: "Visites & retours", desc: "Nous visitons pour vous et vous envoyons un compte-rendu." },
+        {
+          title: "Visites & retours",
+          desc: "Nous visitons pour vous et vous envoyons un compte-rendu.",
+        },
         { title: "Validation", desc: "Vous choisissez votre coup de cœur pour lancer le dossier." },
       ]}
       included={[
@@ -37,9 +47,18 @@ export const Route = createFileRoute("/services/selection-logements")({
         { icon: ArrowRight, t: "Service Logement", to: "/services/logement" },
       ]}
       faqs={[
-        { q: "Visitez-vous réellement les appartements ?", a: "Oui, un agent local effectue la visite pour s'assurer que le logement correspond aux photos et qu'il n'y a pas de mauvaises surprises." },
-        { q: "Proposez-vous des colocations ?", a: "Absolument. Nous pouvons vous trouver une chambre dans une colocation existante ou constituer une colocation avec d'autres étudiants de notre réseau." },
-        { q: "Quels types de logements sont disponibles ?", a: "Nous trouvons des studios, des T2, des chambres en résidences étudiantes privées et publiques, ainsi que des colocations." },
+        {
+          q: "Visitez-vous réellement les appartements ?",
+          a: "Oui, un agent local effectue la visite pour s'assurer que le logement correspond aux photos et qu'il n'y a pas de mauvaises surprises.",
+        },
+        {
+          q: "Proposez-vous des colocations ?",
+          a: "Absolument. Nous pouvons vous trouver une chambre dans une colocation existante ou constituer une colocation avec d'autres étudiants de notre réseau.",
+        },
+        {
+          q: "Quels types de logements sont disponibles ?",
+          a: "Nous trouvons des studios, des T2, des chambres en résidences étudiantes privées et publiques, ainsi que des colocations.",
+        },
       ]}
       serviceSlug="selection-logements"
     />

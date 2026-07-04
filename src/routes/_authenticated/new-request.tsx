@@ -10,7 +10,7 @@ import { Upload, X } from "lucide-react";
 const SERVICES = [
   { slug: "long-sejours", label: "Longs séjours" },
   { slug: "court-sejours", label: "Courts séjours" },
-  { slug: "visite-cameroun", label: "Visite Cameroun" },
+  { slug: "visite-afrique", label: "Visit Africa" },
   { slug: "logement", label: "Logement" },
   { slug: "caution-avi", label: "Caution bancaire & AVI" },
   { slug: "billets-avion", label: "Billets d'avion" },
@@ -80,7 +80,7 @@ function NewRequestPage() {
       toast.success("Demande envoyée !");
       navigate({ to: "/my-requests/$id", params: { id } });
     },
-    onError: (e: any) => toast.error(e.message ?? "Erreur lors de l'envoi"),
+    onError: (e: Error) => toast.error(e.message ?? "Erreur lors de l'envoi"),
   });
 
   return (
@@ -195,8 +195,7 @@ function NewRequestPage() {
         <button
           type="submit"
           disabled={mutation.isPending}
-          className="w-full rounded-full px-6 py-3 text-sm font-semibold text-white disabled:opacity-60"
-          style={{ backgroundColor: "var(--brand-red)" }}
+          className="w-full rounded-full bg-brand-red px-6 py-3 text-sm font-semibold text-white disabled:opacity-60"
         >
           {mutation.isPending ? "Envoi…" : "Envoyer ma demande"}
         </button>

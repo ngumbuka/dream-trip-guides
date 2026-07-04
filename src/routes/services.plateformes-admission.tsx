@@ -7,7 +7,11 @@ export const Route = createFileRoute("/services/plateformes-admission")({
   head: () => ({
     meta: [
       { title: "Plateformes d'Admission (Campus France, etc.) — VoyageonsEnsemble" },
-      { name: "description", content: "Gestion complète de vos candidatures sur les plateformes officielles : Campus France, Uni-Assist, Parcoursup." },
+      {
+        name: "description",
+        content:
+          "Gestion complète de vos candidatures sur les plateformes officielles : Campus France, Uni-Assist, Parcoursup.",
+      },
     ],
   }),
   component: () => (
@@ -25,9 +29,18 @@ export const Route = createFileRoute("/services/plateformes-admission")({
       ]}
       steps={[
         { title: "Création", desc: "Ouverture des comptes sur les plateformes choisies." },
-        { title: "Remplissage", desc: "Saisie de vos notes, diplômes et informations personnelles." },
-        { title: "Vérification", desc: "Contrôle avant soumission finale (aucune erreur permise)." },
-        { title: "Validation", desc: "Validation des vœux et paiement des frais d'étude de dossier." },
+        {
+          title: "Remplissage",
+          desc: "Saisie de vos notes, diplômes et informations personnelles.",
+        },
+        {
+          title: "Vérification",
+          desc: "Contrôle avant soumission finale (aucune erreur permise).",
+        },
+        {
+          title: "Validation",
+          desc: "Validation des vœux et paiement des frais d'étude de dossier.",
+        },
       ]}
       included={[
         { icon: Laptop, t: "Saisie comptes" },
@@ -37,8 +50,14 @@ export const Route = createFileRoute("/services/plateformes-admission")({
         { icon: ClipboardCheck, t: "Admission", to: "/services/admission-etudes" },
       ]}
       faqs={[
-        { q: "Quelles plateformes maîtrisez-vous ?", a: "Principalement Études en France (Campus France), Parcoursup, Uni-Assist (Allemagne), et les portails d'admission directe des universités et collèges canadiens." },
-        { q: "Que se passe-t-il si la plateforme plante le dernier jour ?", a: "C'est précisément pour cela que nous n'attendons jamais le dernier moment. Vos dossiers sont toujours soumis plusieurs jours avant la date limite." },
+        {
+          q: "Quelles plateformes maîtrisez-vous ?",
+          a: "Principalement Études en France (Campus France), Parcoursup, Uni-Assist (Allemagne), et les portails d'admission directe des universités et collèges canadiens.",
+        },
+        {
+          q: "Que se passe-t-il si la plateforme plante le dernier jour ?",
+          a: "C'est précisément pour cela que nous n'attendons jamais le dernier moment. Vos dossiers sont toujours soumis plusieurs jours avant la date limite.",
+        },
       ]}
       serviceSlug="plateformes-admission"
     />

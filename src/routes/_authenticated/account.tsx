@@ -68,8 +68,8 @@ function AccountPage() {
       await updateProfile({ data: { full_name: fullName, phone } });
       toast.success("Profil mis à jour.");
       queryClient.invalidateQueries({ queryKey: ["my-profile"] });
-    } catch (err: any) {
-      toast.error(err?.message ?? "Impossible de sauvegarder.");
+    } catch (err: unknown) {
+      toast.error(err instanceof Error ? err.message : "Impossible de sauvegarder.");
     } finally {
       setBusy(false);
     }
@@ -100,8 +100,8 @@ function AccountPage() {
       toast.success(`Lien de confirmation envoyé à ${res.sent_to}.`);
       setNewEmail("");
       queryClient.invalidateQueries({ queryKey: ["email-status"] });
-    } catch (err: any) {
-      toast.error(err?.message ?? "Impossible d'envoyer le lien.");
+    } catch (err: unknown) {
+      toast.error(err instanceof Error ? err.message : "Impossible d'envoyer le lien.");
     } finally {
       setSendingEmail(false);
     }
@@ -112,8 +112,8 @@ function AccountPage() {
     try {
       const res = await resendVerif({});
       toast.success(`Nouveau lien envoyé à ${res.sent_to}.`);
-    } catch (err: any) {
-      toast.error(err?.message ?? "Impossible d'envoyer le lien.");
+    } catch (err: unknown) {
+      toast.error(err instanceof Error ? err.message : "Impossible d'envoyer le lien.");
     } finally {
       setResending(false);
     }
@@ -216,8 +216,7 @@ function AccountPage() {
             <button
               type="submit"
               disabled={busy || profileQ.isLoading}
-              className="rounded-full px-5 py-2.5 text-sm font-semibold text-white disabled:opacity-60"
-              style={{ backgroundColor: "var(--brand-red)" }}
+              className="rounded-full bg-brand-red px-5 py-2.5 text-sm font-semibold text-white disabled:opacity-60"
             >
               {busy ? "Enregistrement…" : "Enregistrer"}
             </button>
@@ -247,8 +246,7 @@ function AccountPage() {
           <button
             type="submit"
             disabled={sendingEmail || !newEmail.trim()}
-            className="rounded-full px-5 py-2.5 text-sm font-semibold text-white disabled:opacity-60"
-            style={{ backgroundColor: "var(--brand-red)" }}
+            className="rounded-full bg-brand-red px-5 py-2.5 text-sm font-semibold text-white disabled:opacity-60"
           >
             {sendingEmail ? "Envoi…" : "Envoyer le lien"}
           </button>

@@ -63,12 +63,9 @@ const reasons = [
 function FormationsHub() {
   return (
     <div>
-      <section className="border-b border-border" style={{ backgroundColor: "var(--brand-cream)" }}>
+      <section className="border-b border-border bg-brand-cream">
         <div className="mx-auto max-w-5xl px-6 py-24 text-center">
-          <p
-            className="text-sm font-medium uppercase tracking-[0.2em]"
-            style={{ color: "var(--brand-red)" }}
-          >
+          <p className="text-sm font-medium uppercase tracking-[0.2em] text-brand-red">
             Formations linguistiques
           </p>
           <h1 className="mt-4 text-5xl font-semibold leading-tight md:text-6xl">
@@ -82,8 +79,7 @@ function FormationsHub() {
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white"
-              style={{ backgroundColor: "var(--brand-red)" }}
+              className="inline-flex items-center gap-2 rounded-full bg-brand-red px-6 py-3 text-sm font-semibold text-white"
             >
               <Sparkles className="h-4 w-4" /> Réserver un bilan gratuit
             </Link>
@@ -114,7 +110,7 @@ function FormationsHub() {
                 key={r}
                 className="flex items-start gap-3 rounded-2xl border border-border bg-card p-4 text-sm"
               >
-                <Check className="mt-0.5 h-4 w-4 shrink-0" style={{ color: "var(--brand-red)" }} />
+                <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-red" />
                 <span>{r}</span>
               </li>
             ))}
@@ -122,11 +118,7 @@ function FormationsHub() {
         </div>
       </section>
 
-      <section
-        id="programmes"
-        className="py-20"
-        style={{ backgroundColor: "var(--brand-navy)", color: "white" }}
-      >
+      <section id="programmes" className="bg-brand-navy py-20 text-white">
         <div className="mx-auto max-w-7xl px-6">
           <h2 className="text-3xl font-semibold md:text-4xl">Nos 3 filières de formation</h2>
           <p className="mt-3 max-w-2xl text-white/70">
@@ -157,10 +149,7 @@ function FormationsHub() {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-20">
-        <div
-          className="overflow-hidden rounded-3xl p-10 text-center md:p-14"
-          style={{ backgroundColor: "var(--brand-cream)" }}
-        >
+        <div className="overflow-hidden rounded-3xl bg-brand-cream p-10 text-center md:p-14">
           <h2 className="text-3xl font-semibold md:text-4xl">
             Pas sûr de la formation à choisir ?
           </h2>
@@ -171,8 +160,7 @@ function FormationsHub() {
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white"
-              style={{ backgroundColor: "var(--brand-red)" }}
+              className="inline-flex items-center gap-2 rounded-full bg-brand-red px-6 py-3 text-sm font-semibold text-white"
             >
               <Rocket className="h-4 w-4" /> Réserver mon bilan gratuit
             </Link>

@@ -22,7 +22,6 @@ import { isCurrentUserAdmin } from "@/lib/requests.functions";
 const serviceItems = [
   { to: "/services/long-sejours", label: "Longs séjours" },
   { to: "/services/court-sejours", label: "Courts séjours" },
-  { to: "/services/visite-cameroun", label: "Visit Africa" },
   { to: "/services/formations", label: "Formations linguistiques" },
 ] as const;
 
@@ -58,7 +57,7 @@ export function Header() {
             className="hidden text-lg font-semibold tracking-tight text-foreground 2xl:inline"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Voyageons<span style={{ color: "var(--brand-red)" }}>Ensemble</span>
+            Voyageons<span className="text-brand-red">Ensemble</span>
           </span>
         </Link>
         <nav className="hidden items-center gap-5 xl:gap-6 2xl:gap-8 xl:flex">
@@ -102,8 +101,7 @@ export function Header() {
           <Link
             to="/new-request"
             search={{ service: undefined }}
-            className="inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold text-white shadow-sm transition-transform hover:-translate-y-0.5"
-            style={{ backgroundColor: "var(--brand-red)" }}
+            className="inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-brand-red px-4 py-2 text-sm font-semibold text-white shadow-sm transition-transform hover:-translate-y-0.5"
           >
             <Rocket className="h-4 w-4" /> Démarrer
           </Link>
@@ -174,8 +172,7 @@ export function Header() {
               to="/new-request"
               search={{ service: undefined }}
               onClick={() => setOpen(false)}
-              className="inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-center text-sm font-semibold text-white"
-              style={{ backgroundColor: "var(--brand-red)" }}
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-red px-5 py-3 text-center text-sm font-semibold text-white"
             >
               <Rocket className="h-4 w-4" /> Démarrer mon projet
             </Link>

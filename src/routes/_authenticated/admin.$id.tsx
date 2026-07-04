@@ -42,17 +42,17 @@ function AdminDetail() {
       setBody("");
       qc.invalidateQueries({ queryKey: ["admin-request", id] });
     },
-    onError: (e: any) => toast.error(e.message),
+    onError: (e: Error) => toast.error(e.message),
   });
   const statusMut = useMutation({
     mutationFn: (status: string) =>
-      statusFn({ data: { request_id: id, status: status as any, visible_to_user: true } }),
+      statusFn({ data: { request_id: id, status, visible_to_user: true } }),
     onSuccess: () => {
       toast.success("Statut mis à jour");
       qc.invalidateQueries({ queryKey: ["admin-request", id] });
       qc.invalidateQueries({ queryKey: ["admin-list"] });
     },
-    onError: (e: any) => toast.error(e.message),
+    onError: (e: Error) => toast.error(e.message),
   });
   const noteMut = useMutation({
     mutationFn: () => noteFn({ data: { request_id: id, body: note, visible_to_user: visible } }),
@@ -60,7 +60,7 @@ function AdminDetail() {
       setNote("");
       qc.invalidateQueries({ queryKey: ["admin-request", id] });
     },
-    onError: (e: any) => toast.error(e.message),
+    onError: (e: Error) => toast.error(e.message),
   });
 
   async function download(docId: string) {
@@ -117,7 +117,7 @@ function AdminDetail() {
         <section className="mt-8">
           <h2 className="text-xl font-semibold">Documents</h2>
           <ul className="mt-3 space-y-2">
-            {documents.map((d: any) => (
+            {documents.map((d) => (
               <li
                 key={d.id}
                 className="flex items-center justify-between rounded-lg border border-border bg-card px-3 py-2 text-sm"
@@ -138,7 +138,7 @@ function AdminDetail() {
       <section className="mt-10">
         <h2 className="text-xl font-semibold">Notes & historique</h2>
         <ul className="mt-4 space-y-2">
-          {updates.map((u: any) => (
+          {updates.map((u) => (
             <li key={u.id} className="rounded-xl border border-border bg-card p-4 text-sm">
               <div className="flex items-center justify-between text-xs text-muted-foreground">
                 <span>
@@ -177,10 +177,7 @@ function AdminDetail() {
             />{" "}
             Visible par le client
           </label>
-          <button
-            className="rounded-full px-4 py-2 text-sm font-semibold text-white"
-            style={{ backgroundColor: "var(--brand-navy)" }}
-          >
+          <button className="rounded-full bg-brand-navy px-4 py-2 text-sm font-semibold text-white">
             Ajouter la note
           </button>
         </form>
@@ -190,11 +187,10 @@ function AdminDetail() {
         <h2 className="text-xl font-semibold">Messagerie</h2>
         <div className="mt-4 space-y-3 rounded-3xl border border-border bg-card p-6">
           {messages.length === 0 && <p className="text-sm text-muted-foreground">Aucun message.</p>}
-          {messages.map((m: any) => (
+          {messages.map((m) => (
             <div
               key={m.id}
-              className={`max-w-[80%] rounded-2xl px-4 py-3 text-sm ${m.author_role === "user" ? "bg-muted" : "ml-auto text-white"}`}
-              style={m.author_role !== "user" ? { backgroundColor: "var(--brand-red)" } : undefined}
+              className={`max-w-[80%] rounded-2xl px-4 py-3 text-sm ${m.author_role === "user" ? "bg-muted" : "ml-auto bg-brand-red text-white"}`}
             >
               <p>{m.body}</p>
               <p className="mt-1 text-[10px] opacity-70">
@@ -218,8 +214,7 @@ function AdminDetail() {
             />
             <button
               disabled={sendMut.isPending || !body.trim()}
-              className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-white disabled:opacity-60"
-              style={{ backgroundColor: "var(--brand-red)" }}
+              className="inline-flex items-center gap-2 rounded-full bg-brand-red px-4 py-2 text-sm font-semibold text-white disabled:opacity-60"
             >
               <Send className="h-4 w-4" /> Envoyer
             </button>

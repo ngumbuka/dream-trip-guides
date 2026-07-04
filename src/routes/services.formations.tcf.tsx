@@ -77,12 +77,9 @@ const method = [
 function TcfPage() {
   return (
     <div>
-      <section className="border-b border-border" style={{ backgroundColor: "var(--brand-cream)" }}>
+      <section className="border-b border-border bg-brand-cream">
         <div className="mx-auto max-w-5xl px-6 py-24">
-          <p
-            className="text-sm font-medium uppercase tracking-[0.2em]"
-            style={{ color: "var(--brand-red)" }}
-          >
+          <p className="text-sm font-medium uppercase tracking-[0.2em] text-brand-red">
             Formations · TCF
           </p>
           <h1 className="mt-4 text-5xl font-semibold leading-tight md:text-6xl">
@@ -96,8 +93,7 @@ function TcfPage() {
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white"
-              style={{ backgroundColor: "var(--brand-red)" }}
+              className="inline-flex items-center gap-2 rounded-full bg-brand-red px-6 py-3 text-sm font-semibold text-white"
             >
               <Sparkles className="h-4 w-4" /> Réserver mon bilan gratuit
             </Link>
@@ -152,7 +148,7 @@ function TcfPage() {
         </div>
       </section>
 
-      <section className="py-20" style={{ backgroundColor: "var(--brand-cream)" }}>
+      <section className="bg-brand-cream py-20">
         <div className="mx-auto max-w-6xl px-6">
           <h2 className="text-3xl font-semibold md:text-4xl">
             Les compétences évaluées — et comment nous les travaillons
@@ -176,19 +172,13 @@ function TcfPage() {
             <ul className="mt-6 space-y-3 text-sm">
               {method.map((m) => (
                 <li key={m} className="flex items-start gap-3">
-                  <Check
-                    className="mt-0.5 h-4 w-4 shrink-0"
-                    style={{ color: "var(--brand-red)" }}
-                  />
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-red" />
                   <span className="text-foreground/80">{m}</span>
                 </li>
               ))}
             </ul>
           </div>
-          <div
-            className="rounded-3xl p-8"
-            style={{ backgroundColor: "var(--brand-navy)", color: "white" }}
-          >
+          <div className="rounded-3xl bg-brand-navy p-8 text-white">
             <h2 className="text-2xl font-semibold">Niveaux visés</h2>
             <div className="mt-6 space-y-5">
               <div className="rounded-2xl bg-white/10 p-5">
@@ -216,10 +206,7 @@ function TcfPage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 pb-24">
-        <div
-          className="overflow-hidden rounded-3xl p-10 text-center md:p-14"
-          style={{ backgroundColor: "var(--brand-cream)" }}
-        >
+        <div className="overflow-hidden rounded-3xl bg-brand-cream p-10 text-center md:p-14">
           <h2 className="text-3xl font-semibold md:text-4xl">Un projet en France ou au Canada ?</h2>
           <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
             30 minutes offertes pour évaluer votre niveau réel et bâtir ensemble un plan adapté à
@@ -228,8 +215,7 @@ function TcfPage() {
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white"
-              style={{ backgroundColor: "var(--brand-red)" }}
+              className="inline-flex items-center gap-2 rounded-full bg-brand-red px-6 py-3 text-sm font-semibold text-white"
             >
               <Sparkles className="h-4 w-4" /> Réserver mon bilan gratuit{" "}
               <ArrowRight className="h-4 w-4" />

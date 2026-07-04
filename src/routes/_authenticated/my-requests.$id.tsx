@@ -40,7 +40,7 @@ function RequestDetail() {
       setBody("");
       qc.invalidateQueries({ queryKey: ["my-request", id] });
     },
-    onError: (e: any) => toast.error(e.message),
+    onError: (e: Error) => toast.error(e.message),
   });
 
   async function handleUpload(e: React.ChangeEvent<HTMLInputElement>) {
@@ -65,8 +65,8 @@ function RequestDetail() {
       });
       toast.success("Fichier ajouté");
       qc.invalidateQueries({ queryKey: ["my-request", id] });
-    } catch (err: any) {
-      toast.error(err.message);
+    } catch (err: unknown) {
+      toast.error(err instanceof Error ? err.message : "Erreur");
     }
   }
 
@@ -110,7 +110,7 @@ function RequestDetail() {
         <section className="mt-10">
           <h2 className="text-xl font-semibold">Historique</h2>
           <ul className="mt-4 space-y-2">
-            {updates.map((u: any) => (
+            {updates.map((u) => (
               <li key={u.id} className="rounded-xl border border-border bg-card p-4 text-sm">
                 <div className="flex items-center justify-between text-xs text-muted-foreground">
                   <span>{new Date(u.created_at).toLocaleString()}</span>
@@ -131,7 +131,7 @@ function RequestDetail() {
         </label>
         {documents.length > 0 && (
           <ul className="mt-4 space-y-2">
-            {documents.map((d: any) => (
+            {documents.map((d) => (
               <li
                 key={d.id}
                 className="flex items-center justify-between rounded-lg border border-border bg-card px-3 py-2 text-sm"
@@ -155,13 +155,10 @@ function RequestDetail() {
           {messages.length === 0 && (
             <p className="text-sm text-muted-foreground">Aucun message pour l'instant.</p>
           )}
-          {messages.map((m: any) => (
+          {messages.map((m) => (
             <div
               key={m.id}
-              className={`max-w-[80%] rounded-2xl px-4 py-3 text-sm ${m.author_role === "admin" ? "bg-muted" : "ml-auto text-white"}`}
-              style={
-                m.author_role !== "admin" ? { backgroundColor: "var(--brand-red)" } : undefined
-              }
+              className={`max-w-[80%] rounded-2xl px-4 py-3 text-sm ${m.author_role === "admin" ? "bg-muted" : "ml-auto bg-brand-red text-white"}`}
             >
               <p>{m.body}</p>
               <p className="mt-1 text-[10px] opacity-70">
@@ -185,8 +182,7 @@ function RequestDetail() {
             />
             <button
               disabled={sendMut.isPending || !body.trim()}
-              className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-white disabled:opacity-60"
-              style={{ backgroundColor: "var(--brand-red)" }}
+              className="inline-flex items-center gap-2 rounded-full bg-brand-red px-4 py-2 text-sm font-semibold text-white disabled:opacity-60"
             >
               <Send className="h-4 w-4" /> Envoyer
             </button>

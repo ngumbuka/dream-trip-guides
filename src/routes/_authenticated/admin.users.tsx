@@ -38,7 +38,7 @@ function AdminUsersPage() {
 
   const [q, setQ] = useState("");
   const visible = useMemo(() => {
-    const rows = (usersQ.data ?? []) as any[];
+    const rows = usersQ.data ?? [];
     const s = q.trim().toLowerCase();
     if (!s) return rows;
     return rows.filter(
@@ -55,7 +55,7 @@ function AdminUsersPage() {
       toast.success(v.banned ? "Compte désactivé." : "Compte réactivé.");
       qc.invalidateQueries({ queryKey: ["admin-users"] });
     },
-    onError: (e: any) => toast.error(e?.message ?? "Action impossible."),
+    onError: (e: Error) => toast.error(e?.message ?? "Action impossible."),
   });
 
   const roleMut = useMutation({
@@ -65,7 +65,7 @@ function AdminUsersPage() {
       toast.success(v.grant ? "Rôle ajouté." : "Rôle retiré.");
       qc.invalidateQueries({ queryKey: ["admin-users"] });
     },
-    onError: (e: any) => toast.error(e?.message ?? "Action impossible."),
+    onError: (e: Error) => toast.error(e?.message ?? "Action impossible."),
   });
 
   if (adminQ.isLoading) return <p className="mx-auto max-w-5xl px-6 py-16">Chargement…</p>;
@@ -115,7 +115,7 @@ function AdminUsersPage() {
           <p className="p-8 text-center text-muted-foreground">Aucun utilisateur.</p>
         ) : (
           <ul className="divide-y divide-border">
-            {visible.map((u: any) => {
+            {visible.map((u) => {
               const isAdmin = u.roles.includes("admin");
               const pending = banMut.isPending || roleMut.isPending;
               return (

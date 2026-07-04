@@ -7,7 +7,10 @@ export const Route = createFileRoute("/services/suivi-recours")({
   head: () => ({
     meta: [
       { title: "Suivi & Recours Visa — VoyageonsEnsemble" },
-      { name: "description", content: "Suivi de votre demande de visa et assistance juridique en cas de refus." },
+      {
+        name: "description",
+        content: "Suivi de votre demande de visa et assistance juridique en cas de refus.",
+      },
     ],
   }),
   component: () => (
@@ -26,9 +29,15 @@ export const Route = createFileRoute("/services/suivi-recours")({
       ]}
       steps={[
         { title: "Suivi", desc: "Nous surveillons votre dossier pendant l'instruction." },
-        { title: "Analyse", desc: "En cas de refus, nous identifions les failles ou les erreurs du consulat." },
+        {
+          title: "Analyse",
+          desc: "En cas de refus, nous identifions les failles ou les erreurs du consulat.",
+        },
         { title: "Recours", desc: "Nous rédigeons un courrier juridique argumenté." },
-        { title: "Nouvelle tentative", desc: "Si le recours échoue, nous préparons un nouveau dépôt renforcé." },
+        {
+          title: "Nouvelle tentative",
+          desc: "Si le recours échoue, nous préparons un nouveau dépôt renforcé.",
+        },
       ]}
       included={[
         { icon: History, t: "Tracking dossier" },
@@ -38,8 +47,14 @@ export const Route = createFileRoute("/services/suivi-recours")({
         { icon: LifeBuoy, t: "Dossier Visa", to: "/services/dossier-visa" },
       ]}
       faqs={[
-        { q: "Quelles sont les chances de succès d'un recours ?", a: "Si le refus est fondé sur une erreur manifeste du consulat (ex: document non vu), les chances sont excellentes. Si votre profil était faible, il vaut parfois mieux refaire un dossier." },
-        { q: "Combien de temps prend un recours ?", a: "Un recours gracieux prend généralement 1 à 2 mois. Un recours auprès de la CRRV peut prendre plusieurs mois." },
+        {
+          q: "Quelles sont les chances de succès d'un recours ?",
+          a: "Si le refus est fondé sur une erreur manifeste du consulat (ex: document non vu), les chances sont excellentes. Si votre profil était faible, il vaut parfois mieux refaire un dossier.",
+        },
+        {
+          q: "Combien de temps prend un recours ?",
+          a: "Un recours gracieux prend généralement 1 à 2 mois. Un recours auprès de la CRRV peut prendre plusieurs mois.",
+        },
       ]}
       serviceSlug="suivi-recours"
     />

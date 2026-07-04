@@ -29,7 +29,7 @@ function AdminPage() {
     retry: 1,
   });
 
-  const rows = (data ?? []) as any[];
+  const rows = data ?? [];
   const stats = useMemo(() => {
     const total = rows.length;
     const open = rows.filter((r) => !["termine", "refuse"].includes(r.status)).length;
@@ -111,7 +111,7 @@ function AdminPage() {
           <p className="p-8 text-center text-muted-foreground">Aucune demande.</p>
         ) : (
           <ul className="divide-y divide-border">
-            {visible.map((r: any) => (
+            {visible.map((r) => (
               <li key={r.id}>
                 <Link
                   to="/admin/$id"
@@ -136,7 +136,15 @@ function AdminPage() {
   );
 }
 
-function Stat({ icon: Icon, label, value }: { icon: any; label: string; value: number }) {
+function Stat({
+  icon: Icon,
+  label,
+  value,
+}: {
+  icon: React.ComponentType<{ className?: string }>;
+  label: string;
+  value: number;
+}) {
   return (
     <div className="rounded-2xl border border-border bg-card p-5">
       <div className="flex items-center justify-between">

@@ -26,10 +26,25 @@ const services: SearchResult[] = [
   },
   {
     kind: "service",
-    title: "Visite Cameroun",
-    subtitle: "Circuits, diaspora, tourisme local",
-    to: "/services/visite-cameroun",
-    keywords: ["cameroun", "visite", "diaspora", "kribi", "douala", "yaounde", "tourisme"],
+    title: "Visit Africa",
+    subtitle: "Circuits & séjours en Afrique",
+    to: "/services/visite-afrique",
+    keywords: [
+      "africa",
+      "afrique",
+      "senegal",
+      "cameroun",
+      "kenya",
+      "tanzanie",
+      "maroc",
+      "egypte",
+      "rwanda",
+      "cap-vert",
+      "ghana",
+      "safari",
+      "circuit",
+      "voyage",
+    ],
   },
   {
     kind: "service",
@@ -125,10 +140,10 @@ export function suggestionsForType(type: string): SearchResult[] {
         "/services/accueil-integration",
       ].includes(r.to),
     );
-  if (t.includes("cameroun"))
+  if (t.includes("africa") || t.includes("afrique"))
     return searchIndex.filter((r) =>
       [
-        "/services/visite-cameroun",
+        "/services/visite-afrique",
         "/services/billets-avion",
         "/services/accueil-integration",
       ].includes(r.to),

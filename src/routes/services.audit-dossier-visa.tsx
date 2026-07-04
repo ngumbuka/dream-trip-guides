@@ -7,7 +7,11 @@ export const Route = createFileRoute("/services/audit-dossier-visa")({
   head: () => ({
     meta: [
       { title: "Audit de dossier de visa — VoyageonsEnsemble" },
-      { name: "description", content: "Faites évaluer votre dossier de visa par nos experts avant de le soumettre pour maximiser vos chances." },
+      {
+        name: "description",
+        content:
+          "Faites évaluer votre dossier de visa par nos experts avant de le soumettre pour maximiser vos chances.",
+      },
     ],
   }),
   component: () => (
@@ -25,8 +29,14 @@ export const Route = createFileRoute("/services/audit-dossier-visa")({
       ]}
       steps={[
         { title: "Transmission", desc: "Vous nous envoyez vos documents au format numérique." },
-        { title: "Analyse", desc: "Nous passons votre dossier au peigne fin (profil, finances, motifs)." },
-        { title: "Restitution", desc: "Entretien pour vous expliquer nos conclusions et recommandations." },
+        {
+          title: "Analyse",
+          desc: "Nous passons votre dossier au peigne fin (profil, finances, motifs).",
+        },
+        {
+          title: "Restitution",
+          desc: "Entretien pour vous expliquer nos conclusions et recommandations.",
+        },
         { title: "Correction", desc: "Vous ajustez le dossier selon nos conseils avant le dépôt." },
       ]}
       included={[
@@ -37,8 +47,14 @@ export const Route = createFileRoute("/services/audit-dossier-visa")({
         { icon: FileText, t: "Service Visa", to: "/services/visa-schengen" },
       ]}
       faqs={[
-        { q: "Garantissez-vous l'obtention du visa après l'audit ?", a: "Non, la décision finale appartient toujours au consulat. Cependant, un dossier audité et corrigé a des chances de succès considérablement plus élevées." },
-        { q: "Combien de temps prend l'audit ?", a: "Généralement 48 à 72 heures ouvrées après réception du dossier complet." },
+        {
+          q: "Garantissez-vous l'obtention du visa après l'audit ?",
+          a: "Non, la décision finale appartient toujours au consulat. Cependant, un dossier audité et corrigé a des chances de succès considérablement plus élevées.",
+        },
+        {
+          q: "Combien de temps prend l'audit ?",
+          a: "Généralement 48 à 72 heures ouvrées après réception du dossier complet.",
+        },
       ]}
       serviceSlug="audit-dossier-visa"
     />

@@ -7,7 +7,11 @@ export const Route = createFileRoute("/services/seo-ads")({
   head: () => ({
     meta: [
       { title: "SEO & Publicité en ligne (Ads) — VoyageonsEnsemble" },
-      { name: "description", content: "Référencement naturel et campagnes publicitaires pour booster votre visibilité en ligne." },
+      {
+        name: "description",
+        content:
+          "Référencement naturel et campagnes publicitaires pour booster votre visibilité en ligne.",
+      },
     ],
   }),
   component: () => (
@@ -24,10 +28,22 @@ export const Route = createFileRoute("/services/seo-ads")({
         "Campagnes publicitaires ciblées sur Facebook, Instagram et LinkedIn",
       ]}
       steps={[
-        { title: "Audit & Stratégie", desc: "Analyse de votre visibilité actuelle et des mots-clés." },
-        { title: "Optimisation SEO", desc: "Mise en place des recommandations techniques et sémantiques." },
-        { title: "Lancement Ads", desc: "Création de vos campagnes publicitaires avec un budget défini." },
-        { title: "Optimisation", desc: "Ajustement continu pour maximiser le retour sur investissement (ROI)." },
+        {
+          title: "Audit & Stratégie",
+          desc: "Analyse de votre visibilité actuelle et des mots-clés.",
+        },
+        {
+          title: "Optimisation SEO",
+          desc: "Mise en place des recommandations techniques et sémantiques.",
+        },
+        {
+          title: "Lancement Ads",
+          desc: "Création de vos campagnes publicitaires avec un budget défini.",
+        },
+        {
+          title: "Optimisation",
+          desc: "Ajustement continu pour maximiser le retour sur investissement (ROI).",
+        },
       ]}
       included={[
         { icon: Search, t: "Audit SEO" },
@@ -37,8 +53,14 @@ export const Route = createFileRoute("/services/seo-ads")({
         { icon: Megaphone, t: "CM & Digital", to: "/services/community-management" },
       ]}
       faqs={[
-        { q: "Quelle est la différence entre SEO et Ads ?", a: "Le SEO (naturel) prend du temps mais offre une visibilité durable et gratuite par clic. Les Ads (payant) offrent des résultats immédiats mais s'arrêtent dès que vous coupez le budget." },
-        { q: "Quel budget publicitaire prévoir ?", a: "Le budget dépend de vos objectifs et de la concurrence dans votre secteur. Nous recommandons un budget minimum pour pouvoir tester et optimiser les annonces." },
+        {
+          q: "Quelle est la différence entre SEO et Ads ?",
+          a: "Le SEO (naturel) prend du temps mais offre une visibilité durable et gratuite par clic. Les Ads (payant) offrent des résultats immédiats mais s'arrêtent dès que vous coupez le budget.",
+        },
+        {
+          q: "Quel budget publicitaire prévoir ?",
+          a: "Le budget dépend de vos objectifs et de la concurrence dans votre secteur. Nous recommandons un budget minimum pour pouvoir tester et optimiser les annonces.",
+        },
       ]}
       serviceSlug="seo-ads"
     />

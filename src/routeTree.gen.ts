@@ -17,7 +17,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
-import { Route as ServicesVisiteCamerounRouteImport } from './routes/services.visite-cameroun'
+import { Route as ServicesVisiteAfriqueRouteImport } from './routes/services.visite-afrique'
 import { Route as ServicesVisaSchengenRouteImport } from './routes/services.visa-schengen'
 import { Route as ServicesTarifsNegociesRouteImport } from './routes/services.tarifs-negocies'
 import { Route as ServicesSuiviRecoursRouteImport } from './routes/services.suivi-recours'
@@ -108,9 +108,9 @@ const ServicesIndexRoute = ServicesIndexRouteImport.update({
   path: '/services/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ServicesVisiteCamerounRoute = ServicesVisiteCamerounRouteImport.update({
-  id: '/services/visite-cameroun',
-  path: '/services/visite-cameroun',
+const ServicesVisiteAfriqueRoute = ServicesVisiteAfriqueRouteImport.update({
+  id: '/services/visite-afrique',
+  path: '/services/visite-afrique',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesVisaSchengenRoute = ServicesVisaSchengenRouteImport.update({
@@ -433,7 +433,7 @@ export interface FileRoutesByFullPath {
   '/services/suivi-recours': typeof ServicesSuiviRecoursRoute
   '/services/tarifs-negocies': typeof ServicesTarifsNegociesRoute
   '/services/visa-schengen': typeof ServicesVisaSchengenRoute
-  '/services/visite-cameroun': typeof ServicesVisiteCamerounRoute
+  '/services/visite-afrique': typeof ServicesVisiteAfriqueRoute
   '/services/': typeof ServicesIndexRoute
   '/admin/$id': typeof AuthenticatedAdminIdRoute
   '/admin/users': typeof AuthenticatedAdminUsersRoute
@@ -493,7 +493,7 @@ export interface FileRoutesByTo {
   '/services/suivi-recours': typeof ServicesSuiviRecoursRoute
   '/services/tarifs-negocies': typeof ServicesTarifsNegociesRoute
   '/services/visa-schengen': typeof ServicesVisaSchengenRoute
-  '/services/visite-cameroun': typeof ServicesVisiteCamerounRoute
+  '/services/visite-afrique': typeof ServicesVisiteAfriqueRoute
   '/services': typeof ServicesIndexRoute
   '/admin/$id': typeof AuthenticatedAdminIdRoute
   '/admin/users': typeof AuthenticatedAdminUsersRoute
@@ -555,7 +555,7 @@ export interface FileRoutesById {
   '/services/suivi-recours': typeof ServicesSuiviRecoursRoute
   '/services/tarifs-negocies': typeof ServicesTarifsNegociesRoute
   '/services/visa-schengen': typeof ServicesVisaSchengenRoute
-  '/services/visite-cameroun': typeof ServicesVisiteCamerounRoute
+  '/services/visite-afrique': typeof ServicesVisiteAfriqueRoute
   '/services/': typeof ServicesIndexRoute
   '/_authenticated/admin/$id': typeof AuthenticatedAdminIdRoute
   '/_authenticated/admin/users': typeof AuthenticatedAdminUsersRoute
@@ -617,7 +617,7 @@ export interface FileRouteTypes {
     | '/services/suivi-recours'
     | '/services/tarifs-negocies'
     | '/services/visa-schengen'
-    | '/services/visite-cameroun'
+    | '/services/visite-afrique'
     | '/services/'
     | '/admin/$id'
     | '/admin/users'
@@ -677,7 +677,7 @@ export interface FileRouteTypes {
     | '/services/suivi-recours'
     | '/services/tarifs-negocies'
     | '/services/visa-schengen'
-    | '/services/visite-cameroun'
+    | '/services/visite-afrique'
     | '/services'
     | '/admin/$id'
     | '/admin/users'
@@ -738,7 +738,7 @@ export interface FileRouteTypes {
     | '/services/suivi-recours'
     | '/services/tarifs-negocies'
     | '/services/visa-schengen'
-    | '/services/visite-cameroun'
+    | '/services/visite-afrique'
     | '/services/'
     | '/_authenticated/admin/$id'
     | '/_authenticated/admin/users'
@@ -798,7 +798,7 @@ export interface RootRouteChildren {
   ServicesSuiviRecoursRoute: typeof ServicesSuiviRecoursRoute
   ServicesTarifsNegociesRoute: typeof ServicesTarifsNegociesRoute
   ServicesVisaSchengenRoute: typeof ServicesVisaSchengenRoute
-  ServicesVisiteCamerounRoute: typeof ServicesVisiteCamerounRoute
+  ServicesVisiteAfriqueRoute: typeof ServicesVisiteAfriqueRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
   ServicesFormationsAllemandRoute: typeof ServicesFormationsAllemandRoute
   ServicesFormationsTcfRoute: typeof ServicesFormationsTcfRoute
@@ -864,11 +864,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/services/visite-cameroun': {
-      id: '/services/visite-cameroun'
-      path: '/services/visite-cameroun'
-      fullPath: '/services/visite-cameroun'
-      preLoaderRoute: typeof ServicesVisiteCamerounRouteImport
+    '/services/visite-afrique': {
+      id: '/services/visite-afrique'
+      path: '/services/visite-afrique'
+      fullPath: '/services/visite-afrique'
+      preLoaderRoute: typeof ServicesVisiteAfriqueRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services/visa-schengen': {
@@ -1294,7 +1294,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesSuiviRecoursRoute: ServicesSuiviRecoursRoute,
   ServicesTarifsNegociesRoute: ServicesTarifsNegociesRoute,
   ServicesVisaSchengenRoute: ServicesVisaSchengenRoute,
-  ServicesVisiteCamerounRoute: ServicesVisiteCamerounRoute,
+  ServicesVisiteAfriqueRoute: ServicesVisiteAfriqueRoute,
   ServicesIndexRoute: ServicesIndexRoute,
   ServicesFormationsAllemandRoute: ServicesFormationsAllemandRoute,
   ServicesFormationsTcfRoute: ServicesFormationsTcfRoute,
@@ -1304,3 +1304,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

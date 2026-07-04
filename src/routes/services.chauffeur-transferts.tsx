@@ -7,7 +7,10 @@ export const Route = createFileRoute("/services/chauffeur-transferts")({
   head: () => ({
     meta: [
       { title: "Chauffeur privé & Transferts — VoyageonsEnsemble" },
-      { name: "description", content: "Déplacez-vous en toute sécurité et confort avec nos chauffeurs privés." },
+      {
+        name: "description",
+        content: "Déplacez-vous en toute sécurité et confort avec nos chauffeurs privés.",
+      },
     ],
   }),
   component: () => (
@@ -26,7 +29,10 @@ export const Route = createFileRoute("/services/chauffeur-transferts")({
       steps={[
         { title: "Réservation", desc: "Indiquez-nous vos besoins de déplacement." },
         { title: "Accueil", desc: "Votre chauffeur vous attend dès votre arrivée." },
-        { title: "Trajets", desc: "Laissez-vous conduire en toute sécurité vers vos destinations." },
+        {
+          title: "Trajets",
+          desc: "Laissez-vous conduire en toute sécurité vers vos destinations.",
+        },
         { title: "Flexibilité", desc: "Ajustez vos trajets selon vos envies du moment." },
       ]}
       included={[
@@ -34,11 +40,17 @@ export const Route = createFileRoute("/services/chauffeur-transferts")({
         { icon: ShieldCheck, t: "Chauffeurs pro" },
         { icon: Clock, t: "Ponctualité" },
         { icon: Map, t: "Connaissance locale" },
-        { icon: Navigation, t: "Visit Africa", to: "/services/visite-cameroun" },
+        { icon: Navigation, t: "Visit Africa", to: "/services/visite-afrique" },
       ]}
       faqs={[
-        { q: "Puis-je louer une voiture sans chauffeur ?", a: "C'est possible dans certains pays, mais nous recommandons fortement l'option avec chauffeur pour des raisons de sécurité, de confort et d'assurance." },
-        { q: "Les chauffeurs parlent-ils français ou anglais ?", a: "Oui, nous sélectionnons des chauffeurs bilingues selon votre préférence pour faciliter la communication." },
+        {
+          q: "Puis-je louer une voiture sans chauffeur ?",
+          a: "C'est possible dans certains pays, mais nous recommandons fortement l'option avec chauffeur pour des raisons de sécurité, de confort et d'assurance.",
+        },
+        {
+          q: "Les chauffeurs parlent-ils français ou anglais ?",
+          a: "Oui, nous sélectionnons des chauffeurs bilingues selon votre préférence pour faciliter la communication.",
+        },
       ]}
       serviceSlug="chauffeur-transferts"
     />

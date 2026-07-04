@@ -22,14 +22,9 @@ export const Route = createFileRoute("/about")({
 function About() {
   return (
     <div>
-      <section className="border-b border-border" style={{ backgroundColor: "var(--brand-cream)" }}>
+      <section className="border-b border-border bg-brand-cream">
         <div className="mx-auto max-w-5xl px-6 py-24 text-center">
-          <p
-            className="text-sm font-medium uppercase tracking-[0.2em]"
-            style={{ color: "var(--brand-red)" }}
-          >
-            À propos
-          </p>
+          <p className="text-sm font-medium uppercase tracking-[0.2em] text-brand-red">À propos</p>
           <h1 className="mt-4 text-5xl font-semibold leading-tight md:text-6xl">
             Quand l'expérience personnelle <br className="hidden md:inline" /> inspire
             l'accompagnement.
@@ -61,10 +56,7 @@ function About() {
           },
         ].map((b) => (
           <div key={b.title} className="rounded-3xl border border-border bg-card p-8">
-            <div
-              className="inline-flex h-12 w-12 items-center justify-center rounded-2xl"
-              style={{ backgroundColor: "var(--brand-navy)", color: "white" }}
-            >
+            <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-navy text-white">
               <b.icon className="h-6 w-6" />
             </div>
             <h3 className="mt-6 text-2xl font-semibold">{b.title}</h3>
@@ -74,12 +66,9 @@ function About() {
       </section>
 
       {/* FOUNDERS */}
-      <section className="py-24" style={{ backgroundColor: "var(--brand-cream)" }}>
+      <section className="bg-brand-cream py-24">
         <div className="mx-auto max-w-7xl px-6">
-          <p
-            className="text-sm font-medium uppercase tracking-[0.2em]"
-            style={{ color: "var(--brand-red)" }}
-          >
+          <p className="text-sm font-medium uppercase tracking-[0.2em] text-brand-red">
             Fondateurs
           </p>
           <h2 className="mt-3 text-4xl font-semibold md:text-5xl">
@@ -88,14 +77,11 @@ function About() {
 
           <div className="mt-12 grid gap-8 md:grid-cols-2">
             <article className="rounded-3xl bg-white p-10 shadow-sm">
-              <div
-                className="flex h-20 w-20 items-center justify-center rounded-full text-2xl font-semibold text-white"
-                style={{ backgroundColor: "var(--brand-navy)" }}
-              >
+              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-brand-navy text-2xl font-semibold text-white">
                 JJ
               </div>
               <h3 className="mt-6 text-2xl font-semibold">Jacques Junior</h3>
-              <p className="text-sm font-medium" style={{ color: "var(--brand-red)" }}>
+              <p className="text-sm font-medium text-brand-red">
                 Co-fondateur — Finance & intégration étudiante
               </p>
               <p className="mt-4 leading-relaxed text-muted-foreground">
@@ -107,14 +93,11 @@ function About() {
               </p>
             </article>
             <article className="rounded-3xl bg-white p-10 shadow-sm">
-              <div
-                className="flex h-20 w-20 items-center justify-center rounded-full text-2xl font-semibold text-white"
-                style={{ backgroundColor: "var(--brand-red)" }}
-              >
+              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-brand-red text-2xl font-semibold text-white">
                 B
               </div>
               <h3 className="mt-6 text-2xl font-semibold">Benito</h3>
-              <p className="text-sm font-medium" style={{ color: "var(--brand-red)" }}>
+              <p className="text-sm font-medium text-brand-red">
                 Co-fondateur — Entrepreneuriat & accompagnement
               </p>
               <p className="mt-4 leading-relaxed text-muted-foreground">
@@ -140,12 +123,7 @@ function About() {
 
       {/* HQ */}
       <section className="mx-auto max-w-7xl px-6 py-24">
-        <p
-          className="text-sm font-medium uppercase tracking-[0.2em]"
-          style={{ color: "var(--brand-red)" }}
-        >
-          Nos bureaux
-        </p>
+        <p className="text-sm font-medium uppercase tracking-[0.2em] text-brand-red">Nos bureaux</p>
         <h2 className="mt-3 text-4xl font-semibold md:text-5xl">Sièges & contacts.</h2>
         <div className="mt-10 grid gap-6 md:grid-cols-2">
           {[
@@ -164,7 +142,7 @@ function About() {
           ].map((o) => (
             <div key={o.city} className="rounded-3xl border border-border bg-card p-8">
               <div className="flex items-center gap-3">
-                <MapPin className="h-5 w-5" style={{ color: "var(--brand-red)" }} />
+                <MapPin className="h-5 w-5 text-brand-red" />
                 <h3 className="text-2xl font-semibold">{o.city}</h3>
               </div>
               <p className="mt-2 text-muted-foreground">{o.addr}</p>
@@ -185,10 +163,7 @@ function About() {
 
       {/* CTA */}
       <section className="mx-auto max-w-7xl px-6 pb-24">
-        <div
-          className="overflow-hidden rounded-3xl p-10 text-center md:p-16"
-          style={{ backgroundColor: "var(--brand-cream)" }}
-        >
+        <div className="overflow-hidden rounded-3xl bg-brand-cream p-10 text-center md:p-16">
           <h2 className="text-3xl font-semibold md:text-4xl">
             Vous aussi, commencez votre voyage.
           </h2>
@@ -200,8 +175,7 @@ function About() {
             <Link
               to="/new-request"
               search={{ service: undefined }}
-              className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white"
-              style={{ backgroundColor: "var(--brand-red)" }}
+              className="inline-flex items-center gap-2 rounded-full bg-brand-red px-6 py-3 text-sm font-semibold text-white"
             >
               <Rocket className="h-4 w-4" /> Démarrer mon projet <ArrowRight className="h-4 w-4" />
             </Link>

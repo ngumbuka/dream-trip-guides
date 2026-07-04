@@ -7,7 +7,11 @@ export const Route = createFileRoute("/services/rendez-vous-consulat")({
   head: () => ({
     meta: [
       { title: "Prise de rendez-vous consulaire — VoyageonsEnsemble" },
-      { name: "description", content: "Obtenez un rendez-vous rapidement pour déposer votre demande de visa au consulat ou chez VFS/TLS." },
+      {
+        name: "description",
+        content:
+          "Obtenez un rendez-vous rapidement pour déposer votre demande de visa au consulat ou chez VFS/TLS.",
+      },
     ],
   }),
   component: () => (
@@ -27,7 +31,10 @@ export const Route = createFileRoute("/services/rendez-vous-consulat")({
         { title: "Mandat", desc: "Vous nous donnez mandat pour chercher un rendez-vous." },
         { title: "Veille", desc: "Nos équipes surveillent activement les plateformes." },
         { title: "Réservation", desc: "Nous bloquons le créneau qui vous convient." },
-        { title: "Préparation", desc: "Nous vous envoyons la convocation et les dernières consignes." },
+        {
+          title: "Préparation",
+          desc: "Nous vous envoyons la convocation et les dernières consignes.",
+        },
       ]}
       included={[
         { icon: MonitorCheck, t: "Veille continue" },
@@ -37,8 +44,14 @@ export const Route = createFileRoute("/services/rendez-vous-consulat")({
         { icon: Calendar, t: "Service Visa", to: "/services/visa-schengen" },
       ]}
       faqs={[
-        { q: "Garantissez-vous une date précise ?", a: "Les disponibilités dépendent exclusivement des consulats. Nous garantissons de prendre le premier créneau disponible correspondant à vos contraintes." },
-        { q: "Comment faites-vous si les sites sont saturés ?", a: "Nous avons l'habitude des périodes de forte affluence et disposons d'équipes dédiées à la veille pour réagir dans la minute." },
+        {
+          q: "Garantissez-vous une date précise ?",
+          a: "Les disponibilités dépendent exclusivement des consulats. Nous garantissons de prendre le premier créneau disponible correspondant à vos contraintes.",
+        },
+        {
+          q: "Comment faites-vous si les sites sont saturés ?",
+          a: "Nous avons l'habitude des périodes de forte affluence et disposons d'équipes dédiées à la veille pour réagir dans la minute.",
+        },
       ]}
       serviceSlug="rendez-vous-consulat"
     />

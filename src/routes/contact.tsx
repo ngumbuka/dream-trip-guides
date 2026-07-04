@@ -21,14 +21,9 @@ function Contact() {
   const [sent, setSent] = useState(false);
   return (
     <div>
-      <section className="border-b border-border" style={{ backgroundColor: "var(--brand-cream)" }}>
+      <section className="border-b border-border bg-brand-cream">
         <div className="mx-auto max-w-5xl px-6 py-24 text-center">
-          <p
-            className="text-sm font-medium uppercase tracking-[0.2em]"
-            style={{ color: "var(--brand-red)" }}
-          >
-            Contact
-          </p>
+          <p className="text-sm font-medium uppercase tracking-[0.2em] text-brand-red">Contact</p>
           <h1 className="mt-4 text-5xl font-semibold leading-tight md:text-6xl">
             Parlons de votre projet.
           </h1>
@@ -50,10 +45,7 @@ function Contact() {
               key={i.label}
               className="flex items-start gap-4 rounded-2xl border border-border bg-card p-6"
             >
-              <div
-                className="flex h-11 w-11 items-center justify-center rounded-xl"
-                style={{ backgroundColor: "var(--brand-navy)", color: "white" }}
-              >
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-navy text-white">
                 <i.icon className="h-5 w-5" />
               </div>
               <div>
@@ -73,10 +65,7 @@ function Contact() {
         >
           {sent ? (
             <div className="py-16 text-center">
-              <div
-                className="mx-auto flex h-14 w-14 items-center justify-center rounded-full"
-                style={{ backgroundColor: "var(--brand-red)", color: "white" }}
-              >
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-brand-red text-white">
                 <Send className="h-6 w-6" />
               </div>
               <h3 className="mt-6 text-2xl font-semibold">Message envoyé !</h3>
@@ -96,7 +85,7 @@ function Contact() {
                   <select className="mt-2 w-full rounded-xl border border-border bg-white px-4 py-3 text-sm outline-none focus:border-foreground">
                     <option>Long séjour</option>
                     <option>Court séjour</option>
-                    <option>Visite Cameroun</option>
+                    <option>Visit Africa</option>
                     <option>Autre</option>
                   </select>
                 </div>
@@ -114,8 +103,7 @@ function Contact() {
               </div>
               <button
                 type="submit"
-                className="mt-6 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white"
-                style={{ backgroundColor: "var(--brand-red)" }}
+                className="mt-6 inline-flex items-center gap-2 rounded-full bg-brand-red px-6 py-3 text-sm font-semibold text-white"
               >
                 Envoyer <Send className="h-4 w-4" />
               </button>

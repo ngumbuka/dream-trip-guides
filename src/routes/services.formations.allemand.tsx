@@ -71,12 +71,9 @@ const format = [
 function AllemandPage() {
   return (
     <div>
-      <section className="border-b border-border" style={{ backgroundColor: "var(--brand-cream)" }}>
+      <section className="border-b border-border bg-brand-cream">
         <div className="mx-auto max-w-5xl px-6 py-24">
-          <p
-            className="text-sm font-medium uppercase tracking-[0.2em]"
-            style={{ color: "var(--brand-red)" }}
-          >
+          <p className="text-sm font-medium uppercase tracking-[0.2em] text-brand-red">
             Formations · Allemand
           </p>
           <h1 className="mt-4 text-5xl font-semibold leading-tight md:text-6xl">
@@ -91,8 +88,7 @@ function AllemandPage() {
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white"
-              style={{ backgroundColor: "var(--brand-red)" }}
+              className="inline-flex items-center gap-2 rounded-full bg-brand-red px-6 py-3 text-sm font-semibold text-white"
             >
               <Rocket className="h-4 w-4" /> M'inscrire au cours d'allemand
             </Link>
@@ -117,7 +113,7 @@ function AllemandPage() {
         </p>
         <div className="mt-8 overflow-hidden rounded-3xl border border-border">
           <table className="w-full text-left text-sm">
-            <thead style={{ backgroundColor: "var(--brand-navy)", color: "white" }}>
+            <thead className="bg-brand-navy text-white">
               <tr>
                 <th className="px-5 py-4 font-semibold">Niveau</th>
                 <th className="px-5 py-4 font-semibold">Durée</th>
@@ -127,9 +123,7 @@ function AllemandPage() {
             <tbody>
               {levels.map((l, i) => (
                 <tr key={l.n} className={i % 2 ? "bg-muted/30" : "bg-background"}>
-                  <td className="px-5 py-4 font-semibold" style={{ color: "var(--brand-red)" }}>
-                    {l.n}
-                  </td>
+                  <td className="px-5 py-4 font-semibold text-brand-red">{l.n}</td>
                   <td className="px-5 py-4 text-foreground/80">{l.d}</td>
                   <td className="px-5 py-4 text-foreground/80">{l.w}</td>
                 </tr>
@@ -139,7 +133,7 @@ function AllemandPage() {
         </div>
       </section>
 
-      <section className="py-20" style={{ backgroundColor: "var(--brand-cream)" }}>
+      <section className="bg-brand-cream py-20">
         <div className="mx-auto max-w-6xl px-6">
           <h2 className="text-3xl font-semibold md:text-4xl">Les 4 compétences travaillées</h2>
           <p className="mt-3 max-w-2xl text-muted-foreground">
@@ -164,19 +158,13 @@ function AllemandPage() {
             <ul className="mt-6 space-y-3 text-sm">
               {format.map((f) => (
                 <li key={f} className="flex items-start gap-3">
-                  <Check
-                    className="mt-0.5 h-4 w-4 shrink-0"
-                    style={{ color: "var(--brand-red)" }}
-                  />
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-red" />
                   <span className="text-foreground/80">{f}</span>
                 </li>
               ))}
             </ul>
           </div>
-          <div
-            className="rounded-3xl p-8"
-            style={{ backgroundColor: "var(--brand-navy)", color: "white" }}
-          >
+          <div className="rounded-3xl bg-brand-navy p-8 text-white">
             <h2 className="text-2xl font-semibold">Certifications préparées</h2>
             <div className="mt-6 space-y-5 text-sm">
               <div>
@@ -200,10 +188,7 @@ function AllemandPage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 pb-24">
-        <div
-          className="overflow-hidden rounded-3xl p-10 text-center md:p-14"
-          style={{ backgroundColor: "var(--brand-cream)" }}
-        >
+        <div className="overflow-hidden rounded-3xl bg-brand-cream p-10 text-center md:p-14">
           <h2 className="text-3xl font-semibold md:text-4xl">
             Inscriptions ouvertes — places limitées
           </h2>
@@ -213,8 +198,7 @@ function AllemandPage() {
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white"
-              style={{ backgroundColor: "var(--brand-red)" }}
+              className="inline-flex items-center gap-2 rounded-full bg-brand-red px-6 py-3 text-sm font-semibold text-white"
             >
               <Rocket className="h-4 w-4" /> M'inscrire <ArrowRight className="h-4 w-4" />
             </Link>

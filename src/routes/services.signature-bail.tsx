@@ -7,7 +7,11 @@ export const Route = createFileRoute("/services/signature-bail")({
   head: () => ({
     meta: [
       { title: "Signature du bail & État des lieux — VoyageonsEnsemble" },
-      { name: "description", content: "Soyez accompagné lors de la signature de votre contrat de location et de l'état des lieux." },
+      {
+        name: "description",
+        content:
+          "Soyez accompagné lors de la signature de votre contrat de location et de l'état des lieux.",
+      },
     ],
   }),
   component: () => (
@@ -24,8 +28,14 @@ export const Route = createFileRoute("/services/signature-bail")({
         "Assistance ou représentation lors de l'état des lieux d'entrée",
       ]}
       steps={[
-        { title: "Relecture", desc: "Nous examinons le projet de bail envoyé par le propriétaire." },
-        { title: "Explications", desc: "Nous vous expliquons vos droits et devoirs en tant que locataire." },
+        {
+          title: "Relecture",
+          desc: "Nous examinons le projet de bail envoyé par le propriétaire.",
+        },
+        {
+          title: "Explications",
+          desc: "Nous vous expliquons vos droits et devoirs en tant que locataire.",
+        },
         { title: "Signature", desc: "Signature du bail, en personne ou par voie électronique." },
         { title: "État des lieux", desc: "Inspection détaillée du logement à la remise des clés." },
       ]}
@@ -37,9 +47,18 @@ export const Route = createFileRoute("/services/signature-bail")({
         { icon: Home, t: "Service Logement", to: "/services/logement" },
       ]}
       faqs={[
-        { q: "Puis-je signer le bail avant d'arriver dans le pays ?", a: "Oui, la majorité de nos partenaires acceptent la signature électronique, vous permettant de sécuriser le logement avant votre départ." },
-        { q: "Comment payer le dépôt de garantie depuis l'étranger ?", a: "Nous vous guidons sur les plateformes de paiement sécurisées ou les virements internationaux pour éviter les fraudes." },
-        { q: "Que faire si je constate un défaut après l'état des lieux ?", a: "Vous disposez légalement de quelques jours pour signaler par courrier recommandé tout défaut non mentionné initialement. Nous vous aidons dans cette démarche." },
+        {
+          q: "Puis-je signer le bail avant d'arriver dans le pays ?",
+          a: "Oui, la majorité de nos partenaires acceptent la signature électronique, vous permettant de sécuriser le logement avant votre départ.",
+        },
+        {
+          q: "Comment payer le dépôt de garantie depuis l'étranger ?",
+          a: "Nous vous guidons sur les plateformes de paiement sécurisées ou les virements internationaux pour éviter les fraudes.",
+        },
+        {
+          q: "Que faire si je constate un défaut après l'état des lieux ?",
+          a: "Vous disposez légalement de quelques jours pour signaler par courrier recommandé tout défaut non mentionné initialement. Nous vous aidons dans cette démarche.",
+        },
       ]}
       serviceSlug="signature-bail"
     />

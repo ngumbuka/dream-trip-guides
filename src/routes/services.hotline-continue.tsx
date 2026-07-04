@@ -7,7 +7,11 @@ export const Route = createFileRoute("/services/hotline-continue")({
   head: () => ({
     meta: [
       { title: "Hotline continue & Assistance — VoyageonsEnsemble" },
-      { name: "description", content: "Une assistance 7j/7 pour répondre à toutes vos questions et urgences lors de votre installation." },
+      {
+        name: "description",
+        content:
+          "Une assistance 7j/7 pour répondre à toutes vos questions et urgences lors de votre installation.",
+      },
     ],
   }),
   component: () => (
@@ -24,10 +28,19 @@ export const Route = createFileRoute("/services/hotline-continue")({
         "Mise en relation avec des professionnels de santé ou des juristes si nécessaire",
       ]}
       steps={[
-        { title: "Prise de contact", desc: "Vous nous appelez ou nous envoyez un message via WhatsApp." },
+        {
+          title: "Prise de contact",
+          desc: "Vous nous appelez ou nous envoyez un message via WhatsApp.",
+        },
         { title: "Évaluation", desc: "Nous analysons rapidement votre demande ou votre urgence." },
-        { title: "Intervention", desc: "Nous vous guidons à distance ou coordonnons une aide locale." },
-        { title: "Suivi", desc: "Nous prenons de vos nouvelles jusqu'à la résolution complète du problème." },
+        {
+          title: "Intervention",
+          desc: "Nous vous guidons à distance ou coordonnons une aide locale.",
+        },
+        {
+          title: "Suivi",
+          desc: "Nous prenons de vos nouvelles jusqu'à la résolution complète du problème.",
+        },
       ]}
       included={[
         { icon: Phone, t: "Assistance 7j/7" },
@@ -37,9 +50,18 @@ export const Route = createFileRoute("/services/hotline-continue")({
         { icon: HeartHandshake, t: "Accueil global", to: "/services/accueil-integration" },
       ]}
       faqs={[
-        { q: "Quels sont les horaires de la hotline ?", a: "Pour les urgences, la ligne est ouverte 24h/24 et 7j/7. Pour les conseils généraux, nos horaires d'ouverture s'appliquent." },
-        { q: "Quels types de problèmes puis-je signaler ?", a: "Tout ! Un dégât des eaux, un retard de vol, une question sur la sécurité sociale, ou même le besoin de trouver un médecin." },
-        { q: "La hotline est-elle incluse dans mon pack ?", a: "Oui, la hotline est incluse gratuitement pour tous nos clients bénéficiant d'un pack d'accueil et d'intégration." },
+        {
+          q: "Quels sont les horaires de la hotline ?",
+          a: "Pour les urgences, la ligne est ouverte 24h/24 et 7j/7. Pour les conseils généraux, nos horaires d'ouverture s'appliquent.",
+        },
+        {
+          q: "Quels types de problèmes puis-je signaler ?",
+          a: "Tout ! Un dégât des eaux, un retard de vol, une question sur la sécurité sociale, ou même le besoin de trouver un médecin.",
+        },
+        {
+          q: "La hotline est-elle incluse dans mon pack ?",
+          a: "Oui, la hotline est incluse gratuitement pour tous nos clients bénéficiant d'un pack d'accueil et d'intégration.",
+        },
       ]}
       serviceSlug="hotline-continue"
     />

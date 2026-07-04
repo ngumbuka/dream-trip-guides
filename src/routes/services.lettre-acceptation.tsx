@@ -7,7 +7,10 @@ export const Route = createFileRoute("/services/lettre-acceptation")({
   head: () => ({
     meta: [
       { title: "Lettre d'Acceptation & Inscription — VoyageonsEnsemble" },
-      { name: "description", content: "Réception de vos admissions, choix final et confirmation d'inscription." },
+      {
+        name: "description",
+        content: "Réception de vos admissions, choix final et confirmation d'inscription.",
+      },
     ],
   }),
   component: () => (
@@ -26,7 +29,10 @@ export const Route = createFileRoute("/services/lettre-acceptation")({
       steps={[
         { title: "Réception", desc: "Notification des réponses positives des écoles." },
         { title: "Choix", desc: "Discussion stratégique pour valider le meilleur choix." },
-        { title: "Confirmation", desc: "Paiement de l'acompte (le cas échéant) pour bloquer votre place." },
+        {
+          title: "Confirmation",
+          desc: "Paiement de l'acompte (le cas échéant) pour bloquer votre place.",
+        },
         { title: "Visa", desc: "Utilisation de la lettre pour lancer la procédure consulaire." },
       ]}
       included={[
@@ -37,8 +43,14 @@ export const Route = createFileRoute("/services/lettre-acceptation")({
         { icon: GraduationCap, t: "Admission", to: "/services/admission-etudes" },
       ]}
       faqs={[
-        { q: "Et si je reçois plusieurs réponses positives ?", a: "C'est le meilleur scénario ! Nous ferons un tableau comparatif avec vous pour choisir l'établissement qui offre le meilleur équilibre (académique, budget, ville)." },
-        { q: "Faut-il payer l'école avant d'avoir le visa ?", a: "Pour la plupart des écoles privées et universités nord-américaines, oui, le paiement de la scolarité (ou d'un acompte) est nécessaire pour obtenir la lettre définitive d'acceptation exigée par l'ambassade." },
+        {
+          q: "Et si je reçois plusieurs réponses positives ?",
+          a: "C'est le meilleur scénario ! Nous ferons un tableau comparatif avec vous pour choisir l'établissement qui offre le meilleur équilibre (académique, budget, ville).",
+        },
+        {
+          q: "Faut-il payer l'école avant d'avoir le visa ?",
+          a: "Pour la plupart des écoles privées et universités nord-américaines, oui, le paiement de la scolarité (ou d'un acompte) est nécessaire pour obtenir la lettre définitive d'acceptation exigée par l'ambassade.",
+        },
       ]}
       serviceSlug="lettre-acceptation"
     />

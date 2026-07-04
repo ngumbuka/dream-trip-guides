@@ -21,7 +21,7 @@ export const Route = createFileRoute("/services/")({
       { title: "Services — VoyageonsEnsemble" },
       {
         name: "description",
-        content: "Longs séjours, courts séjours, visite du Cameroun : un accompagnement complet.",
+        content: "Longs séjours, courts séjours, voyages en Afrique : un accompagnement complet.",
       },
       { property: "og:title", content: "Nos services — VoyageonsEnsemble" },
       {
@@ -101,14 +101,9 @@ const extras = [
 function Services() {
   return (
     <div>
-      <section className="border-b border-border" style={{ backgroundColor: "var(--brand-cream)" }}>
+      <section className="border-b border-border bg-brand-cream">
         <div className="mx-auto max-w-5xl px-6 py-24 text-center">
-          <p
-            className="text-sm font-medium uppercase tracking-[0.2em]"
-            style={{ color: "var(--brand-red)" }}
-          >
-            Services
-          </p>
+          <p className="text-sm font-medium uppercase tracking-[0.2em] text-brand-red">Services</p>
           <h1 className="mt-4 text-5xl font-semibold leading-tight md:text-6xl">
             Tout ce qu'il faut, en un seul endroit.
           </h1>
@@ -127,23 +122,15 @@ function Services() {
               key={o.id}
               className="flex flex-col rounded-3xl border border-border bg-card p-8"
             >
-              <div
-                className="inline-flex h-12 w-12 items-center justify-center rounded-2xl"
-                style={{ backgroundColor: "var(--brand-navy)", color: "white" }}
-              >
+              <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-navy text-white">
                 <o.icon className="h-6 w-6" />
               </div>
               <h2 className="mt-6 text-3xl font-semibold">{o.title}</h2>
-              <p className="mt-2 text-sm font-medium" style={{ color: "var(--brand-red)" }}>
-                {o.tagline}
-              </p>
+              <p className="mt-2 text-sm font-medium text-brand-red">{o.tagline}</p>
               <ul className="mt-6 space-y-3 text-sm">
                 {o.bullets.map((b) => (
                   <li key={b} className="flex items-start gap-2 text-foreground/80">
-                    <Check
-                      className="mt-0.5 h-4 w-4 shrink-0"
-                      style={{ color: "var(--brand-red)" }}
-                    />
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-red" />
                     <span>{b}</span>
                   </li>
                 ))}
@@ -157,10 +144,9 @@ function Services() {
                         ? "/services/court-sejours"
                         : o.id === "formations"
                           ? "/services/formations"
-                          : "/services/visite-cameroun"
+                          : "/services/visite-afrique"
                   }
-                  className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-white"
-                  style={{ backgroundColor: "var(--brand-red)" }}
+                  className="inline-flex items-center gap-2 rounded-full bg-brand-red px-5 py-2.5 text-sm font-semibold text-white"
                 >
                   En savoir plus <ArrowRight className="h-4 w-4" />
                 </Link>
@@ -176,7 +162,7 @@ function Services() {
         </div>
       </section>
 
-      <section className="py-20" style={{ backgroundColor: "var(--brand-navy)", color: "white" }}>
+      <section className="bg-brand-navy py-20 text-white">
         <div className="mx-auto max-w-7xl px-6">
           <h2 className="text-3xl font-semibold md:text-4xl">Inclus dans nos accompagnements</h2>
           <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5">
@@ -199,10 +185,7 @@ function Services() {
 
       {/* CTA */}
       <section className="mx-auto max-w-7xl px-6 pb-24">
-        <div
-          className="overflow-hidden rounded-3xl p-10 text-center md:p-16"
-          style={{ backgroundColor: "var(--brand-cream)" }}
-        >
+        <div className="overflow-hidden rounded-3xl bg-brand-cream p-10 text-center md:p-16">
           <h2 className="text-3xl font-semibold md:text-4xl">
             Vous ne savez pas quel service choisir ?
           </h2>
@@ -214,8 +197,7 @@ function Services() {
             <Link
               to="/new-request"
               search={{ service: undefined }}
-              className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white"
-              style={{ backgroundColor: "var(--brand-red)" }}
+              className="inline-flex items-center gap-2 rounded-full bg-brand-red px-6 py-3 text-sm font-semibold text-white"
             >
               <Rocket className="h-4 w-4" /> Démarrer mon projet <ArrowRight className="h-4 w-4" />
             </Link>

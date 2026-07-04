@@ -7,7 +7,11 @@ export const Route = createFileRoute("/services/safaris-excursions")({
   head: () => ({
     meta: [
       { title: "Safaris & Excursions — VoyageonsEnsemble" },
-      { name: "description", content: "Vivez des aventures extraordinaires, des safaris animaliers aux randonnées immersives." },
+      {
+        name: "description",
+        content:
+          "Vivez des aventures extraordinaires, des safaris animaliers aux randonnées immersives.",
+      },
     ],
   }),
   component: () => (
@@ -24,7 +28,10 @@ export const Route = createFileRoute("/services/safaris-excursions")({
         "Matériel fourni (jumelles, guides d'identification, etc.)",
       ]}
       steps={[
-        { title: "Choix de l'aventure", desc: "Sélectionnez le type d'excursion qui vous fait rêver." },
+        {
+          title: "Choix de l'aventure",
+          desc: "Sélectionnez le type d'excursion qui vous fait rêver.",
+        },
         { title: "Préparation", desc: "Nous réservons les permis de parcs et l'équipement." },
         { title: "Exploration", desc: "Partez à l'aventure encadré par des professionnels." },
         { title: "Souvenirs", desc: "Rapportez des images et souvenirs inoubliables." },
@@ -34,11 +41,17 @@ export const Route = createFileRoute("/services/safaris-excursions")({
         { icon: Compass, t: "Guides experts" },
         { icon: Map, t: "Entrées parcs" },
         { icon: Sunrise, t: "Excursions aube/crépuscule" },
-        { icon: ImageIcon, t: "Visit Africa", to: "/services/visite-cameroun" },
+        { icon: ImageIcon, t: "Visit Africa", to: "/services/visite-afrique" },
       ]}
       faqs={[
-        { q: "Est-ce sécurisé pour les enfants ?", a: "Oui, de nombreux safaris et lodges sont adaptés aux familles. Nous sélectionnons des activités 'child-friendly' si vous voyagez en famille." },
-        { q: "Dois-je réserver longtemps à l'avance ?", a: "Pour certaines activités très prisées (comme le trek des gorilles au Rwanda/Ouganda), il faut réserver plusieurs mois à l'avance en raison du nombre limité de permis." },
+        {
+          q: "Est-ce sécurisé pour les enfants ?",
+          a: "Oui, de nombreux safaris et lodges sont adaptés aux familles. Nous sélectionnons des activités 'child-friendly' si vous voyagez en famille.",
+        },
+        {
+          q: "Dois-je réserver longtemps à l'avance ?",
+          a: "Pour certaines activités très prisées (comme le trek des gorilles au Rwanda/Ouganda), il faut réserver plusieurs mois à l'avance en raison du nombre limité de permis.",
+        },
       ]}
       serviceSlug="safaris-excursions"
     />

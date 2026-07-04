@@ -7,7 +7,11 @@ export const Route = createFileRoute("/services/reseaux-sociaux")({
   head: () => ({
     meta: [
       { title: "Gestion des Réseaux Sociaux — VoyageonsEnsemble" },
-      { name: "description", content: "Animation de vos comptes Facebook, Instagram, LinkedIn, TikTok pour développer votre communauté." },
+      {
+        name: "description",
+        content:
+          "Animation de vos comptes Facebook, Instagram, LinkedIn, TikTok pour développer votre communauté.",
+      },
     ],
   }),
   component: () => (
@@ -26,7 +30,10 @@ export const Route = createFileRoute("/services/reseaux-sociaux")({
       steps={[
         { title: "Ligne éditoriale", desc: "Nous définissons le ton et les thèmes abordés." },
         { title: "Création", desc: "Nous produisons les textes, images et vidéos courtes." },
-        { title: "Publication", desc: "Nous programmons les posts aux heures d'audience optimale." },
+        {
+          title: "Publication",
+          desc: "Nous programmons les posts aux heures d'audience optimale.",
+        },
         { title: "Animation", desc: "Nous interagissons avec vos abonnés au quotidien." },
       ]}
       included={[
@@ -37,8 +44,14 @@ export const Route = createFileRoute("/services/reseaux-sociaux")({
         { icon: Megaphone, t: "CM & Digital", to: "/services/community-management" },
       ]}
       faqs={[
-        { q: "Dois-je valider les posts avant publication ?", a: "Oui, nous vous soumettons le calendrier éditorial à l'avance pour validation avant toute publication." },
-        { q: "Quels réseaux privilégier ?", a: "Cela dépend de votre cible (B2B pour LinkedIn, B2C jeune pour TikTok/Instagram). Nous vous conseillons lors de l'audit initial." },
+        {
+          q: "Dois-je valider les posts avant publication ?",
+          a: "Oui, nous vous soumettons le calendrier éditorial à l'avance pour validation avant toute publication.",
+        },
+        {
+          q: "Quels réseaux privilégier ?",
+          a: "Cela dépend de votre cible (B2B pour LinkedIn, B2C jeune pour TikTok/Instagram). Nous vous conseillons lors de l'audit initial.",
+        },
       ]}
       serviceSlug="reseaux-sociaux"
     />

@@ -1,6 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import { z } from "zod";
+import type { AuthUser } from "@supabase/supabase-js";
 
 export const getMyProfile = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
@@ -66,9 +67,10 @@ export const getEmailVerificationStatus = createServerFn({ method: "GET" })
     const { data, error } = await context.supabase.auth.getUser();
     if (error) throw new Error(error.message);
     const u = data.user;
+    const userRec = u as AuthUser & { new_email?: string | null };
     return {
       email: u?.email ?? null,
-      new_email: (u as any)?.new_email ?? null,
+      new_email: userRec.new_email ?? null,
       email_confirmed_at: u?.email_confirmed_at ?? null,
       verified: !!u?.email_confirmed_at,
     };

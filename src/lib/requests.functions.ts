@@ -1,6 +1,10 @@
 import { createServerFn } from "@tanstack/react-start";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import { z } from "zod";
+import type { SupabaseClient } from "@supabase/supabase-js";
+import type { Database } from "@/integrations/supabase/types";
+
+type DBClient = SupabaseClient<Database>;
 
 const StatusEnum = z.enum([
   "nouveau",
@@ -22,7 +26,7 @@ const CreateRequestSchema = z.object({
   message: z.string().min(1).max(4000),
 });
 
-async function assertAdmin(supabase: any, userId: string) {
+async function assertAdmin(supabase: DBClient, userId: string) {
   const { data, error } = await supabase
     .from("user_roles")
     .select("role")
@@ -142,7 +146,7 @@ export const signDocumentUpload = createServerFn({ method: "POST" })
       .eq("user_id", userId)
       .maybeSingle();
     if (!req) throw new Error("Not allowed");
-    const safeName = data.file_name.replace(/[^\w.\-]+/g, "_");
+    const safeName = data.file_name.replace(/[^\w.-]+/g, "_");
     const path = `${userId}/${data.request_id}/${crypto.randomUUID()}-${safeName}`;
     const { data: signed, error } = await supabase.storage
       .from("request-documents")
@@ -226,8 +230,8 @@ export const adminListRequests = createServerFn({ method: "POST" })
     const { data: rows, error } = await q;
     if (error) throw new Error(error.message);
     // Hydrate profile info
-    const ids = Array.from(new Set((rows ?? []).map((r: any) => r.user_id)));
-    let profiles: Record<string, { full_name: string | null; email: string | null }> = {};
+    const ids = Array.from(new Set((rows ?? []).map((r) => r.user_id)));
+    const profiles: Record<string, { full_name: string | null; email: string | null }> = {};
     if (ids.length) {
       const { data: ps } = await context.supabase
         .from("profiles")
@@ -235,7 +239,7 @@ export const adminListRequests = createServerFn({ method: "POST" })
         .in("id", ids);
       for (const p of ps ?? []) profiles[p.id] = { full_name: p.full_name, email: p.email };
     }
-    return (rows ?? []).map((r: any) => ({ ...r, client: profiles[r.user_id] ?? null }));
+    return (rows ?? []).map((r) => ({ ...r, client: profiles[r.user_id] ?? null }));
   });
 
 export const adminGetRequest = createServerFn({ method: "POST" })

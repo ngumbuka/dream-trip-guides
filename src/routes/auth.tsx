@@ -48,8 +48,8 @@ function AuthPage() {
         if (error) throw error;
       }
       navigate({ to: "/my-requests" });
-    } catch (err: any) {
-      toast.error(err.message ?? "Erreur");
+    } catch (err: unknown) {
+      toast.error(err instanceof Error ? err.message : "Erreur");
     } finally {
       setBusy(false);
     }
@@ -81,8 +81,7 @@ function AuthPage() {
           <button
             key={t}
             onClick={() => setTab(t)}
-            className={`flex-1 rounded-full px-4 py-2 font-medium ${tab === t ? "text-white" : "text-muted-foreground"}`}
-            style={tab === t ? { backgroundColor: "var(--brand-red)" } : undefined}
+            className={`flex-1 rounded-full px-4 py-2 font-medium ${tab === t ? "bg-brand-red text-white" : "text-muted-foreground"}`}
           >
             {t === "signin" ? "Connexion" : "Créer un compte"}
           </button>
@@ -106,8 +105,7 @@ function AuthPage() {
         />
         <button
           disabled={busy}
-          className="w-full rounded-full px-4 py-3 text-sm font-semibold text-white disabled:opacity-60"
-          style={{ backgroundColor: "var(--brand-red)" }}
+          className="w-full rounded-full bg-brand-red px-4 py-3 text-sm font-semibold text-white disabled:opacity-60"
         >
           {tab === "signin" ? "Se connecter" : "Créer mon compte"}
         </button>

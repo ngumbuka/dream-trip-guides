@@ -54,8 +54,16 @@ export const Route = createFileRoute("/services/accueil-integration")({
         { icon: Plane, t: "Billets d'avion", to: "/services/billets-avion" },
         { icon: Handshake, t: "Logement prêt", to: "/services/logement" },
         { icon: Building2, t: "Caution & AVI", to: "/services/caution-avi" },
-        { icon: Users, t: "Intégration", desc: "Soirées, rencontres et visites pour vous sentir chez vous." },
-        { icon: Phone, t: "Hotline continue", desc: "Assistance téléphonique 7j/7 pour vos urgences et questions." },
+        {
+          icon: Users,
+          t: "Intégration",
+          desc: "Soirées, rencontres et visites pour vous sentir chez vous.",
+        },
+        {
+          icon: Phone,
+          t: "Hotline continue",
+          desc: "Assistance téléphonique 7j/7 pour vos urgences et questions.",
+        },
       ]}
       faqs={[
         {

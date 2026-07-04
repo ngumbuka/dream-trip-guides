@@ -7,7 +7,11 @@ export const Route = createFileRoute("/services/tarifs-negocies")({
   head: () => ({
     meta: [
       { title: "Tarifs négociés sur les vols — VoyageonsEnsemble" },
-      { name: "description", content: "Profitez de nos accords avec les compagnies aériennes pour voyager au meilleur prix." },
+      {
+        name: "description",
+        content:
+          "Profitez de nos accords avec les compagnies aériennes pour voyager au meilleur prix.",
+      },
     ],
   }),
   component: () => (
@@ -26,7 +30,10 @@ export const Route = createFileRoute("/services/tarifs-negocies")({
       steps={[
         { title: "Recherche", desc: "Nous scannons toutes les bases de données GDS." },
         { title: "Comparaison", desc: "Nous mettons en concurrence plusieurs compagnies." },
-        { title: "Avantages", desc: "Nous appliquons les codes promos ou tarifs étudiants applicables." },
+        {
+          title: "Avantages",
+          desc: "Nous appliquons les codes promos ou tarifs étudiants applicables.",
+        },
         { title: "Proposition", desc: "Nous vous offrons le meilleur ratio qualité/prix/durée." },
       ]}
       included={[
@@ -37,8 +44,14 @@ export const Route = createFileRoute("/services/tarifs-negocies")({
         { icon: Plane, t: "Billetterie", to: "/services/billets-avion" },
       ]}
       faqs={[
-        { q: "Les compagnies low-cost sont-elles incluses ?", a: "Oui, nous comparons les vols réguliers et les compagnies low-cost pour vous donner toutes les options, en vous avertissant toujours des coûts cachés (bagages, repas)." },
-        { q: "Le tarif est-il garanti ?", a: "Les prix des vols fluctuent en temps réel. Un devis est valable le jour de son émission ; seul le paiement et l'émission bloquent le tarif." },
+        {
+          q: "Les compagnies low-cost sont-elles incluses ?",
+          a: "Oui, nous comparons les vols réguliers et les compagnies low-cost pour vous donner toutes les options, en vous avertissant toujours des coûts cachés (bagages, repas).",
+        },
+        {
+          q: "Le tarif est-il garanti ?",
+          a: "Les prix des vols fluctuent en temps réel. Un devis est valable le jour de son émission ; seul le paiement et l'émission bloquent le tarif.",
+        },
       ]}
       serviceSlug="tarifs-negocies"
     />

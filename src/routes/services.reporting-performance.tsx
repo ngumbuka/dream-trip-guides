@@ -7,7 +7,11 @@ export const Route = createFileRoute("/services/reporting-performance")({
   head: () => ({
     meta: [
       { title: "Reporting & Performance — VoyageonsEnsemble" },
-      { name: "description", content: "Suivez vos résultats en temps réel avec nos rapports d'analyse de performance digitale." },
+      {
+        name: "description",
+        content:
+          "Suivez vos résultats en temps réel avec nos rapports d'analyse de performance digitale.",
+      },
     ],
   }),
   component: () => (
@@ -24,7 +28,10 @@ export const Route = createFileRoute("/services/reporting-performance")({
         "Recommandations stratégiques basées sur l'analyse des données",
       ]}
       steps={[
-        { title: "Définition KPIs", desc: "Nous identifions ensemble les métriques qui comptent pour vous." },
+        {
+          title: "Définition KPIs",
+          desc: "Nous identifions ensemble les métriques qui comptent pour vous.",
+        },
         { title: "Collecte", desc: "Nous agrégeons les données de toutes vos plateformes." },
         { title: "Analyse", desc: "Nous dégageons les tendances et les points d'amélioration." },
         { title: "Restitution", desc: "Présentation des résultats et ajustement de la stratégie." },
@@ -37,8 +44,14 @@ export const Route = createFileRoute("/services/reporting-performance")({
         { icon: Megaphone, t: "CM & Digital", to: "/services/community-management" },
       ]}
       faqs={[
-        { q: "Les rapports sont-ils compliqués à lire ?", a: "Non, nous concevons des tableaux de bord visuels et commentés pour que les chiffres vous parlent, sans jargon inutile." },
-        { q: "À quelle fréquence recevrai-je ces rapports ?", a: "Généralement tous les mois, mais nous pouvons adapter la fréquence (hebdomadaire, trimestrielle) selon l'envergure de vos campagnes." },
+        {
+          q: "Les rapports sont-ils compliqués à lire ?",
+          a: "Non, nous concevons des tableaux de bord visuels et commentés pour que les chiffres vous parlent, sans jargon inutile.",
+        },
+        {
+          q: "À quelle fréquence recevrai-je ces rapports ?",
+          a: "Généralement tous les mois, mais nous pouvons adapter la fréquence (hebdomadaire, trimestrielle) selon l'envergure de vos campagnes.",
+        },
       ]}
       serviceSlug="reporting-performance"
     />

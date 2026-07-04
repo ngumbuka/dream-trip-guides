@@ -7,7 +7,10 @@ export const Route = createFileRoute("/services/gastronomie-locale")({
   head: () => ({
     meta: [
       { title: "Expériences gastronomiques — VoyageonsEnsemble" },
-      { name: "description", content: "Découvrez les saveurs locales et les meilleures tables de votre destination." },
+      {
+        name: "description",
+        content: "Découvrez les saveurs locales et les meilleures tables de votre destination.",
+      },
     ],
   }),
   component: () => (
@@ -34,11 +37,17 @@ export const Route = createFileRoute("/services/gastronomie-locale")({
         { icon: Coffee, t: "Cours de cuisine" },
         { icon: Star, t: "Dîners d'exception" },
         { icon: MapPin, t: "Street food sûre" },
-        { icon: Heart, t: "Visit Africa", to: "/services/visite-cameroun" },
+        { icon: Heart, t: "Visit Africa", to: "/services/visite-afrique" },
       ]}
       faqs={[
-        { q: "La nourriture locale est-elle sûre ?", a: "Oui, toutes les adresses que nous recommandons respectent des normes d'hygiène strictes. Nous vous donnons aussi des conseils pour éviter les désagréments." },
-        { q: "Je suis végétarien, aurai-je des options ?", a: "Absolument. De nombreuses cuisines africaines proposent d'excellents plats végétariens, et nous informerons les établissements de vos contraintes." },
+        {
+          q: "La nourriture locale est-elle sûre ?",
+          a: "Oui, toutes les adresses que nous recommandons respectent des normes d'hygiène strictes. Nous vous donnons aussi des conseils pour éviter les désagréments.",
+        },
+        {
+          q: "Je suis végétarien, aurai-je des options ?",
+          a: "Absolument. De nombreuses cuisines africaines proposent d'excellents plats végétariens, et nous informerons les établissements de vos contraintes.",
+        },
       ]}
       serviceSlug="gastronomie-locale"
     />

@@ -7,7 +7,11 @@ export const Route = createFileRoute("/services/identite-visuelle")({
   head: () => ({
     meta: [
       { title: "Identité visuelle & Branding — VoyageonsEnsemble" },
-      { name: "description", content: "Création de logo, charte graphique et supports visuels pour démarquer votre marque." },
+      {
+        name: "description",
+        content:
+          "Création de logo, charte graphique et supports visuels pour démarquer votre marque.",
+      },
     ],
   }),
   component: () => (
@@ -24,7 +28,10 @@ export const Route = createFileRoute("/services/identite-visuelle")({
         "Design de supports imprimés (cartes de visite, plaquettes, flyers)",
       ]}
       steps={[
-        { title: "Brief créatif", desc: "Nous discutons de vos valeurs, votre vision et votre cible." },
+        {
+          title: "Brief créatif",
+          desc: "Nous discutons de vos valeurs, votre vision et votre cible.",
+        },
         { title: "Propositions", desc: "Nous vous présentons plusieurs pistes créatives de logo." },
         { title: "Affinage", desc: "Nous perfectionnons la piste retenue selon vos retours." },
         { title: "Livrables", desc: "Remise des fichiers sources et de la charte graphique." },
@@ -37,8 +44,14 @@ export const Route = createFileRoute("/services/identite-visuelle")({
         { icon: Megaphone, t: "CM & Digital", to: "/services/community-management" },
       ]}
       faqs={[
-        { q: "Combien de propositions de logo faites-vous ?", a: "Généralement 2 à 3 pistes distinctes lors de la première présentation, que nous affinons ensuite ensemble." },
-        { q: "Quels formats de fichiers sont livrés ?", a: "Nous livrons tous les formats professionnels nécessaires : vectoriel (AI, EPS, SVG) et raster (PNG, JPG, PDF)." },
+        {
+          q: "Combien de propositions de logo faites-vous ?",
+          a: "Généralement 2 à 3 pistes distinctes lors de la première présentation, que nous affinons ensuite ensemble.",
+        },
+        {
+          q: "Quels formats de fichiers sont livrés ?",
+          a: "Nous livrons tous les formats professionnels nécessaires : vectoriel (AI, EPS, SVG) et raster (PNG, JPG, PDF).",
+        },
       ]}
       serviceSlug="identite-visuelle"
     />

@@ -47,8 +47,7 @@ function MyRequestsPage() {
           <Link
             to="/new-request"
             search={{ service: undefined }}
-            className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-white"
-            style={{ backgroundColor: "var(--brand-red)" }}
+            className="inline-flex items-center gap-2 rounded-full bg-brand-red px-4 py-2 text-sm font-semibold text-white"
           >
             <Plus className="h-4 w-4" /> Nouvelle demande
           </Link>
@@ -69,15 +68,14 @@ function MyRequestsPage() {
               <Link
                 to="/new-request"
                 search={{ service: undefined }}
-                className="mt-4 inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-white"
-                style={{ backgroundColor: "var(--brand-red)" }}
+                className="mt-4 inline-flex items-center gap-2 rounded-full bg-brand-red px-4 py-2 text-sm font-semibold text-white"
               >
                 Démarrer une demande
               </Link>
             </div>
           ) : (
             <ul className="divide-y divide-border">
-              {data.map((r: any) => (
+              {data.map((r) => (
                 <li key={r.id}>
                   <Link
                     to="/my-requests/$id"
