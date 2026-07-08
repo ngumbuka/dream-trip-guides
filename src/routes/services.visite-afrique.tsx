@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Flag } from "@/components/ui/Flag";
 import { useMemo } from "react";
 import {
   MapPin,
@@ -349,7 +350,7 @@ function VisitAfricaPage() {
             {featuredCountries.map((c) => (
               <article key={c.name} className="rounded-3xl border border-border bg-card p-8">
                 <div className="flex items-center gap-4">
-                  <span className="text-5xl leading-none">{c.flag}</span>
+                  <span className="text-5xl leading-none flex items-center"><Flag flag={c.flag} /></span>
                   <div>
                     <h3 className="text-2xl font-semibold">{c.name}</h3>
                     <p className="text-sm text-muted-foreground">{c.capital}</p>
@@ -375,7 +376,7 @@ function VisitAfricaPage() {
                 <ul className="mt-4 space-y-3">
                   {c.highlights.map((h) => (
                     <li key={h} className="flex items-start gap-3 text-sm text-foreground/85">
-                      <span className="mt-0.5 shrink-0">{c.flag}</span>
+                      <span className="mt-0.5 shrink-0 inline-flex"><Flag flag={c.flag} /></span>
                       <span>{h}</span>
                     </li>
                   ))}
@@ -406,7 +407,7 @@ function VisitAfricaPage() {
                   key={c.name}
                   className="flex flex-col items-center gap-2 rounded-2xl border border-border bg-white p-6 text-center shadow-sm"
                 >
-                  <span className="text-4xl leading-none">{c.flag}</span>
+                  <span className="text-4xl leading-none flex items-center justify-center"><Flag flag={c.flag} /></span>
                   <span className="text-sm font-semibold">{c.name}</span>
                 </div>
               ))}

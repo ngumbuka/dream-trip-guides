@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { Flag } from "@/components/ui/Flag";
 import { Languages, Briefcase, GlobeLock, Check, ArrowRight, Rocket, Sparkles } from "lucide-react";
 
 export const Route = createFileRoute("/services/formations/")({
@@ -132,7 +133,7 @@ function FormationsHub() {
                 to={p.to}
                 className="group flex flex-col rounded-3xl border border-white/10 bg-white/5 p-7 transition hover:-translate-y-0.5 hover:border-white/30 hover:bg-white/10"
               >
-                <div className="text-3xl">{p.flag}</div>
+                <div className="text-3xl flex items-center h-[1.2em]"><Flag flag={p.flag} /></div>
                 <h3 className="mt-4 text-2xl font-semibold">{p.title}</h3>
                 <p className="mt-1 text-sm font-medium" style={{ color: "#ffb3bd" }}>
                   {p.tagline}

@@ -9,6 +9,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { destinations, type Destination } from "@/lib/destinations";
+import { Flag } from "@/components/ui/Flag";
 
 export const Route = createFileRoute("/destinations/$country")({
   head: ({ params }) => {
@@ -67,7 +68,7 @@ function DestinationPage() {
         />
         <div className="relative mx-auto max-w-7xl px-6 py-28 md:py-36 text-white">
           <p className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-1.5 text-xs font-medium backdrop-blur">
-            <span className="text-base leading-none">{d.flag}</span> Destination · {d.name}
+            <span className="inline-flex items-center"><Flag flag={d.flag} /></span> Destination · {d.name}
           </p>
           <h1
             className="mt-5 max-w-3xl text-5xl font-semibold leading-[1.05] md:text-7xl"

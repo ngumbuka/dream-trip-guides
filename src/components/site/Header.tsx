@@ -22,6 +22,7 @@ import { isCurrentUserAdmin } from "@/lib/requests.functions";
 const serviceItems = [
   { to: "/services/long-sejours", label: "Longs séjours" },
   { to: "/services/court-sejours", label: "Courts séjours" },
+  { to: "/services/visite-afrique", label: "Visit Africa" },
   { to: "/services/formations", label: "Formations linguistiques" },
 ] as const;
 

@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, Phone, MapPin } from "lucide-react";
-import logo from "@/assets/logo-full.png";
+import logo from "@/assets/logo-mark.png";
 import isotopeLogo from "@/assets/isotope-logo.svg";
 
 export function Footer() {
@@ -8,8 +8,16 @@ export function Footer() {
     <footer className="mt-24 bg-brand-navy text-[#e8ecf3]">
       <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 md:grid-cols-4">
         <div className="md:col-span-2">
-          <img src={logo} alt="Voyageons Ensemble" className="h-36 w-auto" />
-          <p className="mt-4 max-w-md text-base leading-relaxed text-white/80">
+          <Link to="/" className="inline-flex items-center gap-3 mb-6">
+            <img src={logo} alt="VoyageonsEnsemble" className="h-10 w-auto" />
+            <span
+              className="text-xl font-semibold tracking-tight text-white"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              Voyageons<span className="text-brand-red">Ensemble</span>
+            </span>
+          </Link>
+          <p className="max-w-md text-base leading-relaxed text-white/80">
             Votre partenaire de mobilité internationale. Ensemble, nous rendons votre mobilité plus
             facile, plus sûre et plus enrichissante.
           </p>

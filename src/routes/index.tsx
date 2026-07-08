@@ -112,10 +112,12 @@ function Index() {
                 <select
                   value={type}
                   onChange={(e) => setType(e.target.value)}
-                  className="rounded-lg border border-border bg-white px-3 py-3 text-sm text-foreground"
+                  className="rounded-lg border border-border bg-white px-3 py-3 text-sm text-foreground cursor-pointer"
                 >
                   <option>Long séjour</option>
                   <option>Court séjour</option>
+                  <option>Visit Africa</option>
+                  <option>Formations linguistiques</option>
                 </select>
                 <button
                   type="submit"

@@ -4,10 +4,11 @@ import { z } from "zod";
 import { ArrowRight, MapPin, Sparkles } from "lucide-react";
 import { destinationList } from "@/lib/destinations";
 import { searchAll, suggestionsForType, searchIndex } from "@/lib/search-index";
+import { Flag } from "@/components/ui/Flag";
 
 const schema = z.object({
   q: fallback(z.string(), "").default(""),
-  type: fallback(z.enum(["Long séjour", "Court séjour", "Visit Africa"]), "Long séjour").default(
+  type: fallback(z.enum(["Long séjour", "Court séjour", "Visit Africa", "Formations linguistiques"]), "Long séjour").default(
     "Long séjour",
   ),
 });
@@ -53,8 +54,8 @@ function SearchPage() {
             />
             <div className="p-8">
               <p className="text-sm font-semibold text-brand-red">Destination</p>
-              <h2 className="mt-2 text-3xl font-semibold">
-                {matchedDestination.flag} {matchedDestination.name}
+              <h2 className="mt-2 text-3xl font-semibold flex items-center gap-2">
+                <Flag flag={matchedDestination.flag} /> {matchedDestination.name}
               </h2>
               <p className="mt-3 text-muted-foreground">{matchedDestination.tagline}</p>
               <Link

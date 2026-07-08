@@ -81,6 +81,13 @@ const services: SearchResult[] = [
     to: "/services/community-management",
     keywords: ["community", "social", "marketing", "communication"],
   },
+  {
+    kind: "service",
+    title: "Formations linguistiques",
+    subtitle: "TOEIC, TCF, Allemand",
+    to: "/services/formations",
+    keywords: ["formation", "linguistique", "tcf", "toeic", "allemand", "langue", "allemagne", "anglais", "français"],
+  },
 ];
 
 const destinations: SearchResult[] = destinationList.map((d) => ({
@@ -146,6 +153,12 @@ export function suggestionsForType(type: string): SearchResult[] {
         "/services/visite-afrique",
         "/services/billets-avion",
         "/services/accueil-integration",
+      ].includes(r.to),
+    );
+  if (t.includes("format") || t.includes("lingu"))
+    return searchIndex.filter((r) =>
+      [
+        "/services/formations",
       ].includes(r.to),
     );
   return [];
