@@ -9,7 +9,7 @@ export function Footer() {
       <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 md:grid-cols-4">
         <div className="md:col-span-2">
           <Link to="/" className="inline-flex items-center gap-3 mb-6">
-            <img src={logo} alt="VoyageonsEnsemble" className="h-10 w-auto" />
+            <img src={logo} alt="VoyageonsEnsemble" className="h-10 w-auto brightness-0 invert" />
             <span
               className="text-xl font-semibold tracking-tight text-white"
               style={{ fontFamily: "var(--font-display)" }}
